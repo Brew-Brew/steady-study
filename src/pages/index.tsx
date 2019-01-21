@@ -10,7 +10,16 @@ import {
   Header,
   Icon,
 } from "semantic-ui-react";
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
+import { pulse } from "react-animations";
+
+const pulseAnimation = keyframes`${pulse}`;
+const BouncyDiv = styled.h1`
+  animation: 2s ${pulseAnimation};
+`;
+const MainWrapper = styled.div`
+  margin-top: 200px;
+`;
 
 const IndexPage = (props: LayoutProps) => (
   <div>
@@ -22,24 +31,24 @@ const IndexPage = (props: LayoutProps) => (
         items={menuItems}
         inverted
       />
-      <Container text>
-        <Header inverted as="h1">
-          Steady Study
-        </Header>
-        <article>
-          <div className="blue" />
-          <div className="green" />
-        </article>
-        <Header inverted as="h2">
-          I am Ideveloper
-        </Header>
-        <Header inverted as="h3">
-          :) Idea + Developer
-        </Header>
-        <Button primary size="huge">
-          Welcome to my blog
-        </Button>
-      </Container>
+      <MainWrapper>
+        <Container text>
+          <BouncyDiv>Steady Study</BouncyDiv>
+          <article>
+            <div className="blue" />
+            <div className="green" />
+          </article>
+          <Header inverted as="h2">
+            I am Ideveloper
+          </Header>
+          <Header inverted as="h3">
+            :) Idea + Developer
+          </Header>
+          <Button primary size="huge">
+            Welcome to my blog
+          </Button>
+        </Container>
+      </MainWrapper>
     </Segment>
 
     {/* About this starter */}
@@ -48,7 +57,7 @@ const IndexPage = (props: LayoutProps) => (
         <Grid.Row>
           <Grid.Column width="8">
             <Header>Job Description</Header>
-            <p>I am Front-End Developer</p>
+            <Header>I am Front-End Developer</Header>
           </Grid.Column>
           <Grid.Column width="6" floated="right">
             {/* TODO replace with a pretty animation */}
