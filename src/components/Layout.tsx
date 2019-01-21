@@ -12,8 +12,8 @@ import { store } from "../store";
 
 export const menuItems = [
   { name: "Home", path: "/", exact: true, icon: "home", inverted: true },
-  { name: "About", path: "/about/", exact: true, icon: "info circle" },
-  { name: "Blog", path: "/blog/", exact: false, icon: "newspaper" },
+  { name: "who are you", path: "/about/", exact: true, icon: "info circle" },
+  { name: "My Thinking", path: "/blog/", exact: false, icon: "newspaper" }
 ];
 
 export interface LayoutProps {
@@ -30,26 +30,32 @@ const Layout = (props: LayoutProps) => {
   return (
     <Provider store={store}>
       <Sidebar.Pushable as={Segment}>
-
-        <SidebarMenu Link={Link} pathname={pathname} items={menuItems} visible={false} />
+        <SidebarMenu
+          Link={Link}
+          pathname={pathname}
+          items={menuItems}
+          visible={false}
+        />
 
         <Sidebar.Pusher style={{ minHeight: "100vh" }}>
           {/* Header */}
-          {isHome ? null : <HeaderMenu
-            Link={Link}
-            pathname={pathname}
-            items={menuItems}
-          />}
+          {isHome ? null : (
+            <HeaderMenu Link={Link} pathname={pathname} items={menuItems} />
+          )}
 
           {/* Render children pages */}
-          <div style={{ paddingBottom: 60 }}>
-            {props.children}
-          </div>
+          <div style={{ paddingBottom: 60 }}>{props.children}</div>
 
           {/* Footer */}
-          <Segment inverted vertical style={{ position: "absolute", bottom: 0, width: "100%" }}>
+          <Segment
+            inverted
+            vertical
+            style={{ position: "absolute", bottom: 0, width: "100%" }}
+          >
             <Container textAlign="center">
-              <p>Powered with <Icon name="heart" /> by Gatsby 2.0</p>
+              <p>
+                Powered with <Icon name="heart" /> by Gatsby 2.0
+              </p>
             </Container>
           </Segment>
         </Sidebar.Pusher>
@@ -60,7 +66,9 @@ const Layout = (props: LayoutProps) => {
 
 export default Layout;
 
-export const withLayout = <P extends object>(WrappedComponent: React.ComponentType<P>) =>
+export const withLayout = <P extends object>(
+  WrappedComponent: React.ComponentType<P>
+) =>
   class WithLayout extends React.Component<P & LayoutProps> {
     render() {
       return (
