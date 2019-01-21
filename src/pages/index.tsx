@@ -8,8 +8,9 @@ import {
   Container,
   Grid,
   Header,
-  Icon
+  Icon,
 } from "semantic-ui-react";
+import styled from "styled-components";
 
 const IndexPage = (props: LayoutProps) => (
   <div>
@@ -25,6 +26,10 @@ const IndexPage = (props: LayoutProps) => (
         <Header inverted as="h1">
           Steady Study
         </Header>
+        <article>
+          <div className="blue" />
+          <div className="green" />
+        </article>
         <Header inverted as="h2">
           I am Ideveloper
         </Header>
@@ -46,8 +51,7 @@ const IndexPage = (props: LayoutProps) => (
             <p>I am Front-End Developer</p>
           </Grid.Column>
           <Grid.Column width="6" floated="right">
-            {/* TODO replace with a pretty GIF */}
-            pretty animation what introduce me
+            {/* TODO replace with a pretty animation */}
           </Grid.Column>
         </Grid.Row>
       </Grid>
