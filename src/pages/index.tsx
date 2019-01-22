@@ -15,7 +15,8 @@ import { pulse } from "react-animations";
 
 const pulseAnimation = keyframes`${pulse}`;
 const BouncyDiv = styled.h1`
-  animation: 2s ${pulseAnimation};
+  animation: 1s ${pulseAnimation} infinite;
+  font-size: 50px;
 `;
 const MainWrapper = styled.div`
   margin-top: 200px;
