@@ -21,10 +21,11 @@ interface BlogProps extends LayoutProps {
 }
 
 const BlogPage = (props: BlogProps) => {
-  const tags = props.data.tags.group;
-  const posts = props.data.posts.edges;
-  const { pathname } = props.location;
-  const pageCount = Math.ceil(props.data.posts.totalCount / 10);
+  const {data, location} = props;
+  const tags = data.tags.group;
+  const posts = data.posts.edges;
+  const { pathname } = location;
+  const pageCount = Math.ceil(data.posts.totalCount / 10);
 
   // TODO export posts in a proper component
   const Posts = (
