@@ -1,8 +1,14 @@
 import * as React from "react";
 import { Header, Container, Segment } from "semantic-ui-react";
 import { withLayout } from "../components/Layout";
+import { mainColor } from "../constant/colors";
 import { github, mail, mrt, plating, tistory } from "../assets/icons";
 import styled, { keyframes } from "styled-components";
+
+const Title = styled.div`
+  color: ${mainColor};
+  text-align: center;
+`;
 
 const InfoWrapper = styled.div`
   margin: 10px;
@@ -70,12 +76,37 @@ const careerInfo = [
   },
 ];
 
+const skillInfo = [
+  {
+    description: ["Overall-test1", "Overall-test2"],
+    title: "Overall",
+  },
+  {
+    description: ["react-test1", "react-test2"],
+    title: "React",
+  },
+  {
+    description: ["HTML-test1", "HTML-test2"],
+    title: "HTML/CSS",
+  },
+  {
+    description: ["Javascript-test1", "Javascript-test2"],
+    title: "Javascript",
+  },
+  {
+    description: ["Communication-test1", "Communication-test2"],
+    title: "Communication",
+  },
+];
+
 const AboutPage = () => {
   return (
     <Container>
       <Segment vertical>
         <Header as="h1">
-          <Header.Content>Hi I'm Ideveloper</Header.Content>
+          <Title>
+            Hi <span>I'm Ideveloper</span>
+          </Title>
         </Header>
       </Segment>
       <Segment vertical>
@@ -100,6 +131,22 @@ const AboutPage = () => {
                 <li>{info.date}</li>
                 <li>{info.description}</li>
                 <li>{info.task}</li>
+              </ul>
+            </InfoWrapper>
+          );
+        })}
+        <div />
+      </Segment>
+      <Segment vertical>
+        <InfoTitle>Skills</InfoTitle>
+        {skillInfo.map((info) => {
+          return (
+            <InfoWrapper>
+              <h3>{info.title}</h3>
+              <ul>
+                {info.description.map((description) => {
+                  return <li>{description}</li>;
+                })}
               </ul>
             </InfoWrapper>
           );
