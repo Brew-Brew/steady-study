@@ -31,7 +31,6 @@ interface BlogProps extends LayoutProps {
 
 const BlogPage = (props: BlogProps) => {
   const { data, location } = props;
-  console.log(data);
   const tags = data.tags.group;
   const posts = data.posts.edges;
   const { pathname } = location;

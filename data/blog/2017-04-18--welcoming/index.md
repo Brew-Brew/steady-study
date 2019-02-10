@@ -2,7 +2,7 @@
 title: Welcoming!
 createdDate: '2017-04-18'
 updatedDate: '2019-02-10'
-author: Fabien BERNARD
+author: Ideveloper
 tags:
   - starter
   - gatsby

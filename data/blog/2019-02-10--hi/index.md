@@ -2,7 +2,7 @@
 title: hi
 createdDate: '2019-02-10'
 updatedDate: '2019-02-10'
-author: Fabien BERNARD
+author: Ideveloper
 tags:
   - react
 image: welcoming.png

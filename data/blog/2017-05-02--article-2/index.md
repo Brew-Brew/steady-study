@@ -1,8 +1,8 @@
 ---
 title: 'Article #2'
 createdDate: '2017-05-02'
-updatedDate: '2017-05-06'
-author: Fabien BERNARD
+updatedDate: '2019-02-10'
+author: Ideveloper
 tags:
   - test
 image: cup-of-coffee-laptop-office-macbook-89786.jpeg
