@@ -26,6 +26,7 @@ const fadedAnimation = keyframes`${rollIn}`;
 
 const FadeWrapper = styled.div`
   animation: 1s ${fadedAnimation};
+  margin: 20px;
 `;
 
 interface BlogProps extends LayoutProps {

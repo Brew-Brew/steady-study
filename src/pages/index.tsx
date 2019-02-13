@@ -46,6 +46,7 @@ const IndexPage = (props: LayoutProps) => (
       />
       <MainWrapper>
         <Container text>
+          <Icon name="book" size="huge" />
           <BouncyText>Steady Study</BouncyText>
           <article>
             <div className="blue" />
@@ -57,7 +58,7 @@ const IndexPage = (props: LayoutProps) => (
           <Header inverted as="h3">
             :) Idea + Developer
           </Header>
-          <Button primary size="huge">
+          <Button primary size="huge" style={{ marginTop: "50px" }}>
             Welcome to my blog
           </Button>
         </Container>
@@ -90,38 +91,53 @@ const IndexPage = (props: LayoutProps) => (
         className="container"
       >
         <Grid.Row>
-          <Grid.Column>
+          <Grid.Column
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              height: " 200px",
+              justifyContent: "center",
+            }}
+          >
             <Header icon>
-              <Icon name="wizard" />A kind of magic!
+              <Icon name="book" />
+              See how i think and study
             </Header>
-            <p>
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptas
-              eaque at quae cupiditate aspernatur quibusdam! Distinctio quod
-              non, harum dolorum earum molestias, beatae expedita aliquam
-              dolorem asperiores nemo amet quaerat.
-            </p>
+            <Button primary size="huge">
+              go to page
+            </Button>
           </Grid.Column>
-          <Grid.Column>
+          <Grid.Column
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              height: " 200px",
+              justifyContent: "center",
+            }}
+          >
             <Header icon>
-              <Icon name="wizard" />A kind of magic!
+              <Icon name="search" />
+              See who am i
             </Header>
-            <p>
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptas
-              eaque at quae cupiditate aspernatur quibusdam! Distinctio quod
-              non, harum dolorum earum molestias, beatae expedita aliquam
-              dolorem asperiores nemo amet quaerat.
-            </p>
+            <Button primary size="huge">
+              go to page
+            </Button>
           </Grid.Column>
-          <Grid.Column>
+          <Grid.Column
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              height: " 200px",
+              justifyContent: "center",
+            }}
+          >
             <Header icon>
-              <Icon name="wizard" />A kind of magic!
+              <Icon name="phone" />
+              Contact ME
             </Header>
-            <p>
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptas
-              eaque at quae cupiditate aspernatur quibusdam! Distinctio quod
-              non, harum dolorum earum molestias, beatae expedita aliquam
-              dolorem asperiores nemo amet quaerat.
-            </p>
+            <Button primary size="huge">
+              contact
+            </Button>
           </Grid.Column>
         </Grid.Row>
       </Grid>

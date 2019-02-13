@@ -10,23 +10,41 @@ interface HeaderMenuProps extends MenuProps {
   inverted?: boolean;
 }
 
-export const HeaderMenu = ({ items, pathname, Link, inverted, dispatch }: HeaderMenuProps) =>
+export const HeaderMenu = ({
+  items,
+  pathname,
+  Link,
+  inverted,
+  dispatch,
+}: HeaderMenuProps) => (
   <Container>
-    <Menu size="large" pointing secondary inverted={inverted}>
-      <Menu.Item as="a" className="mobile only" icon="sidebar" onClick={() => dispatch && dispatch(toggleSidebar())} />
-      <Menu.Item className="mobile hidden"><Icon name="spy" size="big" /></Menu.Item>
+    <Menu size="large" secondary inverted={inverted}>
+      <Menu.Item
+        as="a"
+        className="mobile only"
+        icon="sidebar"
+        onClick={() => dispatch && dispatch(toggleSidebar())}
+      />
+      <Menu.Item className="mobile hidden">
+        <Icon name="book" size="big" />
+      </Menu.Item>
       {items.map((item) => {
-        const active = (item.exact) ? pathname === item.path : pathname.startsWith(item.path);
-        return <Menu.Item
-          as={Link}
-          className="mobile hidden"
-          name={item.name}
-          to={item.path}
-          key={item.path}
-          active={active}
-        />;
+        const active = item.exact
+          ? pathname === item.path
+          : pathname.startsWith(item.path);
+        return (
+          <Menu.Item
+            as={Link}
+            className="mobile hidden"
+            name={item.name}
+            to={item.path}
+            key={item.path}
+            active={active}
+          />
+        );
       })}
     </Menu>
-  </Container>;
+  </Container>
+);
 
 export default connect()(HeaderMenu);
