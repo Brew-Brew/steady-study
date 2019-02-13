@@ -15,12 +15,17 @@ import styled, { keyframes } from "styled-components";
 import { pulse } from "react-animations";
 
 const pulseAnimation = keyframes`${pulse}`;
-const BouncyDiv = styled.h1`
+const BouncyText = styled.h1`
   animation: 1s ${pulseAnimation} infinite;
   font-size: 50px;
 `;
+
 const MainWrapper = styled.div`
   margin-top: 200px;
+`;
+
+const SubWrapper = styled.div`
+  padding: 12px;
 `;
 
 const IndexPage = (props: LayoutProps) => (
@@ -41,7 +46,7 @@ const IndexPage = (props: LayoutProps) => (
       />
       <MainWrapper>
         <Container text>
-          <BouncyDiv>Steady Study</BouncyDiv>
+          <BouncyText>Steady Study</BouncyText>
           <article>
             <div className="blue" />
             <div className="green" />
@@ -63,11 +68,12 @@ const IndexPage = (props: LayoutProps) => (
     <Segment vertical className="stripe">
       <Grid stackable verticalAlign="middle" className="container">
         <Grid.Row>
-          <Grid.Column width="8">
+          <Grid.Column width="24">
             <Header>I am Front-End Developer</Header>
-          </Grid.Column>
-          <Grid.Column width="6" floated="right">
-            {/* TODO replace with a pretty animation */}
+            <SubWrapper>
+              <p>I have no fear about learning new technology</p>
+              <p>I am good at dealing with error situation</p>
+            </SubWrapper>
           </Grid.Column>
         </Grid.Row>
       </Grid>
