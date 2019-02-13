@@ -1,12 +1,13 @@
 ---
 title: hi
 createdDate: '2019-02-10'
-updatedDate: '2019-02-10'
+updatedDate: '2019-02-13'
 author: Ideveloper
 tags:
-  - react
+  - starter
+  - gatsby
 image: welcoming.png
-draft: true
+draft: false
 ---
 
 My awesome article

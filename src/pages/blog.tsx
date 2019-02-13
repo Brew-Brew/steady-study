@@ -35,7 +35,7 @@ const BlogPage = (props: BlogProps) => {
   const posts = data.posts.edges;
   const { pathname } = location;
   const pageCount = Math.ceil(data.posts.totalCount / 10);
-
+  console.log(data);
   // TODO export posts in a proper component
   const Posts = (
     <Container>

@@ -1,10 +1,11 @@
 ---
 title: 'Article #1'
 createdDate: '2017-05-02'
-updatedDate: '2019-02-10'
+updatedDate: '2019-02-13'
 author: Ideveloper
 tags:
-  - test
+  - starter
+  - gatsby
 image: pexels-photo-59628.jpeg
 draft: false
 ---

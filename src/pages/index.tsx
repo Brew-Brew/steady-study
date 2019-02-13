@@ -64,7 +64,6 @@ const IndexPage = (props: LayoutProps) => (
       <Grid stackable verticalAlign="middle" className="container">
         <Grid.Row>
           <Grid.Column width="8">
-            <Header>Job Description</Header>
             <Header>I am Front-End Developer</Header>
           </Grid.Column>
           <Grid.Column width="6" floated="right">
