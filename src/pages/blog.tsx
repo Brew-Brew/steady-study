@@ -1,6 +1,7 @@
 import * as React from "react";
 import { Link } from "gatsby";
 import { StaticQuery, graphql } from "gatsby";
+import styled, { keyframes } from "styled-components";
 import {
   Header,
   Grid,
@@ -11,6 +12,8 @@ import {
   Segment,
   Comment,
 } from "semantic-ui-react";
+import { rollIn } from "react-animations";
+
 import { MarkdownRemarkConnection, ImageSharp } from "../graphql-types";
 import BlogTitle from "../components/BlogTitle";
 import TagsCard from "../components/TagsCard/TagsCard";
@@ -18,6 +21,12 @@ import BlogPagination from "../components/BlogPagination/BlogPagination";
 import { get } from "lodash";
 import { withLayout, LayoutProps } from "../components/Layout";
 import { MarkdownRemark } from "../graphql-types";
+
+const fadedAnimation = keyframes`${rollIn}`;
+
+const FadeWrapper = styled.div`
+  animation: 1s ${fadedAnimation};
+`;
 
 interface BlogProps extends LayoutProps {
   data: {
@@ -35,7 +44,7 @@ const BlogPage = (props: BlogProps) => {
   const posts = data.posts.edges;
   const { pathname } = location;
   const pageCount = Math.ceil(data.posts.totalCount / 10);
-  console.log(data);
+
   // TODO export posts in a proper component
   const Posts = (
     <Container>
@@ -77,14 +86,16 @@ const BlogPage = (props: BlogProps) => {
         );
 
         return (
-          <Card
-            key={slug}
-            fluid
-            image={cover}
-            header={frontmatter.title}
-            extra={extra}
-            description={description}
-          />
+          <FadeWrapper>
+            <Card
+              key={slug}
+              fluid
+              image={cover}
+              header={frontmatter.title}
+              extra={extra}
+              description={description}
+            />
+          </FadeWrapper>
         );
       })}
     </Container>

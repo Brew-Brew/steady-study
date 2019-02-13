@@ -1,5 +1,5 @@
 ---
-title: hi
+title: Gatsby Typescript Template
 createdDate: '2019-02-10'
 updatedDate: '2019-02-13'
 author: Ideveloper

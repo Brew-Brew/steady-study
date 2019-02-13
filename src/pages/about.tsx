@@ -1,6 +1,5 @@
 import * as React from "react";
 import { Header, Container, Segment } from "semantic-ui-react";
-
 import styled, { keyframes } from "styled-components";
 import { fadeInDown } from "react-animations";
 
@@ -8,9 +7,9 @@ import { withLayout } from "../components/Layout";
 import { mainColor } from "../constant/colors";
 import { github, mail, mrt, plating, tistory } from "../assets/icons";
 
-const pulseAnimation = keyframes`${fadeInDown}`;
-const BouncyText = styled.h1`
-  animation: 1s ${pulseAnimation};
+const fadedAnimation = keyframes`${fadeInDown}`;
+const FadedText = styled.h1`
+  animation: 1s ${fadedAnimation};
 `;
 
 const Title = styled.div`
@@ -20,7 +19,7 @@ const Title = styled.div`
 
 const InfoWrapper = styled.div`
   margin: 10px;
-  animation: 1s ${pulseAnimation};
+  animation: 1s ${fadedAnimation};
 `;
 
 const ImgIcon = styled.img`
@@ -114,9 +113,9 @@ const AboutPage = () => {
       <Segment vertical>
         <Header as="h1">
           <Title>
-            <BouncyText>
+            <FadedText>
               Hi <span>I'm Ideveloper</span>
-            </BouncyText>
+            </FadedText>
           </Title>
         </Header>
       </Segment>
