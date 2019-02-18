@@ -28,6 +28,24 @@ const SubWrapper = styled.div`
   padding: 12px;
 `;
 
+const bottomContent = [
+  {
+    buttonContent: "go to page",
+    icon: "book",
+    text: "See how i think and study",
+  },
+  {
+    buttonContent: "go to page",
+    icon: "search",
+    text: " See who am i",
+  },
+  {
+    buttonContent: "contact",
+    icon: "phone",
+    text: " Contact me",
+  },
+];
+
 class IndexPage extends React.Component {
   render() {
     const { location } = this.props;
@@ -92,54 +110,26 @@ class IndexPage extends React.Component {
             className="container"
           >
             <Grid.Row>
-              <Grid.Column
-                style={{
-                  display: "flex",
-                  flexDirection: "column",
-                  height: " 200px",
-                  justifyContent: "center",
-                }}
-              >
-                <Header icon>
-                  <Icon name="book" />
-                  See how i think and study
-                </Header>
-                <Button primary size="huge">
-                  go to page
-                </Button>
-              </Grid.Column>
-              <Grid.Column
-                style={{
-                  display: "flex",
-                  flexDirection: "column",
-                  height: " 200px",
-                  justifyContent: "center",
-                }}
-              >
-                <Header icon>
-                  <Icon name="search" />
-                  See who am i
-                </Header>
-                <Button primary size="huge">
-                  go to page
-                </Button>
-              </Grid.Column>
-              <Grid.Column
-                style={{
-                  display: "flex",
-                  flexDirection: "column",
-                  height: " 200px",
-                  justifyContent: "center",
-                }}
-              >
-                <Header icon>
-                  <Icon name="phone" />
-                  Contact ME
-                </Header>
-                <Button primary size="huge">
-                  contact
-                </Button>
-              </Grid.Column>
+              {bottomContent.map((content) => {
+                return (
+                  <Grid.Column
+                    style={{
+                      display: "flex",
+                      flexDirection: "column",
+                      height: " 200px",
+                      justifyContent: "center",
+                    }}
+                  >
+                    <Header icon>
+                      <Icon name={content.icon} />
+                      {content.text}
+                    </Header>
+                    <Button primary size="huge">
+                      {content.buttonContent}
+                    </Button>
+                  </Grid.Column>
+                );
+              })}
             </Grid.Row>
           </Grid>
         </Segment>
