@@ -28,121 +28,124 @@ const SubWrapper = styled.div`
   padding: 12px;
 `;
 
-const IndexPage = (props: LayoutProps) => (
-  <div>
-    {/* Master head */}
-    <Segment
-      vertical
-      inverted
-      textAlign="center"
-      className="masthead"
-      style={{ background: `${mainColor}` }}
-    >
-      <HeaderMenu
-        Link={Link}
-        pathname={props.location.pathname}
-        items={menuItems}
-        inverted
-      />
-      <MainWrapper>
-        <Container text>
-          <Icon name="book" size="huge" />
-          <BouncyText>Steady Study</BouncyText>
-          <article>
-            <div className="blue" />
-            <div className="green" />
-          </article>
-          <Header inverted as="h2">
-            I am Ideveloper
-          </Header>
-          <Header inverted as="h3">
-            :) Idea + Developer
-          </Header>
-          <Button primary size="huge" style={{ marginTop: "50px" }}>
-            Welcome to my blog
-          </Button>
-        </Container>
-      </MainWrapper>
-    </Segment>
+class IndexPage extends React.Component {
+  render() {
+    const { location } = this.props;
+    return (
+      <div>
+        {/* Master head */}
+        <Segment
+          vertical
+          inverted
+          textAlign="center"
+          className="masthead"
+          style={{ background: `${mainColor}` }}
+        >
+          <HeaderMenu
+            Link={Link}
+            pathname={location.pathname}
+            items={menuItems}
+            inverted
+          />
+          <MainWrapper>
+            <Container text>
+              <Icon name="book" size="huge" />
+              <BouncyText>Steady Study</BouncyText>
+              <article>
+                <div className="blue" />
+                <div className="green" />
+              </article>
+              <Header inverted as="h2">
+                I am Ideveloper
+              </Header>
+              <Header inverted as="h3">
+                :) Idea + Developer
+              </Header>
+              <Button primary size="huge" style={{ marginTop: "50px" }}>
+                Welcome to my blog
+              </Button>
+            </Container>
+          </MainWrapper>
+        </Segment>
+        <Segment vertical className="stripe">
+          <Grid stackable verticalAlign="middle" className="container">
+            <Grid.Row>
+              <Grid.Column width="24">
+                <Header>I am Front-End Developer</Header>
+                <SubWrapper>
+                  <p>I have no fear about learning new technology</p>
+                  <p>I am good at dealing with error situation</p>
+                </SubWrapper>
+              </Grid.Column>
+            </Grid.Row>
+          </Grid>
+        </Segment>
 
-    {/* About this starter */}
-    <Segment vertical className="stripe">
-      <Grid stackable verticalAlign="middle" className="container">
-        <Grid.Row>
-          <Grid.Column width="24">
-            <Header>I am Front-End Developer</Header>
-            <SubWrapper>
-              <p>I have no fear about learning new technology</p>
-              <p>I am good at dealing with error situation</p>
-            </SubWrapper>
-          </Grid.Column>
-        </Grid.Row>
-      </Grid>
-    </Segment>
-
-    {/* Key features */}
-    <Segment vertical className="stripe alternate feature">
-      <Grid
-        columns="3"
-        textAlign="center"
-        divided
-        relaxed
-        stackable
-        className="container"
-      >
-        <Grid.Row>
-          <Grid.Column
-            style={{
-              display: "flex",
-              flexDirection: "column",
-              height: " 200px",
-              justifyContent: "center",
-            }}
+        {/* Key features */}
+        <Segment vertical className="stripe alternate feature">
+          <Grid
+            columns="3"
+            textAlign="center"
+            divided
+            relaxed
+            stackable
+            className="container"
           >
-            <Header icon>
-              <Icon name="book" />
-              See how i think and study
-            </Header>
-            <Button primary size="huge">
-              go to page
-            </Button>
-          </Grid.Column>
-          <Grid.Column
-            style={{
-              display: "flex",
-              flexDirection: "column",
-              height: " 200px",
-              justifyContent: "center",
-            }}
-          >
-            <Header icon>
-              <Icon name="search" />
-              See who am i
-            </Header>
-            <Button primary size="huge">
-              go to page
-            </Button>
-          </Grid.Column>
-          <Grid.Column
-            style={{
-              display: "flex",
-              flexDirection: "column",
-              height: " 200px",
-              justifyContent: "center",
-            }}
-          >
-            <Header icon>
-              <Icon name="phone" />
-              Contact ME
-            </Header>
-            <Button primary size="huge">
-              contact
-            </Button>
-          </Grid.Column>
-        </Grid.Row>
-      </Grid>
-    </Segment>
-  </div>
-);
+            <Grid.Row>
+              <Grid.Column
+                style={{
+                  display: "flex",
+                  flexDirection: "column",
+                  height: " 200px",
+                  justifyContent: "center",
+                }}
+              >
+                <Header icon>
+                  <Icon name="book" />
+                  See how i think and study
+                </Header>
+                <Button primary size="huge">
+                  go to page
+                </Button>
+              </Grid.Column>
+              <Grid.Column
+                style={{
+                  display: "flex",
+                  flexDirection: "column",
+                  height: " 200px",
+                  justifyContent: "center",
+                }}
+              >
+                <Header icon>
+                  <Icon name="search" />
+                  See who am i
+                </Header>
+                <Button primary size="huge">
+                  go to page
+                </Button>
+              </Grid.Column>
+              <Grid.Column
+                style={{
+                  display: "flex",
+                  flexDirection: "column",
+                  height: " 200px",
+                  justifyContent: "center",
+                }}
+              >
+                <Header icon>
+                  <Icon name="phone" />
+                  Contact ME
+                </Header>
+                <Button primary size="huge">
+                  contact
+                </Button>
+              </Grid.Column>
+            </Grid.Row>
+          </Grid>
+        </Segment>
+      </div>
+    );
+  }
+}
 
 export default withLayout(IndexPage);
