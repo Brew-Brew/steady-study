@@ -51,8 +51,18 @@ const bottomContent = [
   },
 ];
 
-class IndexPage extends React.Component {
-  intersectionObserver = null;
+interface Props {
+  location: { pathname: string };
+}
+
+interface State {}
+
+class IndexPage extends React.Component<Props, State> {
+  intersectionObserver: {
+    observe: (arg0: any) => void;
+    disconnect: () => void;
+  } = null;
+
   contents = {
     [contentEnum.first]: {
       id: contentEnum.first,
@@ -67,6 +77,7 @@ class IndexPage extends React.Component {
       ref: React.createRef(),
     },
   };
+
   componentDidMount() {
     this.attachIntersectionObserver();
   }
@@ -99,7 +110,7 @@ class IndexPage extends React.Component {
     }
   }
 
-  handleIntersectionChange = (entries) => {
+  handleIntersectionChange = (entries: any) => {
     console.log(entries);
   }
 
