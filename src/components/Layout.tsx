@@ -55,7 +55,6 @@ const Layout = (props: LayoutProps) => {
               background: mainColor,
               bottom: 0,
               height: "100px",
-              position: "absolute",
               width: "100%",
             }}
           >
