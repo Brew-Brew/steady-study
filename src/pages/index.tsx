@@ -197,7 +197,11 @@ class IndexPage extends React.Component<Props, State> {
                         <Icon name={content.icon} />
                         {content.text}
                       </Header>
-                      <Button primary size="huge">
+                      <Button
+                        primary
+                        size="huge"
+                        style={{ background: mainColor }}
+                      >
                         {content.buttonContent}
                       </Button>
                     </Grid.Column>

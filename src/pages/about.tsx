@@ -40,6 +40,10 @@ const InfoTitle = styled.h1`
   font-size: 600;
   font-size: 24px;
   margin-bottom: 30px;
+  margin-top: 20px;
+  background: ${mainColor};
+  color: white;
+  padding: 10px;
 `;
 
 const CompanyIcon = styled.img`
@@ -119,7 +123,7 @@ const AboutPage = () => {
           </Title>
         </Header>
       </Segment>
-      <Segment vertical>
+      <Segment>
         <InfoTitle>My Info</InfoTitle>
         {abooutInfo.map((info) => {
           return (
@@ -131,7 +135,7 @@ const AboutPage = () => {
         })}
         <div />
       </Segment>
-      <Segment vertical>
+      <Segment>
         <InfoTitle>My Career</InfoTitle>
         {careerInfo.map((info) => {
           return (
@@ -147,7 +151,7 @@ const AboutPage = () => {
         })}
         <div />
       </Segment>
-      <Segment vertical>
+      <Segment>
         <InfoTitle>Skills</InfoTitle>
         {skillInfo.map((info) => {
           return (
