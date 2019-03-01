@@ -3,7 +3,7 @@
 
 import * as React from "react";
 import Helmet from "react-helmet";
-
+import { createGlobalStyle } from "styled-components";
 const config = require("../gatsby-config.js");
 
 interface HtmlProps {

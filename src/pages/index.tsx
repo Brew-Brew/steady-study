@@ -9,14 +9,14 @@ import {
   Container,
   Grid,
   Header,
-  Icon,
+  Icon
 } from "semantic-ui-react";
-import styled, { keyframes } from "styled-components";
+import styled, { createGlobalStyle, keyframes } from "styled-components";
 import { pulse } from "react-animations";
 
 const contentEnum = {
   first: "home__first",
-  second: "home__second",
+  second: "home__second"
 };
 
 const pulseAnimation = keyframes`${pulse}`;
@@ -31,25 +31,34 @@ const MainWrapper = styled.div`
 
 const SubWrapper = styled.div`
   padding: 12px;
+  text-align: center;
 `;
 
 const bottomContent = [
   {
     buttonContent: "go to page",
     icon: "book",
-    text: "See how i think and study",
+    text: "See how i think and study"
   },
   {
     buttonContent: "go to page",
     icon: "search",
-    text: " See who am i",
+    text: " See who am i"
   },
   {
     buttonContent: "contact",
     icon: "phone",
-    text: " Contact me",
-  },
+    text: " Contact me"
+  }
 ];
+
+const Globals = createGlobalStyle`
+  body,h1,h2,h3,h4,h5,p {
+    @font-face { 
+      font-family: 'Godo'; font-style: normal; font-weight: 400; src: url('//cdn.jsdelivr.net/korean-webfonts/1/corps/godo/Godo/GodoM.woff2') format('woff2'), url('//cdn.jsdelivr.net/korean-webfonts/1/corps/godo/Godo/GodoM.woff') format('woff'); } @font-face { font-family: 'Godo'; font-style: normal; font-weight: 700; src: url('//cdn.jsdelivr.net/korean-webfonts/1/corps/godo/Godo/GodoB.woff2') format('woff2'), url('//cdn.jsdelivr.net/korean-webfonts/1/corps/godo/Godo/GodoB.woff') format('woff'); } .godo * { font-family: 'Godo', sans-serif; }
+    font-family: "Godo";
+  }
+`;
 
 interface Props {
   location: { pathname: string };
@@ -68,14 +77,14 @@ class IndexPage extends React.Component<Props, State> {
       id: contentEnum.first,
       intersectionRatio: 0,
       label: "메인",
-      ref: React.createRef(),
+      ref: React.createRef()
     },
     [contentEnum.second]: {
       id: contentEnum.second,
       intersectionRatio: 0,
       label: "메인2",
-      ref: React.createRef(),
-    },
+      ref: React.createRef()
+    }
   };
 
   componentDidMount() {
@@ -95,13 +104,13 @@ class IndexPage extends React.Component<Props, State> {
 
     this.intersectionObserver = new window.IntersectionObserver(
       this.handleIntersectionChange,
-      { threshold },
+      { threshold }
     );
     console.log(this.contents[contentEnum.first]);
-    Object.values(this.contents).forEach((tab) => {
+    Object.values(this.contents).forEach(tab => {
       this.intersectionObserver.observe(tab.ref.current);
     });
-  }
+  };
 
   detachIntersectionObserver() {
     if (this.intersectionObserver) {
@@ -112,13 +121,14 @@ class IndexPage extends React.Component<Props, State> {
 
   handleIntersectionChange = (entries: any) => {
     console.log(entries);
-  }
+  };
 
   render() {
     const { location } = this.props;
 
     return (
       <div>
+        <Globals />
         {/* Master head */}
         <Segment
           vertical
@@ -154,26 +164,26 @@ class IndexPage extends React.Component<Props, State> {
           </MainWrapper>
         </Segment>
         <div id={contentEnum.first} ref={this.contents[contentEnum.first].ref}>
-          <Segment vertical className="stripe">
+          <div>
             <Grid stackable verticalAlign="middle" className="container">
               <Grid.Row>
-                <Grid.Column width="24">
-                  <Header>I am Front-End Developer</Header>
+                <Grid.Column>
                   <SubWrapper>
+                    <Header>Hi I'm Ideveloper</Header>
                     <p>I have no fear about learning new technology</p>
                     <p>I am good at dealing with error situation</p>
                   </SubWrapper>
                 </Grid.Column>
               </Grid.Row>
             </Grid>
-          </Segment>
+          </div>
         </div>
         {/* Key features */}
         <div
           id={contentEnum.second}
           ref={this.contents[contentEnum.second].ref}
         >
-          <Segment vertical className="stripe alternate feature">
+          <div>
             <Grid
               columns="3"
               textAlign="center"
@@ -183,14 +193,14 @@ class IndexPage extends React.Component<Props, State> {
               className="container"
             >
               <Grid.Row>
-                {bottomContent.map((content) => {
+                {bottomContent.map(content => {
                   return (
                     <Grid.Column
                       style={{
                         display: "flex",
                         flexDirection: "column",
                         height: " 200px",
-                        justifyContent: "center",
+                        justifyContent: "center"
                       }}
                     >
                       <Header icon>
@@ -209,7 +219,7 @@ class IndexPage extends React.Component<Props, State> {
                 })}
               </Grid.Row>
             </Grid>
-          </Segment>
+          </div>
         </div>
       </div>
     );

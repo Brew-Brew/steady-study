@@ -1,12 +1,11 @@
 import * as React from "react";
 import { Header, Container, Segment } from "semantic-ui-react";
-import styled, { keyframes } from "styled-components";
+import styled, { createGlobalStyle, keyframes } from "styled-components";
 import { fadeInDown } from "react-animations";
 
 import { withLayout } from "../components/Layout";
 import { mainColor } from "../constant/colors";
 import { github, mail, mrt, plating, tistory } from "../assets/icons";
-
 const fadedAnimation = keyframes`${fadeInDown}`;
 const FadedText = styled.h1`
   animation: 1s ${fadedAnimation};
@@ -56,18 +55,18 @@ const abooutInfo = [
   {
     img: github,
     label: "Github",
-    link: "",
+    link: ""
   },
   {
     img: mail,
     label: "E-mail: zx6658@gmail.com",
-    link: "",
+    link: ""
   },
   {
     img: tistory,
     label: "Ideveloper's Software Blog",
-    link: "",
-  },
+    link: ""
+  }
 ];
 
 const careerInfo = [
@@ -77,38 +76,38 @@ const careerInfo = [
     img: mrt,
     label: "myrealtrip",
     task:
-      "offer information page renewal and migration (ruby on rails => react)",
+      "offer information page renewal and migration (ruby on rails => react)"
   },
   {
     date: "2018.01 ~ 2018.08",
     description: "food tech",
     img: plating,
     label: "plating",
-    task: "b2b chef service site, plating react site",
-  },
+    task: "b2b chef service site, plating react site"
+  }
 ];
 
 const skillInfo = [
   {
     description: ["Overall-test1", "Overall-test2"],
-    title: "Overall",
+    title: "Overall"
   },
   {
     description: ["react-test1", "react-test2"],
-    title: "React",
+    title: "React"
   },
   {
     description: ["HTML-test1", "HTML-test2"],
-    title: "HTML/CSS",
+    title: "HTML/CSS"
   },
   {
     description: ["Javascript-test1", "Javascript-test2"],
-    title: "Javascript",
+    title: "Javascript"
   },
   {
     description: ["Communication-test1", "Communication-test2"],
-    title: "Communication",
-  },
+    title: "Communication"
+  }
 ];
 
 const AboutPage = () => {
@@ -125,7 +124,7 @@ const AboutPage = () => {
       </Segment>
       <Segment>
         <InfoTitle>My Info</InfoTitle>
-        {abooutInfo.map((info) => {
+        {abooutInfo.map(info => {
           return (
             <InfoWrapper>
               <ImgIcon src={info.img} />
@@ -137,7 +136,7 @@ const AboutPage = () => {
       </Segment>
       <Segment>
         <InfoTitle>My Career</InfoTitle>
-        {careerInfo.map((info) => {
+        {careerInfo.map(info => {
           return (
             <InfoWrapper>
               <CompanyIcon src={info.img} />
@@ -153,12 +152,12 @@ const AboutPage = () => {
       </Segment>
       <Segment>
         <InfoTitle>Skills</InfoTitle>
-        {skillInfo.map((info) => {
+        {skillInfo.map(info => {
           return (
             <InfoWrapper>
               <h3>{info.title}</h3>
               <ul>
-                {info.description.map((description) => {
+                {info.description.map(description => {
                   return <li>{description}</li>;
                 })}
               </ul>
