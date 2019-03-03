@@ -1,8 +1,8 @@
 {
-  "name": "gatsby-starter",
+  "name": "gatsby-starter-steady-study",
   "version": "1.0.0",
-  "description": "Gatsby 1.0 starter",
-  "author": "fabien0102 <fabien0102@gmail.com>",
+  "description": "Gatsby starter steady study",
+  "author": "Ideveloper <zx6658@naver.com>",
   "license": "MIT",
   "scripts": {
     "start": "gatsby develop --no-cache",

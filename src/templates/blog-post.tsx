@@ -43,41 +43,43 @@ const BlogPostPage = (props: BlogPostProps) => {
     </Label>
   ));
 
-  const recents = props.data.recents.edges.map(({ node }) => {
-    const recentAvatar = node.frontmatter.author.avatar
-      .children[0] as ImageSharp;
-    const recentCover = get(node, "frontmatter.image.children.0.fixed", {});
-    const extra = (
-      <Comment.Group>
-        <Comment>
-          <Comment.Avatar
-            src={recentAvatar.fixed.src}
-            srcSet={recentAvatar.fixed.srcSet}
-          />
-          <Comment.Content>
-            <Comment.Author style={{ fontWeight: 400 }}>
-              {node.frontmatter.author.id}
-            </Comment.Author>
-            <Comment.Metadata style={{ margin: 0 }}>
-              {node.timeToRead} min read
-            </Comment.Metadata>
-          </Comment.Content>
-        </Comment>
-      </Comment.Group>
-    );
+  const recents =
+    props.data.recents &&
+    props.data.recents.edges.map(({ node }) => {
+      const recentAvatar = node.frontmatter.author.avatar
+        .children[0] as ImageSharp;
+      const recentCover = get(node, "frontmatter.image.children.0.fixed", {});
+      const extra = (
+        <Comment.Group>
+          <Comment>
+            <Comment.Avatar
+              src={recentAvatar.fixed.src}
+              srcSet={recentAvatar.fixed.srcSet}
+            />
+            <Comment.Content>
+              <Comment.Author style={{ fontWeight: 400 }}>
+                {node.frontmatter.author.id}
+              </Comment.Author>
+              <Comment.Metadata style={{ margin: 0 }}>
+                {node.timeToRead} min read
+              </Comment.Metadata>
+            </Comment.Content>
+          </Comment>
+        </Comment.Group>
+      );
 
-    return (
-      <div key={node.fields.slug} style={{ paddingBottom: "1em" }}>
-        <Card
-          as={Link}
-          to={node.fields.slug}
-          image={recentCover}
-          header={node.frontmatter.title}
-          extra={extra}
-        />
-      </div>
-    );
-  });
+      return (
+        <div key={node.fields.slug} style={{ paddingBottom: "1em" }}>
+          <Card
+            as={Link}
+            to={node.fields.slug}
+            image={recentCover}
+            header={node.frontmatter.title}
+            extra={extra}
+          />
+        </div>
+      );
+    });
 
   const cover = get(frontmatter, "image.children.0.fixed", {});
   return (
