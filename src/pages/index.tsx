@@ -113,7 +113,6 @@ class IndexPage extends React.Component<Props, State> {
       { threshold: 0.2 }
     );
     Object.values(this.contents).forEach(tab => {
-      console.log(tab.ref.current);
       this.intersectionObserver.observe(tab.ref.current);
     });
   };
@@ -128,7 +127,6 @@ class IndexPage extends React.Component<Props, State> {
   handleIntersectionChange = (entries: any) => {
     entries.forEach(element => {
       if (element.isIntersecting) {
-        console.log("intersected", element);
         this.setState({ contentsVisible: true });
       }
     });
