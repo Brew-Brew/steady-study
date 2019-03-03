@@ -5,8 +5,8 @@
   "author": "fabien0102 <fabien0102@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "start": "gatsby develop",
-    "develop": "gatsby develop",
+    "start": "gatsby develop --no-cache",
+    "develop": "gatsby develop --no-cache",
     "build": "gatsby build",
     "lint": "npm run lint:ts && npm run lint:md && npm run lint:js && npm run lint:css",
     "lint:ts": "tslint \"./src/**/*.ts\" \"./src/**/*.tsx\"",
