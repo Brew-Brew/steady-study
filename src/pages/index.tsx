@@ -11,12 +11,11 @@ import {
   Header,
   Icon
 } from "semantic-ui-react";
-import styled, { createGlobalStyle, keyframes } from "styled-components";
-import { pulse } from "react-animations";
+import styled, { createGlobalStyle, keyframes, css } from "styled-components";
+import { pulse, fadeInDown } from "react-animations";
 
 const contentEnum = {
-  first: "home__first",
-  second: "home__second"
+  first: "home__first"
 };
 
 const pulseAnimation = keyframes`${pulse}`;
@@ -29,9 +28,16 @@ const MainWrapper = styled.div`
   margin-top: 200px;
 `;
 
+const fadeAnimation = css`
+  animation: 1.5s ${keyframes`${fadeInDown}`};
+`;
 const SubWrapper = styled.div`
   padding: 50px;
   text-align: center;
+`;
+
+const Wrapper = styled.div`
+  ${({ contentsVisible }) => contentsVisible && fadeAnimation}
 `;
 
 const bottomContent = [
@@ -71,6 +77,10 @@ interface Props {
 interface State {}
 
 class IndexPage extends React.Component<Props, State> {
+  state = {
+    contentsVisible: false
+  };
+
   intersectionObserver: {
     observe: (arg0: any) => void;
     disconnect: () => void;
@@ -81,12 +91,6 @@ class IndexPage extends React.Component<Props, State> {
       id: contentEnum.first,
       intersectionRatio: 0,
       label: "메인",
-      ref: React.createRef()
-    },
-    [contentEnum.second]: {
-      id: contentEnum.second,
-      intersectionRatio: 0,
-      label: "메인2",
       ref: React.createRef()
     }
   };
@@ -104,14 +108,12 @@ class IndexPage extends React.Component<Props, State> {
       return;
     }
 
-    const threshold = new Array(11).fill(0).map((_, index) => index * 0.01);
-
     this.intersectionObserver = new window.IntersectionObserver(
       this.handleIntersectionChange,
-      { threshold }
+      { threshold: 0.2 }
     );
-    console.log(this.contents[contentEnum.first]);
     Object.values(this.contents).forEach(tab => {
+      console.log(tab.ref.current);
       this.intersectionObserver.observe(tab.ref.current);
     });
   };
@@ -124,7 +126,12 @@ class IndexPage extends React.Component<Props, State> {
   }
 
   handleIntersectionChange = (entries: any) => {
-    console.log(entries);
+    entries.forEach(element => {
+      if (element.isIntersecting) {
+        console.log("intersected", element);
+        this.setState({ contentsVisible: true });
+      }
+    });
   };
 
   render() {
@@ -167,64 +174,63 @@ class IndexPage extends React.Component<Props, State> {
             </Container>
           </MainWrapper>
         </Segment>
-        <div id={contentEnum.first} ref={this.contents[contentEnum.first].ref}>
-          <div>
-            <Grid stackable verticalAlign="middle" className="container">
-              <Grid.Row>
-                <Grid.Column>
-                  <SubWrapper>
-                    <Header>Hi I'm Ideveloper</Header>
-                    <p>I have no fear about learning new technology</p>
-                    <p>I am good at dealing with error situation</p>
-                  </SubWrapper>
-                </Grid.Column>
-              </Grid.Row>
-            </Grid>
-          </div>
-        </div>
-        {/* Key features */}
-        <div
-          id={contentEnum.second}
-          ref={this.contents[contentEnum.second].ref}
-        >
-          <div>
-            <Grid
-              columns="3"
-              textAlign="center"
-              divided
-              relaxed
-              stackable
-              className="container"
-            >
-              <Grid.Row>
-                {bottomContent.map(content => {
-                  return (
-                    <Grid.Column
-                      style={{
-                        display: "flex",
-                        flexDirection: "column",
-                        height: " 200px",
-                        justifyContent: "center"
-                      }}
-                    >
-                      <Header icon>
-                        <Icon name={content.icon} />
-                        {content.text}
-                      </Header>
-                      <Button
-                        primary
-                        size="huge"
-                        style={{ background: mainColor }}
+        <Wrapper contentsVisible={this.state.contentsVisible}>
+          <div
+            id={contentEnum.first}
+            ref={this.contents[contentEnum.first].ref}
+          >
+            <div>
+              <Grid stackable verticalAlign="middle" className="container">
+                <Grid.Row>
+                  <Grid.Column>
+                    <SubWrapper>
+                      <Header>Hi I'm Ideveloper</Header>
+                      <p>I have no fear about learning new technology</p>
+                      <p>I am good at dealing with error situation</p>
+                    </SubWrapper>
+                  </Grid.Column>
+                </Grid.Row>
+              </Grid>
+            </div>
+            <div>
+              <Grid
+                columns="3"
+                textAlign="center"
+                divided
+                relaxed
+                stackable
+                className="container"
+              >
+                <Grid.Row>
+                  {bottomContent.map(content => {
+                    return (
+                      <Grid.Column
+                        style={{
+                          display: "flex",
+                          flexDirection: "column",
+                          height: " 200px",
+                          justifyContent: "center"
+                        }}
                       >
-                        {content.buttonContent}
-                      </Button>
-                    </Grid.Column>
-                  );
-                })}
-              </Grid.Row>
-            </Grid>
+                        <Header icon>
+                          <Icon name={content.icon} />
+                          {content.text}
+                        </Header>
+                        <Button
+                          primary
+                          size="huge"
+                          style={{ background: mainColor }}
+                        >
+                          {content.buttonContent}
+                        </Button>
+                      </Grid.Column>
+                    );
+                  })}
+                </Grid.Row>
+              </Grid>
+            </div>
           </div>
-        </div>
+        </Wrapper>
       </div>
     );
   }

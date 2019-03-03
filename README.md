@@ -4,6 +4,9 @@
 
 -   Gatsby 2.0
 -   Typescript
+-   Graphql
+-   Styled-Component
+-   React-animations
 
 ### Purpose
 
@@ -11,6 +14,6 @@
 -   learn typescript by building blog :boy:
 -   to be a good developer :+1:
 
-## History
+## Develop History
 
 -   <https://www.gatsbyjs.org/docs/styled-components/> style component setting
