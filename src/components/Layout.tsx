@@ -14,7 +14,7 @@ import { mainColor } from "../constant/colors";
 export const menuItems = [
   { name: "Home", path: "/", exact: true, icon: "home", inverted: true },
   { name: "who are you", path: "/about/", exact: true, icon: "info circle" },
-  { name: "My Thinking", path: "/blog/", exact: false, icon: "newspaper" },
+  { name: "My Thinking", path: "/blog/", exact: false, icon: "newspaper" }
 ];
 
 export interface LayoutProps {
@@ -55,12 +55,12 @@ const Layout = (props: LayoutProps) => {
               background: mainColor,
               bottom: 0,
               height: "100px",
-              width: "100%",
+              width: "100%"
             }}
           >
             <Container textAlign="center">
               <p>
-                Powered with <Icon name="heart" /> by Gatsby 2.0
+                Powered with <Icon name="heart" /> by Ideveloper
               </p>
             </Container>
           </Segment>

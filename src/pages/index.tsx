@@ -30,20 +30,20 @@ const MainWrapper = styled.div`
 `;
 
 const SubWrapper = styled.div`
-  padding: 12px;
+  padding: 50px;
   text-align: center;
 `;
 
 const bottomContent = [
   {
-    buttonContent: "go to page",
+    buttonContent: "Let's study",
     icon: "book",
-    text: "See how i think and study"
+    text: "See how I think"
   },
   {
     buttonContent: "go to page",
     icon: "search",
-    text: " See who am i"
+    text: " See who am I"
   },
   {
     buttonContent: "contact",
