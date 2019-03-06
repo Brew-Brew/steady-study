@@ -44,17 +44,20 @@ const bottomContent = [
   {
     buttonContent: "Let's study",
     icon: "book",
-    text: "See how I think"
+    text: "See how I think",
+    link: "/blog/"
   },
   {
     buttonContent: "go to page",
     icon: "search",
-    text: " See who am I"
+    text: " See who am I",
+    link: "/about/"
   },
   {
     buttonContent: "contact",
     icon: "phone",
-    text: " Contact me"
+    text: " Contact me",
+    link: "https://github.com/zx6658/"
   }
 ];
 
@@ -214,13 +217,15 @@ class IndexPage extends React.Component<Props, State> {
                           <Icon name={content.icon} />
                           {content.text}
                         </Header>
-                        <Button
-                          primary
-                          size="huge"
-                          style={{ background: colors.mainColor }}
-                        >
-                          {content.buttonContent}
-                        </Button>
+                        <a href={content.link}>
+                          <Button
+                            primary
+                            size="huge"
+                            style={{ background: colors.mainColor }}
+                          >
+                            {content.buttonContent}
+                          </Button>
+                        </a>
                       </Grid.Column>
                     );
                   })}

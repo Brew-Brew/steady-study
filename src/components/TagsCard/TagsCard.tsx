@@ -4,10 +4,10 @@ import { Card, List } from "semantic-ui-react";
 import { markdownRemarkGroupConnectionConnection } from "../../graphql-types";
 import styled from "styled-components";
 
-import { mainColor } from "../../constant/colors";
+import colors from "../../constant/colors";
 
 const TagHeader = styled.div`
-  background: ${mainColor};
+  background: ${colors.mainColor};
 `;
 
 interface TagsCardProps extends React.HTMLProps<HTMLDivElement> {
@@ -19,15 +19,15 @@ interface TagsCardProps extends React.HTMLProps<HTMLDivElement> {
 export default (props: TagsCardProps) => {
   return (
     <Card>
-      <Card.Content style={{ background: mainColor }}>
+      <Card.Content style={{ background: colors.mainColor }}>
         <Card.Header style={{ color: "white" }}>Tags</Card.Header>
       </Card.Content>
       <Card.Content>
         <List>
-          {props.tags.map((tag) => {
+          {props.tags.map(tag => {
             const isActive = tag.fieldValue === props.tag;
             const activeStyle = {
-              fontWeight: "700",
+              fontWeight: "700"
             };
             const tagLink = isActive
               ? `/blog`
