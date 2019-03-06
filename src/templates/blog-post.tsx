@@ -67,7 +67,6 @@ const BlogPostPage = (props: BlogPostProps) => {
           </Comment>
         </Comment.Group>
       );
-      const url = props.location.href;
 
       return (
         <div key={node.fields.slug} style={{ paddingBottom: "1em" }}>
