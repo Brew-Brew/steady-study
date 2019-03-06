@@ -4,7 +4,7 @@ createdDate: "2019-03-03"
 updatedDate: "2019-03-03"
 author: Ideveloper
 tags:
-  - test code
+  - test-code
   - jest
 image: cup-of-coffee-laptop-office-macbook-89786.jpeg
 draft: false
