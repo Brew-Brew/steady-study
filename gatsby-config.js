@@ -2,7 +2,7 @@ module.exports = {
   siteMetadata: {
     title: `Steady study`,
     googleVerification: `abcdefz`,
-    disqus: `gatsby-typescript`
+    disqus: `ideveloper`
   },
   mapping: {
     'MarkdownRemark.frontmatter.author': `AuthorJson`
@@ -36,12 +36,12 @@ module.exports = {
       resolve: `gatsby-transformer-remark`,
       options: {
         plugins: [{
-          resolve: `gatsby-remark-images`,
-          options: {
-            maxWidth: 690,
-            backgroundColor: `#f7f0eb`
-          }
-        },
+            resolve: `gatsby-remark-images`,
+            options: {
+              maxWidth: 690,
+              backgroundColor: `#f7f0eb`
+            }
+          },
           `gatsby-remark-prismjs`,
           `gatsby-remark-copy-linked-files`,
           `gatsby-remark-autolink-headers`

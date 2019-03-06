@@ -12,13 +12,13 @@ import {
   Card,
   Image,
   Item,
-  Comment,
+  Comment
 } from "semantic-ui-react";
 import {
   MarkdownRemark,
   ImageSharp,
   MarkdownRemarkConnection,
-  Site,
+  Site
 } from "../graphql-types";
 import BlogTitle from "../components/BlogTitle";
 import { DiscussionEmbed } from "disqus-react";
@@ -37,7 +37,7 @@ const BlogPostPage = (props: BlogPostProps) => {
   const { frontmatter, html, timeToRead } = props.data.post;
   const avatar = frontmatter.author.avatar.children[0] as ImageSharp;
 
-  const tags = props.data.post.frontmatter.tags.map((tag) => (
+  const tags = props.data.post.frontmatter.tags.map(tag => (
     <Label key={tag}>
       <Link to={`/blog/tags/${tag}/`}>{tag}</Link>
     </Label>
@@ -67,6 +67,7 @@ const BlogPostPage = (props: BlogPostProps) => {
           </Comment>
         </Comment.Group>
       );
+      const url = props.location.href;
 
       return (
         <div key={node.fields.slug} style={{ paddingBottom: "1em" }}>
@@ -82,6 +83,12 @@ const BlogPostPage = (props: BlogPostProps) => {
     });
 
   const cover = get(frontmatter, "image.children.0.fixed", {});
+  const disqusConfig = {
+    url: props.location.href,
+    identifier: props.location.key,
+    title: ""
+  };
+
   return (
     <Container>
       <BlogTitle />
@@ -110,7 +117,7 @@ const BlogPostPage = (props: BlogPostProps) => {
         vertical
         style={{ border: "none" }}
         dangerouslySetInnerHTML={{
-          __html: html,
+          __html: html
         }}
       />
       <Segment vertical>{tags}</Segment>
