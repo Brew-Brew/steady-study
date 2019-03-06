@@ -9,12 +9,12 @@ import "../css/semantic.min.css";
 import "prismjs/themes/prism-okaidia.css";
 import { Provider } from "react-redux";
 import { store } from "../store";
-import { mainColor } from "../constant/colors";
+import colors from "../constant/colors";
 
 export const menuItems = [
   { name: "Home", path: "/", exact: true, icon: "home", inverted: true },
   { name: "who are you", path: "/about/", exact: true, icon: "info circle" },
-  { name: "My Thinking", path: "/blog/", exact: false, icon: "newspaper" },
+  { name: "My Thinking", path: "/blog/", exact: false, icon: "newspaper" }
 ];
 
 export interface LayoutProps {
@@ -52,10 +52,10 @@ const Layout = (props: LayoutProps) => {
             inverted
             vertical
             style={{
-              background: mainColor,
+              background: colors.mainColor,
               bottom: 0,
               height: "100px",
-              width: "100%",
+              width: "100%"
             }}
           >
             <Container textAlign="center">

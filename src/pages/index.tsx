@@ -2,7 +2,7 @@ import * as React from "react";
 import { Link } from "gatsby";
 import HeaderMenu from "../components/HeaderMenu/HeaderMenu";
 import { withLayout, LayoutProps, menuItems } from "../components/Layout";
-import { mainColor } from "../constant/colors";
+import colors from "../constant/colors";
 import {
   Button,
   Segment,
@@ -144,7 +144,7 @@ class IndexPage extends React.Component<Props, State> {
           inverted
           textAlign="center"
           className="masthead"
-          style={{ background: `${mainColor}` }}
+          style={{ background: `${colors.mainColor}` }}
         >
           <HeaderMenu
             Link={Link}
@@ -217,7 +217,7 @@ class IndexPage extends React.Component<Props, State> {
                         <Button
                           primary
                           size="huge"
-                          style={{ background: mainColor }}
+                          style={{ background: colors.mainColor }}
                         >
                           {content.buttonContent}
                         </Button>

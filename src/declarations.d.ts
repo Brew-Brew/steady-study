@@ -7,12 +7,21 @@ declare module "*/package.json" {
 declare const graphql: (query: TemplateStringsArray) => void;
 
 declare module "disqus-react" {
-  export class DiscussionEmbed extends React.Component<{
-    shortname: string,
-    config: {
-      url?: string,
-      identifier?: string,
-      title?: string,
+  export class DiscussionEmbed extends React.Component<
+    {
+      shortname: string;
+      config: {
+        url?: string;
+        identifier?: string;
+        title?: string;
+      };
     },
-  }, {}> { }
+    {}
+  > {}
+}
+
+declare module "react-animations" {
+  export const pulse: string;
+  export const fadeInDown: string;
+  export const rollIn: string;
 }

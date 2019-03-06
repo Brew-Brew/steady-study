@@ -4,7 +4,7 @@ import styled, { createGlobalStyle, keyframes } from "styled-components";
 import { fadeInDown } from "react-animations";
 
 import { withLayout } from "../components/Layout";
-import { mainColor } from "../constant/colors";
+import colors from "../constant/colors";
 import { github, mail, mrt, plating, tistory } from "../assets/icons";
 
 const Globals = createGlobalStyle`
@@ -25,7 +25,7 @@ const FadedText = styled.h1`
 `;
 
 const Title = styled.div`
-  color: ${mainColor};
+  color: ${colors.mainColor};
   text-align: center;
 `;
 
@@ -53,7 +53,7 @@ const InfoTitle = styled.h1`
   font-size: 24px;
   margin-bottom: 30px;
   margin-top: 20px;
-  background: ${mainColor};
+  background: ${colors.mainColor};
   color: white;
   padding: 10px;
 `;
