@@ -188,7 +188,6 @@ export const pageQuery = graphql`
     }
     recents: allMarkdownRemark(
       filter: {
-        fields: { slug: { ne: $slug } }
         frontmatter: { draft: { ne: true } }
         fileAbsolutePath: { regex: "/blog/" }
       }
