@@ -1,9 +1,13 @@
 /* tslint:disable no-var-requires */
 /* tslint:disable no-console */
 
-import 'intersection-observer';
+if (typeof window !== "undefined") {
+  import "intersection-observer";
+}
+
 import * as React from "react";
 import Helmet from "react-helmet";
+
 const config = require("../gatsby-config.js");
 
 interface HtmlProps {
