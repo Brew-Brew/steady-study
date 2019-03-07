@@ -57,6 +57,7 @@
     "gatsby-transformer-sharp": "next",
     "graphql-code-generator": "^0.5.2",
     "gray-matter": "^2.1.1",
+    "intersection-observer": "^0.5.1",
     "lodash": "^4.17.4",
     "react": "^16.4.2",
     "react-animations": "^1.0.0",

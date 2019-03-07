@@ -1,6 +1,7 @@
 /* tslint:disable no-var-requires */
 /* tslint:disable no-console */
 
+import 'intersection-observer';
 import * as React from "react";
 import Helmet from "react-helmet";
 const config = require("../gatsby-config.js");

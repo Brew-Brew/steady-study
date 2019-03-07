@@ -111,7 +111,7 @@ class IndexPage extends React.Component<Props, State> {
       return;
     }
 
-    this.intersectionObserver = new window.IntersectionObserver(
+    this.intersectionObserver = new IntersectionObserver(
       this.handleIntersectionChange,
       { threshold: 0.2 }
     );
