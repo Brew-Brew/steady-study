@@ -1,6 +1,8 @@
+const isBrowser = typeof window !== "undefined";
+isBrowser ? require("intersection-observer") : undefined;
+
 import * as React from "react";
 import { Link } from "gatsby";
-import "intersection-observer";
 import HeaderMenu from "../components/HeaderMenu/HeaderMenu";
 import { withLayout, LayoutProps, menuItems } from "../components/Layout";
 import colors from "../constant/colors";
