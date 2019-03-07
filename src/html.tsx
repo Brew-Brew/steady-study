@@ -1,9 +1,8 @@
 /* tslint:disable no-var-requires */
 /* tslint:disable no-console */
 
-if (typeof window !== "undefined") {
-  import "intersection-observer";
-}
+const isBrowser = typeof window !== "undefined";
+isBrowser ? require("intersection-observer") : undefined;
 
 import * as React from "react";
 import Helmet from "react-helmet";
