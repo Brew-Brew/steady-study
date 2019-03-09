@@ -42,12 +42,7 @@ module.exports = {
               backgroundColor: `#f7f0eb`
             }
           },
-          [{
-            resolve: `gatsby-remark-prismjs`,
-            options: {
-              showLineNumbers: true,
-            }
-          }]
+          `gatsby-remark-prismjs`,
           `gatsby-remark-copy-linked-files`,
           `gatsby-remark-autolink-headers`
         ]
