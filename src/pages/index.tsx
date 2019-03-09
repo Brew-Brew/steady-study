@@ -17,6 +17,7 @@ import {
 import styled, { keyframes, css } from "styled-components";
 import { pulse, fadeInDown } from "react-animations";
 import GlobalFontStyle from "../util/globalFont";
+import { bottomContent } from "../constant/data";
 const contentEnum = {
   first: "home__first"
 };
@@ -44,27 +45,6 @@ const Wrapper = styled.div`
   visibility: hidden;
   ${({ contentsVisible }) => contentsVisible && fadeAnimation};
 `;
-
-const bottomContent = [
-  {
-    buttonContent: "Let's study",
-    icon: "book",
-    link: "/blog/",
-    text: "See how I think"
-  },
-  {
-    buttonContent: "go to page",
-    icon: "search",
-    link: "/about/",
-    text: " See who am I"
-  },
-  {
-    buttonContent: "contact",
-    icon: "phone",
-    link: "https://github.com/zx6658/",
-    text: " Contact me"
-  }
-];
 
 interface Props {
   location: { pathname: string };
