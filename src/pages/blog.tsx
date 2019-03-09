@@ -12,6 +12,7 @@ import BlogPagination from "../components/BlogPagination/BlogPagination";
 import { get } from "lodash";
 import { withLayout, LayoutProps } from "../components/Layout";
 import { MarkdownRemark } from "../graphql-types";
+import "prismjs/themes/prism-tomorrow.css";
 
 const fadedAnimation = keyframes`${rollIn}`;
 

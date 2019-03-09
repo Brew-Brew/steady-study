@@ -18,6 +18,7 @@ import styled, { keyframes, css } from "styled-components";
 import { pulse, fadeInDown } from "react-animations";
 import GlobalFontStyle from "../util/globalFont";
 import { bottomContent } from "../constant/data";
+
 const contentEnum = {
   first: "home__first"
 };
@@ -151,7 +152,7 @@ class IndexPage extends React.Component<Props, State> {
             </Container>
           </MainWrapper>
         </Segment>
-        <Wrapper contentsVisible={this.state.contentsVisible}>
+        <Wrapper contentsVisible={this.state.contentsVisible} >
           <div
             id={contentEnum.first}
             ref={this.contents[contentEnum.first].ref}
