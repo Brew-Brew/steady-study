@@ -1,6 +1,12 @@
 const path = require('path');
 const slash = require('slash');
-const {kebabCase, uniq, get, compact, times} = require('lodash');
+const {
+  kebabCase,
+  uniq,
+  get,
+  compact,
+  times
+} = require('lodash');
 
 // Don't forget to update hard code values into:
 // - `templates/blog-page.tsx:23`
@@ -11,8 +17,14 @@ const cleanArray = arr => compact(uniq(arr));
 
 // Create slugs for files.
 // Slug will used for blog page path.
-exports.onCreateNode = ({node, actions, getNode}) => {
-  const {createNodeField} = actions;
+exports.onCreateNode = ({
+  node,
+  actions,
+  getNode
+}) => {
+  const {
+    createNodeField
+  } = actions;
   let slug;
   switch (node.internal.type) {
     case `MarkdownRemark`:
@@ -22,7 +34,11 @@ exports.onCreateNode = ({node, actions, getNode}) => {
       break;
   }
   if (slug) {
-    createNodeField({node, name: `slug`, value: slug});
+    createNodeField({
+      node,
+      name: `slug`,
+      value: slug
+    });
   }
 };
 
@@ -30,14 +46,20 @@ exports.onCreateNode = ({node, actions, getNode}) => {
 // This is called after the Gatsby bootstrap is finished
 // so you have access to any information necessary to
 // programatically create pages.
-exports.createPages = ({graphql, actions}) => {
-  const {createPage} = actions;
+exports.createPages = ({
+  graphql,
+  actions
+}) => {
+  const {
+    createPage
+  } = actions;
 
   return new Promise((resolve, reject) => {
     const templates = ['blogPost', 'tagsPage', 'blogPage']
       .reduce((mem, templateName) => {
-        return Object.assign({}, mem,
-        {[templateName]: path.resolve(`src/templates/${kebabCase(templateName)}.tsx`)});
+        return Object.assign({}, mem, {
+          [templateName]: path.resolve(`src/templates/${kebabCase(templateName)}.tsx`)
+        });
       }, {});
 
     graphql(
@@ -79,11 +101,10 @@ exports.createPages = ({graphql, actions}) => {
       // Create tags pages
       posts
         .reduce((mem, post) =>
-          cleanArray(mem.concat(get(post, 'frontmatter.tags')))
-        , [])
+          cleanArray(mem.concat(get(post, 'frontmatter.tags'))), [])
         .forEach(tag => {
           createPage({
-            path: `/blog/tags/${kebabCase(tag)}/`,
+            path: `/blog/tags/${tag}/`,
             component: slash(templates.tagsPage),
             context: {
               tag
