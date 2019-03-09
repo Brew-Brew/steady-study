@@ -6,11 +6,9 @@ author: Ideveloper
 tags:
   - es6
   - function
-image: welcoming.png
+image: es6js.png
 draft: false
 ---
-
-## function in ES6 (es6에서의 함수)
 
 ```
 함수 자체는 javascript에서는 정말 중요한 요소입니다. 그리고 js개발자라면 es6문법은 익숙해야 하므로, 이러한 함수를 es6내에서 면밀히 살펴 봅시다.
