@@ -4,7 +4,7 @@ isBrowser ? require("intersection-observer") : undefined;
 import * as React from "react";
 import { Link } from "gatsby";
 import HeaderMenu from "../components/HeaderMenu/HeaderMenu";
-import { withLayout, LayoutProps, menuItems } from "../components/Layout";
+import { withLayout, menuItems } from "../components/Layout";
 import colors from "../constant/colors";
 import {
   Button,
@@ -14,9 +14,9 @@ import {
   Header,
   Icon
 } from "semantic-ui-react";
-import styled, { createGlobalStyle, keyframes, css } from "styled-components";
+import styled, { keyframes, css } from "styled-components";
 import { pulse, fadeInDown } from "react-animations";
-
+import GlobalFontStyle from "../util/globalFont";
 const contentEnum = {
   first: "home__first"
 };
@@ -32,6 +32,7 @@ const MainWrapper = styled.div`
 `;
 
 const fadeAnimation = css`
+  visibility: visible;
   animation: 1.5s ${keyframes`${fadeInDown}`};
 `;
 const SubWrapper = styled.div`
@@ -40,41 +41,30 @@ const SubWrapper = styled.div`
 `;
 
 const Wrapper = styled.div`
-  ${({ contentsVisible }) => contentsVisible && fadeAnimation}
+  visibility: hidden;
+  ${({ contentsVisible }) => contentsVisible && fadeAnimation};
 `;
 
 const bottomContent = [
   {
     buttonContent: "Let's study",
     icon: "book",
-    text: "See how I think",
-    link: "/blog/"
+    link: "/blog/",
+    text: "See how I think"
   },
   {
     buttonContent: "go to page",
     icon: "search",
-    text: " See who am I",
-    link: "/about/"
+    link: "/about/",
+    text: " See who am I"
   },
   {
     buttonContent: "contact",
     icon: "phone",
-    text: " Contact me",
-    link: "https://github.com/zx6658/"
+    link: "https://github.com/zx6658/",
+    text: " Contact me"
   }
 ];
-
-const Globals = createGlobalStyle`
-  body,h1,h2,h3,h4,h5,p,div {
-    @font-face { 
-    font-family: 'Godo'; 
-    font-style: normal; 
-    font-weight: 400; 
-    src: url('//cdn.jsdelivr.net/korean-webfonts/1/corps/godo/Godo/GodoM.woff2') format('woff2'), url('//cdn.jsdelivr.net/korean-webfonts/1/corps/godo/Godo/GodoM.woff') format('woff'); } 
-    @font-face { font-family: 'Godo'; font-style: normal; font-weight: 700; src: url('//cdn.jsdelivr.net/korean-webfonts/1/corps/godo/Godo/GodoB.woff2') format('woff2'), url('//cdn.jsdelivr.net/korean-webfonts/1/corps/godo/Godo/GodoB.woff') format('woff'); } .godo * { font-family: 'Godo', sans-serif; }
-    font-family: "Godo" !important;
-  }
-`;
 
 interface Props {
   location: { pathname: string };
@@ -116,8 +106,11 @@ class IndexPage extends React.Component<Props, State> {
 
     this.intersectionObserver = new window.IntersectionObserver(
       this.handleIntersectionChange,
-      { threshold: 0.2 }
+      {
+        threshold: 0.2
+      }
     );
+
     Object.values(this.contents).forEach(tab => {
       this.intersectionObserver.observe(tab.ref.current);
     });
@@ -143,14 +136,14 @@ class IndexPage extends React.Component<Props, State> {
 
     return (
       <div>
-        <Globals />
+        <GlobalFontStyle />
         {/* Master head */}
         <Segment
           vertical
           inverted
           textAlign="center"
           className="masthead"
-          style={{ background: `${colors.mainColor}` }}
+          style={{ background: `${colors.mainColor}`, height: "100vh" }}
         >
           <HeaderMenu
             Link={Link}

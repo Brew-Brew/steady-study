@@ -1,19 +1,10 @@
 import * as React from "react";
 import { Link } from "gatsby";
-import { StaticQuery, graphql } from "gatsby";
-import styled, { createGlobalStyle, keyframes } from "styled-components";
-import {
-  Header,
-  Grid,
-  Card,
-  List,
-  Container,
-  Feed,
-  Segment,
-  Comment
-} from "semantic-ui-react";
+import { graphql } from "gatsby";
+import styled, { keyframes } from "styled-components";
+import { Grid, Card, Container, Segment, Comment } from "semantic-ui-react";
 import { rollIn } from "react-animations";
-
+import GlobalFontStyle from "../util/globalFont";
 import { MarkdownRemarkConnection, ImageSharp } from "../graphql-types";
 import BlogTitle from "../components/BlogTitle";
 import TagsCard from "../components/TagsCard/TagsCard";
@@ -21,18 +12,6 @@ import BlogPagination from "../components/BlogPagination/BlogPagination";
 import { get } from "lodash";
 import { withLayout, LayoutProps } from "../components/Layout";
 import { MarkdownRemark } from "../graphql-types";
-
-const Globals = createGlobalStyle`
-  body,h1,h2,h3,h4,h5,p,div {
-    @font-face { 
-    font-family: 'Godo'; 
-    font-style: normal; 
-    font-weight: 400; 
-    src: url('//cdn.jsdelivr.net/korean-webfonts/1/corps/godo/Godo/GodoM.woff2') format('woff2'), url('//cdn.jsdelivr.net/korean-webfonts/1/corps/godo/Godo/GodoM.woff') format('woff'); } 
-    @font-face { font-family: 'Godo'; font-style: normal; font-weight: 700; src: url('//cdn.jsdelivr.net/korean-webfonts/1/corps/godo/Godo/GodoB.woff2') format('woff2'), url('//cdn.jsdelivr.net/korean-webfonts/1/corps/godo/Godo/GodoB.woff') format('woff'); } .godo * { font-family: 'Godo', sans-serif; }
-    font-family: "Godo" !important;
-  }
-`;
 
 const fadedAnimation = keyframes`${rollIn}`;
 
@@ -117,7 +96,7 @@ const BlogPage = (props: BlogProps) => {
   return (
     <Container>
       {/* Title */}
-      <Globals />
+      <GlobalFontStyle />
       <BlogTitle />
       {/* Content */}
       <Segment vertical>
