@@ -25,17 +25,17 @@ export const abooutInfo = [
   {
     img: github,
     label: "Github",
-    link: ""
+    link: "https://github.com/zx6658"
   },
   {
     img: mail,
     label: "E-mail: zx6658@gmail.com",
-    link: ""
+    link: "mailto:zx6658@gmail.com?subject=Hi ideveloper"
   },
   {
     img: tistory,
     label: "Ideveloper's Software Blog",
-    link: ""
+    link: "https://ideveloper2.tistory.com/"
   }
 ];
 

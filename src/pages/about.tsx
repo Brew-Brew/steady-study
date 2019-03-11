@@ -70,10 +70,12 @@ const AboutPage = () => {
         <InfoTitle>My Info</InfoTitle>
         {abooutInfo.map(info => {
           return (
-            <InfoWrapper>
-              <ImgIcon src={info.img} />
-              <IconLabel>{info.label}</IconLabel>
-            </InfoWrapper>
+            <a href={info.link}>
+              <InfoWrapper>
+                <ImgIcon src={info.img} />
+                <IconLabel>{info.label}</IconLabel>
+              </InfoWrapper>
+            </a>
           );
         })}
         <div />
