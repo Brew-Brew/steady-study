@@ -69,7 +69,7 @@ const AboutPage = () => {
         <Header as="h1">
           <Title>
             <FadedText>
-              Hi <span>I'm Ideveloper</span>
+              😀<span style={{ margin: "1rem" }}>I'm Ideveloper</span>
             </FadedText>
           </Title>
         </Header>
