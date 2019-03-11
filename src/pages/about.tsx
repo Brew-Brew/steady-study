@@ -4,11 +4,17 @@ import styled, { keyframes } from "styled-components";
 import { fadeInDown } from "react-animations";
 
 import { withLayout } from "../components/Layout";
+import Tag from "../components/Tag/Tag";
 import colors from "../constant/colors";
 import GlobalFontStyle from "../util/globalFont";
 import { abooutInfo, careerInfo, skillInfo } from "../constant/data";
 
 const fadedAnimation = keyframes`${fadeInDown}`;
+
+const SkillWrapper = styled.div`
+  margin-top: 10px;
+`;
+
 const FadedText = styled.h1`
   animation: 1s ${fadedAnimation};
 `;
@@ -41,7 +47,9 @@ const InfoTitle = styled.h1`
   font-size: 600;
   font-size: 24px;
   margin-bottom: 30px;
-  margin-top: 20px;
+  margin-left: -1rem;
+  margin-right: -1rem;
+  margin-top: -1rem !important;
   background: ${colors.mainColor};
   color: white;
   padding: 10px;
@@ -86,7 +94,13 @@ const AboutPage = () => {
           return (
             <InfoWrapper>
               <CompanyIcon src={info.img} />
-              <ul>
+              <SkillWrapper>
+                {info.skills.map(skill => {
+                  return <Tag content={skill} />;
+                })}
+              </SkillWrapper>
+
+              <ul style={{ padding: "1rem" }}>
                 <li>{info.date}</li>
                 <li>{info.description}</li>
                 {info.task.map(content => {

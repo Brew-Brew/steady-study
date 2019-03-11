@@ -45,6 +45,7 @@ export const careerInfo = [
     description: "travel tech",
     img: mrt,
     label: "myrealtrip",
+    skills: ["react", "webpack", "next.js", "ruby on rails"],
     task: [
       "offer information page renewal and migration (ruby on rails => react)",
       "hotel meta search project with react"
@@ -55,6 +56,7 @@ export const careerInfo = [
     description: "food tech",
     img: plating,
     label: "plating",
+    skills: ["react", "webpack", "node.js"],
     task: ["b2b chef service site, plating react site"]
   }
 ];
