@@ -18,3 +18,29 @@ draft: false
 이러한 케이스에서는 다른 이유가 없고, 얼리어답터가 되는걸 꺼려한다면 우리는 당신의 이미 존재하는 컴포넌트를 재작성 하는걸 추천하지 않습니다. 훅은 여전히 새로운것이고, 몇몇 best practice 들은 아직 그들의 tutorial들을 찾지 못했습니다.
 
 그러면 우리는 어떤걸 해야 할까요? 리액트 function 컴포넌트와 클래스 컴포넌트의 근본적인 차이점들이 있나요? 물론입니다. Mental 모델에 있습니다. 이 포스트에선, 저는 가장 큰 그들의 차이점을 볼 것 입니다. 이것은2015년에 function 컴포넌트가 소개된 시점부터 존재했던것이나, 종종 간과되곤 합니다.
+
+> 함수형 컴포넌트는 렌더되는 값들을 capture합니다.
+
+이것은 어떤것을 의미하는지 파악해 봅시다.
+
+* * *
+
+Note: 이 post는 클래스 혹은 함수 기반 컴포넌트에서의 가치를 판단하는것이 아닙니다. 저는 오직 리액트에서의 두가지 모델을 비교하는것을 묘사하고 싶었습니다.
+
+* * *
+
+이 컴포넌트를 고려해 봅시다.
+
+```javascript
+function ProfilePage(props) {
+  const showMessage = () => {
+    alert("Followed " + props.user);
+  };
+
+  const handleClick = () => {
+    setTimeout(showMessage, 3000);
+  };
+
+  return <button onClick={handleClick}>Follow</button>;
+}
+```
