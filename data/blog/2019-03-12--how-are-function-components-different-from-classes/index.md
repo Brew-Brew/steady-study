@@ -23,18 +23,18 @@ draft: false
 
 이것은 어떤것을 의미하는지 파악해 봅시다.
 
-* * *
+---
 
 Note: 이 post는 클래스 혹은 함수 기반 컴포넌트에서의 가치를 판단하는것이 아닙니다. 저는 오직 리액트에서의 두가지 모델을 비교하는것을 묘사하고 싶었습니다.
 
-* * *
+---
 
 이 컴포넌트를 고려해 봅시다.
 
 ```javascript
 function ProfilePage(props) {
   const showMessage = () => {
-    alert("Followed " + props.user);
+    alert('Followed ' + props.user);
   };
 
   const handleClick = () => {
@@ -44,3 +44,45 @@ function ProfilePage(props) {
   return <button onClick={handleClick}>Follow</button>;
 }
 ```
+
+이것은 `setTimeout`으로 네트워크 요청이 일어나게 하는 버튼을 보여주고, 확인 alert창을 띄워주게 됩니다. 예를들어, 만약 `props.user`가 `Dan`이면, 이것은 `Followed Dan` 을 삼초뒤에 보여주게 됩니다. 이것은 충분히 간단합니다.
+
+(위 예에서 arrow function과 선언형 함수를 쓰더라도 큰 문제가 없습니다. `function handleClick()` 또한 같은 방식으로 동작 할 것입니다.)
+
+class 컴포넌트로는 어떻게 작성할까요? 나이브한 해석은 아래와 같을 것입니다.
+
+```javascript
+class ProfilePage extends React.Component {
+  showMessage = () => {
+    alert('Followed ' + this.props.user);
+  };
+
+  handleClick = () => {
+    setTimeout(this.showMessage, 3000);
+  };
+
+  render() {
+    return <button onClick={this.handleClick}>Follow</button>;
+  }
+}
+```
+
+이것은 일반적으로 이 두개의 코드 snippet들이 같다고 생각합니다. 사람들은 종종 자유롭게 이러한 패턴들을 그들의 함축성에 대해서 인지하지 않고 리팩토링하곤 합니다.
+
+//gif 파일
+
+그러나, 이 두개의 snippet code들은 미묘하게 다릅니다. 그들을 면밀히 살펴봐 봅시다. 아직 그들의 다른점을 못 찾았나요? 개인적으로, 그들을 보는것은 제겐 잠시 시간이 걸렸습니다.
+
+이제부터 스포일러가 있습니다. 그래서 여러분 스스로 찾아낼수 있는 `live demo`가 있습니다. 이 글의 나머지 글들은 어떤점들이 다르고 왜 이러한 일들이 발생했는지 설명해줍니다.
+
+---
+
+우리는 리액트 애플리케이션에서 공통적으로 있는 버그들의 다른점들을 시각화해 설명해 볼것입니다.
+
+이 example sandbox를 열고, 최근 선택된 select 박스와 두개의 `ProfilePage`가 위에서 주입되어 있고 각각 Follow 버튼을 렌더링 하고 있는 것을 볼수 있습니다.
+
+각각의 버튼들에 이 동작들을 연속해서 해보세요.
+
+1. Follow 버튼들중 하나를 **클릭합니다.**
+2. 3초가 지난뒤에 선택된 profile을 **바꿉니다.**
+3. alert text를 **읽습니다.**
