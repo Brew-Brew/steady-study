@@ -86,3 +86,32 @@ class ProfilePage extends React.Component {
 1. Follow 버튼들중 하나를 **클릭합니다.**
 2. 3초가 지난뒤에 선택된 profile을 **바꿉니다.**
 3. alert text를 **읽습니다.**
+
+당신은 특별한 다른점을 알아차리게 될것입니다.
+
+- `ProfilePage` function 컴포넌트는, Dan의 프로필에서 follow를 클릭하고, 소피로 이동하면 여전히 `Followed Dan` 이라는 알림창을 띄우게 될 것입니다.
+
+- `ProfilePage` class 기반 컴포넌트는, Dan의 프로필에서 follow를 클릭하고, 소피로 이동하면 `Followed Sophie` 라는 알림창을 띄우게 될 것입니다.
+
+(당신은 전적으로 소피를 follow 하는것입니다.)
+
+그러면 우리의 클래스 컴포넌트 기반의 예제는 왜 그렇게 동작 했을까요?
+
+showMessage함수를 class 컴포넌트의 메서드에서 깊게 확인해봅시다.
+
+```javascript
+class ProfilePage extends React.Component {
+  showMessage = () => {
+    alert('Followed ' + this.props.user); //highlight
+  };
+```
+
+이 클래스의 메소드는 `this.props.user`에서 읽습니다. prop들은 리액트에서 불변성을 가지고, 따라서 그들은 바뀔수 없습니다. 그러나, 이것은, 항상 변해왔습니다.
+
+진정으로, 이것의 전체 목적은 클래스 기반 컴포넌트에 있습니다. 리액트는 시간이 지나면 스스로 변하고 따라서, render와 주기함수에서 최신의 버전을 읽을수 있습니다.
+
+그래서 만약 우리의 컴포넌트는 요청이 일어나면 다시 렌더링 됩니다, `this.props`가 바뀌면서요. `showMessage` 의 메소드는 `user` 를 새로운 `props`에서 받아오게 됩니다.
+
+이것은 유저 인터페이스의 본질에 관한 흥미로운 관찰을 이끌어 냅니다.
+
+---
