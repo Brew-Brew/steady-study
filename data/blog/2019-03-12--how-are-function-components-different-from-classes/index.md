@@ -12,6 +12,8 @@ draft: false
 > 원문 : https://overreacted.io/how-are-function-components-different-from-classes/
 > (리액트의 함수형 컴포넌트는 어떻게 리액트 클래스 컴포넌트와 다른가?)
 
+**본인의 의역이 들어간 부분이 있어, 해석이 잘못된 부분이 있으면 피드백 주시면 감사하겠습니다.**
+
 잠시동안, 정식으로 나온 답변들은 클래스는 (state와 같은) 많은 피쳐들에 접근할수 있게 한다는 것이었습니다. [훅](https://reactjs.org/docs/hooks-intro.html)과 함께면, 더이상 그것은 정답이 될수 없습니다.
 
 아마 여러분들은 그것들중 하나는 성능상 좋다는 점을 들었을 것입니다. 어떤것인가요? 많은 벤치마크들은 [결함](https://medium.com/@dan_abramov/this-benchmark-is-indeed-flawed-c3d6b5b6f97f?source=your_stories_page---------------------------)이 있습니다, 그래서 저는 [결론을 그려내는것](https://github.com/ryardley/hooks-perf-issues/pull/2)에 주의하고있습니다. 성능은 주요하게 함수형을 선택하는가 클래스형을 선택하는가가 중요한게 아니라 여러분들의 코드가 어떻게 돌아가는지에 더 영향을 받습니다. 우리의 관찰결과, 성능차이는 무시할수 있고, 최적화 전략은 조금은 [다릅니다](https://reactjs.org/docs/hooks-faq.html#are-hooks-slow-because-of-creating-functions-in-render).
