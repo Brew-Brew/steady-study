@@ -1,7 +1,7 @@
 ---
 title: How Are Function Components Different from Classes?
-createdDate: '2019-03-12'
-updatedDate: '2019-03-12'
+createdDate: "2019-03-12"
+updatedDate: "2019-03-12"
 author: Ideveloper
 tags:
   - react
@@ -34,7 +34,7 @@ Note: 이 post는 클래스 혹은 함수 기반 컴포넌트에서의 가치를
 ```javascript
 function ProfilePage(props) {
   const showMessage = () => {
-    alert('Followed ' + props.user);
+    alert("Followed " + props.user);
   };
 
   const handleClick = () => {
@@ -54,7 +54,7 @@ class 컴포넌트로는 어떻게 작성할까요? 나이브한 해석은 아�
 ```javascript
 class ProfilePage extends React.Component {
   showMessage = () => {
-    alert('Followed ' + this.props.user);
+    alert("Followed " + this.props.user);
   };
 
   handleClick = () => {
@@ -93,6 +93,8 @@ class ProfilePage extends React.Component {
 
 - `ProfilePage` class 기반 컴포넌트는, Dan의 프로필에서 follow를 클릭하고, 소피로 이동하면 `Followed Sophie` 라는 알림창을 띄우게 될 것입니다.
 
+![image](https://overreacted.io/bug-386a449110202d5140d67336a0ade5a0.gif)
+
 (당신은 전적으로 소피를 follow 하는것입니다.)
 
 그러면 우리의 클래스 컴포넌트 기반의 예제는 왜 그렇게 동작 했을까요?
@@ -102,7 +104,7 @@ showMessage함수를 class 컴포넌트의 메서드에서 깊게 확인해봅�
 ```javascript
 class ProfilePage extends React.Component {
   showMessage = () => {
-    alert('Followed ' + this.props.user); //highlight
+    alert('Followed ' + this.props.user); //highlight-line
   };
 ```
 
@@ -112,6 +114,255 @@ class ProfilePage extends React.Component {
 
 그래서 만약 우리의 컴포넌트는 요청이 일어나면 다시 렌더링 됩니다, `this.props`가 바뀌면서요. `showMessage` 의 메소드는 `user` 를 새로운 `props`에서 받아오게 됩니다.
 
-이것은 유저 인터페이스의 본질에 관한 흥미로운 관찰을 이끌어 냅니다.
+이것은 유저 인터페이스의 본질에 관한 흥미로운 관찰을 이끌어 냅니다. 만약 우리가 UI가 개념적으로 현재 application의 상태라고 말한다면, 이벤트 핸들러는 render 결과의 한 부분입니다. - 시각적 결과와 같이요. 우리들의 이벤트 핸들러는 일부의 prop과 state가 속해 있는 일부의 render에 속하게 됩니다.
+
+그러나, this.props의 콜백을 읽는 timeout을 스케쥴링하는것은 그 연관을 무너트립니다. 우리의 `showMessage` callback은 어느 특정 render에 묶여 있지 않습니다, 그리고 이것은 올바른 props 를 잃어 버리게 됩니다. 그 연결로 부터 받아온 `this`로 부터 읽게 되는것입니다.
 
 ---
+
+**함수형 컴포넌트가 존재 하지 않는다고 해봅시다.** 어떻게 우리는 문제를 해결할 수 있을까요?
+
+우리는 어떻게든 올바른 prop으로 하는 `렌더`와 그들을 읽는 `showMessage` callback의 연결을 고치고 싶을 것입니다.
+
+이것을 할 수 있는 방법은 `this.props`를 이른 시점에서 읽는것입니다. 그리고 명백히 그것들을 timeout completion handler에게 전달하는 것입니다.
+
+```javascript
+class ProfilePage extends React.Component {
+  showMessage = user => {
+    //highlight-line
+    alert("Followed " + user);
+  };
+
+  handleClick = () => {
+    const { user } = this.props; //highlight-line
+    setTimeout(() => this.showMessage(user), 3000);
+  };
+
+  render() {
+    return <button onClick={this.handleClick}>Follow</button>;
+  }
+}
+```
+
+이것은 **제대로 동작합니다.** 그러나, 이 접근 방식은 코드를 매우 중요하게, 에러가 많이 발생하고 이것저것 신경쓸게 많아지게 만듭니다. 단 하나의 prop대신 우리는 어떤것이 필요하게 될까요? 만약 우리가 state에 접근해야한다면 어떨까요? 만약 `showMessage` 가 다른 method를 부르게 되면, 그 메소드는 `this.props.something` 혹은 `this.state.something` 을 읽게 되고, 우리는 또다시 똑같은 문제에 직면하게 됩니다. 우리는 그래서 showMessage로 부터 불린 모든 메소드들에게 `this.props`와 `this.state`를 넘겨줘야 하게 됩니다.
+
+이렇게 하면 클래스에 의해 제공되는 쉽게 알아들을 수 있는 것들을 잃어버리게 됩니다. 이것은 또한 기억하거나 강제하기가 어려워서, 사람들이 종종 버그들과 맞딱드리게 됩니다.
+
+유사하게, alert 코드를 handleClick에 넣는 것은 큰 문제에 해답을 주지 않습니다. 우리는 코드를 많은 메소드들로 분리하기를 원하고, 그 함수를 부르는 것과 관련된 render에서 정확한 prop과 state들을 읽는것을 원합니다.
+**이 문제점은 React에 국한된 문제점이 아닙니다 - 당신은 다시 어떠한 UI 라이브러리에서 변하는 형태의 object들 `this`와 같이 다시 발생시킬수 있습니다.**
+
+아마도, 우리는 메소드들을 constructor상에서 bind 할수 있지 않나요?
+
+```javascript
+class ProfilePage extends React.Component {
+  constructor(props) {
+    super(props);
+    //highlight-start
+    this.showMessage = this.showMessage.bind(this);
+    this.handleClick = this.handleClick.bind(this);
+    //highlight-end
+  }
+
+  showMessage() {
+    alert("Followed " + this.props.user);
+  }
+
+  handleClick() {
+    setTimeout(this.showMessage, 3000);
+  }
+
+  render() {
+    return <button onClick={this.handleClick}>Follow</button>;
+  }
+}
+```
+
+아니요, 이것은 아무것도 고치지 못합니다. 기억하세요, 문제는 `this.props`가 늦게 읽혀 지는 것입니다. - 우리가 사용하는 syntax에 있는 것이 아닙니다. **그러나, 이 문제는 우리가 자바스크립트의 클로져에 완벽히 의존한다면, 이문제점은 사라지게 될 것입니다.**
+
+클로져는 시간이 지남에 따라 값이 변해지고 그것을 생각하기 매우 어렵기 때문에 종종 피합니다. 하지만 리액트에선, prop과 state는 변하지않습니다! (최소한, 이것은 강하게 추천됩니다) 그것은 클로저의 주요한 발걸음을 제거합니다.
+
+이것은 당신이 특정 렌더에서 prop과 state에 가까이 하고 있다면, 당신은 언제나 같게 유지할수 있다는것을 의미합니다.
+
+```javascript
+class ProfilePage extends React.Component {
+  render() {
+    //highlight-start
+    // Capture the props!
+    const props = this.props;
+    //highlight-end
+
+    // Note: we are *inside render*.
+    // These aren't class methods.
+    const showMessage = () => {
+      //highlight-start
+      alert("Followed " + props.user);
+      //highlight-end
+    };
+
+    const handleClick = () => {
+      setTimeout(showMessage, 3000);
+    };
+
+    return <button onClick={handleClick}>Follow</button>;
+  }
+}
+```
+
+**당신은 렌더되는 시점에 prop들을 "capture" 한것입니다.**
+
+![image](https://overreacted.io/pokemon-fa483dd5699aac1350c57591770a49be.gif)
+
+이 방식으로 된 모든 코드들은 (`showMessage` 를 포함하여) 특정 렌더에 prop들을 보는것을 보장합니다. 리액트는 더이상 어려움을 제공하지 않는다.
+
+---
+
+이 예제는 옳지만 이상하게 보입니다. 클래스 메소드를 사용하는 대신 render가 들어있는 function으로 정의하는것은 어떠한 특징을 가지나요?
+
+진정으로, 우리는 class에 있는 여러 것들을 제거 함으로써 코드를 간단히 만들수 있습니다.
+
+```javascript
+function ProfilePage(props) {
+  const showMessage = () => {
+    alert("Followed " + props.user);
+  };
+
+  const handleClick = () => {
+    setTimeout(showMessage, 3000);
+  };
+
+  return <button onClick={handleClick}>Follow</button>;
+}
+```
+
+위와 같이, props 들은 여천히 capture 되어 있습니다. - 리액트는 그들을 argument로 제공합니다. **`this`와 달리, `props` 객체는 리액트에 의해 절대로 변하지 않게 됩니다.**
+
+이것은 function definition 상에서 `props` 를 destructure 한다면 매우 분명해집니다.
+
+```javascript
+function ProfilePage({ user }) {
+  //highlight-line
+  const showMessage = () => {
+    alert("Followed " + user); //highlight-line
+  };
+
+  const handleClick = () => {
+    setTimeout(showMessage, 3000);
+  };
+
+  return <button onClick={handleClick}>Follow</button>;
+}
+```
+
+만약 부모 컴포넌트에서 `ProfilePage`를 다른 props들과 함께 render 한다면, 리액트는 `ProfilePage` 함수를 다시한번 부르게 됩니다. 그러나 이미 우리가 이미 클릭한 이벤트 핸들러는 예전 렌더에 속해 있게 되고, 이것의 user value를 showMessage에서 이것을 읽게 됩니다. 그들은 그대로 남아있게 됩니다.
+
+그 이유는, function 버전인 이 데모에서, Sophie의 프로필에서 Follow를 클릭하고, Sunil로 바꿀때 alert는 'Followed Sophie'리고 뜨는 것입니다.
+
+![image](https://overreacted.io/fix-84396c4b3982827bead96912a947904e.gif)
+
+이 behavior는 옳은 것입니다. (비록 당신이 Sunil을 follow하길 원할때에도요)
+
+---
+
+이제는 우리는 리액트에서의 클래스와 함수형에서의 큰 차이를 한번 이해해봅시다.
+
+> Function component들을 render된 value들을 capture 합니다.
+
+Hook과 함께면, 우리는 동일한 원리를 state에 적용 시킬수 있게 됩니다. 이 예제를 살펴봅시다:
+
+```javascript
+function MessageThread() {
+  const [message, setMessage] = useState("");
+
+  const showMessage = () => {
+    alert("You said: " + message);
+  };
+
+  const handleSendClick = () => {
+    setTimeout(showMessage, 3000);
+  };
+
+  const handleMessageChange = e => {
+    setMessage(e.target.value);
+  };
+
+  return (
+    <>
+      <input value={message} onChange={handleMessageChange} />
+      <button onClick={handleSendClick}>Send</button>
+    </>
+  );
+}
+```
+
+(여기 라이브 데모가 있습니다.)
+
+이것은 매우 좋지않은 메시지 앱 UI이더라도, 우리는 같은 점을 설명할것입니다: 만약 특정한 메시지를 보낸다면, 우리는 컴포넌트는 보내진 메시들에 대해서 혼동되지 않을 것입니다. 이러한 function 컴포넌트의 메시지는 브라우저에 의해 불리게 된 클릭핸들러에 의해 리턴된 렌더에 종속된 스테이트를 캡쳐하게 됩니다. 그래서 메시지는 send를 클릭했을때 input에 있었던 input으로 message가 set 되는것입니다.
+
+---
+
+그래서 우리는 리액트에 있는 함수형 컴포넌트들은 props와 state를 기본으로 캡쳐한다고 알고있습니다. **하지만 우리가 특정 렌더에 종속되지 않은 최신 prop과 state를 읽기를 원한다면 어떡할까요?** 만약 우리가 그들을 나중에 읽고싶다면요?
+
+클래스 컴포넌트에서는, 당신은 `this.props`나 `this.state`에서 읽지 않습니다. 왜냐하면 `this`는 그자체로 변경되기 때문입니다. 리액트는 그것을 변경 시킵니다. 함수형 컴포넌트에서는, 다인은 여전히 변하는 값들을 가지게 되고 모든 컴포넌트의 렌더에서 공유되게 됩니다. 이것은 ref라고 불리게 됩니다.
+
+```javascript
+function MyComponent() {
+  const ref = useRef(null);
+  // You can read or write `ref.current`.
+  // ...
+}
+```
+
+그러나, 당신은 이것들을 당신의 관리해야 할것입니다.
+
+ref는 instance field와 같은 역할을 하게 됩니다. 이것은 변하는 피할수 없는 세상으로 부터의 탈출구 입니다. 당신은 아마 "DOM refs" 와 익숙할것입니다. 하지만 그 개념은 매우 일반적입니다. 이것은 단지 어떤것을 집어 넣을수있는 box입니다.
+
+시각적으로는, `this.something` 은 `something.current` 와 똑같이 보입니다. 그들은 같은 개념을 나타내고 있습니다.
+
+기본적으로, 리액트는 함수형 컴포넌트에서 최신 props 그리고 state를 가지는 refs를 만들지 않습니다. 많은 케이스들에서 당신은 필요하지 않게 됩니다. 그리고 그들을 할당하는것은 낭비가 되는 일일것입니다. 그러나, 당신은 이렇게 추적할수 있게 됩니다.:
+
+```javascript
+function MessageThread() {
+  const [message, setMessage] = useState('');
+
+  //highlight-start
+  // Keep track of the latest value.
+  const latestMessage = useRef('');
+  useEffect(() => {
+    latestMessage.current = message;
+  });
+  //highlight-end
+
+  const showMessage = () => {
+    alert('You said: ' + latestMessage.current);//highlight-line
+  };
+```
+
+(여기 그 데모가 있습니다)
+
+우리는 effect안에서 할당을 하고 ref 값은 dom이 업데이트 되면 변하게 됩니다. 이것은 우리의 변화가 interruptible한 렌더링에 의존하고 있는 Time Slicing과 Suspense 와 같은 feature들을 무너뜨리지 않게 됩니다.
+
+이것과 같이 ref를 사용하는것은 종종 매우 필요하게 됩니다. **prop과 state를 캡쳐하는것은 매우 좋은 default 입니다.** 그러나, 이것은 Imperative API들과 같은 interval 그리고 subscriptions 와 함께 할때 매우 손쉬워 집니다. 이것과 같은 값들을 추적할수 있다는것을 기억하세요 - prop그리고 state, 그리고 전체 props 객체들, 그리고 심지어 함수들
+
+이러한 패턴은 최적화에도 매우 손쉬워지게 됩니다. - 예를들어 useCallback identity가 종종 바뀔때 말이죠. 그러나 reducer를 사용하는것은 종종 좋은 해답이 됩니다. (나중의 블로그 포스팅 주제입니다.!)
+
+---
+
+이 포스트에서는, 우리는 클래스에서 종종 무너지는 패턴에 대해서 살펴봤습니다. 그리고 어떻게 클로져 패턴이 이것을 고치는지 살펴봤습니다. 그러나, 당신은 훅을 array의 디펜던시를 구체화하여 최적화 하려고 할때, 당신은 안좋은 버그에 맞닥뜨리게 될것입니다. 이것은 클로져는 문제가 있는것을 말할까요? 전 아니라고 생각합니다.
+
+우리가 위에서 봤듯이, 클로져는 미묘한 문제들을 해결해주고 인지하기 어려운 문제들을 해결해 줍니다. 유사하게, Concurrent mode에서 동작하는 코드들을 매우 쉽게 만들어줍니다. 이것은 컴포넌트 안에 있는 로직들이 prop과 state들을 렌더상에서 정확히 보여주게 되기 때문에 가능하게 만듭니다.
+
+모든 케이스들에서, **"state 클로져들"의 문제점들은 "변하지않는 함수", "props는 언제나 같다" 라는 점들을 잘못 사용한 것입니다.** 이 case가 아니더라도, 저는 이 포스트가 명확하게 도움이 되길 원합니다.
+
+함수들은 그들의 prop과 state에 가까이 다가가 있습니다. - 그리고 그들의 identity는 매우 중요합니다. 이것은 버그가 아닙니다, 그리고 function 컴포넌트의 특징입니다. 함수형 컴포넌트는 useEffect 혹은 useCallback을 위한 "dependencies array" 로 부터 제외시키지 말아야 합니다. 예를들어 (옳게 고치면, 대개 useReducer나 useRef 같은 것들의 해답입니다 - 우리는 곧 어떻게 그것들을 선택할지 보게 될것입니다.)
+
+우리가 대다수의 리액트 코드를 function 기반으로 작성할때, 우리는 직관을 코드를 최적화 하는것 그리고 시간에 따라 어떠한 값들이 변하게 되는지에 대해 조정해야 할것입니다.
+
+fredrik이 말한것과 같이,
+
+> 내가 찾은 훅을 사용할때 정신적으로 가져야 하는 규칙은 시간에 따라 값들이 어떻게 코드상에서 변하는지 아는것이다.
+
+함수들은 이 룰에 대해서 예외가 아니다. 이것은 리액트에서의 것들을 배울때 기본이 되는 지식일것이다. 이것은 클래스컴포넌트에서의 마음가짐으로 부터 조금 조정이 필요하다. 하지만 이 아티클들은 새로운 눈으로 바라볼수 있도록 도와주게 될것이다.
+
+리액트의 함수형은 언제 그들의 값들을 capture할것이다 - 그리고 이제 우리는 그 이유를 알게 되었다.
+
+![image](https://overreacted.io/pikachu-fc3bddf6d4ca14bc77917ac0cfad3608.gif)
