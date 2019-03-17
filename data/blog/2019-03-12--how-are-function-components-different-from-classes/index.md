@@ -5,11 +5,12 @@ updatedDate: "2019-03-12"
 author: Ideveloper
 tags:
   - react
-image: welcoming.png
+image: howfuncdifcla.png
 draft: false
 ---
 
-리액트의 함수형 컴포넌트는 어떻게 리액트 클래스 컴포넌트와 다른가?
+> 원문 : https://overreacted.io/how-are-function-components-different-from-classes/
+> (리액트의 함수형 컴포넌트는 어떻게 리액트 클래스 컴포넌트와 다른가?)
 
 잠시동안, 정식으로 나온 답변들은 클래스는 (state와 같은) 많은 피쳐들에 접근할수 있게 한다는 것이었습니다. [훅](https://reactjs.org/docs/hooks-intro.html)과 함께면, 더이상 그것은 정답이 될수 없습니다.
 
@@ -392,7 +393,7 @@ function MessageThread() {
 
 모든 케이스들에서, **좋지않은 클로져들"의 문제점들은 "변하지않는 함수", "props는 언제나 같다" 라는 점들을 잘못 사용한 것입니다.** 이 case가 아니더라도, 저는 이 포스트가 명확하게 도움이 되길 원합니다.
 
-함수들은 그들의 prop과 state에 가까이 다가가 있습니다. - 그리고 그들의 identity는 매우 중요합니다. 이것은 버그가 아닙니다, 그리고 function 컴포넌트의 특징입니다. 함수형 컴포넌트는 useEffect 혹은 useCallback을 위한 "dependencies array" 로 부터 제외시키지 말아야 합니다. 예를들어 (옳게 고치면, 대개 useReducer나 useRef 같은 것들의 해답입니다 - 우리는 곧 어떻게 그것들을 선택할지 보게 될것입니다.)
+함수들은 그들의 prop과 state에 가까이 다가가 있습니다. - 그리고 그들의 identity는 매우 중요합니다. 이것은 버그가 아닙니다, 그리고 function 컴포넌트의 특징입니다. 예를들어 함수형 컴포넌트는 useEffect 혹은 useCallback을 위한 "dependencies array" 로 부터 제외시키지 말아야 합니다. (옳게 고치면, 대개 useReducer나 useRef 같은 것들의 해답입니다 - 우리는 곧 어떻게 그것들을 선택할지 보게 될것입니다.)
 
 우리가 대다수의 리액트 코드를 function 기반으로 작성할때, 우리는 직관을 코드를 [최적화 하는것](https://github.com/ryardley/hooks-perf-issues/pull/3) 그리고 [시간에 따라 어떠한 값들이 변하게 되는지](https://github.com/facebook/react/issues/14920)에 대해 조정해야 할것입니다.
 
