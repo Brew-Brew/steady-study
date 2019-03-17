@@ -23,7 +23,26 @@ import {
 import BlogTitle from "../components/BlogTitle";
 import { DiscussionEmbed } from "disqus-react";
 import { withLayout, LayoutProps } from "../components/Layout";
+import GlobalFontStyle from "../util/globalFont";
 import { graphql } from "gatsby";
+import styled from "styled-components";
+
+const Wrapper = styled.div`
+  p {
+    font-size: 16px;
+    line-height: 1.4rem;
+    margin-bottom: 0.5rem;
+  }
+  h3 {
+    font-size: 20px;
+  }
+  h4 {
+    font-size: 19px;
+  }
+  h5 {
+    font-size: 18px;
+  }
+`;
 
 interface BlogPostProps extends LayoutProps {
   data: {
@@ -90,6 +109,7 @@ const BlogPostPage = (props: BlogPostProps) => {
 
   return (
     <Container>
+      <GlobalFontStyle />
       <BlogTitle />
       <Segment vertical style={{ border: "none" }}>
         <Item.Group>
@@ -112,13 +132,15 @@ const BlogPostPage = (props: BlogPostProps) => {
         <Header as="h1">{frontmatter.title}</Header>
       </Segment>
       <Image {...cover} fluid />
-      <Segment
-        vertical
-        style={{ border: "none" }}
-        dangerouslySetInnerHTML={{
-          __html: html
-        }}
-      />
+      <Wrapper>
+        <Segment
+          vertical
+          style={{ border: "none" }}
+          dangerouslySetInnerHTML={{
+            __html: html
+          }}
+        />
+      </Wrapper>
       <Segment vertical>{tags}</Segment>
       {props.data.site &&
         props.data.site.siteMetadata &&
