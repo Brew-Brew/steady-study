@@ -53,8 +53,3 @@ snapshotSerializers를 사용하면 enzyme-to-json의 toJson 함수를 호출하
 3.  이벤트 테스트
 4.  이벤트 핸들러 테스트
 5.  json 반한하는 모든 함수 테스트 가능
-
-## TODO
-
-- [ ] Replace image
-- [ ] Write an awesome article
