@@ -1,5 +1,5 @@
 ---
-title: How Are Function Components Different from Classes?
+title: How Are Function Components Different from Classes? [번역]
 createdDate: "2019-03-12"
 updatedDate: "2019-03-12"
 author: Ideveloper
