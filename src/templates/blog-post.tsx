@@ -30,7 +30,7 @@ import styled from "styled-components";
 const Wrapper = styled.div`
   p {
     font-size: 16px;
-    line-height: 1.4rem;
+    line-height: 2rem;
     margin-bottom: 0.5rem;
   }
   h3 {
