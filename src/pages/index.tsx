@@ -30,7 +30,7 @@ const BouncyText = styled.h1`
 `;
 
 const MainWrapper = styled.div`
-  margin-top: 200px;
+  margin-top: 20vh;
 `;
 
 const fadeAnimation = css`
@@ -123,7 +123,6 @@ class IndexPage extends React.Component<Props, State> {
           vertical
           inverted
           textAlign="center"
-          className="masthead"
           style={{ background: `${colors.mainColor}`, height: "100vh" }}
         >
           <HeaderMenu
@@ -152,7 +151,7 @@ class IndexPage extends React.Component<Props, State> {
             </Container>
           </MainWrapper>
         </Segment>
-        <Wrapper contentsVisible={this.state.contentsVisible} >
+        <Wrapper contentsVisible={this.state.contentsVisible}>
           <div
             id={contentEnum.first}
             ref={this.contents[contentEnum.first].ref}

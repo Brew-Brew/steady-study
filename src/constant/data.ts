@@ -8,13 +8,13 @@ export const bottomContent = [
     text: "See how I think"
   },
   {
-    buttonContent: "go to page",
+    buttonContent: "Go to page",
     icon: "search",
     link: "/about/",
     text: " See who am I"
   },
   {
-    buttonContent: "contact",
+    buttonContent: "Contact me",
     icon: "phone",
     link: "https://github.com/zx6658/",
     text: " Contact me"
