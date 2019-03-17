@@ -10,7 +10,7 @@ draft: false
 ---
 
 > 원문 : https://overreacted.io/how-are-function-components-different-from-classes/
-> (리액트의 함수형 컴포넌트는 어떻게 리액트 클래스 컴포넌트와 다른가?)
+> (리액트의 함수형 컴포넌트는 어떻게 리액트 클래스 컴포넌트와 다른가?) [Dan Abramov]
 
 **본인의 의역이 들어간 부분이 있어, 해석이 잘못된 부분이 있으면 피드백 주시면 감사하겠습니다.**
 
