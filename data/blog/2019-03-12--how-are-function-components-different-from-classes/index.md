@@ -126,7 +126,7 @@ class ProfilePage extends React.Component {
 
 그래서 만약 우리의 컴포넌트는 요청이 일어나면 다시 렌더링 됩니다, `this.props`가 바뀌면서요. `showMessage` 의 메소드는 `user` 를 새로운 `props`에서 받아오게 됩니다.
 
-이것은 유저 인터페이스의 본질에 관한 흥미로운 관찰을 이끌어 냅니다. 만약 우리가 UI가 개념적으로 현재 application의 상태라고 말한다면, **이벤트 핸들러는 render 결과의 한 부분입니다. - 시각적 결과와 같이요.** 우리들의 이벤트 핸들러는 일부의 prop과 state가 속해 있는 일부의 render에 속하게 됩니다.
+이것은 유저 인터페이스의 본질에 관한 흥미로운 관찰을 이끌어 냅니다. 만약 우리가 UI가 개념적으로 현재 application의 상태라고 말한다면, **이벤트 핸들러는 render 결과의 한 부분입니다. - 시각적 결과와 같이요.** 우리들의 이벤트 핸들러는 특정 prop과 state가 속해 있는 특정 render에 속하게 됩니다.
 
 그러나, this.props의 콜백을 읽는 timeout을 스케쥴링하는것은 그 연관을 무너트립니다. 우리의 `showMessage` callback은 어느 특정 render에 묶여 있지 않습니다, 그리고 이것은 올바른 props 를 잃어 버리게 됩니다. 그 연결로 부터 받아온 `this`로 부터 읽게 되는것입니다.
 
@@ -157,7 +157,7 @@ class ProfilePage extends React.Component {
 }
 ```
 
-이것은 [제대로 동작합니다.](https://codesandbox.io/s/3q737pw8lq) 그러나, 이 접근 방식은 코드를 매우 중요하게, 에러가 많이 발생하고 이것저것 신경쓸게 많아지게 만듭니다. 단 하나의 prop대신 우리는 어떤것이 필요하게 될까요? **만약 우리가 state에 접근해야한다면 어떨까요? 만약 `showMessage` 가 다른 method를 부르게 되면, 그 메소드는 `this.props.something` 혹은 `this.state.something` 을 읽게 되고, 우리는 또다시 똑같은 문제에 직면하게 됩니다.**우리는 그래서 showMessage로 부터 불린 모든 메소드들에게 `this.props`와 `this.state`를 넘겨줘야 하게 됩니다.
+이것은 [제대로 동작합니다.](https://codesandbox.io/s/3q737pw8lq) 그러나, 이 접근 방식은 코드를 매우 중요하게, 에러가 많이 발생하고 이것저것 신경쓸게 많아지게 만듭니다. 만약 우리가 하나의 prop대신 여러개의 prop이 필요한 상황에서는 어떻게 될까요? 만약 우리가 state에 접근해야한다면 어떨까요? **만약 `showMessage` 가 다른 method를 부르게 되면, 그 메소드는 `this.props.something` 혹은 `this.state.something` 을 읽게 되고, 우리는 또다시 똑같은 문제에 직면하게 됩니다.**우리는 그래서 showMessage로 부터 불린 모든 메소드들에게 `this.props`와 `this.state`를 넘겨줘야 하게 됩니다.
 
 이렇게 하면 클래스에 의해 제공되는 쉽게 알아들을 수 있는 것들을 잃어버리게 됩니다. 이것은 또한 기억하거나 강제하기가 어려워서, 사람들이 종종 버그들과 맞딱드리게 됩니다.
 
@@ -192,7 +192,7 @@ class ProfilePage extends React.Component {
 
 아니요, 이것은 아무것도 고치지 못합니다. 기억하세요, 문제는 `this.props`가 늦게 읽혀 지는 것입니다. - 우리가 사용하는 syntax에 있는 것이 아닙니다. **그러나, 이 문제는 우리가 자바스크립트의 클로져에 완벽히 의존한다면, 이문제점은 사라지게 될 것입니다.**
 
-클로져는 시간이 지남에 따라 값이 변해지고 그것을 생각하기 매우 어렵기 때문에 종종 피합니다. 하지만 리액트에선, prop과 state는 변하지않습니다! (최소한, 이것은 강하게 추천됩니다) 그것은 클로저의 주요한 발걸음을 제거합니다.
+클로져는 시간이 지남에 따라 값이 변해지는 값들을 생각하기 매우 [어렵기](https://wsvincent.com/javascript-closure-settimeout-for-loop/) 때문에 종종 피합니다. 하지만 리액트에선, prop과 state는 변하지않습니다! (최소한, 이것은 강하게 추천됩니다) 그것은 클로저의 주요한 발걸음을 제거합니다.
 
 이것은 당신이 특정 렌더에서 prop과 state에 가까이 하고 있다면, 당신은 언제나 같게 유지할수 있다는것을 의미합니다.
 
@@ -269,7 +269,7 @@ function ProfilePage({ user }) {
 
 만약 부모 컴포넌트에서 `ProfilePage`를 다른 props들과 함께 render 한다면, 리액트는 `ProfilePage` 함수를 다시한번 부르게 됩니다. 그러나 이미 우리가 이미 클릭한 이벤트 핸들러는 예전 렌더에 속해 있게 되고, 이것의 user value를 showMessage에서 이것을 읽게 됩니다. 그들은 그대로 남아있게 됩니다.
 
-그 이유는, function 버전인 [이 데모](https://codesandbox.io/s/pjqnl16lm7)에서, Sophie의 프로필에서 Follow를 클릭하고, Sunil로 바꿀때 alert는 'Followed Sophie'리고 뜨는 것입니다.
+따라서, function 버전인 [이 데모](https://codesandbox.io/s/pjqnl16lm7)에서, Sophie의 프로필에서 Follow를 클릭하고, Sunil로 바꿀때 alert는 'Followed Sophie'라고 뜨는 것입니다.
 
 ![image](https://overreacted.io/fix-84396c4b3982827bead96912a947904e.gif)
 
@@ -279,7 +279,7 @@ function ProfilePage({ user }) {
 
 이제는 우리는 리액트에서의 클래스와 함수형에서의 큰 차이를 한번 이해해봅시다.
 
-> Function component들을 render된 value들을 capture 합니다.
+> Function component들은 render된 value들을 capture 합니다.
 
 Hook과 함께면, 우리는 동일한 원리를 state에 적용 시킬수 있게 됩니다. 이 예제를 살펴봅시다:
 
@@ -310,7 +310,7 @@ function MessageThread() {
 
 (여기 [라이브 데모](https://codesandbox.io/s/93m5mz9w24)가 있습니다.)
 
-이것은 매우 좋지않은 메시지 앱 UI이더라도, 우리는 같은 점을 설명할것입니다: 만약 특정한 메시지를 보낸다면, 우리는 컴포넌트는 보내진 메시지들에 대해서 혼동되지 않을 것입니다. 이러한 function 컴포넌트의 메시지는 브라우저에 의해 불리게 된 클릭핸들러에 의해 리턴된 렌더에 종속된 스테이트를 캡쳐하게 됩니다. 그래서 메시지는 send를 클릭했을때 input에 있었던 input으로 message가 set 되는것입니다.
+이것은 매우 좋지않은 메시지 앱 UI이더라도, 우리는 같은 점을 설명할것입니다: 만약 특정한 메시지를 보낸다면, 우리의 컴포넌트는 보내진 메시지들에 대해서 혼동되지 않을 것입니다. 이러한 function 컴포넌트의 메시지는 브라우저에 의해 불리게 된 클릭핸들러에 의해 리턴된 렌더에 종속된 스테이트를 캡쳐하게 됩니다. 그래서 메시지는 send를 클릭했을때 input에 있었던 input으로 message가 set 되는것입니다.
 
 ---
 
@@ -380,7 +380,7 @@ function MessageThread() {
 
 우리는 effect안에서 할당을 하고 ref 값은 dom이 업데이트 되면 변하게 됩니다. 이것은 우리의 변화가 interruptible한 렌더링에 의존하고 있는 [Time Slicing과 Suspense](https://reactjs.org/blog/2018/03/01/sneak-peek-beyond-react-16.html) 와 같은 feature들을 무너뜨리지 않게 됩니다.
 
-이것과 같이 ref를 사용하는것은 자주 필요하지는 않습니다. **prop과 state를 캡쳐하는것은 매우 좋은 default 입니다.** 그러나, 이것은 Imperative API들과 같은 interval 그리고 subscriptions 와 함께 할때 매우 손쉬워 집니다. 이것과 같은 값들을 추적할수 있다는것을 기억하세요 - prop그리고 state, 그리고 전체 props 객체들, 그리고 심지어 함수들
+이것과 같이 ref를 사용하는것은 자주 필요하지는 않습니다. **prop과 state를 캡쳐하는것이 더 좋은 default 입니다.** 그러나, 이것은 Imperative API들과 같은 interval 그리고 subscriptions 와 함께 할때 매우 손쉬워 집니다. 이것과 같은 값들을 추적할수 있다는것을 기억하세요 - prop그리고 state, 그리고 전체 props 객체들, 그리고 심지어 함수들
 
 이러한 패턴은 최적화에도 매우 손쉬워지게 됩니다. - 예를들어 `useCallback` identity가 종종 바뀔때 말이죠. 그러나 [reducer를 사용하는것](https://reactjs.org/docs/hooks-faq.html#how-to-avoid-passing-callbacks-down)은 종종 [좋은 해답이 됩니다.](https://github.com/ryardley/hooks-perf-issues/pull/3) (나중의 블로그 포스팅 주제입니다.!)
 
@@ -390,7 +390,7 @@ function MessageThread() {
 
 우리가 위에서 봤듯이, 클로져는 미묘한 문제들을 해결해주고 인지하기 어려운 문제들을 해결해 줍니다. 유사하게, [Concurrent mode](https://reactjs.org/blog/2018/03/01/sneak-peek-beyond-react-16.html)에서 동작하는 코드들을 매우 쉽게 만들어줍니다. 이것은 컴포넌트 안에 있는 로직들이 prop과 state들을 렌더상에서 정확히 보여주게 되기 때문에 가능하게 만듭니다.
 
-모든 케이스들에서, **"state 클로져들"의 문제점들은 "변하지않는 함수", "props는 언제나 같다" 라는 점들을 잘못 사용한 것입니다.** 이 case가 아니더라도, 저는 이 포스트가 명확하게 도움이 되길 원합니다.
+모든 케이스들에서, **좋지않은 클로져들"의 문제점들은 "변하지않는 함수", "props는 언제나 같다" 라는 점들을 잘못 사용한 것입니다.** 이 case가 아니더라도, 저는 이 포스트가 명확하게 도움이 되길 원합니다.
 
 함수들은 그들의 prop과 state에 가까이 다가가 있습니다. - 그리고 그들의 identity는 매우 중요합니다. 이것은 버그가 아닙니다, 그리고 function 컴포넌트의 특징입니다. 함수형 컴포넌트는 useEffect 혹은 useCallback을 위한 "dependencies array" 로 부터 제외시키지 말아야 합니다. 예를들어 (옳게 고치면, 대개 useReducer나 useRef 같은 것들의 해답입니다 - 우리는 곧 어떻게 그것들을 선택할지 보게 될것입니다.)
 
@@ -402,6 +402,6 @@ function MessageThread() {
 
 함수형 컴포넌트들은 이 룰에 대해서 예외가 아닙니다. 이것은 리액트에서의 것들을 배울때 기본이 되는 지식일것입니다. 이것은 클래스컴포넌트에서의 마음가짐으로 부터 조금 조정이 필요합니다. 하지만 이 아티클들은 새로운 눈으로 바라볼수 있도록 도와주게 될것입니다.
 
-리액트의 함수형은 언제 그들의 값들을 capture할것입니다 - 그리고 이제 우리는 그 이유를 알게 되었습니다.
+리액트의 함수형은 언제나 그들의 값들을 capture할것입니다 - 그리고 이제 우리는 그 이유를 알게 되었습니다.
 
 ![image](https://overreacted.io/pikachu-fc3bddf6d4ca14bc77917ac0cfad3608.gif)
