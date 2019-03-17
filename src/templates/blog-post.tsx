@@ -42,6 +42,9 @@ const Wrapper = styled.div`
   h5 {
     font-size: 18px;
   }
+  img {
+    max-width: 100%;
+  }
 `;
 
 interface BlogPostProps extends LayoutProps {
