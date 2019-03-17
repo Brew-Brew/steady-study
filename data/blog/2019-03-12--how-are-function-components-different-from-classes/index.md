@@ -70,7 +70,7 @@ class ProfilePage extends React.Component {
 }
 ```
 
-이것은 일반적으로 이 두개의 코드 snippet들이 같다고 생각합니다. 사람들은 종종 자유롭게 이러한 패턴들을 그들의 함축성에 대해서 인지하지 않고 리팩토링하곤 합니다.
+일반적으로 이 두개의 코드 snippet들이 같다고 생각합니다. 사람들은 종종 자유롭게 이러한 패턴들을 그들의 함축성에 대해서 인지하지 않고 리팩토링하곤 합니다.
 
 ![image](https://overreacted.io/wtf-1d3c7a341ee3fcadc79df00e7d872e4b.gif)
 
