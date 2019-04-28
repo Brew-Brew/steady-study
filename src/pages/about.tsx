@@ -7,7 +7,13 @@ import { withLayout } from "../components/Layout";
 import Tag from "../components/Tag/Tag";
 import colors from "../constant/colors";
 import GlobalFontStyle from "../util/globalFont";
-import { abooutInfo, careerInfo, skillInfo } from "../constant/data";
+import {
+  abooutInfo,
+  careerInfo,
+  skillInfo,
+  mottoInfo,
+  pressInfo
+} from "../constant/data";
 
 const fadedAnimation = keyframes`${fadeInDown}`;
 
@@ -125,6 +131,29 @@ const AboutPage = () => {
               </ul>
             </InfoWrapper>
           );
+        })}
+        <div />
+      </Segment>
+      <Segment>
+        <InfoTitle>Press release</InfoTitle>
+        {pressInfo.map(info => {
+          return (
+            <InfoWrapper
+              style={{ borderBottom: `1px solid ${colors.mainColor}` }}
+            >
+              <h3>{info.title}</h3>
+              <a>{info.link}</a>
+              <p>{info.ref}</p>
+              <p>{info.content}</p>
+              <br />
+            </InfoWrapper>
+          );
+        })}
+      </Segment>
+      <Segment>
+        <InfoTitle>Mottos</InfoTitle>
+        {mottoInfo.map(motto => {
+          return <li>{motto}</li>;
         })}
         <div />
       </Segment>
