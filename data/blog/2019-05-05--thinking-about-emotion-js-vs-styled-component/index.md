@@ -17,6 +17,15 @@ draft: false
 
 비교 관련 글 : <https://github.com/jsjoeio/styled-components-vs-emotion>
 
+
+
+## trends
+
+npm trends: https://www.npmtrends.com/@emotion/core-vs-styled-components
+
+![image](https://user-images.githubusercontent.com/26598542/57197485-c27f0480-6fa2-11e9-9bc2-35ec4ba12763.png)
+
+
 ### 크기
 
 크기면에서는 emotion이 더 작았습니다.
