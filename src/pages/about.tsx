@@ -12,7 +12,7 @@ import {
   careerInfo,
   skillInfo,
   mottoInfo,
-  pressInfo
+  pressInfo,
 } from "../constant/data";
 
 const fadedAnimation = keyframes`${fadeInDown}`;
@@ -82,7 +82,7 @@ const AboutPage = () => {
       </Segment>
       <Segment>
         <InfoTitle>My Info</InfoTitle>
-        {abooutInfo.map(info => {
+        {abooutInfo.map((info) => {
           return (
             <a href={info.link}>
               <InfoWrapper>
@@ -96,12 +96,12 @@ const AboutPage = () => {
       </Segment>
       <Segment>
         <InfoTitle>My Career</InfoTitle>
-        {careerInfo.map(info => {
+        {careerInfo.map((info) => {
           return (
             <InfoWrapper>
               <CompanyIcon src={info.img} />
               <SkillWrapper>
-                {info.skills.map(skill => {
+                {info.skills.map((skill) => {
                   return <Tag content={skill} />;
                 })}
               </SkillWrapper>
@@ -109,7 +109,7 @@ const AboutPage = () => {
               <ul style={{ padding: "1rem" }}>
                 <li>{info.date}</li>
                 <li>{info.description}</li>
-                {info.task.map(content => {
+                {info.task.map((content) => {
                   return <li>{content}</li>;
                 })}
               </ul>
@@ -120,12 +120,12 @@ const AboutPage = () => {
       </Segment>
       <Segment>
         <InfoTitle>Skills</InfoTitle>
-        {skillInfo.map(info => {
+        {skillInfo.map((info) => {
           return (
             <InfoWrapper>
               <h3>{info.title}</h3>
               <ul>
-                {info.description.map(description => {
+                {info.description.map((description) => {
                   return <li>{description}</li>;
                 })}
               </ul>
@@ -136,7 +136,7 @@ const AboutPage = () => {
       </Segment>
       <Segment>
         <InfoTitle>Press release</InfoTitle>
-        {pressInfo.map(info => {
+        {pressInfo.map((info) => {
           return (
             <InfoWrapper
               style={{ borderBottom: `1px solid ${colors.mainColor}` }}
@@ -152,7 +152,7 @@ const AboutPage = () => {
       </Segment>
       <Segment>
         <InfoTitle>Mottos</InfoTitle>
-        {mottoInfo.map(motto => {
+        {mottoInfo.map((motto) => {
           return <li>{motto}</li>;
         })}
         <div />
