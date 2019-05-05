@@ -439,7 +439,13 @@ const TitleClass = styled.h1`
 
 ### 마치며
 
-css in js 라이브러리를 도입하면 기존 스크립트에 영향이 커지고 해쉬방식이라 디버깅이 쉽지 않지 않아 협업이 쉽지 않지 않을까 하는 생각이 초기에 들었었는데, css 관련 코드의 관심사 분리와 디버깅을 해결하는 여러 방안들이 있다는 것을 알게되었고 또 이로인해 협업관점에서의 문제점이 해결됨과 동시에 css-in-js의 여러 feature들을 활용하면 디자인 팀과의 디자인 qa 에서 얻는 협업 관점의 이점과 css-in-js 라이브러리 (새로운 방식의 스타일링 방식)에서 제공되는 여러 기능들로써 얻는 개발 관점의 이점을 모두 얻을 수 있겠다는 생각이 들었습니다.
+css in js 라이브러리를 도입하면 기존 스크립트에 영향이 커지고 해쉬방식이라 디버깅이 쉽지 않지 않아 협업이 쉽지 않지 않을까 하는 생각이 초기에 들었었는데, css 관련 코드의 관심사 분리와 디버깅을 해결하는 여러 방안들이 있다는 것을 알게되었고 또 이로인해 협업관점에서의 문제점이 해결됨과 동시에 css-in-js의 여러 feature들을 활용하면 디자인 팀과의 디자인 qa 에서 얻는 협업 관점의 이점과 css-in-js 라이브러리 (새로운 방식의 스타일링 방식)에서 제공되는 여러 기능들로써 얻는 개발 관점의 이점을 모두 얻을 수 있겠다는 생각이 들었습니다. 또한 next.js로 ssr을 지원하게 될것 같은데 서버사이드 렌더링에도 css in js방식을 공홈에서도 추천해주고 있어 더 큰 확신이 들기도 했습니다. https://nextjs.org/learn/basics/styling-components
+
+```
+Consequently, there are a bunch of practical issues to consider 
+with traditional CSS-file-based styling (especially with SSR), 
+so we suggest avoiding this method when styling for Next.js.
+```
 
 같이 보면 좋을 링크들
 - https://css-tricks.com/the-fragmented-but-evolving-state-of-css-in-js/
