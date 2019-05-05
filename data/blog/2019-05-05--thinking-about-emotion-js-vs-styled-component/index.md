@@ -13,6 +13,33 @@ draft: false
 
 새롭게 프로젝트를 설계 하기 위해 요새 많은 개발자들이 사용하고 있는 css-in-js 스타일링 방식인 emotion.js 그리고 styled component에 대해 파악하기 위해 여러가지를 조사하여 보았습니다.
 
+## emotion vs styled component
+
+비교 관련 글 : <https://github.com/jsjoeio/styled-components-vs-emotion>
+
+### 크기
+
+크기면에서는 emotion이 더 작았습니다.
+
+styled-component : `15.8kb` <https://bundlephobia.com/result?p=styled-components@4.2.0>
+
+![image](https://user-images.githubusercontent.com/26598542/57195774-6f508600-6f91-11e9-88e4-d3408474bfac.png)
+
+@emotion/core: `6.4kb` <https://bundlephobia.com/result?p=@emotion/core@10.0.10>
+
+![image](https://user-images.githubusercontent.com/26598542/57195777-71b2e000-6f91-11e9-94de-c5ab878b8f7f.png)
+
+
+## emotion.js와 styled component 비교 예제
+
+두 라이브러리를 적용해 보기 위해 간단한 count app에 emotion과 styled component를 적용하며 비교해보았습니다. 
+
+같은 마크업에 emotion과 styled component를 적용하여 비교해 보았습니다. 한눈에 차이점을 파악하기 쉬울것입니다.
+
+깃헙 : <https://github.com/zx6658/react-hook-playground/tree/master/hook-count-style>
+
+<iframe src="https://codesandbox.io/embed/k28q2nv2w7?autoresize=1&fontsize=14" title="k28q2nv2w7" style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;" sandbox="allow-modals allow-forms allow-popups allow-scripts allow-same-origin"></iframe>
+
 우선,
 
 1.  협업관점
@@ -23,13 +50,17 @@ draft: false
 `협업관점`에서 고려하려 했던점은 이전에 scss, css module 을 활용할때에는 디자인 팀과 함께 디자인 qa 시에 코드 수정권한을 주어 효율적인 업무를 하고 있었기에, 기존의 이 업무방식을 유지하면서 css-in-js 라이브러리를 활용할 방법에 대해서 생각해 보기로 했기 때문입니다.
 
 일단 이렇게 할때 우선시 되어야 할점은 css 관련 코드의 관심사 분리였습니다.
+
 기존 방식은 css 코드를 분리하여 그 css 파일을 import 하는 방식이었기 때문에 기존 js코드 들을 건드리지 않기 때문에 크게 신경쓰지 않아도 되는 사항이었습니다.
 
 emotion.js 와 styled component 모두 css 관련한 js 코드들을 따로 모아놓고 import하면 되었기에 관심사 분리는 가능했었습니다.
 
-`개발관점`에서는 js 기반의 syntax안에 css 코드가 들어가므로 개발자 경험 관점에서는 매우 유연한 코드 및 효율적인 코드 작성이 가능했습니다. 또한 emotion 및 styled component에서 제공하는 여러 feature들이 scss가 제공하던 기능 (mixin, nested) 그 이상을 제공하여 매우 편리하였습니다. 또한 ssr 지원이나 cache 지원등등 개발관점에서는 이점이 있는것은 확연히 알 수 있었습니다.
+---
 
-두 라이브러리를 적용해 보기 위해 간단한 count app에 emotion과 styled component를 적용하며 비교해보았습니다. 이는 마지막에 살펴보고 우선 각 라이브러리의 공식사이트에 나와있는 내용으로 비교해 봅시다.
+`개발관점`에서는 js 기반의 syntax안에 css 코드가 들어가므로 개발자 경험 관점에서는 매우 유연한 코드 및 효율적인 코드 작성이 가능했습니다. 
+
+또한 emotion 및 styled component에서 제공하는 여러 feature들이 scss가 제공하던 기능 (mixin, nested) 그 이상을 제공하여 매우 편리하였습니다. 또한 ssr 지원이나 cache 지원등등 개발관점에서는 이점이 있는것은 확연히 알 수 있었습니다.
+
 
 ## 협업관점
 
@@ -162,30 +193,6 @@ hash 방식으로 class name을 자동으로 할당해 주어 css 가 겹치는 
 cra에서는 별도 설정없이 import styled 'styled-components/macro' 과 같은 형태로 import 한것을 바꿔주기만 하면,  full-featured option 을 활용하여 디버깅을 할수 있었습니다. 그러면 아래와 같은 prefix가 붙는것을 확인할 수 있었습니다.
 
 ![image](https://user-images.githubusercontent.com/26598542/57197060-9745e680-6f9d-11e9-8516-20892c53b1b1.png)
-
-## emotion vs styled component
-
-비교 관련 글 : <https://github.com/jsjoeio/styled-components-vs-emotion>
-
-### 크기
-
-크기면에서는 emotion이 더 작았습니다.
-
-styled-component : `15.8kb` <https://bundlephobia.com/result?p=styled-components@4.2.0>
-
-![image](https://user-images.githubusercontent.com/26598542/57195774-6f508600-6f91-11e9-88e4-d3408474bfac.png)
-
-@emotion/core: `6.4kb` <https://bundlephobia.com/result?p=@emotion/core@10.0.10>
-
-![image](https://user-images.githubusercontent.com/26598542/57195777-71b2e000-6f91-11e9-94de-c5ab878b8f7f.png)
-
-## emotion.js와 styled component 비교 예제
-
-같은 마크업에 emotion과 styled component를 적용하여 비교해 보았습니다. 한눈에 차이점을 파악하기 쉬울것입니다.
-
-깃헙 : <https://github.com/zx6658/react-hook-playground/tree/master/hook-count-style>
-
-<iframe src="https://codesandbox.io/embed/k28q2nv2w7?autoresize=1&fontsize=14" title="k28q2nv2w7" style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;" sandbox="allow-modals allow-forms allow-popups allow-scripts allow-same-origin"></iframe>
 
 * * *
 
@@ -356,6 +363,8 @@ const titleClass = (props) => css`
 
 ## styled-component
 
+다음은 styled-component에 대한 소개입니다.
+
 링크 : <https://www.styled-components.com/docs>
 
 ![image](https://cdn-images-1.medium.com/max/1600/1*p1TndLk3UsGPBsM7qHPZIw.png)
@@ -427,3 +436,13 @@ const TitleClass = styled.h1`
   }
 `
 ```
+
+### 마치며
+
+css in js 라이브러리를 도입하면 기존 스크립트에 영향이 커지고 해쉬방식이라 디버깅이 쉽지 않지 않아 협업이 쉽지 않지 않을까 하는 생각이 초기에 들었었는데, css 관련 코드의 관심사 분리와 디버깅을 해결하는 여러 방안들이 있다는 것을 알게되었고 또 이로인해 협업관점에서의 문제점이 해결됨과 동시에 css-in-js의 여러 feature들을 활용하면 디자인 팀과의 디자인 qa 에서 얻는 협업 관점의 이점과 css-in-js 라이브러리 (새로운 방식의 스타일링 방식)에서 제공되는 여러 기능들로써 얻는 개발 관점의 이점을 모두 얻을 수 있겠다는 생각이 들었습니다.
+
+같이 보면 좋을 링크들
+- https://css-tricks.com/the-fragmented-but-evolving-state-of-css-in-js/
+- https://css-tricks.com/bridging-the-gap-between-css-and-javascript-css-in-js/  
+- https://blog.bitsrc.io/5-ways-to-style-react-components-in-2019-30f1ccc2b5b
+- https://medium.freecodecamp.org/learn-emotionjs-during-your-morning-coffee-its-that-easy-2bc60213aca7
