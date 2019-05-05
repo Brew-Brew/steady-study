@@ -55,6 +55,8 @@ styled-component : `15.8kb` <https://bundlephobia.com/result?p=styled-components
 
 emotion.js 와 styled component 모두 css 관련한 js 코드들을 따로 모아놓고 import하면 되었기에 관심사 분리는 가능했었습니다.
 
+또한 협업시에 Chrome dev tool로 classname으로 서로 디자인 qa 커뮤니케이션을 하는데 css in js 방식은 따로 prefix같은것을 붙히지 않아 어려움이 있지않을까 생각했었는데 각자의 라이브러리에서 그 해결방안을 제시하고 있었습니다.
+
 ---
 
 `개발관점`에서는 js 기반의 syntax안에 css 코드가 들어가므로 개발자 경험 관점에서는 매우 유연한 코드 및 효율적인 코드 작성이 가능했습니다. 
