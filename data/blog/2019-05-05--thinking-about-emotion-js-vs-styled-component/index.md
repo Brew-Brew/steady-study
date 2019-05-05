@@ -194,7 +194,8 @@ styled-component : `15.8kb` <https://bundlephobia.com/result?p=styled-components
 ![image](https://cdn-images-1.medium.com/max/1600/1*gGzRmUKNOC_X7klFjTk8EA.png)
 
 링크: <https://emotion.sh/docs/introduction>
-적용해보며 여러 장점이 있었지만, 그중 주요한 feature들만 위 예제를 예시로 들어 소개하겠습니다.
+
+적용해보며 여러 장점이 있었지만, 그중 주요한 `feature`들만 위 예제를 예시로 들어 소개하겠습니다.
 
 우선 emotion js에 css prop을 적용하는 방식은 `2가지` 가 존재합니다. 그중, 저는 react 기반으로 개발을 하고 있으므로 두번째를 택했고, `object 방식`(<https://emotion.sh/docs/object-styles>), 그리고 `css template literal` 중 디자인 팀과 협업시에 더 명확한 코드를 보여줄수 있는 css templae literal을 사용하였습니다. 
 
@@ -326,7 +327,32 @@ const blackButton = css`
 `
 ```
 
-* * *
+### media query
+
+아래와 같은 별도의 media query function을 만들어 활용 할수 있었습니다. include-media 라이브러리를 활용은 못했지만 js 기반의 syntax를 css에 적용할수 있기 때문에 비슷하게 function을 추후에 만들수 있겠다는 생각이 들었습니다.
+
+```javascript
+const breakpoints = [320,768,1024,1440];
+
+const media = breakpoints.map(
+  bp => `@media (min-width: ${bp}px)`
+)
+
+const titleClass = (props) => css`
+  label: title;
+  font-size: 30px;
+  color: ${props.color}
+  ${[media[0]]} {
+    font-size: 40px;
+  }
+  ${[media[1]]} {
+    font-size: 50px;
+  }
+  ${[media[2]]} {
+    font-size: 60px;
+  }
+```
+---
 
 ## styled-component
 
@@ -373,4 +399,31 @@ const WhiteButton = styled(Button)`
 const BlackButton = styled(Button)`
   background-color: black;
   color: white;
+```
+
+### media query
+
+styled component 역시 아래와 같이 function으로 활용이 가능했습니다.
+
+```javascript
+
+const breakpoints = [320,768,1024,1440];
+
+const media = breakpoints.map(
+  bp => `@media (min-width: ${bp}px)`
+)
+
+const TitleClass = styled.h1`
+  font-size: 30px;
+  color: ${props => props.color}
+  ${[media[0]]} {
+    font-size: 40px;
+  }
+  ${[media[1]]} {
+    font-size: 50px;
+  }
+  ${[media[2]]} {
+    font-size: 60px;
+  }
+`
 ```
