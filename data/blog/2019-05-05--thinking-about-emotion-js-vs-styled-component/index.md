@@ -1,7 +1,7 @@
 ---
 title: Thinking about emotion js vs styled component
-createdDate: '2019-05-05'
-updatedDate: '2019-05-05'
+createdDate: "2019-05-05"
+updatedDate: "2019-05-05"
 author: Ideveloper
 tags:
   - emotion.js
@@ -17,14 +17,11 @@ draft: false
 
 비교 관련 글 : <https://github.com/jsjoeio/styled-components-vs-emotion>
 
-
-
 ### trends
 
 npm trends: https://www.npmtrends.com/@emotion/core-vs-styled-components
 
 ![image](https://user-images.githubusercontent.com/26598542/57197485-c27f0480-6fa2-11e9-9bc2-35ec4ba12763.png)
-
 
 ### 크기
 
@@ -38,10 +35,9 @@ styled-component : `15.8kb` <https://bundlephobia.com/result?p=styled-components
 
 ![image](https://user-images.githubusercontent.com/26598542/57195777-71b2e000-6f91-11e9-94de-c5ab878b8f7f.png)
 
-
 ## emotion.js와 styled component 비교 예제
 
-두 라이브러리를 적용해 보기 위해 간단한 count app에 emotion과 styled component를 적용하며 비교해보았습니다. 
+두 라이브러리를 적용해 보기 위해 간단한 count app에 emotion과 styled component를 적용하며 비교해보았습니다.
 
 같은 마크업에 emotion과 styled component를 적용하여 비교해 보았습니다. 한눈에 차이점을 파악하기 쉬울것입니다.
 
@@ -68,10 +64,9 @@ emotion.js 와 styled component 모두 css 관련한 js 코드들을 따로 모�
 
 ---
 
-`개발관점`에서는 js 기반의 syntax안에 css 코드가 들어가므로 개발자 경험 관점에서는 매우 유연한 코드 및 효율적인 코드 작성이 가능했습니다. 
+`개발관점`에서는 js 기반의 syntax안에 css 코드가 들어가므로 개발자 경험 관점에서는 매우 유연한 코드 및 효율적인 코드 작성이 가능했습니다.
 
 또한 emotion 및 styled component에서 제공하는 여러 feature들이 scss가 제공하던 기능 (mixin, nested) 그 이상을 제공하여 매우 편리하였습니다. 또한 ssr 지원이나 cache 지원등등 개발관점에서는 이점이 있는것은 확연히 알 수 있었습니다.
-
 
 ## 협업관점
 
@@ -79,7 +74,7 @@ emotion.js 와 styled component 모두 css 관련한 js 코드들을 따로 모�
 
 두 라이브러리 모두 css-in-js 방식이므로 결국엔 js syntax안에 css 코드가 들어가는 것이므로 관심사를 분리하는것은 간단했습니다. css 관련 js 파일이 기존 주요 로직에 영향을 끼치면 안되므로 css 관련 js코드는 분리하여 보관했습니다.
 
--   emotion 방식
+- emotion 방식
 
 ```javascript
 // css/WithEmotionComponent.js
@@ -112,10 +107,10 @@ import { wrapperClass, imgClass, titleClass, whiteButton, blackButton } from './
 
 function App() {
   const [ count , setCount ] = useState(0);
-  
+
   const addCount = () => setCount(count + 1);
   const subCount = () => setCount(count - 1);
-  
+
   return (
     <div css={
       wrapperClass
@@ -134,7 +129,7 @@ function App() {
 export default App;
 ```
 
--   styled-component 방식
+- styled-component 방식
 
 ```javascript
 // css/WithStyledComponent.js
@@ -149,7 +144,7 @@ const ImgClass = styled.img`
 
 export {
   WrapperClass,
-  TitleClass, 
+  TitleClass,
   WhiteButton,
   BlackButton,
   ImgClass
@@ -162,7 +157,7 @@ import { WrapperClass, TitleClass, ImgClass, WhiteButton, BlackButton} from './c
 
 function App() {
   const [ count , setCount ] = useState(0);
-  
+
   const addCount = () => setCount(count + 1);
   const subCount = () => setCount(count - 1);
 
@@ -188,7 +183,9 @@ css in js 관련 라이브러리들은 class name에 자동으로 hash를 붙여
 
 ![image](https://cdn-images-1.medium.com/max/1600/1*McKlxIMuHFOWXY_tswRzDg.png)
 
-#### emotion.js (라벨링)
+#### emotion.js (labeling, babel plugin emotion - labelformat )
+
+#####1.labeling
 
 emotion.js에서는 라벨링 방식으로 디버깅을 할수 있게 기능을 제공하고 있었습니다.
 hash 방식으로 class name을 자동으로 할당해 주어 css 가 겹치는 이슈는 해결하고, 디자이너와의 디자인 qa시 커뮤니케이션을 위한 문제도 해결이 된 것입니다.
@@ -197,15 +194,69 @@ hash 방식으로 class name을 자동으로 할당해 주어 css 가 겹치는 
 
 ![image](https://user-images.githubusercontent.com/26598542/57195097-92773780-6f89-11e9-9b4b-6e3e6555dbc2.png)
 
+#####2.babel - plugin - emotion (label format)
+
+링크 : https://emotion.sh/docs/babel-plugin-emotion#labelformat
+
+위의 라벨링 방식은 자동으로 뒤에 특정 label을 붙여 주지만, 컴포넌트의 이름이나 코드의 위치와는 상관없는 label이 붙으므로, 자동으로 이와 관련한 이름이 할당되는것이 좋을 것입니다.
+
+이를 babel plugin emotion이라는 바벨 플러그인의 label-format 옵션을 활용하면 해결할 수 있습니다.
+
+링크를 들어가면 알수 있지만, 아래 3가지의 property로 할당되는 class name을 지정해 줄수 있습니다.
+
+```
+[local] - the name of the variable the result of the css or styled expression is assigned to.
+
+[filename] - name of the file (without extension) where css or styled expression is located.
+
+[dirname] - name of the directory containing the file where css or styled expression is located.
+```
+
+따라서 .babelrc 파일에서 아래와 같이 autoLabel을 true로 지정해주고, "labelFormat" 에 알맞은 형식을 넣어 customizing 해주기만 하면 됩니다. 예를들어 [dirname]-[filename]--[local] 와 같은 형태로 넣어주면 (코드의 위치 -- 파일이름 -- 변수명) 의 형태로 classname이 정해지는 것입니다.
+
+위의 labeling 방식은 별도로 설정을 잡아줄게 없어 편리하긴 하지만 매번 label 값을 넣어줘야 하고, 또 별도의 컨벤션이 없는 classname이 만들어 지기 때문에 qa나 협업시에 커뮤니케이션이 좋지 않을수 있으므로, 이 방식이 더 편리할것입니다. :)
+
+```javascript
+"plugins": [
+    [
+      "emotion",
+      {
+       "autoLabel": true
+       "labelFormat": "[dirname]-[filename]--[local]",
+      }
+    ]
+  ]
+```
+
 #### styled component (babel plugin)
 
 <https://www.styled-components.com/docs/tooling#babel-macro>
 
-cra에서는 별도 설정없이 import styled 'styled-components/macro' 과 같은 형태로 import 한것을 바꿔주기만 하면,  full-featured option 을 활용하여 디버깅을 할수 있었습니다. 그러면 아래와 같은 prefix가 붙는것을 확인할 수 있었습니다.
+cra에서는 별도 설정없이 import styled 'styled-components/macro' 과 같은 형태로 import 한것을 바꿔주기만 하면, full-featured option 을 활용하여 디버깅을 할수 있었습니다. 그러면 아래와 같은 prefix가 붙는것을 확인할 수 있었습니다.
 
 ![image](https://user-images.githubusercontent.com/26598542/57197060-9745e680-6f9d-11e9-8516-20892c53b1b1.png)
 
-* * *
+---
+
+## 개발 관점
+
+### ssr에 최적화 된 css-in-js 스타일링 방식
+
+기존 `css-module + css loader` 방식으로 스타일링을 할시에는 모든 css를 css 파일로 extract 해서 head안의 link 태그로 그 스타일을 참조하는 반면, `css-in-js` 기반의 스타일링은 dom 상단에 style 태그로 스타일을 입혀줌으로써 ssr에 최적화 된 스타일링을 사용할 수 있습니다.
+
+아래 캡쳐된 사진을 보면 알 수 있듯 style 관련 코드들을 서버에서 바로 받아 올수 있게됩니다.
+![image](https://user-images.githubusercontent.com/26598542/57569907-f17bf700-7436-11e9-974d-aa2a397df025.png)
+
+또한, next.js를 활용할 때에는 코드 스플리팅도 default로 지원하니 필요한 스타일만 불러옴으로써 ssr에 더 최적화 된 스타일링 방식일것입니다.
+
+https://www.infoq.com/news/2019/04/emotion-10-css-prop-styling
+
+```
+If you’re using the new css prop or styled, you don’t need to do anything other than calling React’s renderToString (or renderToNodeStream). This is especially exciting for component libraries because consumers don’t need to do anything special to use a component.
+You can now publish a React component to NPM with styles, and it will just work with server-side rendering without requiring consumers to do anything.
+```
+
+위 링크에서 발췌한 글에서 도 알 수 있듯 별도의 설정 없이 ssr에 최적화 된 스타일링을 적용할 수 있습니다.
 
 ## emotion.js
 
@@ -215,12 +266,12 @@ cra에서는 별도 설정없이 import styled 'styled-components/macro' 과 같
 
 적용해보며 여러 장점이 있었지만, 그중 주요한 `feature`들만 위 예제를 예시로 들어 소개하겠습니다.
 
-우선 emotion js에 css prop을 적용하는 방식은 `2가지` 가 존재합니다. 그중, 저는 react 기반으로 개발을 하고 있으므로 두번째를 택했고, `object 방식`(<https://emotion.sh/docs/object-styles>), 그리고 `css template literal` 중 디자인 팀과 협업시에 더 명확한 코드를 보여줄수 있는 css templae literal을 사용하였습니다. 
+우선 emotion js에 css prop을 적용하는 방식은 `2가지` 가 존재합니다. 그중, 저는 react 기반으로 개발을 하고 있으므로 두번째를 택했고, `object 방식`(<https://emotion.sh/docs/object-styles>), 그리고 `css template literal` 중 디자인 팀과 협업시에 더 명확한 코드를 보여줄수 있는 css templae literal을 사용하였습니다.
 
--   Frame work agnostic( 프레임워크와 관련 없이 사용할때)
--   React => @emotion/core
-    -   Object 방식
-    -   Css template literal (선호) css syntax를 그대로 사용하므로 협업 할때 편리할듯
+- Frame work agnostic( 프레임워크와 관련 없이 사용할때)
+- React => @emotion/core
+  - Object 방식
+  - Css template literal (선호) css syntax를 그대로 사용하므로 협업 할때 편리할듯
 
 ### composition
 
@@ -239,8 +290,8 @@ ex) <https://emotion.sh/docs/composition> 예제 참고 (-danger 가 적용될�
 위 예제에서 해당하는 부분은 아래 코드입니다.
 
 ```html
- <button css={[blackButton, whiteButton]} onClick={addCount}>+</button>
- <button css={[whiteButton, blackButton]} onClick={subCount}>-</button>
+<button css="{[blackButton," whiteButton]} onClick="{addCount}">+</button>
+<button css="{[whiteButton," blackButton]} onClick="{subCount}">-</button>
 ```
 
 ```javascript
@@ -261,7 +312,7 @@ const blackButton = css`
   label: black-button;
   background-color: black;
   color: white;
-`
+`;
 ```
 
 ### prop 기반으로 한 조건부 스타일링
@@ -271,27 +322,41 @@ const blackButton = css`
 ```javascript
 /** @jsx jsx */
 
-import React, { useState } from 'react';
-import { jsx } from '@emotion/core';
-import { wrapperClass, imgClass, titleClass, whiteButton, blackButton } from './css/WithEmotionComponent';
+import React, { useState } from "react";
+import { jsx } from "@emotion/core";
+import {
+  wrapperClass,
+  imgClass,
+  titleClass,
+  whiteButton,
+  blackButton
+} from "./css/WithEmotionComponent";
 
 function App() {
-  const [ count , setCount ] = useState(0);
-  
+  const [count, setCount] = useState(0);
+
   const addCount = () => setCount(count + 1);
   const subCount = () => setCount(count - 1);
-  
+
   return (
-    <div css={
-      wrapperClass
-    }>
-      <h1 color="white" css={titleClass}>With emotion</h1>//highlight-line
+    <div css={wrapperClass}>
+      <h1 color="white" css={titleClass}>
+        With emotion
+      </h1>
+      //highlight-line
       <p>MINIFIED :17.2kB</p>
       <p>MINIFIED + GZIPPED : 6.4kB</p>
-      <img css={imgClass} src="https://cdn-images-1.medium.com/max/1600/1*gGzRmUKNOC_X7klFjTk8EA.png" />
+      <img
+        css={imgClass}
+        src="https://cdn-images-1.medium.com/max/1600/1*gGzRmUKNOC_X7klFjTk8EA.png"
+      />
       <p>{count}</p>
-      <button css={[blackButton, whiteButton]} onClick={addCount}>+</button>
-      <button css={[whiteButton, blackButton]} onClick={subCount}>-</button>
+      <button css={[blackButton, whiteButton]} onClick={addCount}>
+        +
+      </button>
+      <button css={[whiteButton, blackButton]} onClick={subCount}>
+        -
+      </button>
     </div>
   );
 }
@@ -304,11 +369,10 @@ export default App;
 ![image](https://user-images.githubusercontent.com/26598542/57195204-f77f5d00-6f8a-11e9-897b-c16775a3e868.png)
 
 ```javascript
-const titleClass = (props) => css`
+const titleClass = props => css`
   label: title;
   font-size: 30px;
-  color: ${props.color}
-  ${[media[0]]} {
+  color: ${props.color} ${[media[0]]} {
     font-size: 40px;
   }
   ${[media[1]]} {
@@ -317,12 +381,12 @@ const titleClass = (props) => css`
   ${[media[2]]} {
     font-size: 60px;
   }
-`
+`;
 ```
 
 ### mixin과 같이 활용할수 있는 feature
 
-css in js의 장점중 하나인것 같습니다. js 기반이기 때문에 아래와 같이 자유로운 css extend가 이전의 scss의 mixin 처럼 가능합니다. 
+css in js의 장점중 하나인것 같습니다. js 기반이기 때문에 아래와 같이 자유로운 css extend가 이전의 scss의 mixin 처럼 가능합니다.
 
 ```javascript
 const button = css`
@@ -331,18 +395,18 @@ const button = css`
 `;
 
 const whiteButton = css`
-  ${button} 
+  ${button}
   label: white-button;
   background-color: white;
   color: black;
 `;
 
 const blackButton = css`
-  ${button} 
+  ${button}
   label: black-button;
   background-color: black;
   color: white;
-`
+`;
 ```
 
 ### media query
@@ -370,6 +434,7 @@ const titleClass = (props) => css`
     font-size: 60px;
   }
 ```
+
 ---
 
 ## styled-component
@@ -387,8 +452,7 @@ styled component 역시 prop을 기반으로 한 동적인 조건부 스타일�
 ```javascript
 const TitleClass = styled.h1`
   font-size: 30px;
-  color: ${props => props.color}
-  ${[media[0]]} {
+  color: ${props => props.color} ${[media[0]]} {
     font-size: 40px;
   }
   ${[media[1]]} {
@@ -397,7 +461,7 @@ const TitleClass = styled.h1`
   ${[media[2]]} {
     font-size: 60px;
   }
-`
+`;
 ```
 
 ### mixin 처럼 extend
@@ -426,17 +490,13 @@ const BlackButton = styled(Button)`
 styled component 역시 아래와 같이 function으로 활용이 가능했습니다.
 
 ```javascript
+const breakpoints = [320, 768, 1024, 1440];
 
-const breakpoints = [320,768,1024,1440];
-
-const media = breakpoints.map(
-  bp => `@media (min-width: ${bp}px)`
-)
+const media = breakpoints.map(bp => `@media (min-width: ${bp}px)`);
 
 const TitleClass = styled.h1`
   font-size: 30px;
-  color: ${props => props.color}
-  ${[media[0]]} {
+  color: ${props => props.color} ${[media[0]]} {
     font-size: 40px;
   }
   ${[media[1]]} {
@@ -445,7 +505,7 @@ const TitleClass = styled.h1`
   ${[media[2]]} {
     font-size: 60px;
   }
-`
+`;
 ```
 
 ### 마치며
@@ -453,13 +513,14 @@ const TitleClass = styled.h1`
 css in js 라이브러리를 도입하면 기존 스크립트에 영향이 커지고 해쉬방식이라 디버깅이 쉽지 않지 않아 협업이 쉽지 않지 않을까 하는 생각이 초기에 들었었는데, css 관련 코드의 관심사 분리와 디버깅을 해결하는 여러 방안들이 있다는 것을 알게되었고 또 이로인해 협업관점에서의 문제점이 해결됨과 동시에 css-in-js의 여러 feature들을 활용하면 디자인 팀과의 디자인 qa 에서 얻는 협업 관점의 이점과 css-in-js 라이브러리 (새로운 방식의 스타일링 방식)에서 제공되는 여러 기능들로써 얻는 개발 관점의 이점을 모두 얻을 수 있겠다는 생각이 들었습니다. 모든 기능들을 다 파악해 보진 못했지만 정말 많은 기능을 제공하여 개발자관점에서 정말 큰 이점을 제공하여 생산성에 큰 도움이 될거란 생각이 들었습니다. 또한 next.js로 ssr을 지원하게 될것 같은데 서버사이드 렌더링에도 css in js방식을 공홈에서도 추천해주고 있어 더 큰 확신이 들기도 했습니다. https://nextjs.org/learn/basics/styling-components
 
 ```
-Consequently, there are a bunch of practical issues to consider 
-with traditional CSS-file-based styling (especially with SSR), 
+Consequently, there are a bunch of practical issues to consider
+with traditional CSS-file-based styling (especially with SSR),
 so we suggest avoiding this method when styling for Next.js.
 ```
 
 같이 보면 좋을 링크들
+
 - https://css-tricks.com/the-fragmented-but-evolving-state-of-css-in-js/
-- https://css-tricks.com/bridging-the-gap-between-css-and-javascript-css-in-js/  
+- https://css-tricks.com/bridging-the-gap-between-css-and-javascript-css-in-js/
 - https://blog.bitsrc.io/5-ways-to-style-react-components-in-2019-30f1ccc2b5b
 - https://medium.freecodecamp.org/learn-emotionjs-during-your-morning-coffee-its-that-easy-2bc60213aca7
