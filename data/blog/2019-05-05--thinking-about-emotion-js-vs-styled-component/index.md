@@ -1,7 +1,7 @@
 ---
 title: Thinking about emotion js vs styled component
-createdDate: "2019-05-05"
-updatedDate: "2019-05-05"
+createdDate: '2019-05-05'
+updatedDate: '2019-05-20'
 author: Ideveloper
 tags:
   - emotion.js
@@ -19,7 +19,7 @@ draft: false
 
 ### trends
 
-npm trends: https://www.npmtrends.com/@emotion/core-vs-styled-components
+npm trends: <https://www.npmtrends.com/@emotion/core-vs-styled-components>
 
 ![image](https://user-images.githubusercontent.com/26598542/57197485-c27f0480-6fa2-11e9-9bc2-35ec4ba12763.png)
 
@@ -62,7 +62,7 @@ emotion.js 와 styled component 모두 css 관련한 js 코드들을 따로 모�
 
 또한 협업시에 Chrome dev tool로 classname으로 서로 디자인 qa 커뮤니케이션을 하는데 css in js 방식은 따로 prefix같은것을 붙히지 않아 어려움이 있지않을까 생각했었는데 각자의 라이브러리에서 그 해결방안을 제시하고 있었습니다.
 
----
+* * *
 
 `개발관점`에서는 js 기반의 syntax안에 css 코드가 들어가므로 개발자 경험 관점에서는 매우 유연한 코드 및 효율적인 코드 작성이 가능했습니다.
 
@@ -74,7 +74,7 @@ emotion.js 와 styled component 모두 css 관련한 js 코드들을 따로 모�
 
 두 라이브러리 모두 css-in-js 방식이므로 결국엔 js syntax안에 css 코드가 들어가는 것이므로 관심사를 분리하는것은 간단했습니다. css 관련 js 파일이 기존 주요 로직에 영향을 끼치면 안되므로 css 관련 js코드는 분리하여 보관했습니다.
 
-- emotion 방식
+-   emotion 방식
 
 ```javascript
 // css/WithEmotionComponent.js
@@ -129,7 +129,7 @@ function App() {
 export default App;
 ```
 
-- styled-component 방식
+-   styled-component 방식
 
 ```javascript
 // css/WithStyledComponent.js
@@ -185,7 +185,7 @@ css in js 관련 라이브러리들은 class name에 자동으로 hash를 붙여
 
 #### emotion.js (labeling, babel plugin emotion - labelformat )
 
-#####1.labeling
+\#####1.labeling
 
 emotion.js에서는 라벨링 방식으로 디버깅을 할수 있게 기능을 제공하고 있었습니다.
 hash 방식으로 class name을 자동으로 할당해 주어 css 가 겹치는 이슈는 해결하고, 디자이너와의 디자인 qa시 커뮤니케이션을 위한 문제도 해결이 된 것입니다.
@@ -194,9 +194,9 @@ hash 방식으로 class name을 자동으로 할당해 주어 css 가 겹치는 
 
 ![image](https://user-images.githubusercontent.com/26598542/57195097-92773780-6f89-11e9-9b4b-6e3e6555dbc2.png)
 
-#####2.babel - plugin - emotion (label format)
+\#####2.babel - plugin - emotion (label format)
 
-링크 : https://emotion.sh/docs/babel-plugin-emotion#labelformat
+링크 : <https://emotion.sh/docs/babel-plugin-emotion#labelformat>
 
 위의 라벨링 방식은 자동으로 뒤에 특정 label을 붙여 주지만, 컴포넌트의 이름이나 코드의 위치와는 상관없는 label이 붙으므로, 자동으로 이와 관련한 이름이 할당되는것이 좋을 것입니다.
 
@@ -204,13 +204,11 @@ hash 방식으로 class name을 자동으로 할당해 주어 css 가 겹치는 
 
 링크를 들어가면 알수 있지만, 아래 3가지의 property로 할당되는 class name을 지정해 줄수 있습니다.
 
-```
-[local] - the name of the variable the result of the css or styled expression is assigned to.
+    [local] - the name of the variable the result of the css or styled expression is assigned to.
 
-[filename] - name of the file (without extension) where css or styled expression is located.
+    [filename] - name of the file (without extension) where css or styled expression is located.
 
-[dirname] - name of the directory containing the file where css or styled expression is located.
-```
+    [dirname] - name of the directory containing the file where css or styled expression is located.
 
 따라서 .babelrc 파일에서 아래와 같이 autoLabel을 true로 지정해주고, "labelFormat" 에 알맞은 형식을 넣어 customizing 해주기만 하면 됩니다. 예를들어 [dirname]-[filename]--[local] 와 같은 형태로 넣어주면 (코드의 위치 -- 파일이름 -- 변수명) 의 형태로 classname이 정해지는 것입니다.
 
@@ -236,7 +234,7 @@ cra에서는 별도 설정없이 import styled 'styled-components/macro' 과 같
 
 ![image](https://user-images.githubusercontent.com/26598542/57197060-9745e680-6f9d-11e9-8516-20892c53b1b1.png)
 
----
+* * *
 
 ## 개발 관점
 
@@ -249,12 +247,10 @@ cra에서는 별도 설정없이 import styled 'styled-components/macro' 과 같
 
 또한, next.js를 활용할 때에는 코드 스플리팅도 default로 지원하니 필요한 스타일만 불러옴으로써 ssr에 더 최적화 된 스타일링 방식일것입니다.
 
-https://www.infoq.com/news/2019/04/emotion-10-css-prop-styling
+<https://www.infoq.com/news/2019/04/emotion-10-css-prop-styling>
 
-```
-If you’re using the new css prop or styled, you don’t need to do anything other than calling React’s renderToString (or renderToNodeStream). This is especially exciting for component libraries because consumers don’t need to do anything special to use a component.
-You can now publish a React component to NPM with styles, and it will just work with server-side rendering without requiring consumers to do anything.
-```
+    If you’re using the new css prop or styled, you don’t need to do anything other than calling React’s renderToString (or renderToNodeStream). This is especially exciting for component libraries because consumers don’t need to do anything special to use a component.
+    You can now publish a React component to NPM with styles, and it will just work with server-side rendering without requiring consumers to do anything.
 
 위 링크에서 발췌한 글에서 도 알 수 있듯 별도의 설정 없이 ssr에 최적화 된 스타일링을 적용할 수 있습니다.
 
@@ -268,10 +264,10 @@ You can now publish a React component to NPM with styles, and it will just work 
 
 우선 emotion js에 css prop을 적용하는 방식은 `2가지` 가 존재합니다. 그중, 저는 react 기반으로 개발을 하고 있으므로 두번째를 택했고, `object 방식`(<https://emotion.sh/docs/object-styles>), 그리고 `css template literal` 중 디자인 팀과 협업시에 더 명확한 코드를 보여줄수 있는 css templae literal을 사용하였습니다.
 
-- Frame work agnostic( 프레임워크와 관련 없이 사용할때)
-- React => @emotion/core
-  - Object 방식
-  - Css template literal (선호) css syntax를 그대로 사용하므로 협업 할때 편리할듯
+-   Frame work agnostic( 프레임워크와 관련 없이 사용할때)
+-   React => @emotion/core
+    -   Object 방식
+    -   Css template literal (선호) css syntax를 그대로 사용하므로 협업 할때 편리할듯
 
 ### composition
 
@@ -411,6 +407,8 @@ const blackButton = css`
 
 ### media query
 
+1.별도의 media query function 만들기
+
 아래와 같은 별도의 media query function을 만들어 활용 할수 있었습니다. include-media 라이브러리를 활용은 못했지만 js 기반의 syntax를 css에 적용할수 있기 때문에 비슷하게 function을 추후에 만들수 있겠다는 생각이 들었습니다.
 
 ```javascript
@@ -435,7 +433,42 @@ const titleClass = (props) => css`
   }
 ```
 
----
+2\.`css-in-js-media` npm 활용하기
+
+link : <https://github.com/zx6658/css-in-js-media>
+
+위 npm을 활용하면 css-in-js (styled-components, emotion.js) 스타일링 라이브러리에서 쉽게 미디어 쿼리를 이용해 반응형을 대응할수 있는데요,
+기존 scss기반에서 활용했던 [include-media](https://include-media.com/)와 비슷하게 이용이 가능합니다.
+
+아래의 `break-point` 를 참고하여 원하는 viewport에 해당하는 구간을 명시해 줘서, 쉽게 반응형 대응이 가능합니다 :)
+
+    smallPhone: 320
+    phone: 375
+    tablet: 768
+    desktop: 1024
+    largeDesktop: 1440
+
+```javascript
+import media from "css-in-js-media";
+
+export const exampleClass = css`
+  color: red;
+  ${media(">desktop")} {
+    font-size: 15px;
+  }
+  ${media("<=desktop", ">tablet")} {
+    font-size: 20px;
+  }
+  ${media("<=tablet", ">phone")} {
+    font-size: 25px;
+  }
+  ${media("<=phone")} {
+    font-size: 30px;
+  }
+`;
+```
+
+* * *
 
 ## styled-component
 
@@ -487,7 +520,7 @@ const BlackButton = styled(Button)`
 
 ### media query
 
-styled component 역시 아래와 같이 function으로 활용이 가능했습니다.
+1.styled component 역시 아래와 같이 function으로 활용이 가능했습니다.
 
 ```javascript
 const breakpoints = [320, 768, 1024, 1440];
@@ -508,19 +541,39 @@ const TitleClass = styled.h1`
 `;
 ```
 
+2.위에서 말한 `css-in-js-media` npm 역시 쉽게 적용이 가능합니다.
+
+```javascript
+import media from "css-in-js-media";
+
+export const exampleClass = css`
+  color: red;
+  ${media(">desktop")} {
+    font-size: 15px;
+  }
+  ${media("<=desktop", ">tablet")} {
+    font-size: 20px;
+  }
+  ${media("<=tablet", ">phone")} {
+    font-size: 25px;
+  }
+  ${media("<=phone")} {
+    font-size: 30px;
+  }
+`;
+```
+
 ### 마치며
 
-css in js 라이브러리를 도입하면 기존 스크립트에 영향이 커지고 해쉬방식이라 디버깅이 쉽지 않지 않아 협업이 쉽지 않지 않을까 하는 생각이 초기에 들었었는데, css 관련 코드의 관심사 분리와 디버깅을 해결하는 여러 방안들이 있다는 것을 알게되었고 또 이로인해 협업관점에서의 문제점이 해결됨과 동시에 css-in-js의 여러 feature들을 활용하면 디자인 팀과의 디자인 qa 에서 얻는 협업 관점의 이점과 css-in-js 라이브러리 (새로운 방식의 스타일링 방식)에서 제공되는 여러 기능들로써 얻는 개발 관점의 이점을 모두 얻을 수 있겠다는 생각이 들었습니다. 모든 기능들을 다 파악해 보진 못했지만 정말 많은 기능을 제공하여 개발자관점에서 정말 큰 이점을 제공하여 생산성에 큰 도움이 될거란 생각이 들었습니다. 또한 next.js로 ssr을 지원하게 될것 같은데 서버사이드 렌더링에도 css in js방식을 공홈에서도 추천해주고 있어 더 큰 확신이 들기도 했습니다. https://nextjs.org/learn/basics/styling-components
+css in js 라이브러리를 도입하면 기존 스크립트에 영향이 커지고 해쉬방식이라 디버깅이 쉽지 않지 않아 협업이 쉽지 않지 않을까 하는 생각이 초기에 들었었는데, css 관련 코드의 관심사 분리와 디버깅을 해결하는 여러 방안들이 있다는 것을 알게되었고 또 이로인해 협업관점에서의 문제점이 해결됨과 동시에 css-in-js의 여러 feature들을 활용하면 디자인 팀과의 디자인 qa 에서 얻는 협업 관점의 이점과 css-in-js 라이브러리 (새로운 방식의 스타일링 방식)에서 제공되는 여러 기능들로써 얻는 개발 관점의 이점을 모두 얻을 수 있겠다는 생각이 들었습니다. 모든 기능들을 다 파악해 보진 못했지만 정말 많은 기능을 제공하여 개발자관점에서 정말 큰 이점을 제공하여 생산성에 큰 도움이 될거란 생각이 들었습니다. 또한 next.js로 ssr을 지원하게 될것 같은데 서버사이드 렌더링에도 css in js방식을 공홈에서도 추천해주고 있어 더 큰 확신이 들기도 했습니다. <https://nextjs.org/learn/basics/styling-components>
 
-```
-Consequently, there are a bunch of practical issues to consider
-with traditional CSS-file-based styling (especially with SSR),
-so we suggest avoiding this method when styling for Next.js.
-```
+    Consequently, there are a bunch of practical issues to consider
+    with traditional CSS-file-based styling (especially with SSR),
+    so we suggest avoiding this method when styling for Next.js.
 
 같이 보면 좋을 링크들
 
-- https://css-tricks.com/the-fragmented-but-evolving-state-of-css-in-js/
-- https://css-tricks.com/bridging-the-gap-between-css-and-javascript-css-in-js/
-- https://blog.bitsrc.io/5-ways-to-style-react-components-in-2019-30f1ccc2b5b
-- https://medium.freecodecamp.org/learn-emotionjs-during-your-morning-coffee-its-that-easy-2bc60213aca7
+-   <https://css-tricks.com/the-fragmented-but-evolving-state-of-css-in-js/>
+-   <https://css-tricks.com/bridging-the-gap-between-css-and-javascript-css-in-js/>
+-   <https://blog.bitsrc.io/5-ways-to-style-react-components-in-2019-30f1ccc2b5b>
+-   <https://medium.freecodecamp.org/learn-emotionjs-during-your-morning-coffee-its-that-easy-2bc60213aca7>
