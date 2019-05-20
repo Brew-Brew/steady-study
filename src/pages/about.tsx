@@ -12,7 +12,8 @@ import {
   careerInfo,
   skillInfo,
   mottoInfo,
-  pressInfo
+  pressInfo,
+  awardsInfo
 } from "../constant/data";
 
 const fadedAnimation = keyframes`${fadeInDown}`;
@@ -81,7 +82,7 @@ const AboutPage = () => {
         </Header>
       </Segment>
       <Segment>
-        <InfoTitle>My Info</InfoTitle>
+        <InfoTitle> 🙋‍♂️ My Info</InfoTitle>
         {abooutInfo.map(info => {
           return (
             <a href={info.link}>
@@ -95,7 +96,7 @@ const AboutPage = () => {
         <div />
       </Segment>
       <Segment>
-        <InfoTitle>My Career</InfoTitle>
+        <InfoTitle>🏢 My Career</InfoTitle>
         {careerInfo.map(info => {
           return (
             <InfoWrapper>
@@ -119,7 +120,7 @@ const AboutPage = () => {
         <div />
       </Segment>
       <Segment>
-        <InfoTitle>Skills</InfoTitle>
+        <InfoTitle>💻 Skills</InfoTitle>
         {skillInfo.map(info => {
           return (
             <InfoWrapper>
@@ -135,7 +136,7 @@ const AboutPage = () => {
         <div />
       </Segment>
       <Segment>
-        <InfoTitle>Press release</InfoTitle>
+        <InfoTitle>📰 Press release</InfoTitle>
         {pressInfo.map(info => {
           return (
             <InfoWrapper
@@ -151,9 +152,23 @@ const AboutPage = () => {
         })}
       </Segment>
       <Segment>
-        <InfoTitle>Mottos</InfoTitle>
+        <InfoTitle>💙 Mottos</InfoTitle>
         {mottoInfo.map(motto => {
           return <li>{motto}</li>;
+        })}
+        <div />
+      </Segment>
+      <Segment>
+        <InfoTitle>🏆 Awards</InfoTitle>
+        {awardsInfo.map(award => {
+          return (
+            <React.Fragment>
+              <h3>{award.title}</h3>
+              <h5>{award.from}</h5>
+              <p>{award.content}</p>
+              <hr />
+            </React.Fragment>
+          );
         })}
         <div />
       </Segment>

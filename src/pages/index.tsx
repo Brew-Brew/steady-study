@@ -47,6 +47,14 @@ const Wrapper = styled.div`
   ${({ contentsVisible }) => contentsVisible && flipAnimation};
 `;
 
+const ButtonForHover = styled.div`
+  button {
+    &:hover {
+      background-color: white;
+    }
+  }
+`;
+
 interface Props {
   location: { pathname: string };
 }
@@ -194,13 +202,15 @@ class IndexPage extends React.Component<Props, State> {
                           {content.text}
                         </Header>
                         <a href={content.link}>
-                          <Button
-                            primary
-                            size="huge"
-                            style={{ background: colors.mainColor }}
-                          >
-                            {content.buttonContent}
-                          </Button>
+                          <ButtonForHover>
+                            <Button
+                              primary
+                              size="huge"
+                              style={{ background: colors.mainColor }}
+                            >
+                              {content.buttonContent}
+                            </Button>
+                          </ButtonForHover>
                         </a>
                       </Grid.Column>
                     );
