@@ -26,6 +26,7 @@ import { withLayout, LayoutProps } from "../components/Layout";
 import GlobalFontStyle from "../util/globalFont";
 import { graphql } from "gatsby";
 import styled from "styled-components";
+import Helmet from "react-helmet";
 
 const Wrapper = styled.div`
   p {
@@ -112,6 +113,10 @@ const BlogPostPage = (props: BlogPostProps) => {
 
   return (
     <Container>
+      <Helmet>
+        <meta name="title" content={frontmatter.title} />
+        <meta property="og:image" content={cover} />
+      </Helmet>
       <GlobalFontStyle />
       <BlogTitle />
       <Segment vertical style={{ border: "none" }}>

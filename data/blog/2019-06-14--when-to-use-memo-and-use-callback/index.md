@@ -6,7 +6,7 @@ author: Ideveloper
 tags:
   - react
   - hook
-image: welcoming.png
+image: useMemoUseCallback.png
 draft: false
 ---
 
