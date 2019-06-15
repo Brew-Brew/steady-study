@@ -1,11 +1,11 @@
 module.exports = {
   siteMetadata: {
     title: `Steady study`,
-    googleVerification: `abcdefz`,
+    googleVerification: `m2hcKneAvczZZaugWCdKW7p-R-1l3Z2G7U9o6wLyeo0`,
     disqus: `ideveloper`
   },
   mapping: {
-    'MarkdownRemark.frontmatter.author': `AuthorJson`
+    "MarkdownRemark.frontmatter.author": `AuthorJson`
   },
   plugins: [
     `gatsby-plugin-styled-components`,
@@ -21,7 +21,7 @@ module.exports = {
     {
       resolve: `gatsby-plugin-google-analytics`,
       options: {
-        trackingId: 'YOUR_GOOGLE_ANALYTICS_TRACKING_ID',
+        trackingId: "UA-142150745-1",
         // Puts tracking script in the head instead of the body
         head: false,
         // Setting this parameter is optional
@@ -35,7 +35,8 @@ module.exports = {
     {
       resolve: `gatsby-transformer-remark`,
       options: {
-        plugins: [{
+        plugins: [
+          {
             resolve: `gatsby-remark-images`,
             options: {
               maxWidth: 690,
