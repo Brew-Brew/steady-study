@@ -175,7 +175,7 @@ const dispense = candy => {
 1.  참조 동일성 (Referential equality)
 2.  계산적으로 비용이 많이 드는 계산 (Computationally expensive calculations)
 
-##### 참조 동일성 (Referential equality)
+### 참조 동일성 (Referential equality)
 
 만약 당신이 javascript나 프로그래밍을 시작한지 얼마 되지 않았더라도, 이 케이스를 배우는데 큰 시간이 들지 않을 것입니다:
 
@@ -196,7 +196,7 @@ z === z // true
 
 리액트에서 참조 동일성을 따질때가 두가지 상황이 있습니다. 한번에 모두 살펴봅시다.
 
-#### 종속 list들 (Dependencies lists)
+##### 종속 list들 (Dependencies lists)
 
 예제를 review 해 봅시다.
 
@@ -323,7 +323,7 @@ function DualCounter() {
 
 저는 다시 반복해서 `React.memo`를 측정없이 사용하는것에 대해서 강력히 조언하고 있습니다.(PureComponent와 shouldComponentUpdate의 친구들) 왜냐하면 이러한 최적화들은 비용이 따르고 당신은 이러한 비용들이 어떻게 이점과 연관되어 있는지를 파악해야 하고 어떻게 도움이 될지(또는 어떻게 해를 끼칠지)를 결정해야 합니다, 그리고 우리가 위에서 관찰했듯이, 모든 이점을 얻을수 없기 때문에 항상 올바르게 최적화를 하는것은 까다로울수 있습니다.
 
-##### Computationally expensive calculations
+### Computationally expensive calculations
 
 이것은 `useMemo`가 리액트의 hook에 built-in 되어 있는 또다른 이유입니다.(이것은 `useCallback`의 경우에는 적용되지 않는것을 기억하세요). `useMemo` 를 사용하는 이점은 아래와 같이 값을 가질때와 같습니다:
 
@@ -360,7 +360,7 @@ function RenderPrimes({ iterations, multiplier }) {
 
 이 이유 때문에 이것은 효과를 발휘합니다. 왜냐하면 당신이 함수를 prime들을 매 렌더마다 계산하도록 정의했더라도 (매우 빠른) 리액트는 값이 필요할때만 부르게 될것입니다. 위에서 리액트는 또한 이전 value와 입력값들을 저장하고,이전과 같은 value와 입력값들을 return 하게 될것입니다. 이것이 메모이제이션이 효과를 발휘한 예제입니다.
 
-##### 결론
+## 결론
 
 저는 모든 추상화에 대해서 비용이 따른다고 말합니다. (최적화도 마찬가지로) [the AHA Programming principle](https://kentcdodds.com/blog/aha-programming) 을 적용하고 적용전, 추상화/최적화가 당신에게 비명을 지를때 까지 기다리세요. 그러면 당신은 이로부터 이익을 모두 얻지 못하고 비용이 드는 상황으로 부터 구제 될것입니다.
 
