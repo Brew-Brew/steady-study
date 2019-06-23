@@ -158,3 +158,55 @@ export const awardsInfo = [
     content: ""
   }
 ];
+
+export const contributionInfo = [
+  {
+    from: "facebook / create-react-app",
+    list: [
+      {
+        title: "Suggest `reactstrap` instead of `react-bootstrap`",
+        link: "https://github.com/facebook/create-react-app/pull/4703"
+      }
+    ]
+  },
+  {
+    from: "facebook / react",
+    list: [
+      {
+        title: "Remove irrelevant suggestion of a legacy method from a warning",
+        link: "https://github.com/facebook/react/pull/13169"
+      }
+    ]
+  },
+  {
+    from: "reactjs / reactjs.org",
+    list: [
+      {
+        title: "Fix node engines",
+        link: "https://github.com/reactjs/reactjs.org/pull/1002"
+      },
+      {
+        title: "Fix Issue about addons.md's Wrong links",
+        link: "https://github.com/reactjs/reactjs.org/pull/1023"
+      }
+    ]
+  },
+  {
+    from: "Lemoncode /react-by-sample",
+    list: [
+      {
+        title: "fix: fix wrong links in readme and update readme examples",
+        link: "https://github.com/Lemoncode/react-by-sample/pull/177"
+      }
+    ]
+  },
+  {
+    from: "kentcdodds / kentcdodds.com",
+    list: [
+      {
+        title: "doc: add korean translation of useMemo and useCallback",
+        link: "https://github.com/kentcdodds/kentcdodds.com/pull/200"
+      }
+    ]
+  }
+];

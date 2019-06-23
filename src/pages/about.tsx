@@ -13,7 +13,8 @@ import {
   skillInfo,
   mottoInfo,
   pressInfo,
-  awardsInfo
+  awardsInfo,
+  contributionInfo
 } from "../constant/data";
 
 const fadedAnimation = keyframes`${fadeInDown}`;
@@ -131,6 +132,28 @@ const AboutPage = () => {
                 })}
               </ul>
             </InfoWrapper>
+          );
+        })}
+        <div />
+      </Segment>
+      <Segment>
+        <InfoTitle>👨🏼‍💻 Contributions</InfoTitle>
+        {contributionInfo.map(info => {
+          return (
+            <React.Fragment>
+              <InfoWrapper>
+                <Tag content={info.from} />
+                {info.list.map(content => {
+                  return (
+                    <React.Fragment>
+                      <h4>- {content.title}</h4>
+                      <a href={content.link}>{content.link}</a>
+                    </React.Fragment>
+                  );
+                })}
+              </InfoWrapper>
+              <br />
+            </React.Fragment>
           );
         })}
         <div />
