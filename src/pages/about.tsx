@@ -67,6 +67,7 @@ const CompanyIcon = styled.img`
   height: 24px;
   margin-right: 10px;
   vertical-align: middle;
+  margin-bottom: 10px;
 `;
 
 const AboutPage = () => {
@@ -102,6 +103,9 @@ const AboutPage = () => {
           return (
             <InfoWrapper>
               <CompanyIcon src={info.img} />
+              <p>
+                ({info.date}) {info.description}
+              </p>
               <SkillWrapper>
                 {info.skills.map(skill => {
                   return <Tag content={skill} />;
@@ -109,8 +113,6 @@ const AboutPage = () => {
               </SkillWrapper>
 
               <ul style={{ padding: "1rem" }}>
-                <li>{info.date}</li>
-                <li>{info.description}</li>
                 {info.task.map(content => {
                   return <li>{content}</li>;
                 })}

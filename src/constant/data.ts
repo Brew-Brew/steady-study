@@ -69,10 +69,12 @@ export const careerInfo = [
     description: "travel tech",
     img: mrt,
     label: "myrealtrip",
-    skills: ["react", "webpack", "next.js", "ruby on rails"],
+    skills: ["react", "typescript", "webpack", "next.js", "ruby on rails"],
     task: [
-      "offer information page renewal and migration (ruby on rails => react)",
-      "hotel meta search project with react"
+      "offer information page renewal and react migration (ruby on rails => react)",
+      "hotel meta search project with react (webview, ui component develop )",
+      "add braze event scripts",
+      "solve many sustaining issues"
     ]
   },
   {
@@ -81,7 +83,7 @@ export const careerInfo = [
     img: plating,
     label: "plating",
     skills: ["react", "webpack", "node.js"],
-    task: ["b2b chef service site, plating react site"]
+    task: ["b2b chef service site", "plating official react site"]
   }
 ];
 
