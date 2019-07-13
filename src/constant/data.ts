@@ -71,10 +71,47 @@ export const careerInfo = [
     label: "myrealtrip",
     skills: ["react", "typescript", "webpack", "next.js", "ruby on rails"],
     task: [
-      "offer information page renewal and react migration (ruby on rails => react)",
-      "hotel meta search project with react (webview, ui component develop )",
-      "add braze event scripts",
-      "solve many sustaining issues"
+      {
+        title: "호텔메타서치 프로젝트",
+        content: [
+          "기존: 부킹닷컴 링크로연결 -> 개선: 각 호텔 사이트들의 상품들을 리스트페이지, 상세페이지에서 확인할수 있도록 개선",
+          "웹뷰 대응 및, 인터페이스 호환",
+          "UI 컴포넌트 제작",
+          "상태관리 및 설계단 참여"
+        ],
+        participant: "2명",
+        skills: ["react", "context"]
+      },
+      {
+        title: "웹 상품 상세페이지 ruby on rails -> react 리뉴얼",
+        content: [
+          "기존 ruby on rails 레거시 파악후 제거 -> react로 전환",
+          "사이트 내 중요페이지를 react로 마이그레이션 -> 추후 기능 추가 용이",
+          "더 나은 유저경험 전달"
+        ],
+        participant: "1명",
+        skills: ["react"]
+      },
+
+      {
+        title: "브레이즈 이벤트 삽입",
+        content: [
+          "브레이즈 스크립트 웹, 웹뷰 삽입",
+          "마케팅 팀에서 캠페인 제작을 위한 웹 페이지내 유저 스토리별 이벤트 삽입(회원가입~구매 등등 user 이벤트일어나는 부분)"
+        ],
+        participant: "1명",
+        skills: ["react", "redux"]
+      },
+      {
+        title: "서스테이닝 이슈들",
+        content: [
+          "자잘한 기존 rails 페이지들 개선하면서 react로 전환",
+          "협력업체들(naver, 마케팅스크립트 대행사..etc)과의 커뮤니케이션을 통한 페이지 개선작업들",
+          "sustaining 이슈들을 대응하면서 사업,운영팀에 기여"
+        ],
+        participant: "팀 전원",
+        skills: ["ruby on rails", "react", "react-hook"]
+      }
     ]
   },
   {
@@ -83,7 +120,57 @@ export const careerInfo = [
     img: plating,
     label: "plating",
     skills: ["react", "webpack", "node.js"],
-    task: ["b2b chef service site", "plating official react site"]
+    task: [
+      {
+        title:
+          "React 기반의  신규런칭  서비스  관련(b2b 회사용  도시락  판매  사이트)",
+        participant: "2명, (본인, 인턴)",
+        content: [
+          "웹사이트  프로젝트  설계 및 일정 매니징",
+          "기존 api 수정",
+          "프론트개발"
+        ],
+        skills: ["react", "redux", "redux-sage", "node.js"]
+      },
+      {
+        title: "플레이팅 웹사이트 (php -> react) 추후 보수 작업",
+        participant: "2명, (본인, 인턴)",
+        content: [
+          "추후 보수작업 및 react+ redux+redux.saga를 활용한 주요 기능들 추가",
+          "Google Analytics 삽입",
+          "pm2 배포"
+        ],
+        skills: ["react", "redux", "redux-saga", "pm2", "Google Analytics"]
+      },
+      {
+        title: "React 기반의 배송현황 확인 웹",
+        participant: "1명",
+        content: [
+          "각 지역마다 pos 프로그램 일일이 들어가서 확인해야 했던 운영팀의 효율 증가",
+          "큰 상태관리는 필요없었으므로 react만으로 구현"
+        ],
+        skills: ["react"]
+      },
+      {
+        title: "React,Redux 기반 쉐프분들이 보는 고객 리뷰페이지",
+        content: [
+          "쉐프 분들과 고객과의 접점마련",
+          "초기 react학습, redux학습용으로 제작했던 페이지"
+        ],
+        participant: "1명",
+        skills: ["react", "redux"]
+      },
+      {
+        title:
+          "서울지역만 되던 새벽배송 -> 전지역  새벽배송  확장  (node.js  기존  중앙  api  수정)",
+        participant: "1명",
+        content: [
+          "매출 증대에 기여",
+          "기존 legacy 코드들의 다른 서비스들과의 dependency 분석 후 개발"
+        ],
+        skills: ["node.js"]
+      }
+    ]
   }
 ];
 
@@ -126,6 +213,12 @@ export const skillInfo = [
 
 export const awardsInfo = [
   {
+    title: "글로벌 전문 개발자 (파트 부문)",
+    from: "공개SW개발자센터(KOSSLab)",
+    content:
+      "국내외 공개 sw 프로젝트 개발에 참여할수있는 개발자 육성 및 지원프로그램 "
+  },
+  {
     title: "오픈소스 컨트리뷰톤 과학기술정보통신부장관상",
     from: "정보통신산업진흥원",
     content:
@@ -136,6 +229,12 @@ export const awardsInfo = [
     from: "정보통신산업진흥원",
     content:
       "덤블도어 교수님이라는 node.js기반의 오픈소스 슬랙 챗봇 프로젝트이며 게이미피케이션요소를 추가한 챗봇을 만드는 프로젝트였습니다. 백엔드 팀장을 맡았습니다."
+  },
+  {
+    title: "멋쟁이사자처럼 5기/ 6기 운영진",
+    from: "멋쟁이 사자처럼 중앙대",
+    content:
+      "5기/6기 활동을 했으며, 6기에는 운영진 활동을 통해 퇴근 후 참여하며, 웹 관련 지식 공유에 힘썼습니다."
   },
   {
     title: "동국대 멋쟁이사자처럼 해커톤 동국대 총장상",

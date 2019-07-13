@@ -19,8 +19,20 @@ import {
 
 const fadedAnimation = keyframes`${fadeInDown}`;
 
-const SkillWrapper = styled.div`
+const InfoContent = styled.div`
   margin-top: 10px;
+  border: 3px solid rgb(33, 150, 243);
+  padding: 10px;
+  border-radius: 20px;
+  padding: 20px;
+  & > li {
+    list-style: none;
+    font-size: 16px;
+    margin-bottom: 10px;
+  }
+  & > p {
+    margin-top: 10px;
+  }
 `;
 
 const FadedText = styled.h1`
@@ -103,18 +115,26 @@ const AboutPage = () => {
           return (
             <InfoWrapper>
               <CompanyIcon src={info.img} />
-              <p>
+              <p style={{ margin: "0" }}>
                 ({info.date}) {info.description}
               </p>
-              <SkillWrapper>
-                {info.skills.map(skill => {
-                  return <Tag content={skill} />;
-                })}
-              </SkillWrapper>
 
-              <ul style={{ padding: "1rem" }}>
-                {info.task.map(content => {
-                  return <li>{content}</li>;
+              <ul style={{ padding: "0", margin: "0" }}>
+                {info.task.map(task => {
+                  return (
+                    <InfoContent>
+                      <li>{task.title}</li>
+                      {task.skills.map(skill => (
+                        <Tag content={skill} />
+                      ))}
+                      <p>참여인원: {task.participant}</p>
+                      <ul>
+                        {task.content.map(content => {
+                          return <li>{content}</li>;
+                        })}
+                      </ul>
+                    </InfoContent>
+                  );
                 })}
               </ul>
             </InfoWrapper>
@@ -184,7 +204,7 @@ const AboutPage = () => {
         <div />
       </Segment>
       <Segment>
-        <InfoTitle>🏆 Awards</InfoTitle>
+        <InfoTitle>🏆 Awards / Activity</InfoTitle>
         {awardsInfo.map(award => {
           return (
             <React.Fragment>
