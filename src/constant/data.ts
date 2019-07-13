@@ -103,8 +103,9 @@ export const careerInfo = [
         skills: ["react", "redux"]
       },
       {
-        title: "서스테이닝 이슈들",
+        title: "서스테이닝 이슈들, 성능개선",
         content: [
+          "bundle analyzer 도입 제의및 적용을 통해 성능개선의 초석을 다짐",
           "자잘한 기존 rails 페이지들 개선하면서 react로 전환",
           "협력업체들(naver, 마케팅스크립트 대행사..etc)과의 커뮤니케이션을 통한 페이지 개선작업들",
           "sustaining 이슈들을 대응하면서 사업,운영팀에 기여"
