@@ -128,7 +128,7 @@ export const careerInfo = [
         content: [
           "웹사이트  프로젝트  설계 및 일정 매니징",
           "기존 api 수정",
-          "프론트개발"
+          "프론트 페이지들 개발"
         ],
         skills: ["react", "redux", "redux-sage", "node.js"]
       },
