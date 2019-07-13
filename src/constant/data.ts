@@ -130,13 +130,13 @@ export const careerInfo = [
           "기존 api 수정",
           "프론트 페이지들 개발"
         ],
-        skills: ["react", "redux", "redux-sage", "node.js"]
+        skills: ["react", "redux", "redux-saga", "node.js"]
       },
       {
-        title: "플레이팅 웹사이트 (php -> react) 추후 보수 작업",
+        title: "플레이팅 웹사이트 (wordpress -> react) 추후 보수 작업",
         participant: "2명, (본인, 인턴)",
         content: [
-          "추후 보수작업 및 react+ redux+redux.saga를 활용한 주요 기능들 추가",
+          "추후 보수작업 및 react + redux + redux-saga를 활용한 주요 기능들 추가",
           "Google Analytics 삽입",
           "pm2 배포"
         ],
