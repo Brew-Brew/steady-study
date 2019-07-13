@@ -5,9 +5,10 @@
   "author": "Ideveloper <zx6658@naver.com>",
   "license": "MIT",
   "scripts": {
+    "clean": "gatsby clean",
     "start": "gatsby develop --no-cache",
     "develop": "gatsby develop --no-cache",
-    "build": "gatsby build",
+    "build": "gatsby clean && gatsby build",
     "lint": "npm run lint:ts && npm run lint:md && npm run lint:js && npm run lint:css",
     "lint:ts": "tslint \"./src/**/*.ts\" \"./src/**/*.tsx\"",
     "lint:md": "remark .",

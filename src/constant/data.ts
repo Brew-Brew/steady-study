@@ -66,7 +66,7 @@ export const pressInfo = [
 export const careerInfo = [
   {
     date: "2018.08 ~ ing",
-    description: "travel tech",
+    description: "Travel tech",
     img: mrt,
     label: "myrealtrip",
     skills: ["react", "typescript", "webpack", "next.js", "ruby on rails"],
@@ -117,7 +117,7 @@ export const careerInfo = [
   },
   {
     date: "2018.01 ~ 2018.08",
-    description: "food tech",
+    description: "Food tech",
     img: plating,
     label: "plating",
     skills: ["react", "webpack", "node.js"],
