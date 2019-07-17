@@ -15,7 +15,7 @@ import {
   Icon
 } from "semantic-ui-react";
 import styled, { keyframes, css } from "styled-components";
-import { pulse, fadeInDown, flipInX } from "react-animations";
+import { pulse, fadeIn } from "react-animations";
 import GlobalFontStyle from "../util/globalFont";
 import { bottomContent } from "../constant/data";
 
@@ -35,7 +35,7 @@ const MainWrapper = styled.div`
 
 const flipAnimation = css`
   visibility: visible;
-  animation: 1.5s ${keyframes`${flipInX}`};
+  animation: 1.5s ${keyframes`${fadeIn}`};
 `;
 const SubWrapper = styled.div`
   padding: 50px;

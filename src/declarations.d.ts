@@ -22,6 +22,6 @@ declare module "disqus-react" {
 
 declare module "react-animations" {
   export const pulse: string;
-  export const fadeInDown: string;
+  export const fadeIn: string;
   export const rollIn: string;
 }

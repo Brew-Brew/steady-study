@@ -1,7 +1,7 @@
 import * as React from "react";
 import { Header, Container, Segment } from "semantic-ui-react";
 import styled, { keyframes } from "styled-components";
-import { fadeInDown } from "react-animations";
+import { fadeIn } from "react-animations";
 
 import { withLayout } from "../components/Layout";
 import Tag from "../components/Tag/Tag";
@@ -17,7 +17,7 @@ import {
   contributionInfo
 } from "../constant/data";
 
-const fadedAnimation = keyframes`${fadeInDown}`;
+const fadedAnimation = keyframes`${fadeIn}`;
 
 const InfoContent = styled.div`
   margin-top: 10px;
