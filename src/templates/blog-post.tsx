@@ -115,7 +115,7 @@ const BlogPostPage = (props: BlogPostProps) => {
     <Container>
       <Helmet>
         <meta name="title" content={frontmatter.title} />
-        <meta property="og:image" content={cover} />
+        <meta property="og:image" content={cover.src} />
       </Helmet>
       <GlobalFontStyle />
       <BlogTitle />
