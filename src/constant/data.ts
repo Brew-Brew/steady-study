@@ -72,6 +72,16 @@ export const careerInfo = [
     skills: ["react", "typescript", "webpack", "next.js", "ruby on rails"],
     task: [
       {
+        title: "마이리얼트립 전체 신규 웹 front 분리(~ing) ",
+        content: [
+          "rails 기반 웹 -> ts + next.js + emotion.js 조합 신규 웹",
+          "cypress e2e테스트를 통한 안정성있는 프로덕개발을 위한 노력",
+          "상태관리 및 설계단 참여"
+        ],
+        participant: "3명",
+        skills: ["typescript", "next.js", "emotion.js", "react", "context"]
+      },
+      {
         title: "호텔메타서치 프로젝트",
         content: [
           "기존: 부킹닷컴 링크로연결 -> 개선: 각 호텔 사이트들의 상품들을 리스트페이지, 상세페이지에서 확인할수 있도록 개선",
@@ -83,7 +93,7 @@ export const careerInfo = [
         skills: ["react", "context"]
       },
       {
-        title: "웹 상품 상세페이지 ruby on rails -> react 리뉴얼",
+        title: "웹 상품 상세페이지 view ruby on rails -> react 리뉴얼",
         content: [
           "기존 ruby on rails 레거시 파악후 제거 -> react로 전환",
           "사이트 내 중요페이지를 react로 마이그레이션 -> 추후 기능 추가 용이",
@@ -100,7 +110,7 @@ export const careerInfo = [
           "마케팅 팀에서 캠페인 제작을 위한 웹 페이지내 유저 스토리별 이벤트 삽입(회원가입~구매 등등 user 이벤트일어나는 부분)"
         ],
         participant: "1명",
-        skills: ["react", "redux"]
+        skills: ["react"]
       },
       {
         title: "서스테이닝 이슈들, 성능개선",
@@ -308,6 +318,15 @@ export const contributionInfo = [
       {
         title: "doc: add korean translation of useMemo and useCallback",
         link: "https://github.com/kentcdodds/kentcdodds.com/pull/200"
+      }
+    ]
+  },
+  {
+    from: "ant-design / ant-design",
+    list: [
+      {
+        title: "doc: update Table component's selectedRowKeys wrong type",
+        link: "https://github.com/ant-design/ant-design/pull/17990"
       }
     ]
   }
