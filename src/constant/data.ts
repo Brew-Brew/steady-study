@@ -329,5 +329,14 @@ export const contributionInfo = [
         link: "https://github.com/ant-design/ant-design/pull/17990"
       }
     ]
+  },
+  {
+    from: "emotion-js / emotion",
+    list: [
+      {
+        title: "add `css-in-js media library` to readme ecosystem (add my library : https://github.com/zx6658/css-in-js-media)",
+        link: "https://github.com/emotion-js/emotion/pull/1441"
+      }
+    ]
   }
 ];
