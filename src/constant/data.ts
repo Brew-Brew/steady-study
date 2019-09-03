@@ -188,37 +188,41 @@ export const careerInfo = [
 export const skillInfo = [
   {
     description: [
-      "본인의 일이 아니더라도 문제 상황에 적극적으로 도움을 주려 노력합니다",
-      "열린 마인드로 합의에 도달할수 있도록 대화를 이끌어나갑니다."
+      "개발 직군이나 비 개발 직군 모두 전문성을 바탕으로 업무를 진행하고 있으므로 항상 다른 팀에 귀 기울이며 열린 마음으로 서로가 이해 할 수 있는 말로 대화하려 노력 중입니다.",
+      "본인의 일이 아니더라도 문제 상황에 적극적으로 도움을 주려 노력합니다.",
+      "혼자 빛나는 사람보다는, 함께할때 더 빛나는 사람이 되고 싶습니다. 협업을 중요시 하고, 팀내에서의 협업 뿐 아니라, 타팀과의 소통을 위해 노력합니다.",
+      "상황에 대한 공유 및 정리능력이 뛰어납니다.",
+      "새로운 기술에 호기심을 갖고, 적극적으로 탐구합니다.",
+      "코드 리뷰에 대해 매우 긍정적이며, 함께 더 좋은 서비스를 만드는 힘은 리뷰에서 나온다 생각하며, 의견을 주저없이 제시합니다."
     ],
-    title: "Overall"
+    title: "Soft Skills"
   },
   {
     description: [
-      "상황에 맞게 렌더링 최적화를 할 수 있습니다.",
-      "번들 사이즈 분석 및, 번들 사이즈 최적화를 할 수 있습니다."
+      "여러 기법을 활용해 불필요한 렌더링을 막고, 렌더링 최적화를 할 수 있습니다.",
+      "번들 사이즈 분석 및, 번들 사이즈 최적화를 할 수 있습니다.",
+      "redux, hook등의 상태관리에 대해 적절한 상황에 사용할 수 있습니다.",
+      "next.js를 활용해 ssr에 대응 할 수 있습니다."
     ],
     title: "React"
   },
   {
     description: [
-      "시맨틱 마크업을 준수하려 노력합니다",
-      "Sass 등 CSS Preprocessor를 사용할 수 있습니다.",
+      "웹표준을 지키려 노력합니다.",
+      "Sass 등 CSS Preprocessor를 사용할 수 있고, css module을 활용할 수 있습니다.",
+      "css-in-js (styled-component , emotion) 기법을 활용할 수 있습니다",
       "BEM등의 CSS 방법론을 적용할 수 있습니다.",
       "크로스 브라우징에 대응할 수 있습니다."
     ],
     title: "HTML/CSS"
   },
   {
-    description: ["ES2015 이후의 자바스크립트 문법에 익숙합니다."],
-    title: "Javascript"
-  },
-  {
     description: [
-      "직위 및 포지션에 관계없이 적절한 의견이면 의견을 주저없이 제시합니다.",
-      "항상 본인의 의견을 주장하지 않고, 다른사람의 의견을 듣도록 노력합니다."
+      "ES2015 이후의 자바스크립트 문법에 익숙합니다.",
+      "babel, webpack 등의 사용에 익숙합니다.",
+      "typescript를 사용 할 수 있습니다."
     ],
-    title: "Communication"
+    title: "Javascript"
   }
 ];
 
@@ -334,7 +338,8 @@ export const contributionInfo = [
     from: "emotion-js / emotion",
     list: [
       {
-        title: "add `css-in-js media library` to readme ecosystem (add my library : https://github.com/zx6658/css-in-js-media)",
+        title:
+          "add `css-in-js media library` to readme ecosystem (add my library : https://github.com/zx6658/css-in-js-media)",
         link: "https://github.com/emotion-js/emotion/pull/1441"
       }
     ]
