@@ -14,7 +14,8 @@ import {
   mottoInfo,
   pressInfo,
   awardsInfo,
-  contributionInfo
+  contributionInfo,
+  storyInfo
 } from "../constant/data";
 
 const fadedAnimation = keyframes`${fadeIn}`;
@@ -141,6 +142,19 @@ const AboutPage = () => {
           );
         })}
         <div />
+      </Segment>
+      <Segment>
+        <InfoTitle>📖 My Story</InfoTitle>
+        {storyInfo.map(story => {
+          return (
+            <InfoWrapper>
+              <a href={story.link} target="_blank">
+                {story.title}
+              </a>
+              <p> - {story.description}</p>
+            </InfoWrapper>
+          );
+        })}
       </Segment>
       <Segment>
         <InfoTitle>💻 Skills</InfoTitle>

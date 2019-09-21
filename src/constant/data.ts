@@ -345,3 +345,24 @@ export const contributionInfo = [
     ]
   }
 ];
+
+export const storyInfo = [
+  {
+    title: "마이리얼트립 프론트엔드팀은 어떻게 협업하고 있을까?",
+    link: "https://medium.com/myrealtrip-product/frontend-cowork-9cdb125da1ef",
+    description:
+      "협업에 관한 생각들, 그리고 어떻게 사내 협업문화를 만들어나갔는지 사내 기술블로그에 작성한 글"
+  },
+  {
+    title: "1년차 병아리 개발자 2018년 회고",
+    link: "https://ideveloper2.tistory.com/165",
+    description:
+      "회사에서 개발자로 일하기 시작하며, 개발자라는 타이틀을 가지고 본인의 생각을 정리하며 1년을 회고한 글"
+  },
+  {
+    title: "일일커밋 6개월 회고",
+    link: "https://ideveloper2.tistory.com/153",
+    description:
+      "꾸준함을 바탕으로 일일커밋 6개월을 진행하고 느꼇던 생각들, 그리고 어떻게 일일커밋 6개월을 하였는지에 대해 정리 한 글"
+  }
+];
