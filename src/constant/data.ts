@@ -1,4 +1,4 @@
-import { github, mail, mrt, plating, tistory } from "../assets/icons";
+import { github, mail, mrt, plating, tistory, linkedin } from "../assets/icons";
 
 export const bottomContent = [
   {
@@ -36,6 +36,11 @@ export const abooutInfo = [
     img: tistory,
     label: "Ideveloper's Software Blog",
     link: "https://ideveloper2.tistory.com/"
+  },
+  {
+    img: linkedin,
+    label: "Linkedin",
+    link: "https://www.linkedin.com/in/%EC%8A%B9%EA%B7%9C-%EC%9D%B4-965b53149/"
   }
 ];
 
