@@ -18,6 +18,7 @@ import styled, { keyframes, css } from "styled-components";
 import { pulse, fadeIn } from "react-animations";
 import GlobalFontStyle from "../util/globalFont";
 import { bottomContent } from "../constant/data";
+import { me } from "../assets/images";
 
 const contentEnum = {
   first: "home__first"
@@ -27,10 +28,12 @@ const pulseAnimation = keyframes`${pulse}`;
 const BouncyText = styled.h1`
   animation: 1s ${pulseAnimation} infinite;
   font-size: 50px;
+  margin-left: 5px;
+  margin-right: 5px;
 `;
 
 const MainWrapper = styled.div`
-  margin-top: 20vh;
+  margin-top: 15vh;
 `;
 
 const flipAnimation = css`
@@ -53,6 +56,12 @@ const ButtonForHover = styled.div`
       background-color: white;
     }
   }
+`;
+
+const ContentWrapper = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
 `;
 
 interface Props {
@@ -143,17 +152,17 @@ class IndexPage extends React.Component<Props, State> {
             <Container text>
               <Icon name="book" size="huge" />
               <BouncyText>Steady Study</BouncyText>
-              <article>
-                <div className="blue" />
-                <div className="green" />
-              </article>
-              <Header inverted as="h2">
-                I am Ideveloper
-              </Header>
-              <Header inverted as="h3">
-                :) Idea + Developer
-              </Header>
-              <Button primary size="huge" style={{ marginTop: "50px" }}>
+              <ContentWrapper>
+                <img src={me} style={{ width: "200px" }} />
+                <div>
+                  <h2>I am Ideveloper</h2>
+                  <h3>:) Idea + Developer</h3>
+                </div>
+              </ContentWrapper>
+              <Button
+                size="huge"
+                style={{ marginTop: "50px", color: "rgb(33, 150, 243)" }}
+              >
                 Welcome to my blog
               </Button>
             </Container>
@@ -206,7 +215,10 @@ class IndexPage extends React.Component<Props, State> {
                             <Button
                               primary
                               size="huge"
-                              style={{ background: colors.mainColor }}
+                              style={{
+                                background: colors.mainColor,
+                                color: "white"
+                              }}
                             >
                               {content.buttonContent}
                             </Button>
