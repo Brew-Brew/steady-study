@@ -1,7 +1,7 @@
 ---
 title: State Colocation will make your react app faster
-createdDate: '2019-10-12'
-updatedDate: '2019-10-20'
+createdDate: "2019-10-12"
+updatedDate: "2019-10-20"
 author: Ideveloper
 tags:
   - react
@@ -108,8 +108,8 @@ function App() {
 종종 이러한 문제에서 사람들이 사용하는 해결책은 사용자들의 interaction을 "debounce" 하는것입니다. ( state를 업데이트하기이전에 사용자가 타이핑을 멈추는 것을 기다린다).
 이것은 떄떄로, 우리가 할수있는 최선입니다, 하지만 이것은 사용자 경험에 일부만 최적화하게 됩니다.( 리액트의 곧 나올 concurrent mode는 이것을 미래에 필요하지 않게 할 것입니다.) [Dan이 이것에 대해 말한 demo를 봐보세요.](https://www.youtube.com/watch?v=nLF0n9SACd4&feature=youtu.be&t=181)
 
--   (번역 외) 참고로 react concurrent mode에 대해서는 제 이전 블로그에 조사한 내용이 있습니다 :) 궁금하신 분들은 참고하셔도 좋을것 같습니다!
-    <https://ideveloper2.tistory.com/170>
+- (번역 외) 참고로 react concurrent mode에 대해서는 제 이전 블로그에 조사한 내용이 있습니다 :) 궁금하신 분들은 참고하셔도 좋을것 같습니다!
+  <https://ideveloper2.tistory.com/170>
 
 다른 해결책은 사람들은 리액트의 렌더링 성능 향상을 위해 `react.memo` 와 같은 방법을 쓰는 것입니다. 이것은 우리의 고안된 예제에서는 잘 작동합니다. 왜냐하면 이것은 react에게 우리의 `Slow-component`가 re-rendering을 스킵하게 허락해줍니다, 하지만 더 실제적인 시나리오에서는 , 당신은 종종 느리게 만드는곳이 한곳이 아니라는 것을 의미하는 "천번의 cut에 의한 죽음" 을 겪게 될것입니다, 따라서 결국 모든곳에 `react.memo` 를 적용시켜야 하게 됩니다. 그리고 그렇게 하고, 당신은 useMemo나 useCallback 같은 것을 모든곳에 사용해야 하게 될 것입니다. (그렇지 않으면 모든 react.memo에 했던 작업들을 되돌려야 할것입니다.) 이러한 최적화들은 함께 문제를 풉니다, 하지만 여러분의 application이 복잡도가 급격히 증가하고 state를 colocating 하는것보다 덜 효과적이게 될것입니다. 왜냐하면 리액트는 여전히 최상단에서 모든 컴포넌트에 이르기까지 모든 컴포넌트에서 리렌더링을 해야할지를 결정해야 하기 떄문입니다. 당신은 이러한 접근으로 코드를 더더 작성할수록 방법이 없어질 것입니다.
 
@@ -173,4 +173,47 @@ function DogFavoriteNumberDisplay({ time, dog }) {
 
 ##### What about context or redux?
 
-만약 당신이 [리액트에서 재렌더링을 막는 간단한 속임수](https://kentcdodds.com/blog/optimize-react-re-renders)를 읽었다면, 당신은 실제로 변경하는 state를 사용하는 구성 요소 만 업데이트되도록 할 수 있습니다.
+만약 당신이 [리액트에서 재렌더링을 막는 간단한 속임수](https://kentcdodds.com/blog/optimize-react-re-renders)를 읽었다면, 당신은 실제로 변경하는 state를 사용하는 구성 요소 만 업데이트되도록 할 수 있습니다. 따라서 그것은 이 이슈의 side step이 될수 있습니다. 만약 이것이 사실이라면, 사람들은 여전히 redux와 성능이슈를 겪고 있을 것입니다. 만약 리액트는 그렇지 않다면, 무엇일까요? 이문제는 [react-redux는 연결된 컴포넌트들로부터의 불필요한 렌더를 피하게 해주는 가이드라인을 따르길 기대하고 있습니다.](https://react-redux.js.org/using-react-redux/connect-mapstate#mapstatetoprops-and-performance), 그리고 이것은 우연하게 컴포넌트들을 매우 자주 전역 state가 바뀔때마다 재렌더되도록 하게 합니다. 이 효과는 매우 안좋아지고, 당신의 앱이 커지면 커질수록 , 그리고 특별히 너무 많은 state를 redux에 넣을수록 발생합니다.
+
+운좋게도, 이러한 효과를 줄일수 있는, [mapState 함수를 최적화 하는 memoized된 reselect 셀렉터를 사용하는 방법](https://blog.isquaredsoftware.com/2018/11/react-redux-history-implementation/), 그리고 리덕스의 문서는 [추가적인 리덕스 앱의 성능 향상](https://redux.js.org/faq)을 제공하기도 합니다.
+
+저는 또한 colocation을 통해 redux로 부터 이러한 이익을 얻을수 있다고 말합니다. 단지 리덕스의 전역 state에 들어갈것들을 줄이고, 모든 것들을 colocate시키세요. redux FAQ에 [state가 redux안에 들어가야하는지, 컴포넌트안에 그대로 있어야 하는지의 결정을 도와주는 경험법칙이 있습니다.](https://redux.js.org/faq/organizing-state#do-i-have-to-put-all-my-state-into-redux-should-i-ever-use-reacts-setstate)
+
+추가적으로, 만약 당신의 도메인에서 state를 분리한다면 (다양한 도메인의 context를 가지는), 그 문제는 더 적게 이야기가 나올것있니다.
+
+하지만 사실은 당신이 state를 colocate시킨다면, 당신은 이 문제들을 가지지 않을것이고 유지보수성이 향상될것입니다.
+
+##### So how do you decide where to put state?
+
+저는 이러한 결정을 도와주는 descision tree를 만들었습니다.
+
+![image](https://kentcdodds.com/static/d2b50fdb8371e7ec209faacac5363111/35838/where-to-put-state.png)
+
+Chart perfected by [Stephan Meijer](https://twitter.com/meijer_s/status/1176776537322020867)
+
+여기 위의것을 적은것입니다.(screen reader와 친구들을 위해)
+
+1 app을 만들기를 시작하세요. 2로 가세요
+2 컴포넌트안에 state를 만드세요 3으로 가세요
+
+3 이것이 **오직** 이 컴포넌트에서만 필요한가요?
+
+- 그런가요? 4로 가세요
+- 아닌가요? **오직** 다른 자식 컴포넌트들 중의 하나에서 필요한가요?
+  - 그런가요? 이것을 자식에게 옮기세요 (colocate state). 3으로 가세요
+  - 아닌가요? 4로 가세요
+
+4 거기 놔두세요. 5로 가세요
+
+5 prop drilling 문제가 발생하나요?
+
+- 그런가요? state를 context provider에 넣고 state가 매니지 되는 컴포넌트에 render시키세요. 6으로 가세요
+- 아닌가요? 6으로 가세요.
+
+6 app을 끝내세요. 요구사항이 변경되면 1로 가세요.
+
+이것은 당신의 앱을 유지보수하고 리팩토링하는 과정에 있어서 매우 중요한 과정입니다. 왜냐하면 state를 끌어올리는것은 자연스럽게 발생하는 요구사항이고, 당신의 app은 당신이 state를 colocate시키는지 아닌지 상관없이 "작동해야 합니다", 이것을 매우 중요하게 생각해야 하고 당신의 app이 manageable하고 빠르도록 해야합니다.
+
+##### Conclusion
+
+일반적으로, 사람들은 변화함에따라 state를 끌어올리는 것은 잘하지만, 우리는 종종 당신의 codebase에서 state를 colocate시키는 것에 대해서 생각하지 않습니다. 그래서 제가 여러분께 말해주고 싶은것은 state를 colocate시키는것입니다. 당신에게 물어보세요, "정말 modal의 `isOpen` state가 redux안에 있어야 할까?(그 대답은 아마 아니다 입니다.)". 당신의 state를 colocate 시키고, 더 빠르고 간결한 codebase를 찾게 될것입니다. 행운을 빌어요!
