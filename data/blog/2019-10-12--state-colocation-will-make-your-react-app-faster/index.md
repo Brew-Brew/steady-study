@@ -9,7 +9,9 @@ image: welcoming.png
 draft: false
 ---
 
-State Colocation will make your React app faster
+![image](https://kentcdodds.com/static/e6c884bb612a2f39f6e2fad83e93c4d7/5d855/banner.webp)
+
+Photo by [Samuel Zeller](https://unsplash.com/photos/j0g8taxHZa0)
 
 > 원 글은 <https://kentcdodds.com/blog/state-colocation-will-make-your-react-app-faster> 입니다.
 
