@@ -1,7 +1,7 @@
 ---
 title: State Colocation will make your react app faster
-createdDate: "2019-10-12"
-updatedDate: "2019-10-20"
+createdDate: '2019-10-12'
+updatedDate: '2019-10-24'
 author: Ideveloper
 tags:
   - react
@@ -212,7 +212,7 @@ Chart perfected by [Stephan Meijer](https://twitter.com/meijer_s/status/11767765
 - 아닌가요? **오직** 자식 컴포넌트들 중의 하나에서만 필요한가요?
   - 그런가요? 이것을 자식에게 옮기세요 (colocate state). 3으로 가세요
   - 아닌가요? 이것은 부모나 형제컴포넌트에게도 필요한가요?
-      - 그런가요? 부모에게 옮기세요 (state를 올리세요) Go to 3
+      - 그런가요? 부모에게 옮기세요 (state를 올리세요) 3으로 가세요
       - 아닌가요? 4로 가세요.
 
 4 거기 놔두세요. 5로 가세요
@@ -229,3 +229,4 @@ Chart perfected by [Stephan Meijer](https://twitter.com/meijer_s/status/11767765
 ##### Conclusion
 
 일반적으로, 사람들은 변화함에따라 state를 끌어올리는 것은 잘하지만, 우리는 종종 당신의 codebase에서 state를 colocate시키는 것에 대해서 생각하지 않습니다. 그래서 제가 여러분께 말해주고 싶은것은 state를 colocate시키는것입니다. 당신에게 물어보세요, "정말 modal의 `isOpen` state가 redux안에 있어야 할까?(그 대답은 아마 아니다 입니다.)". 당신의 state를 colocate 시키고, 더 빠르고 간결한 codebase를 찾게 될것입니다. 행운을 빌어요!
+
