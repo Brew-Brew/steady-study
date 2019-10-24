@@ -5,7 +5,7 @@ updatedDate: "2019-10-20"
 author: Ideveloper
 tags:
   - react
-image: welcoming.png
+image: react_app_faster.png
 draft: false
 ---
 
