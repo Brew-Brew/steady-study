@@ -125,3 +125,15 @@ blockquote {
   border-left-color: inherit;
   opacity: 0.8;
 }
+
+td, th{
+text-align: left;
+padding: 0px 15px !important;
+}
+th{
+  border-bottom: 1px solid black;
+  border-top: 1px solid black;
+}
+td{
+  border-bottom: .5px solid #e4dfdf
+}
