@@ -206,7 +206,7 @@ export const skillInfo = [
     description: [
       "여러 기법을 활용해 불필요한 렌더링을 막고, 렌더링 최적화를 할 수 있습니다.",
       "번들 사이즈 분석 및, 번들 사이즈 최적화를 할 수 있습니다.",
-      "redux, hook등의 상태관리에 대해 적절한 상황에 사용할 수 있습니다.",
+      "redux, context api등의 상태관리에 대해 적절한 상황에 사용할 수 있습니다.",
       "next.js를 활용해 ssr에 대응 할 수 있습니다.",
     ],
     title: "React",
