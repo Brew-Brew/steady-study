@@ -5,7 +5,7 @@ updatedDate: "2019-11-23"
 author: Ideveloper
 tags:
   - network
-image: welcoming.png
+image: authorization.png
 draft: false
 ---
 
