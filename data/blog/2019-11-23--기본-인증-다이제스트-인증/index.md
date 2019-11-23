@@ -53,7 +53,9 @@ WWW-Authenticate: Basic realm="About"
 
 ![image](https://user-images.githubusercontent.com/26598542/69476541-81572080-0e1e-11ea-82e7-b1db48d0f979.png)
 
-#### 기본인증
+---
+
+## 기본인증
 
 - 기본 인증은 원래 HTTP/1.0에 기술되어 있었지만, HTTP 인증의 상세 내용을 다루는 RFC 2617로 옮겨졌습니다.
 
