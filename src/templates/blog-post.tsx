@@ -30,18 +30,17 @@ import Helmet from "react-helmet";
 
 const Wrapper = styled.div`
   p {
-    font-size: 16px;
     line-height: 2rem;
     margin-bottom: 0.5rem;
   }
   h3 {
-    font-size: 20px;
+    font-size: 18px;
   }
   h4 {
-    font-size: 19px;
+    font-size: 16px;
   }
   h5 {
-    font-size: 18px;
+    font-size: 13px;
   }
   img {
     max-width: 100%;
