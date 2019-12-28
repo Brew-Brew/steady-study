@@ -50,14 +50,6 @@ const Wrapper = styled.div`
   ${({ contentsVisible }) => contentsVisible && flipAnimation};
 `;
 
-const ButtonForHover = styled.div`
-  button {
-    &:hover {
-      background-color: white;
-    }
-  }
-`;
-
 const ContentWrapper = styled.div`
   display: flex;
   align-items: center;
@@ -161,7 +153,11 @@ class IndexPage extends React.Component<Props, State> {
               </ContentWrapper>
               <Button
                 size="huge"
-                style={{ marginTop: "50px", color: "rgb(33, 150, 243)" }}
+                style={{
+                  marginTop: "50px",
+                  color: "rgb(33, 150, 243)",
+                  background: "white"
+                }}
               >
                 Welcome to my blog
               </Button>
@@ -202,7 +198,7 @@ class IndexPage extends React.Component<Props, State> {
                         style={{
                           display: "flex",
                           flexDirection: "column",
-                          height: " 200px",
+                          height: "200px",
                           justifyContent: "center"
                         }}
                       >
@@ -211,18 +207,25 @@ class IndexPage extends React.Component<Props, State> {
                           {content.text}
                         </Header>
                         <a href={content.link}>
-                          <ButtonForHover>
-                            <Button
-                              primary
-                              size="huge"
+                          <Button
+                            primary
+                            size="huge"
+                            style={{
+                              background: colors.mainColor,
+                              color: "white"
+                            }}
+                          >
+                            {content.buttonContent}
+                            <Icon
+                              name={content.icon}
                               style={{
-                                background: colors.mainColor,
-                                color: "white"
+                                width: "1em",
+                                height: "1em",
+                                marginLeft: ".5em",
+                                verticalAlign: "middle"
                               }}
-                            >
-                              {content.buttonContent}
-                            </Button>
-                          </ButtonForHover>
+                            />
+                          </Button>
                         </a>
                       </Grid.Column>
                     );

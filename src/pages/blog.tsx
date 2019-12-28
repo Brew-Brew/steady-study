@@ -80,14 +80,16 @@ const BlogPage = (props: BlogProps) => {
 
         return (
           <FadeWrapper>
-            <Card
-              key={slug}
-              fluid
-              image={cover}
-              header={frontmatter.title}
-              extra={extra}
-              description={description}
-            />
+            <Link to={slug}>
+              <Card
+                key={slug}
+                fluid
+                image={cover}
+                header={frontmatter.title}
+                extra={extra}
+                description={description}
+              />
+            </Link>
           </FadeWrapper>
         );
       })}
