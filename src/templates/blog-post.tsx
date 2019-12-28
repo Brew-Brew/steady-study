@@ -14,6 +14,10 @@ import {
   Item,
   Comment
 } from "semantic-ui-react";
+import { graphql } from "gatsby";
+import styled from "styled-components";
+import Helmet from "react-helmet";
+
 import {
   MarkdownRemark,
   ImageSharp,
@@ -24,9 +28,6 @@ import BlogTitle from "../components/BlogTitle";
 import { DiscussionEmbed } from "disqus-react";
 import { withLayout, LayoutProps } from "../components/Layout";
 import GlobalFontStyle from "../util/globalFont";
-import { graphql } from "gatsby";
-import styled from "styled-components";
-import Helmet from "react-helmet";
 
 const Wrapper = styled.div`
   p {
@@ -177,6 +178,14 @@ export const pageQuery = graphql`
         disqus
       }
     }
+
+    postsCount: allMarkdownRemark(
+      sort: { order: DESC, fields: [frontmatter___updatedDate] }
+      filter: { fileAbsolutePath: { regex: "/blog/" } }
+    ) {
+      totalCount
+    }
+
     post: markdownRemark(fields: { slug: { eq: $slug } }) {
       html
       excerpt

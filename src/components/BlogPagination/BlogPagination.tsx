@@ -10,20 +10,26 @@ interface BlogPaginationProps extends React.HTMLProps<HTMLDivElement> {
 }
 
 export default (props: BlogPaginationProps) => {
-  if (props.pageCount === 1) { return null; }
+  if (props.pageCount === 1) {
+    return null;
+  }
+
   const activeItem = props.pathname.startsWith("/blog/page/")
     ? props.pathname.split("/")[3]
     : "1";
 
   return (
     <Menu pagination>
-      {times(props.pageCount, (index) => {
+      {times(props.pageCount, index => {
         const pageIndex = (index + 1).toString();
 
         const rangeStep = props.pageCount < 10 ? 5 : 3;
-        const isInRange = (+pageIndex - rangeStep < +activeItem && +pageIndex + rangeStep > +activeItem);
-        const isLastPage = (+pageIndex === props.pageCount);
-        const isFirstPage = (+pageIndex === 1);
+        const isInRange =
+          +pageIndex - rangeStep < +activeItem &&
+          +pageIndex + rangeStep > +activeItem;
+        const isLastPage = +pageIndex === props.pageCount;
+        const isFirstPage = +pageIndex === 1;
+
         if (isInRange || isFirstPage || isLastPage) {
           return (
             <Menu.Item
@@ -36,9 +42,11 @@ export default (props: BlogPaginationProps) => {
             />
           );
         } else {
-          return (+pageIndex === props.pageCount - 1 || +pageIndex === 2)
-            ? <Menu.Item key={pageIndex} disabled>...</Menu.Item>
-            : null;
+          return +pageIndex === props.pageCount - 1 || +pageIndex === 2 ? (
+            <Menu.Item key={pageIndex} disabled>
+              ...
+            </Menu.Item>
+          ) : null;
         }
       })}
     </Menu>

@@ -25,6 +25,7 @@ interface BlogProps extends LayoutProps {
   data: {
     tags: MarkdownRemarkConnection;
     posts: MarkdownRemarkConnection;
+    postsCount: MarkdownRemarkConnection;
   };
   pageContext: {
     tag?: string; // only set into `templates/tags-pages.tsx`
@@ -36,7 +37,7 @@ const BlogPage = (props: BlogProps) => {
   const tags = data.tags.group;
   const posts = data.posts.edges;
   const { pathname } = location;
-  const pageCount = Math.ceil(data.posts.totalCount / 10);
+  const pageCount = Math.ceil(data.postsCount.totalCount / 5);
 
   // TODO export posts in a proper component
   const Posts = (
@@ -135,11 +136,18 @@ export const pageQuery = graphql`
       }
     }
 
+    postsCount: allMarkdownRemark(
+      sort: { order: DESC, fields: [frontmatter___updatedDate] }
+      filter: { fileAbsolutePath: { regex: "/blog/" } }
+    ) {
+      totalCount
+    }
+
     # Get posts
     posts: allMarkdownRemark(
       sort: { order: DESC, fields: [frontmatter___updatedDate] }
       filter: { fileAbsolutePath: { regex: "/blog/" } }
-      limit: 10
+      limit: 5
     ) {
       totalCount
       edges {

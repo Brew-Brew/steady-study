@@ -1,7 +1,7 @@
 import * as React from "react";
-import Blog from "../pages/blog";
-import { graphql } from "gatsby";
 
+import { graphql } from "gatsby";
+import Blog from "../pages/blog";
 export default Blog;
 
 export const pageQuery = graphql`
@@ -14,6 +14,13 @@ export const pageQuery = graphql`
       }
     }
 
+    postsCount: allMarkdownRemark(
+      sort: { order: DESC, fields: [frontmatter___updatedDate] }
+      filter: { fileAbsolutePath: { regex: "/blog/" } }
+    ) {
+      totalCount
+    }
+
     # Get posts
     posts: allMarkdownRemark(
       sort: { order: DESC, fields: [frontmatter___updatedDate] }
@@ -21,7 +28,7 @@ export const pageQuery = graphql`
         frontmatter: { draft: { ne: true } }
         fileAbsolutePath: { regex: "/blog/" }
       }
-      limit: 10
+      limit: 5
       skip: $skip
     ) {
       totalCount
