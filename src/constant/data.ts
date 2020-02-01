@@ -348,6 +348,16 @@ export const contributionInfo = [
         link: "https://github.com/emotion-js/emotion/pull/1441"
       }
     ]
+  },
+  {
+    from: "styled-components / awesome-styled-components",
+    list: [
+      {
+        title: "doc: add 'css-in-js-media' to helpers",
+        link:
+          "https://github.com/styled-components/awesome-styled-components/pull/122"
+      }
+    ]
   }
 ];
 
