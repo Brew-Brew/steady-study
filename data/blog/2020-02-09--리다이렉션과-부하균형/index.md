@@ -9,7 +9,7 @@ image: redirection.png
 draft: false
 ---
 
-`이 글은 HTTP 완벽가이드 19장을 참고해 정리한 포스팅입니다.`
+`이 글은 HTTP 완벽가이드 20장을 참고해 정리한 포스팅입니다.`
 
 ## 시작하기에 앞서
 
@@ -41,6 +41,16 @@ HTTP 애플리케이션은 언제나 아래 세가지를 원하기 때문에 리
 ---
 
 ## 리다이렉션이 필요한 곳
+
+- 도메인 앨리어싱
+
+* 링크 유지하기
+
+- 안전하지 않은 요청에 대한 일시적인 응답
+
+* 긴 요청에 대한 일시적인 응답
+
+`그 외`
 
 - 서버, 프락시, 캐시, 게이트웨이가 모두 공통적으로 서버의 특성을 가지고 있기 때문에 많은 리다이렉션 기법이 그들 모두에서 동작하게 됩니다.
 - 그러나 어떤 리다이렉션 기술들은 특정 종류의 종단 만을 위해 특별히 설계되어 일반적인 적용이 불가능합니다.
@@ -93,3 +103,5 @@ HTTP 애플리케이션은 언제나 아래 세가지를 원하기 때문에 리
 - 로드밸런싱 관련 글: https://nesoy.github.io/articles/2018-06/Load-Balancer
 - L4 로드밸런싱: https://jins-dev.tistory.com/entry/L4-L7-%EB%A1%9C%EB%93%9C%EB%B0%B8%EB%9F%B0%EC%8B%B1Load-Balancing-%EC%97%90-%EB%8C%80%ED%95%98%EC%97%AC
 - DNS 리다이렉션을 악용한 사례: https://www.boannews.com/media/view.asp?idx=45231&direct=mobile
+- Redirections in HTTP: https://developer.mozilla.org/ko/docs/Web/HTTP/Redirections
+- ELB에서의 HTTP 트래픽 HTTPS redirection: https://aws.amazon.com/ko/premiumsupport/knowledge-center/redirect-http-https-elb/
