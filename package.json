@@ -6,8 +6,8 @@
   "license": "MIT",
   "scripts": {
     "clean": "gatsby clean",
-    "start": "gatsby develop --no-cache",
-    "develop": "gatsby develop --no-cache",
+    "start": "gatsby develop --no-cache -o",
+    "develop": "gatsby develop --no-cache -o",
     "build": "gatsby clean && gatsby build",
     "lint": "npm run lint:ts && npm run lint:md && npm run lint:js && npm run lint:css",
     "lint:ts": "tslint \"./src/**/*.ts\" \"./src/**/*.tsx\"",
