@@ -15,7 +15,7 @@ import {
   pressInfo,
   awardsInfo,
   contributionInfo,
-  storyInfo
+  storyInfo,
 } from "../constant/data";
 
 const fadedAnimation = keyframes`${fadeIn}`;
@@ -98,9 +98,9 @@ const AboutPage = () => {
       </Segment>
       <Segment>
         <InfoTitle> 🙋‍♂️ My Info</InfoTitle>
-        {abooutInfo.map(info => {
+        {abooutInfo.map((info) => {
           return (
-            <a href={info.link}>
+            <a href={info.link} target="_blank" rel="noopener noreferrer">
               <InfoWrapper>
                 <ImgIcon src={info.img} />
                 <IconLabel>{info.label}</IconLabel>
@@ -112,7 +112,7 @@ const AboutPage = () => {
       </Segment>
       <Segment>
         <InfoTitle>🏢 My Career</InfoTitle>
-        {careerInfo.map(info => {
+        {careerInfo.map((info) => {
           return (
             <InfoWrapper>
               <CompanyIcon src={info.img} />
@@ -121,16 +121,16 @@ const AboutPage = () => {
               </p>
 
               <ul style={{ padding: "0", margin: "0" }}>
-                {info.task.map(task => {
+                {info.task.map((task) => {
                   return (
                     <InfoContent>
                       <li>{task.title}</li>
-                      {task.skills.map(skill => (
+                      {task.skills.map((skill) => (
                         <Tag content={skill} />
                       ))}
                       {task.participant && <p>참여인원: {task.participant}</p>}
                       <ul>
-                        {task.content.map(content => {
+                        {task.content.map((content) => {
                           return <li>{content}</li>;
                         })}
                       </ul>
@@ -145,7 +145,7 @@ const AboutPage = () => {
       </Segment>
       <Segment>
         <InfoTitle>📖 My Story</InfoTitle>
-        {storyInfo.map(story => {
+        {storyInfo.map((story) => {
           return (
             <InfoWrapper>
               <a href={story.link} target="_blank">
@@ -158,12 +158,12 @@ const AboutPage = () => {
       </Segment>
       <Segment>
         <InfoTitle>💻 Skills</InfoTitle>
-        {skillInfo.map(info => {
+        {skillInfo.map((info) => {
           return (
             <InfoWrapper>
               <h3>{info.title}</h3>
               <ul>
-                {info.description.map(description => {
+                {info.description.map((description) => {
                   return <li>{description}</li>;
                 })}
               </ul>
@@ -174,12 +174,12 @@ const AboutPage = () => {
       </Segment>
       <Segment>
         <InfoTitle>👨🏼‍💻 Contributions</InfoTitle>
-        {contributionInfo.map(info => {
+        {contributionInfo.map((info) => {
           return (
             <React.Fragment>
               <InfoWrapper>
                 <Tag content={info.from} />
-                {info.list.map(content => {
+                {info.list.map((content) => {
                   return (
                     <React.Fragment>
                       <h4>- {content.title}</h4>
@@ -196,7 +196,7 @@ const AboutPage = () => {
       </Segment>
       <Segment>
         <InfoTitle>📰 Press release</InfoTitle>
-        {pressInfo.map(info => {
+        {pressInfo.map((info) => {
           return (
             <InfoWrapper
               style={{ borderBottom: `1px solid ${colors.mainColor}` }}
@@ -212,14 +212,14 @@ const AboutPage = () => {
       </Segment>
       <Segment>
         <InfoTitle>💙 Mottos</InfoTitle>
-        {mottoInfo.map(motto => {
+        {mottoInfo.map((motto) => {
           return <li>{motto}</li>;
         })}
         <div />
       </Segment>
       <Segment>
         <InfoTitle>🏆 Awards / Activity</InfoTitle>
-        {awardsInfo.map(award => {
+        {awardsInfo.map((award) => {
           return (
             <React.Fragment>
               <h3>{award.title}</h3>

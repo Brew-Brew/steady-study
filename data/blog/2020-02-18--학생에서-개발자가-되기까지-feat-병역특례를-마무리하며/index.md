@@ -139,7 +139,7 @@ etc...
 - 오픈소스 생태계에 기여해보기
   - [https://ideveloper2.dev/about/](https://ideveloper2.dev/about/) 의 contributions 영역
     - 나도 도움을 많이 받고는 있는만큼 개발자 생태계에 나도 도움을 줘보자..!
-    - css-in-js로 스타일링을 할때 쉽게 반응형을 대응할수 있는 util이다. [https://github.com/zx6658/css-in-js-media](https://github.com/zx6658/css-in-js-media)
+    - css-in-js로 스타일링을 할때 쉽게 반응형을 대응할수 있는 util이다. [https://github.com/Brew-Brew/css-in-js-media](https://github.com/Brew-Brew/css-in-js-media)
 
 ### **만났던 사람들 🤝**
 

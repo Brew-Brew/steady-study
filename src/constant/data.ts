@@ -24,7 +24,7 @@ export const bottomContent = [
   {
     buttonContent: "Contact me",
     icon: "phone",
-    link: "https://github.com/zx6658/",
+    link: "https://github.com/Brew-Brew/",
     text: " Contact me from my github page",
   },
 ];
@@ -33,7 +33,7 @@ export const abooutInfo = [
   {
     img: github,
     label: "Github",
-    link: "https://github.com/zx6658",
+    link: "https://github.com/Brew-Brew",
   },
   {
     img: mail,
@@ -367,7 +367,7 @@ export const contributionInfo = [
     list: [
       {
         title:
-          "add `css-in-js media library` to readme ecosystem (add my library : https://github.com/zx6658/css-in-js-media)",
+          "add `css-in-js media library` to readme ecosystem (add my library : https://github.com/Brew-Brew/css-in-js-media)",
         link: "https://github.com/emotion-js/emotion/pull/1441",
       },
     ],

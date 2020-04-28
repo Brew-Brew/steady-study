@@ -1,7 +1,7 @@
 ---
 title: Thinking about emotion js vs styled component
-createdDate: '2019-05-05'
-updatedDate: '2019-05-20'
+createdDate: "2019-05-05"
+updatedDate: "2019-05-20"
 author: Ideveloper
 tags:
   - emotion.js
@@ -41,7 +41,7 @@ styled-component : `15.8kb` <https://bundlephobia.com/result?p=styled-components
 
 같은 마크업에 emotion과 styled component를 적용하여 비교해 보았습니다. 한눈에 차이점을 파악하기 쉬울것입니다.
 
-깃헙 : <https://github.com/zx6658/react-hook-playground/tree/master/hook-count-style>
+깃헙 : <https://github.com/Brew-Brew/react-hook-playground/tree/master/hook-count-style>
 
 <iframe src="https://codesandbox.io/embed/k28q2nv2w7?autoresize=1&fontsize=14" title="k28q2nv2w7" style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;" sandbox="allow-modals allow-forms allow-popups allow-scripts allow-same-origin"></iframe>
 
@@ -62,7 +62,7 @@ emotion.js 와 styled component 모두 css 관련한 js 코드들을 따로 모�
 
 또한 협업시에 Chrome dev tool로 classname으로 서로 디자인 qa 커뮤니케이션을 하는데 css in js 방식은 따로 prefix같은것을 붙히지 않아 어려움이 있지않을까 생각했었는데 각자의 라이브러리에서 그 해결방안을 제시하고 있었습니다.
 
-* * *
+---
 
 `개발관점`에서는 js 기반의 syntax안에 css 코드가 들어가므로 개발자 경험 관점에서는 매우 유연한 코드 및 효율적인 코드 작성이 가능했습니다.
 
@@ -74,7 +74,7 @@ emotion.js 와 styled component 모두 css 관련한 js 코드들을 따로 모�
 
 두 라이브러리 모두 css-in-js 방식이므로 결국엔 js syntax안에 css 코드가 들어가는 것이므로 관심사를 분리하는것은 간단했습니다. css 관련 js 파일이 기존 주요 로직에 영향을 끼치면 안되므로 css 관련 js코드는 분리하여 보관했습니다.
 
--   emotion 방식
+- emotion 방식
 
 ```javascript
 // css/WithEmotionComponent.js
@@ -129,7 +129,7 @@ function App() {
 export default App;
 ```
 
--   styled-component 방식
+- styled-component 방식
 
 ```javascript
 // css/WithStyledComponent.js
@@ -234,7 +234,7 @@ cra에서는 별도 설정없이 import styled 'styled-components/macro' 과 같
 
 ![image](https://user-images.githubusercontent.com/26598542/57197060-9745e680-6f9d-11e9-8516-20892c53b1b1.png)
 
-* * *
+---
 
 ## 개발 관점
 
@@ -264,10 +264,10 @@ cra에서는 별도 설정없이 import styled 'styled-components/macro' 과 같
 
 우선 emotion js에 css prop을 적용하는 방식은 `2가지` 가 존재합니다. 그중, 저는 react 기반으로 개발을 하고 있으므로 두번째를 택했고, `object 방식`(<https://emotion.sh/docs/object-styles>), 그리고 `css template literal` 중 디자인 팀과 협업시에 더 명확한 코드를 보여줄수 있는 css templae literal을 사용하였습니다.
 
--   Frame work agnostic( 프레임워크와 관련 없이 사용할때)
--   React => @emotion/core
-    -   Object 방식
-    -   Css template literal (선호) css syntax를 그대로 사용하므로 협업 할때 편리할듯
+- Frame work agnostic( 프레임워크와 관련 없이 사용할때)
+- React => @emotion/core
+  - Object 방식
+  - Css template literal (선호) css syntax를 그대로 사용하므로 협업 할때 편리할듯
 
 ### composition
 
@@ -325,7 +325,7 @@ import {
   imgClass,
   titleClass,
   whiteButton,
-  blackButton
+  blackButton,
 } from "./css/WithEmotionComponent";
 
 function App() {
@@ -365,7 +365,7 @@ export default App;
 ![image](https://user-images.githubusercontent.com/26598542/57195204-f77f5d00-6f8a-11e9-897b-c16775a3e868.png)
 
 ```javascript
-const titleClass = props => css`
+const titleClass = (props) => css`
   label: title;
   font-size: 30px;
   color: ${props.color} ${[media[0]]} {
@@ -435,7 +435,7 @@ const titleClass = (props) => css`
 
 2\.`css-in-js-media` npm 활용하기
 
-link : <https://github.com/zx6658/css-in-js-media>
+link : <https://github.com/Brew-Brew/css-in-js-media>
 
 위 npm을 활용하면 css-in-js (styled-components, emotion.js) 스타일링 라이브러리에서 쉽게 미디어 쿼리를 이용해 반응형을 대응할수 있는데요,
 기존 scss기반에서 활용했던 [include-media](https://include-media.com/)와 비슷하게 이용이 가능합니다.
@@ -468,7 +468,7 @@ export const exampleClass = css`
 `;
 ```
 
-* * *
+---
 
 ## styled-component
 
@@ -485,7 +485,7 @@ styled component 역시 prop을 기반으로 한 동적인 조건부 스타일�
 ```javascript
 const TitleClass = styled.h1`
   font-size: 30px;
-  color: ${props => props.color} ${[media[0]]} {
+  color: ${(props) => props.color} ${[media[0]]} {
     font-size: 40px;
   }
   ${[media[1]]} {
@@ -525,11 +525,11 @@ const BlackButton = styled(Button)`
 ```javascript
 const breakpoints = [320, 768, 1024, 1440];
 
-const media = breakpoints.map(bp => `@media (min-width: ${bp}px)`);
+const media = breakpoints.map((bp) => `@media (min-width: ${bp}px)`);
 
 const TitleClass = styled.h1`
   font-size: 30px;
-  color: ${props => props.color} ${[media[0]]} {
+  color: ${(props) => props.color} ${[media[0]]} {
     font-size: 40px;
   }
   ${[media[1]]} {
@@ -573,7 +573,7 @@ css in js 라이브러리를 도입하면 기존 스크립트에 영향이 커�
 
 같이 보면 좋을 링크들
 
--   <https://css-tricks.com/the-fragmented-but-evolving-state-of-css-in-js/>
--   <https://css-tricks.com/bridging-the-gap-between-css-and-javascript-css-in-js/>
--   <https://blog.bitsrc.io/5-ways-to-style-react-components-in-2019-30f1ccc2b5b>
--   <https://medium.freecodecamp.org/learn-emotionjs-during-your-morning-coffee-its-that-easy-2bc60213aca7>
+- <https://css-tricks.com/the-fragmented-but-evolving-state-of-css-in-js/>
+- <https://css-tricks.com/bridging-the-gap-between-css-and-javascript-css-in-js/>
+- <https://blog.bitsrc.io/5-ways-to-style-react-components-in-2019-30f1ccc2b5b>
+- <https://medium.freecodecamp.org/learn-emotionjs-during-your-morning-coffee-its-that-easy-2bc60213aca7>
