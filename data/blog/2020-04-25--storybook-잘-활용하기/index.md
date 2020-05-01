@@ -342,7 +342,7 @@ export default {
 
 ### Storybook custom UI 테마 설정하기
 
-또한 회사에서내의 storybook, 사이드프로젝트등에서도 storybook을 자주 활용하게 되는데 custom 하게 storybook의 테마를 꾸밀수 있습니다.
+회사 내에서 혹은 사이드프로젝트 등에서도 storybook을 자주 활용하게 되는데, 프로젝트 성격에 맞게 storybook의 테마를 꾸밀수 있습니다.
 
 - https://storybook.js.org/docs/configurations/theming/#create-a-theme-quickstart
 
