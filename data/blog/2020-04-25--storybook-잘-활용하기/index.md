@@ -13,7 +13,7 @@ draft: false
 ### 🎬 시작하기에 앞서
 
 Storybook은 UI 컴포넌트 개발을 할때 뛰어난 UI를 체계적이고 효율적으로 구축 할 수 있도록 도와주는 유용한 tool입니다.
-이 포스팅에서는 storybook 사용과 관련해서는 설명하지 않고,이미 사용하고 있는 storybook을 어떻게 잘 활용할지에 대한 몇가지 방법들에 대해 포스팅 하겠습니다.
+이 포스팅에서는 storybook 사용과 관련해서는 설명하지 않고,이미 사용하고 있는 storybook을 어떻게 잘 활용할지에 대한 몇가지 방법들에 대해 포스팅 하겠습니다. 또한 **storybook 5.2** 버전 이상에서는 [Component Story Format (CSF)](https://storybook.js.org/docs/formats/component-story-format/) 형식으로 stories를 작성하도록 권장하고 있는데요, 이 환경 에서의 활용방법 위주로 포스팅 된 점 참고 부탁드립니다.
 
 ## ![image](https://raw.githubusercontent.com/storybookjs/storybook/master/media/storybook-intro.gif)
 
