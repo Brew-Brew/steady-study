@@ -137,6 +137,8 @@ addParameters({
 
 맨 처음엔 [이곳](https://github.com/storybookjs/storybook/blob/master/addons/viewport/src/defaults.ts)의 MINIMAL VIEWPORTS 로 리스트들이 적용되어 있어, 이 안에서 적용을 해주어야 하고, 만약 INITIAL_VIEWPORT를 viewports에 적용해 주었다면, iphonex, iphone6 등등 다양한 viewport를 default viewport로 적용이 가능해집니다.
 
+**맨 처음 설정되어있는 viewport에서 default viewport 적용**
+
 ```javascript
 // storybook/preview.js
 
@@ -151,6 +153,8 @@ addParameters({
 ```
 
 ![스크린샷 2020-05-01 오후 6 19 14](https://user-images.githubusercontent.com/26598542/80795746-598f9400-8bd8-11ea-81f4-e0624702ffcb.png)
+
+**추가한 viewport가 있을때 default viewport 적용**
 
 ```javascript
 // 추가한 viewport가 있을때 default viewport 적용
