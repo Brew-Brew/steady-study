@@ -258,11 +258,29 @@ export const defaultButton = () => {
 
 ### 📲 a11y addon
 
-접근성은 장애가있는 사람을 포함하여 모든 사람이 앱을 이해하고 탐색하고 상호 작용할 수 있음을 의미합니다. 온라인에서는 탭 키 및 screen reader를 사용하여 사이트를 탐색하는 등의 콘텐츠에 액세스 할 수있는 방법등을 제공하는것을 의미하는데요, 이러한 접근성과 관련해 UI 컴포넌트들을 접근성있게 개발할수 있도록 도와주는 [a11y addon](https://github.com/storybookjs/storybook/tree/master/addons/a11y)이라는 addon이 있습니다. 이를 확인해 볼수 있는 간단한 예제와 함께 설명을 드리겠습니다.
+접근성이 좋은 애플리케이션이란 모든 사람이 앱을 이해하고 탐색하고 상호 작용할 수 있음을 의미합니다. 온라인에서는 탭 키 및 screen reader를 사용하여 사이트를 탐색하는 등의 콘텐츠에 액세스 할 수있는 방법등을 제공하는것을 의미하는데요, 이러한 접근성과 관련해 UI 컴포넌트들을 접근성있게 개발할수 있도록 도와주는 [a11y addon](https://github.com/storybookjs/storybook/tree/master/addons/a11y)이라는 addon이 있습니다. 이를 확인해 볼수 있는 간단한 예제와 함께 설명을 드리겠습니다.
 
 **관련해서 읽어보면 좋을 글**
 
 - https://medium.com/storybookjs/instant-accessibility-qa-linting-in-storybook-4a474b0f5347
+
+**설치**
+
+```shell
+npm i --save-dev @storybook/addon-a11y
+
+yarn add @storybook/addon-a11y --dev
+```
+
+**설정방법**
+
+`.storybook/main.js 파일`
+
+```javascript
+module.exports = {
+  addons: ["@storybook/addon-a11y/register"],
+};
+```
 
 ```javascript
 import React from "react";
