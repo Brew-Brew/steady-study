@@ -382,6 +382,16 @@ export const contributionInfo = [
       },
     ],
   },
+  {
+    from: "storybookjs / storybook",
+    list: [
+      {
+        title:
+          "doc: update readme of addon viewport about configure section more accurately",
+        link: "https://github.com/storybookjs/storybook/pull/10605",
+      },
+    ],
+  },
 ];
 
 export const storyInfo = [
