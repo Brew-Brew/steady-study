@@ -35,7 +35,9 @@ Storybook은 UI 컴포넌트 개발을 할때 뛰어난 UI를 체계적이고 �
 
 [https://ideveloper2.dev/blog/2020-04-25--storybook-%EC%9E%98-%ED%99%9C%EC%9A%A9%ED%95%98%EA%B8%B0/]이 글에 스토리북을 잘 활용하는 방법을 적어두었습니다.
 
-## 구축하기
+---
+
+## 디자인 시스템 구축하기
 
 #### 1)컴포넌트 구성에 필요한 폴더 구조 만들기
 
@@ -74,6 +76,12 @@ src/
     index.module.scss
     index.stories.tsx
   index.ts
+```
+
+gitignore 파일 생성
+
+```gitignore
+/node_modules
 ```
 
 우선은 아래 캡쳐한 사진처럼 파일과 폴더들을 생성해 줍니다.
@@ -144,13 +152,25 @@ yarn add -D typescript
 
 단, 중요한 부분이 맨 윗줄 두가지에 있는데요, `"declaration": true` 와 `"declarationDir": "./build/src"` 를 명시해 줌으로써, 우리가 만들 디자인 시스템의 타입들을 자동으로 생성해 빌드 폴더에 넣어주는 역할을 하게 됩니다.
 
-또한, `preserveModules: true` 로 옵션을 줌으로써 기존 폴더구조 그대로 build를 할수 있게 하여 그 구조 그대로 import 할수 있게 됩니다. ex: import Button from 'library/src/build/Button' or import Button from 'library'
+또한, `preserveModules: true` 로 옵션을 줌으로써 기존 폴더구조 그대로 build를 할수 있게 하여 그 구조 그대로 import 할수 있게 됩니다.
+
+Option A
+
+```
+import Button from 'library/src/build/Button'
+```
+
+Option B
+
+```
+import Button from 'library'
+```
 
 ```json
 {
   "compilerOptions": {
     "declaration": true,
-    "declarationDir": "./build/src",
+    "declarationDir": "./build",
     "baseUrl": "./",
     "target": "es5",
     "lib": ["dom", "dom.iterable", "esnext"],
@@ -355,8 +375,45 @@ export const defaultButton = () => {
 };
 ```
 
+#### 5) 라이브러리 배포하기
+
+npm publish 를 통해 배포를 해줍니다.
+
+login이 되어 있지 않다면 npm login 을 통해 login을 해주면 됩니다.
+
+![image](https://user-images.githubusercontent.com/26598542/82141424-b0e86200-9870-11ea-9933-636d08219bd4.png)
+
+---
+
+## 라이브러리 사용하기
+
+ts-rollup-storybook-system 라는 이름으로 배포를 해주었으므로 아래와 같이 설치를 해줍니다.
+
+```
+yarn add ts-rollup-storybook-system
+```
+
+option a
+
+```typescript
+import Button from "ts-rollup-storybook-system/build/src/Button";
+```
+
+option b
+
+```typescript
+import { Button } from "ts-rollup-storybook-system";
+```
+
+---
+
 ## 예시 파일
 
-```
+https://github.com/Brew-Brew/rollup-ts-design-system 를 참고 하시면 됩니다.
 
-```
+---
+
+## ETC
+
+- 참고 링크
+  - https://blog.harveydelaney.com/creating-your-own-react-component-library/
