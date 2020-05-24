@@ -549,5 +549,5 @@ export default {
 
 - rollup + ts + storybook 환경 개발 참고 url
   - https://blog.harveydelaney.com/creating-your-own-react-component-library/
-- webpack vs parcel vs parcel 비교
+- webpack vs parcel vs rollup 비교
   - https://medium.com/js-imaginea/comparing-bundlers-webpack-rollup-parcel-f8f5dc609cfd
