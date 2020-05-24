@@ -12,43 +12,41 @@ image: rolluptsstory.png
 draft: false
 ---
 
-## 시작하기에 앞서
+## 시작하기에 앞서 😀
 
-rollup + typescript + storybook으로 디자인 시스템을 구축하는데에 관련 아티클도 해외아티클들은 많지만 예전 내용들로 작성되어 있는 경우도 있고하여 구축 당시 많은 어려움을 겪었어서 겪은 내용들을 정리해 글로 작성해 보았습니다.
+rollup + typescript + storybook으로 디자인 시스템을 구축하는데에 관련 아티클도 해외 아티클들은 많지만 예전 내용들로 작성되어 있는 경우도 있고하여 구축 당시 많은 어려움을 겪었어서 겪은 내용들을 정리해 글로 작성해 보았습니다.
 
 #### 디자인 시스템
 
-효용성을 위해 디자인 시스템을 많이들 구축한다.. etc
+개발상의 효용성을 위해 많은 회사 혹은 여러 프로젝트들에서 디자인 시스템을 많이들 구축하고 있습니다.
 
-#### rollup 이란
+#### rollup.js 란
 
-Rollup은 Webpack과 여러 모듈(파일)들을 라이브러리나 어플리케이션으로 작게 만들어 주는 번들러입니다.
-
-Rollup is a module bundler for JavaScript which compiles small pieces of code into something larger and more complex, such as a library or application. It uses the new standardized format for code modules included in the ES6 revision of JavaScript, instead of previous idiosyncratic solutions such as CommonJS and AMD. ES modules let you freely and seamlessly combine the most useful individual functions from your favorite libraries. This will eventually be possible natively everywhere, but Rollup lets you do it today.
-
+[Rollup.js](https://rollupjs.org/guide/en/)은 Webpack과 같이 여러 모듈(파일)들을 라이브러리나 어플리케이션으로 작게 만들어 주는 번들러입니다. 또한 여러가지 loader들을 붙여주거나 설정 파일이 복잡한 webpack에 비해 빌드에 필요한 설정이 매우 간단한 편이고, 이외에도 [많은 장점](https://rollupjs.org/guide/en/#the-why)이 있습니다.
 - rollup 관련 아티클
-  - https://medium.com/naver-fe-platform/webpack%EC%97%90%EC%84%9C-rollup%EC%A0%84%ED%99%98%EA%B8%B0-137dc45cbc38
+  - [webpack에서 rollup 전환기](https://medium.com/naver-fe-platform/webpack%EC%97%90%EC%84%9C-rollup%EC%A0%84%ED%99%98%EA%B8%B0-137dc45cbc38)
+  - [rollup.js를 왜 사용하는가](https://rollupjs.org/guide/en/#the-why)
 
 #### storybook이란
 
-Storybook은 UI 컴포넌트 개발을 할때 뛰어난 UI를 체계적이고 효율적으로 구축 할 수 있도록 도와주는 유용한 tool입니다.
-
-[https://ideveloper2.dev/blog/2020-04-25--storybook-%EC%9E%98-%ED%99%9C%EC%9A%A9%ED%95%98%EA%B8%B0/]이 글에 스토리북을 잘 활용하는 방법을 적어두었습니다.
+Storybook은 UI 컴포넌트 개발을 할때 뛰어난 UI를 체계적이고 효율적으로 구축 할 수 있도록 도와주는 유용한 tool입니다. 다양한 기능을 제공하는데, 이글에서는 설정만 하는내용을 다루고 [이 글](https://ideveloper2.dev/blog/2020-04-25--storybook-%EC%9E%98-%ED%99%9C%EC%9A%A9%ED%95%98%EA%B8%B0/)에 스토리북을 잘 활용하는 방법을 적어두었습니다.
 
 ---
 
-## 디자인 시스템 구축하기
+## 디자인 시스템 구축하기 🎨
 
 #### 1)컴포넌트 구성에 필요한 폴더 구조 만들기
 
 ```shell
 npm init
-yarn add -D react react-dom @types/react node-sass
+yarn add -D react react-dom @types/react node-sass classnames @types/classnames
 
 ```
 
 `react react-dom peer dependency 관련`
-Having them as peer dependencies will mean that once our library is installed in another project, they won't be automatically installed as dependencies.
+
+react나 react dom은 다른 리액트 프로젝트에서 디자인 시스템에서 사용될것이므로, peer dependency로 넣어주도록 변경해줍니다.
+
 
 ```json
   "devDependencies": {
@@ -60,7 +58,7 @@ Having them as peer dependencies will mean that once our library is installed in
   }
 ```
 
-이제 아래와 같이 최종적을 폴더 구조를 가지도록 파일들을 생성해 줄 차례입니다.
+최종적으로는 아래 폴더 구조를 가지도록 파일들을 생성해 줄 것입니다.
 
 ```
 .storybook/
@@ -69,35 +67,40 @@ Having them as peer dependencies will mean that once our library is installed in
 package.json
 rollup.config.js
 tsconfig.json
-src/
+components/
   Button/
     index.tsx
-    index.types.ts
     index.module.scss
     index.stories.tsx
-  index.ts
+typings/
+  declaration.d.ts
+index.ts
 ```
 
-gitignore 파일 생성
+**gitignore 파일 생성**
+
+아래와 같이 root의 node_modules를 ignore 해 줍니다.
 
 ```gitignore
 /node_modules
 ```
 
-우선은 아래 캡쳐한 사진처럼 파일과 폴더들을 생성해 줍니다.
+우선은 아래처럼 디자인 시스템에 넣을 Button 컴포넌트 파일과 폴더들을 생성해 줍니다. 예시를 위해 Button만 제작해 줬지만, 필요에 따라 다른 컴포넌트들 역시 같은 방식으로 제작해 주면 됩니다. 
 
-`src.index.ts 파일`
+
+`index.ts 파일`
 
 ```typescript
-// src/index.ts
+// index.ts
 export { default as Button } from "./Button";
 ```
 
-`src/Button 폴더`
+`components/Button 폴더`
 
 ```typescript
-// src/Button/index.tsx
+// components/Button/index.tsx
 import React from "react";
+import classNames from "classnames";
 
 import styles from "./style.module.scss";
 
@@ -107,25 +110,51 @@ export enum ButtonType {
   SECONDARY = "secondary",
 }
 
-interface IProps {
+export interface IProps {
   children: React.ReactNode;
   onClick?: React.MouseEventHandler;
   theme?: ButtonType;
 }
 
-const Button: React.FC<IProps> = ({ children }) => {
-  return <button>{children}</button>;
+const Button: React.FC<IProps> = ({ children, theme = ButtonType.DEFAULT }) => {
+  const classNameProps = classNames(styles.default, styles[theme]);
+  return <button className={classNameProps}>{children}</button>;
 };
 
 export default Button;
+
 ```
+유의할점이 한가지 있는데, 아래에서 interface나 enum은 모두 export를 해주었는데, ts에서 자동을 type을 정의할때 필요한 부분이고, 아래 타입스크립트 설정 부분에서 자세히 설명해드리겠습니다.
 
 ```scss
-// src/Button/style.module.scss
+// components/Button/style.module.scss
 
 .default {
   padding: 8px;
+  background: white;
+  border: white;
+  border-radius: 4px;
 }
+
+.primary {
+  background: #03a9f4;
+  border: #03a9f4;
+  color: white;
+}
+
+.secondary {
+  background: #a0ddf9;
+  border: #a0ddf9;
+  color: white;
+}
+
+```
+그다음 디자인시스템에 사용되는 컴포넌트들을 모아주는 root 파일을 만들어줍니다.
+
+```typescript
+// index.ts
+export { default as Button } from "./components/Button";
+
 ```
 
 일단 여기까지는 아래와 같은 구조가 만들어 집니다.
@@ -133,11 +162,11 @@ export default Button;
 ```
 .gitignore
 package.json
-src/
+components/
   Button/
     index.tsx
     style.module.scss
-  index.ts
+index.ts
 ```
 
 #### 2) typescript 설치 및 관련 설정 해주기
@@ -148,23 +177,7 @@ typescript를 설치해줍니다.
 yarn add -D typescript
 ```
 
-아래와 같이 tsconfig를 설정해 줍니다. 필요에 따라 config 설정은 바꿔주셛 무방합니다.
-
-단, 중요한 부분이 맨 윗줄 두가지에 있는데요, `"declaration": true` 와 `"declarationDir": "./build/src"` 를 명시해 줌으로써, 우리가 만들 디자인 시스템의 타입들을 자동으로 생성해 빌드 폴더에 넣어주는 역할을 하게 됩니다.
-
-또한, `preserveModules: true` 로 옵션을 줌으로써 기존 폴더구조 그대로 build를 할수 있게 하여 그 구조 그대로 import 할수 있게 됩니다.
-
-Option A
-
-```
-import Button from 'library/src/build/Button'
-```
-
-Option B
-
-```
-import Button from 'library'
-```
+아래와 같이 tsconfig를 설정해 줍니다. 필요에 따라 config 설정은 바꿔주셔도 무방합니다.
 
 ```json
 {
@@ -182,15 +195,40 @@ import Button from 'library'
     "moduleResolution": "node",
     "resolveJsonModule": true,
     "jsx": "react",
-    "typeRoots": ["./src/typings"]
+    "typeRoots": ["./typings"]
   },
   "include": ["typings", "src"]
 }
 ```
 
-typings안에는 아래와 같이 scss파일을 위한 타입을 선언해줍니다.
+단, 중요한 부분이 맨 윗줄 두가지에 있는데요, `"declaration": true` 와 `"declarationDir": "./build"` 를 명시해 줌으로써, 우리가 만들 디자인 시스템의 타입들을 자동으로 생성해 빌드 폴더에 넣어주는 역할을 하게 됩니다.
+
+그리고, 중요한 사항이 있는데 component 를 제작한 tsx파일에서 interface나 enum을 **export** 해주지 않으면 declaration 정의를 실패해 build가 실패하는 케이스가 있으니, 모든 interface나 enum은 export해주는것이 빌드 실패를 막을수 있습니다.
+
+또한, `preserveModules: true` 로 옵션을 줌으로써 기존 폴더구조 그대로 build를 할수 있게 하여 그 구조 그대로 아래와 가지 두가지 방식으로 import 할수 있게 됩니다. https://rollupjs.org/guide/en/#preservemodules 에 가시면 자세한 설명이 나와있으니 참고바랍니다.
+
+
+Option A
+
+```
+import Button from 'library/components/build/Button'
+```
+
+Option B
+
+```
+import Button from 'library'
+```
+
+추가로 아래는 preserveModules 옵션에 따른 build 폴더의 비교 그림입니다.
+
+![image](https://user-images.githubusercontent.com/26598542/82752221-7db94c00-9df7-11ea-9e60-606512abc7f9.png)
+
+
+typings안에는 아래와 같이 scss파일을 위한 declaration.d.ts 타입 파일을 선언 해줍니다.
 
 ```typescript
+// typings/declaration.d.ts
 declare module "*.scss" {
   const content: { [className: string]: string };
   export = content;
@@ -203,11 +241,13 @@ declare module "*.scss" {
 .gitignore
 package.json
 tsconfig.json
-src/
+components/
   Button/
     index.tsx
     style.module.scss
-  index.ts
+typings/
+  declaration.d.ts
+index.ts
 ```
 
 #### 3) Rollup 설치하기
@@ -231,7 +271,7 @@ import postcss from "rollup-plugin-postcss";
 import image from "@rollup/plugin-image";
 
 export default {
-  input: "./src/index.ts",
+  input: "./index.ts",
   output: [
     {
       dir: "build",
@@ -266,16 +306,26 @@ export default {
 
 `output`
 
-여기까지는 아래와 같은 구조가 나오게 됩니다.
+- dir
+  - build 폴더명
+- format
+  - build format, cjs로도 설정 가능
+- exports
+  - Name for UMD export
+- sourcemap
+  - sourcemap generate 여부
 
 `plugins`
-
-- 플러그인들을 설명하면 아래와 같습니다.
-  - @rollup/plugin-commonjs
-  - @rollup/plugin-node-resolve
-  - rollup-plugin-peer-deps-external
-  - rollup-plugin-postcss
-  - rollup-plugin-typescript2
+- @rollup/plugin-commonjs
+  - 외부 노드 모듈이 es6 으로 변환되지 않았을 경우 es6 으로 변환하는 플러그인
+- @rollup/plugin-node-resolve
+  - node_modules에서 third party 모듈을 사용하는 용도, js 이외의 확장자 (ts, tsx) 파일을 불러오기 위해서도 이 플러그인을 필요로 함
+- rollup-plugin-peer-deps-external
+  - peerDependency로 설치된 라이브러리의 코드가 번들링된 결과에 포함되지 않고, import 구문으로 불러와서 사용할 수 있게 만들어주는 플러그인
+- rollup-plugin-postcss
+  - scss,css 관련 플러그인
+- rollup-plugin-typescript2
+  - typescript 관련 플러그인
 
 package.json의 main을 빌드한 파일을 바라보도록 바꿔주고, 빌드를 위한 script를 추가해줍니다.
 
@@ -298,14 +348,16 @@ package.json의 main을 빌드한 파일을 바라보도록 바꿔주고, 빌드
 package.json
 rollup.config.js
 tsconfig.json
-src/
+components/
   Button/
     index.tsx
     style.module.scss
-  index.ts
+typings/
+  declaration.d.ts
+index.ts
 ```
 
-#### 4) storybook 설치해주기
+#### 4) storybook 설치 및 설정 & story 작성
 
 ```shell
 yarn add -D @storybook/react @babel/core babel-preset-react-app babel-loader sass-loader
@@ -319,7 +371,6 @@ const path = require("path");
 
 module.exports = {
   stories: ["../**/*.stories.tsx"],
-  // Add any Storybook addons you want here: https://storybook.js.org/addons/
   addons: [],
   webpackFinal: async (config) => {
     config.module.rules.push({
@@ -360,7 +411,7 @@ module.exports = {
 // index.stories.tsx
 import React from "react";
 
-import Button from "./index";
+import Button, { ButtonType } from "./index";
 
 export default {
   title: "버튼",
@@ -371,10 +422,40 @@ export default {
 };
 
 export const defaultButton = () => {
-  return <Button>버튼</Button>;
+  return <Button>default 버튼</Button>;
 };
+
+export const primaryButton = () => {
+  return <Button theme={ButtonType.PRIMARY}>primary 버튼</Button>;
+};
+export const secondaryButton = () => {
+  return <Button theme={ButtonType.SECONDARY}>secondary 버튼</Button>;
+};
+
 ```
 
+storybook을 실행해보면 아래와 같이 잘 나오는것을 확인 할수 있습니다.
+
+![image](https://user-images.githubusercontent.com/26598542/82751396-d2f25f00-9df1-11ea-9ca1-6558ebe73d71.gif)
+
+storybook 설정마저 끝나면 아래와 같이 최종적인 폴더구조가 나오게 됩니다.
+
+```
+.storybook/
+  main.js
+.gitignore
+package.json
+rollup.config.js
+tsconfig.json
+components/
+  Button/
+    index.tsx
+    index.module.scss
+    index.stories.tsx
+typings/
+  declaration.d.ts
+index.ts
+```
 #### 5) 라이브러리 배포하기
 
 npm publish 를 통해 배포를 해줍니다.
@@ -385,31 +466,57 @@ login이 되어 있지 않다면 npm login 을 통해 login을 해주면 됩니�
 
 ---
 
-## 라이브러리 사용하기
+## 제작한 라이브러리 사용하기 📁
 
-ts-rollup-storybook-system 라는 이름으로 배포를 해주었으므로 아래와 같이 설치를 해줍니다.
+ts-rollup-storybook-system 라는 이름으로 배포를 해주었으므로 제작한 라이브러리를 아래와 같이 설치를 해줍니다.
 
 ```
 yarn add ts-rollup-storybook-system
 ```
 
-option a
+rollup에서 `preserveModules` 옵션을 true로 주었으므로, 아래와 같이 두가지 옵션으로 모두 import가 가능하게 됩니다.
+
+**option a**
 
 ```typescript
-import Button from "ts-rollup-storybook-system/build/src/Button";
+import Button from "ts-rollup-storybook-system/build/components/Button";
 ```
 
-option b
+**option b**
 
 ```typescript
 import { Button } from "ts-rollup-storybook-system";
 ```
 
+components내에 정의된 interface나 enum을 불러와야 하면 option a로 import를 해줘야 합니다.
+
+```typescript
+import React from "react";
+
+import Button, { ButtonType } from "ts-rollup-storybook-system/build/components/Button";
+
+
+function App() {
+  return (
+    <div>
+      <Button>버튼</Button>
+      <Button theme={ButtonType.PRIMARY}>버튼</Button>
+      <Button theme={ButtonType.SECONDARY}>버튼</Button>
+    </div>
+  );
+}
+
+export default App;
+
+```
+
 ---
 
-## 예시 파일
+## 마치며 🎬
 
-https://github.com/Brew-Brew/rollup-ts-design-system 를 참고 하시면 됩니다.
+이렇게 ts + rollup.js + storybook 환경에서의 디자인 시스템을 구축해보았습니다. 
+
+이 글을 참고하여 개발을 하실때 궁금한 사항이 있거나 잘 안되는 부분이 있으면 코드를 올려놓았으니 https://github.com/Brew-Brew/rollup-ts-design-system 를 참고 하시면 됩니다. 혹은 댓글이나, 깃헙 이슈로 문의주시면 최대한 빠르게 답변드리겠습니다 :) 감사합니다.
 
 ---
 
