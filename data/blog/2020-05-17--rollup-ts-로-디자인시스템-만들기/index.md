@@ -1,5 +1,5 @@
 ---
-title: Rollup + Typescript + Storybook으로 구축하는 디자인 시스템
+title: Rollup.js+ Typescript + Storybook으로 구축하는 디자인 시스템
 createdDate: "2020-05-17"
 updatedDate: "2020-05-17"
 author: Ideveloper
@@ -14,7 +14,7 @@ draft: false
 
 ## 시작하기에 앞서 😀
 
-rollup + typescript + storybook으로 디자인 시스템을 구축하는데에 관련 아티클도 해외 아티클들은 많지만 예전 내용들로 작성되어 있는 경우도 있고하여 구축 당시 많은 어려움을 겪었어서 겪은 내용들을 정리해 글로 작성해 보았습니다.
+rollup.js + typescript + storybook으로 디자인 시스템을 구축하는데에 관련 아티클도 해외 아티클들은 많지만 예전 내용들로 작성되어 있는 경우도 있고하여 구축 당시 많은 어려움을 겪었어서 겪은 내용들을 정리해 글로 작성해 보았습니다.
 
 #### 디자인 시스템
 
@@ -22,7 +22,7 @@ rollup + typescript + storybook으로 디자인 시스템을 구축하는데에 
 
 #### rollup.js 란
 
-[Rollup.js](https://rollupjs.org/guide/en/)은 Webpack과 같이 여러 모듈(파일)들을 라이브러리나 어플리케이션으로 작게 만들어 주는 번들러입니다. 또한 여러가지 loader들을 붙여주거나 설정 파일이 복잡한 webpack에 비해 빌드에 필요한 설정이 매우 간단한 편이고, 이외에도 [많은 장점](https://rollupjs.org/guide/en/#the-why)이 있습니다.
+[Rollup.js](https://rollupjs.org/guide/en/)은 Webpack과 같이 여러 모듈(파일)들을 라이브러리나 어플리케이션으로 작게 만들어 주는 번들러입니다. 큰단위의 프로젝트가 아닌 크지않은 라이브러리들에서의 번들러로 많이들 사용되고 있고 또한 여러가지 loader들을 붙여주거나 설정 파일이 복잡한 webpack에 비해 빌드에 필요한 설정이 매우 간단한 편이고, 이외에도 [많은 장점](https://rollupjs.org/guide/en/#the-why)이 있습니다.
 - rollup 관련 아티클
   - [webpack에서 rollup 전환기](https://medium.com/naver-fe-platform/webpack%EC%97%90%EC%84%9C-rollup%EC%A0%84%ED%99%98%EA%B8%B0-137dc45cbc38)
   - [rollup.js를 왜 사용하는가](https://rollupjs.org/guide/en/#the-why)
@@ -34,6 +34,8 @@ Storybook은 UI 컴포넌트 개발을 할때 뛰어난 UI를 체계적이고 �
 ---
 
 ## 디자인 시스템 구축하기 🎨
+
+시작하기에 앞서, https://github.com/Brew-Brew/rollup-ts-design-system 에 글에 포스팅된 코드를 올려놓았으니 참고하시기 바랍니다 :)
 
 #### 1)컴포넌트 구성에 필요한 폴더 구조 만들기
 
@@ -521,6 +523,31 @@ export default App;
 ---
 
 ## ETC
+- scss파일에서 background-image 방식으로 url을 불러오는데 이슈가 있었는데 아래와 같이 postcss-url을 활용해 설정파일을 수정해 줘서 해결
 
-- 참고 링크
+
+```typescript
+...
+import postcssUrl from "postcss-url";
+
+export default {
+  ...
+  plugins: [
+    ...
+    postcss({
+      ...
+      plugins: [
+        postcssUrl({
+          url: "inline",
+        }),
+      ],
+    }),
+  ],
+};
+
+```
+
+- rollup + ts + storybook 환경 개발 참고 url
   - https://blog.harveydelaney.com/creating-your-own-react-component-library/
+- webpack vs parcel vs parcel 비교
+  - https://medium.com/js-imaginea/comparing-bundlers-webpack-rollup-parcel-f8f5dc609cfd
