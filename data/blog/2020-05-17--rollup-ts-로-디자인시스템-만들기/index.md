@@ -17,11 +17,13 @@ draft: false
 rollup.js + typescript + storybook으로 디자인 시스템을 구축하는것과 관련한 아티클들이 해외 아티클들은 많지만, 예전 내용들로 작성되어 있는 경우가 대부분이었고, 또 구축 당시 관련 자료 리서치에 필요한 자료들이 많이 분산되고 여러 방식으로 소개가 되어 있었기에 많은 어려움을 겪어 디자인시스템을 구축하며 겪은 내용들을 정리해 글로 작성해 보았습니다.
 
 #### 디자인 시스템
+
 디자인 시스템이란 product를 만들면서 사용하는 여러가지의 디자인 요소들을 모아둔 시스템 혹은 원칙을 뜻하며 다양한 정의가 존재하고 있습니다. 또 제품을 효율적이고 빠르게 디자인할 수 있도록 돕는 역할을 합니다, 따라서 개발상의 효용성을 위해 많은 회사 혹은 여러 프로젝트들에서 디자인 시스템을 많이들 구축하고 있습니다.
 
 #### rollup.js 란
 
 [Rollup.js](https://rollupjs.org/guide/en/)은 Webpack과 같이 여러 모듈(파일)들을 라이브러리나 어플리케이션으로 작게 만들어 주는 번들러입니다. 큰단위의 프로젝트가 아닌 크지않은 라이브러리들에서의 번들러로 많이들 사용되고 있고 또한 여러가지 loader들을 붙여주거나 설정 파일이 복잡한 webpack에 비해 빌드에 필요한 설정이 매우 간단한 편이고, 이외에도 [많은 장점](https://rollupjs.org/guide/en/#the-why)이 있습니다.
+
 - rollup 관련 아티클
   - [webpack에서 rollup 전환기](https://medium.com/naver-fe-platform/webpack%EC%97%90%EC%84%9C-rollup%EC%A0%84%ED%99%98%EA%B8%B0-137dc45cbc38)
   - [rollup.js를 왜 사용하는가](https://rollupjs.org/guide/en/#the-why)
@@ -47,7 +49,6 @@ yarn add -D react react-dom @types/react node-sass classnames @types/classnames
 `react react-dom peer dependency 관련`
 
 react나 react dom은 다른 리액트 프로젝트에서 디자인 시스템에서 사용될것이므로, peer dependency로 넣어주도록 변경해줍니다.
-
 
 ```json
   "devDependencies": {
@@ -86,15 +87,7 @@ index.ts
 /node_modules
 ```
 
-우선은 아래처럼 디자인 시스템에 넣을 Button 컴포넌트 파일과 폴더들을 생성해 줍니다. 예시를 위해 Button만 제작해 줬지만, 필요에 따라 다른 컴포넌트들 역시 같은 방식으로 제작해 주면 됩니다. 
-
-
-`index.ts 파일`
-
-```typescript
-// index.ts
-export { default as Button } from "./Button";
-```
+우선은 아래처럼 디자인 시스템에 넣을 Button 컴포넌트 파일과 폴더들을 생성해 줍니다. 예시를 위해 Button만 제작해 줬지만, 필요에 따라 다른 컴포넌트들 역시 같은 방식으로 제작해 주면 됩니다.
 
 `components/Button 폴더`
 
@@ -123,8 +116,8 @@ const Button: React.FC<IProps> = ({ children, theme = ButtonType.DEFAULT }) => {
 };
 
 export default Button;
-
 ```
+
 유의할점이 한가지 있는데, 아래에서 interface나 enum은 모두 export를 해주었는데, ts에서 자동을 type을 정의할때 필요한 부분이고, 아래 타입스크립트 설정 부분에서 자세히 설명해드리겠습니다.
 
 ```scss
@@ -148,14 +141,13 @@ export default Button;
   border: #a0ddf9;
   color: white;
 }
-
 ```
+
 그다음 디자인시스템에 사용되는 컴포넌트들을 모아주는 root 파일을 만들어줍니다.
 
 ```typescript
 // index.ts
 export { default as Button } from "./components/Button";
-
 ```
 
 일단 여기까지는 아래와 같은 구조가 만들어 집니다.
@@ -208,7 +200,6 @@ yarn add -D typescript
 
 또한, `preserveModules: true` 로 옵션을 줌으로써 기존 폴더구조 그대로 build를 할수 있게 하여 그 구조 그대로 아래와 가지 두가지 방식으로 import 할수 있게 됩니다. https://rollupjs.org/guide/en/#preservemodules 에 가시면 자세한 설명이 나와있으니 참고바랍니다.
 
-
 Option A
 
 ```
@@ -224,7 +215,6 @@ import Button from 'library'
 추가로 아래는 preserveModules 옵션에 따른 build 폴더의 비교 그림입니다.
 
 ![image](https://user-images.githubusercontent.com/26598542/82752221-7db94c00-9df7-11ea-9e60-606512abc7f9.png)
-
 
 typings안에는 아래와 같이 scss파일을 위한 declaration.d.ts 타입 파일을 선언 해줍니다.
 
@@ -317,6 +307,7 @@ export default {
   - sourcemap generate 여부
 
 `plugins`
+
 - @rollup/plugin-commonjs
   - 외부 노드 모듈이 es6 으로 변환되지 않았을 경우 es6 으로 변환하는 플러그인
 - @rollup/plugin-node-resolve
@@ -432,7 +423,6 @@ export const primaryButton = () => {
 export const secondaryButton = () => {
   return <Button theme={ButtonType.SECONDARY}>secondary 버튼</Button>;
 };
-
 ```
 
 storybook을 실행해보면 아래와 같이 잘 나오는것을 확인 할수 있습니다.
@@ -457,6 +447,7 @@ typings/
   declaration.d.ts
 index.ts
 ```
+
 #### 5) 라이브러리 배포하기
 
 npm publish 를 통해 배포를 해줍니다.
@@ -494,8 +485,9 @@ components내에 정의된 interface나 enum을 불러와야 하면 option a로 
 ```typescript
 import React from "react";
 
-import Button, { ButtonType } from "ts-rollup-storybook-system/build/components/Button";
-
+import Button, {
+  ButtonType,
+} from "ts-rollup-storybook-system/build/components/Button";
 
 function App() {
   return (
@@ -508,22 +500,21 @@ function App() {
 }
 
 export default App;
-
 ```
 
 ---
 
 ## 마치며 🎬
 
-이렇게 ts + rollup.js + storybook 환경에서의 디자인 시스템을 구축해보았습니다. 
+이렇게 ts + rollup.js + storybook 환경에서의 디자인 시스템을 구축해보았습니다.
 
 이 글을 참고하여 개발을 하실때 궁금한 사항이 있거나 잘 안되는 부분이 있으면 코드를 올려놓았으니 https://github.com/Brew-Brew/rollup-ts-design-system 를 참고 하시면 됩니다. 혹은 댓글이나, 깃헙 이슈로 문의주시면 최대한 빠르게 답변드리겠습니다 :) 감사합니다.
 
 ---
 
 ## ETC
-- scss파일에서 background-image 방식으로 url을 불러오는데 이슈가 있었는데 아래와 같이 postcss-url을 활용해 설정파일을 수정해 줘서 해결해주었습니다.
 
+- scss파일에서 background-image 방식으로 url을 불러오는데 이슈가 있었는데 아래와 같이 postcss-url을 활용해 설정파일을 수정해 줘서 해결해주었습니다.
 
 ```typescript
 ...
