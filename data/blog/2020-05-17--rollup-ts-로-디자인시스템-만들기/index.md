@@ -89,6 +89,8 @@ index.ts
 
 우선은 아래처럼 디자인 시스템에 넣을 Button 컴포넌트 파일과 폴더들을 생성해 줍니다. 예시를 위해 Button만 제작해 줬지만, 필요에 따라 다른 컴포넌트들 역시 같은 방식으로 제작해 주면 됩니다.
 
+유의할점이 한가지 있는데, 아래에서 interface나 enum은 모두 export를 해주었는데, ts에서 자동을 type을 정의할때 필요한 부분이고, 아래 타입스크립트 설정 부분에서 자세히 설명해드리겠습니다.
+
 `components/Button 폴더`
 
 ```typescript
@@ -117,8 +119,6 @@ const Button: React.FC<IProps> = ({ children, theme = ButtonType.DEFAULT }) => {
 
 export default Button;
 ```
-
-유의할점이 한가지 있는데, 아래에서 interface나 enum은 모두 export를 해주었는데, ts에서 자동을 type을 정의할때 필요한 부분이고, 아래 타입스크립트 설정 부분에서 자세히 설명해드리겠습니다.
 
 ```scss
 // components/Button/style.module.scss
