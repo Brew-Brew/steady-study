@@ -202,14 +202,14 @@ yarn add -D typescript
 
 Option A
 
-```
-import Button from 'library/components/build/Button'
+```typescript
+import Button from "library/components/build/Button";
 ```
 
 Option B
 
-```
-import Button from 'library'
+```typescript
+import { Button } from "library";
 ```
 
 추가로 아래는 preserveModules 옵션에 따른 build 폴더의 비교 그림입니다.
