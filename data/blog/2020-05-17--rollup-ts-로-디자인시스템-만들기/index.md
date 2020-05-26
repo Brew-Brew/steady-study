@@ -190,7 +190,7 @@ yarn add -D typescript
     "jsx": "react",
     "typeRoots": ["./typings"]
   },
-  "include": ["typings", "src"]
+  "include": ["typings"]
 }
 ```
 
