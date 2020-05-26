@@ -48,7 +48,7 @@ yarn add -D react react-dom @types/react node-sass classnames @types/classnames
 
 `react react-dom peer dependency 관련`
 
-react나 react dom은 다른 리액트 프로젝트에서 디자인 시스템에서 사용될것이므로, peer dependency로 넣어주도록 변경해줍니다.
+react나 react dom은 다른 리액트 프로젝트에서 디자인 시스템으로 사용될것이므로, peer dependency로 넣어주도록 변경해줍니다.
 
 ```json
   "devDependencies": {
