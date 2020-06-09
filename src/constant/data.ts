@@ -85,10 +85,33 @@ export const careerInfo = [
     skills: ["react", "typescript"],
     task: [
       {
-        title: "B마트 프론트엔드 개발",
-        content: [],
-        participant: "",
-        skills: ["react", "typescript"],
+        title: "B마트 프론트엔드 상품상세 웹뷰 개선",
+        content: [
+          "배달정보, 적립혜택 컴포넌트 개발",
+          "api 모델링 개선",
+          "코드 구조 개선 및 유지보수",
+        ],
+        participant: "1명",
+        skills: ["react", "typescript", "react hook", "context"],
+      },
+      {
+        title: "B마트 랜덤쿠폰 이벤트 페이지",
+        content: [
+          "추억의 뽑기 이벤트 페이지 개발",
+          "럭키박스 이벤트 페이지 개발",
+          "신규고객 유입 및 기존고객 구매 유도",
+        ],
+        participant: "1명",
+        skills: ["javascript", "jquery"],
+      },
+      {
+        title: "B마트 개발자 어드민",
+        content: [
+          "회원/비회원 유저별 토큰 발급 기능",
+          "개발에 필요한 데이터 추출 기능",
+        ],
+        participant: "2명",
+        skills: ["react", "react hook"],
       },
     ],
   },
@@ -149,7 +172,7 @@ export const careerInfo = [
           "sustaining 이슈들을 대응하면서 사업,운영팀에 기여",
         ],
         participant: "팀 전원",
-        skills: ["ruby on rails", "react", "react-hook"],
+        skills: ["ruby on rails", "react", "react hook"],
       },
     ],
   },
