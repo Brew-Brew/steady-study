@@ -100,7 +100,7 @@ export const careerInfo = [
           "추억의 뽑기 이벤트 페이지 개발",
           "럭키박스 이벤트 페이지 개발",
           "전설의 지팡이 이벤트 페이지 개발",
-          "신규고객 유입 및 기존고객 구매 유도",
+          "신규고객 유입 및 기존고객 재구매 유도",
         ],
         participant: "1명",
         skills: ["javascript", "jquery"],
