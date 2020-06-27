@@ -505,7 +505,7 @@ export default ProgressBar;
 
 ### IOS 10+ 에서의 video 인라인 자동재생 이슈 (**autoplay with inline 관련**)
 
-iOS 10에서부터 WebKit은 동영상 인라인 및 자동 재생을 완화하려고 하지만, 여전히 사이트의 대역폭과 사용자의 배터리를 염두에 두고 있습니다. 따라서 **절전모드**에서는 자동재생이 작동하지 않고, muted, playsinline 등이 항상 true여야 합니다.
+iOS 10에서부터 WebKit은 동영상 인라인 및 자동 재생을 완화하려고 하지만, 여전히 사이트의 대역폭과 사용자의 배터리를 염두에 두고 있습니다. 따라서 **절전모드**에서는 자동재생이 작동하지 않습니다. 또한 자동재생이 동작하게 하기 위해서는 muted, playsinline 등이 항상 true여야 합니다.
 
 [[번역] iOS를 위한 새로운 정책](https://d0gf00t.tistory.com/35)
 
