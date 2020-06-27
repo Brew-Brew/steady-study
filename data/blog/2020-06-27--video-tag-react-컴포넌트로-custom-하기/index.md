@@ -272,7 +272,7 @@ videoElement에는 동영상 ref의 요소값을 넣고, totalTime은 동영상�
 
 ![image](https://user-images.githubusercontent.com/26598542/85919518-a5904980-b8a6-11ea-857b-1ce8d7355947.png)
 
-기존 video tag에서 controls 옵션을 주어 보여지는 UI 영역에 해당합니다. 기본 video tag에서는 controls attribute를  true로 주면 (ex: <video controls="true">) 컨트롤바가 보이지만 실제로 이 영역에 해당하는 UI를 custom 하기 위해서는 컴포넌트를 제작해야 합니다.
+기존 video tag에서 controls 옵션을 주어 보여지는 UI 영역에 해당합니다. 기본 video tag에서는 controls attribute를  true로 주면(https://www.w3schools.com/tags/att_video_controls.asp) 컨트롤바가 보이지만 실제로 이 영역에 해당하는 UI를 custom 하기 위해서는 컴포넌트를 제작해야 합니다.
 
 ```typescript
 import React, { useState, memo } from "react";
