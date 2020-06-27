@@ -1,5 +1,5 @@
 ---
-title: video React 컴포넌트로 custom 하기
+title: video tag React 컴포넌트로 custom 하기
 createdDate: "2020-06-27"
 updatedDate: "2020-06-27"
 author: Ideveloper
@@ -25,7 +25,7 @@ video 컴포넌트를 custom 하여 제작하기전에 어떤 attribute들이 �
   - webkit 접두어를 추가하여 webkit-playsinline으로 추가하여 사용했었으나 최근 HTML 사양에 추가되어 접두사 없이도 사용가능합니다.
 
 - 그외
-  - https://developer.mozilla.org/ko/docs/Web/HTML/Element/Video에 들어가면 더 많은 attribute를 확인 가능합니다.
+  - https://developer.mozilla.org/ko/docs/Web/HTML/Element/Video 로 들어가시면 더 많은 attribute들을 확인 가능합니다.
 
 ### HTMLMediaElement 
 
