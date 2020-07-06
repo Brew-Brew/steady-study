@@ -30,6 +30,11 @@ export default (props: HtmlProps) => {
         <title>Steady Study</title>
         <meta charSet="utf-8" />
         <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
+        <script
+          data-ad-client="ca-pub-7043838417517075"
+          async
+          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"
+        />
         <meta
           name="viewport"
           content="width=device-width, initial-scale=1.0, maximum-scale=1.0"
