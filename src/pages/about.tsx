@@ -36,6 +36,10 @@ const InfoContent = styled.div`
   }
 `;
 
+const InfoDescription = styled.p`
+  font-weight: bold;
+`;
+
 const FadedText = styled.h1`
   animation: 1s ${fadedAnimation};
 `;
@@ -129,6 +133,7 @@ const AboutPage = () => {
                         <Tag content={skill} />
                       ))}
                       {task.participant && <p>참여인원: {task.participant}</p>}
+                      <InfoDescription>{task.description}</InfoDescription>
                       <ul>
                         {task.content.map((content) => {
                           return <li>{content}</li>;

@@ -87,7 +87,7 @@ export const careerInfo = [
       {
         title: "B마트 프론트엔드 상품상세 웹뷰 개선",
         content: [
-          "배달정보, 적립혜택 컴포넌트 개발",
+          "배달정보, 적립혜택, 신규고객 띠배너 컴포넌트 개발",
           "api 모델링 개선",
           "코드 구조 개선 및 유지보수",
         ],
@@ -95,13 +95,14 @@ export const careerInfo = [
         skills: ["react", "typescript", "react hook", "context"],
       },
       {
-        title: "B마트 랜덤쿠폰 이벤트 페이지",
+        title: "B마트 이벤트 페이지 개발",
         content: [
           "추억의 뽑기 이벤트 페이지 개발",
           "럭키박스 이벤트 페이지 개발",
           "전설의 지팡이 이벤트 페이지 개발",
-          "신규고객 유입 및 기존고객 재구매 유도",
+          "신규고객 전용상품 이벤트 페이지 개발",
         ],
+        description: "신규고객 유입 및 기존고객 재구매 유도",
         participant: "1명",
         skills: ["javascript", "jquery"],
       },
@@ -135,8 +136,9 @@ export const careerInfo = [
       },
       {
         title: "호텔메타서치 프로젝트",
-        content: [
+        description:
           "기존: 부킹닷컴 링크로연결 -> 개선: 각 호텔 사이트들의 상품들을 리스트페이지, 상세페이지에서 확인할수 있도록 개선",
+        content: [
           "웹뷰 대응 및, 인터페이스 호환",
           "UI 컴포넌트 제작",
           "상태관리 및 설계단 참여",
@@ -208,17 +210,16 @@ export const careerInfo = [
       {
         title: "React 기반의 배송현황 확인 웹",
         participant: "1명",
-        content: [
+        description:
           "각 지역마다 pos 프로그램 일일이 들어가서 확인해야 했던 운영팀의 효율 증가",
-          "큰 상태관리는 필요없었으므로 react만으로 구현",
-        ],
+        content: ["큰 상태관리는 필요없었으므로 react만으로 구현"],
         skills: ["react"],
       },
       {
         title: "React,Redux 기반 쉐프분들이 보는 고객 리뷰페이지",
         content: [
           "쉐프 분들과 고객과의 접점마련",
-          "초기 react학습, redux학습용으로 제작했던 페이지",
+          "초기 react학습, redux학습용으로 제작",
         ],
         participant: "1명",
         skills: ["react", "redux"],
