@@ -85,6 +85,12 @@ export const careerInfo = [
     skills: ["react", "typescript"],
     task: [
       {
+        title: "B마트 이벤트 페이지 메이커 개선",
+        content: ["이벤트 페이지 자동화 tool에 스와이퍼 제작 기능 추가"],
+        participant: "",
+        skills: ["react", "typescript"],
+      },
+      {
         title: "B마트 프론트엔드 상품상세 웹뷰 개선",
         content: [
           "배달정보, 적립혜택, 신규고객 띠배너 컴포넌트 개발",
