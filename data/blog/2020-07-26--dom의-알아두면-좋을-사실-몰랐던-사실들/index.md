@@ -66,7 +66,7 @@ javascript 메서드를 사용하거나 property에 string을 주입을 시켜�
 - 그러나 innerHTML은 무겁고 비싼 대가를 치르는 HTML 파서를 호출하므로 innerHTML 계열의 사용을 삼가해야 한다고 한다.
   - [Why is "element.innerHTML+=" bad code?](https://stackoverflow.com/a/11515395)
 - insertAdjacentHTML 세밀하게 다룰수 있음 시작태그의 뒤와 앞, 종료 태그앞, 종료태그뒤에 삽입 가능
-  - 엘리먼트.insertAdjacentHTML('beforebegin' or 'beforeend' or 'aftoerbegin' or 'afterend' , '<span>asdasd</span>')
+  - 엘리먼트.insertAdjacentHTML('beforebegin' or 'beforeend' or 'afterbegin' or 'afterend' , "넣을태그")
   - innerHTML보다 더 빠르다고 함.이미 사용중인 element 는 다시 파싱하지 않는다. 그러므로 element 안에 존재하는 element를 건드리지 않는다. (innerHtml은 과 좀 다름). innerHtml보다 작업이 덜 드므로 빠르다.
   - [Element.insertAdjacentHTML() 에 관한 mozilla 링크](https://developer.mozilla.org/ko/docs/Web/API/Element/insertAdjacentHTML)
 
