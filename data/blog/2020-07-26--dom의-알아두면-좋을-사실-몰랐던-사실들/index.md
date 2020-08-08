@@ -106,6 +106,8 @@ HTMLCollection과 NodeList는 유사배열이라는 공통점이 있지만 생�
 
 - document.scripts
 - document.body.children
+- document.getElementsByTagName
+- document.getElementsByClassName
 
 위 메서드들로 생성 가능
 
@@ -153,8 +155,6 @@ setInterval(function() {
   - getElementById
 - element 노드리스트 선택
   - querySelectorAll (라이브 상태의 노드리스트 반환 x , 정적인 nodelist)
-  - getElementsByTagName (라이브 상태의 노드리스트 반환)
-  - getElementsByClassName (라이브 상태의 노드리스트 반환)
 
 ### 8. scrollIntoView() 사용하여 element를 view로 스크롤
 
