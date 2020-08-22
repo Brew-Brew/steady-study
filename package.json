@@ -146,14 +146,6 @@
     ]
   },
   "lint-staged": {
-    "*.{ts,tsx}": [
-      "tslint --fix",
-      "git add"
-    ],
-    "*.{js,jsx}": [
-      "xo --fix",
-      "git add"
-    ],
     "*.md": [
       "node tools/update-post-date.js",
       "remark -o",
