@@ -85,6 +85,29 @@ export const careerInfo = [
     skills: ["react", "typescript"],
     task: [
       {
+        title: "B마트 신규 주문프론트 개발",
+        description: "SSR + typescript + react 기반의 신규 주문프론트",
+        content: [
+          "앱스킴, 인터페이스 효과적으로 관리하는 App Protocol Manager 개발",
+          "로그를 쉽게 관리하는 App Log Manager 개발",
+          "component 구조/ folder structure 설계",
+        ],
+        participant: "3명",
+        skills: [
+          "react",
+          "typescript",
+          "react hook",
+          "redux",
+          "loadable-components",
+        ],
+      },
+      {
+        title: "B마트 디자인 시스템 개발",
+        content: ["rollup, ts, react 기반 디자인 시스템 개발"],
+        participant: "2명",
+        skills: ["react", "typescript", "rollup.js", "emotion.js", "docz"],
+      },
+      {
         title: "B마트 이벤트 페이지 메이커 개선",
         content: ["이벤트 페이지 자동화 tool에 스와이퍼 제작 기능 추가"],
         participant: "",
