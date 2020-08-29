@@ -92,7 +92,7 @@ export const careerInfo = [
           "로그를 쉽게 관리하는 App Log Manager 개발",
           "component 구조/ folder structure 설계",
         ],
-        participant: "3명",
+        participant: "2명",
         skills: [
           "react",
           "typescript",
@@ -110,7 +110,7 @@ export const careerInfo = [
       {
         title: "B마트 이벤트 페이지 메이커 개선",
         content: ["이벤트 페이지 자동화 tool에 스와이퍼 제작 기능 추가"],
-        participant: "",
+        participant: "2명",
         skills: ["react", "typescript"],
       },
       {
