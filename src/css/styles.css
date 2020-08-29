@@ -138,3 +138,9 @@ th {
 td {
   border-bottom: 0.5px solid #e4dfdf;
 }
+
+:not(pre) > code[class*="language-"] {
+  color: white;
+  background: #03a9f4 !important;
+  padding: 0.2em;
+}

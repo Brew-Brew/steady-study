@@ -1,31 +1,134 @@
 ---
-title: 상태 패턴(state pattern)을 활용하여 Deep Link 효과적으로 관리하기
+title: 상태 패턴(state pattern)을 활용하여 앱스킴, 인터페이스 효과적으로 관리하기 (App protocol manager)
 createdDate: "2020-08-22"
 updatedDate: "2020-08-22"
 author: Ideveloper
 tags:
   - frontend
-image: welcoming.png
+image: app_protocol.png
 draft: false
 ---
 
-My awesome article
+## 시작하며 🔥
 
-## 시작하며,
+웹뷰환경에서 앱스킴과 인터페이스를 효과적으로 관리하고, 사용하는 방법에 대해서 알아봅시다.
 
-웹뷰환경에서 딥링크를 효과적으로 관리하고, 사용하는 방법에 대해서 알아봅시다.
+#### 개념설명
 
-### 상태패턴
+우선 여러가지 개념에 대해서 미리 설명을 드리자면 아래와 같습니다.
 
-상태패턴은 ~~~
+`딥링킹이란?`
 
-### 상태패턴을 활용한 딥링크 매니저
+- 딥링킹은 딥링크(Deeplink)를 통해서 앱 내의 특정 화면으로 이동하는 것을 말합니다.
 
-상태패턴을 활용하면~~~
+`액션이란?`
 
-#### type들
+- 액션은 딥링킹을 제외한 특정 동작들을 수행하는 것을 말합니다.
+- os들끼리 같은 액션을 수행하게 만들려고 만든것이고, 보통은 네이티브 로직으로 구현하지만 마케팅 팝업이나 트리거 액션을 구현할때는 편의상 쓰는건데 사실 바람직하다고 보기는 어렵다고 합니다.
+- ex) 배너나 팝업 CTA액션을 url 형식으로 줘야할때
+
+`인터페이스란?`
+
+- 앱에서 자바스크립트인터페이스를 호출하여 통신하기 위해 호출하는 규약들을 말합니다.
+
+## 상태패턴 📖
+
+- [상태 패턴](https://ko.wikipedia.org/wiki/%EC%83%81%ED%83%9C_%ED%8C%A8%ED%84%B4)은 객체가 특정 상태에 따라 행위를 달리하는 상황에서 자신이 직접 상태를 체크하여 상태에 따라 행위를 호출하지 않고 상태를 객체화하여 상태가 행동을 할 수 있도록 위임하는 패턴입니다.
+
+![image](https://media.geeksforgeeks.org/wp-content/uploads/State-Design-Pattern-Diagram.png)
+
+## 상태패턴(state pattern)을 활용한 앱프로토콜 매니저 🛠
+
+<img width="604" alt="스크린샷 2020-08-25 오전 5 02 11" src="https://user-images.githubusercontent.com/26598542/91626945-5e315100-e9ee-11ea-95bf-65e4782830e2.png">
+
+- 위의 상태패턴의 특성을 활용하여, AOS나 IOS에 따라서 다른 행동을 할수있으므로, 행동들이 담긴 상태 객체를 생성하여 생성된 상태 객체를 활용하여 딥링크 이동이나, 액션 실행, 또는 자바스크립트 인터페이스 호출등을 쉽게 할 수 있게 됩니다.
+
+#### type.ts
 
 딥링크를 이동하는 type과 (replace, push) 앱 스킴내 이동위치 등을 enum으로 정의해 type파일에 넣어놓습니다.
+
+`MoveType`
+
+- 상황에 따라,location을 push(window.location.href="")할지 replace (window.location.replace="")할지 선택해야 하는 경우가 있을수 있으므로, 아래와 같이 두개의 타입을 정의하게 됩니다.
+
+```typescript
+/**
+ * move 타입 enum
+ */
+export enum MoveType {
+  REPLACE = "replace",
+  PUSH = "push",
+}
+```
+
+`Location`
+
+- 앱 스킴내 이동 위치입니다.
+
+```typescript
+/**
+ * 앱 scheme내 이동 위치
+ */
+export enum Location {
+  HOME = 0,
+  SUB_HOME,
+}
+```
+
+`Action`
+
+- 앱스킴으로 할 수 있는 액션을 정의해놓았습니다.
+
+```typescript
+/**
+ * 앱 action 리스트
+ */
+export enum Action {
+  CLOSE = "closeWebview",
+}
+
+export enum LocationType {
+  ABSOLUTE = 0,
+  RELATIVE,
+}
+```
+
+`LocationType`
+
+- 절대경로로 이동할지, 상대경로로 이동할지 정의하는 부분입니다.
+
+```typescript
+/**
+ * Location 타입
+ */
+export enum LocationType {
+  ABSOLUTE = 0,
+  RELATIVE,
+}
+```
+
+`config`
+
+- 아래와 같이 구성한 이유는 aos, ios 공통의 앱스킴이 있을수 있는반면, 같은 링크인데도 다른 앱스킴이 있을 수 있으므로 아래와 같이 구성.
+
+```typescript
+const common = {
+  HOME: "home",
+};
+
+const config = {
+  AOS: {
+    ...common,
+    SUB_HOME: "aos/subHome",
+  },
+  IOS: {
+    ...common,
+    SUB_HOME: "ios/subHome",
+  },
+};
+```
+
+#### 전체 코드
 
 ```typescript
 /**
@@ -41,19 +144,7 @@ export enum MoveType {
  */
 export enum Location {
   HOME = 0,
-  ORDER_SHEET,
-  DELIVERY_TRACKING,
-  ORDER_HISTORY_DETAIL,
-  ORDER_HISTORY_DELIVERY_TRACKING_URL,
-  PRODUCT,
-  RETURN_EXCHANGE,
-  HISTORY_TO_SHOP,
-  MARKET_CATALOG,
-  SHOP,
-  ORDER_FAIL,
-  ORDER_HISTORY,
-  LOGIN,
-  HISTORY_DETAIL_TO_SHOP,
+  SUB_HOME,
 }
 
 /**
@@ -61,12 +152,11 @@ export enum Location {
  */
 export enum Action {
   CLOSE = "closeWebview",
-  ORDER_BADGE = "showOrderBadge",
-  REFRESH_TOKEN = "refreshToken",
-  REFRESH_WEBVIEW = "refreshWebview",
-  REFRESH_ORDER_HISTORY = "refreshOrderHistory",
 }
 
+/**
+ * Location 타입
+ */
 export enum LocationType {
   ABSOLUTE = 0,
   RELATIVE,
@@ -74,40 +164,27 @@ export enum LocationType {
 
 const common = {
   HOME: "home",
-  ORDER_SHEET: "marketOrder",
-  DELIVERY_TRACKING: "home/marketDeliveryTracking",
-  ORDER_HISTORY_DETAIL: "orderHistoryDetail",
-  ORDER_HISTORY_DELIVERY_TRACKING_URL: "marketDeliveryTracking",
-  PRODUCT: "marketProduct",
-  RETURN_EXCHANGE: "",
-  HISTORY_TO_SHOP: "home/market",
-  MARKET_CATALOG: "marketFirstCatalog",
 };
 
+// 아래와 같이 구성한 이유는 aos, ios 공통의 앱스킴이 있을수 있는반면, 같은 링크인데도 다른 앱스킴이 있을 수 있으므로 아래와 같이 구성.
 const config = {
   AOS: {
     ...common,
-    SHOP: "home/market",
-    ORDER_FAIL: "",
-    ORDER_HISTORY: "orderHistory",
-    HISTORY_DETAIL_TO_SHOP: "market",
+    SUB_HOME: "aos/subHome",
   },
   IOS: {
     ...common,
-    SHOP: "marketReload",
-    ORDER_FAIL: "marketOrderResult",
-    ORDER_HISTORY: "home/orderHistory",
-    HISTORY_DETAIL_TO_SHOP: "home/market",
+    SUB_HOME: "ios/subHome",
   },
 };
 
 export default config;
 ```
 
-#### Deeplink Manager (AppProtocol Manager)
+#### AppProtocol Manager
 
-아래와 같이 앱프로토콜 추상 클래스를 만든 후에, 그 클래스를 상속받는 AOS 프로토콜매니저와 IOS 프로토콜 매니저를 만들게 됩니다.
-일반적인 딥링크 이동, 딥링크 액션, 네이티브 핸들러등의 세가지를 정의하게 됩니다.
+- 아래와 같이 앱프로토콜 추상 클래스를 만든 후에, 그 클래스를 상속받는 AOS 프로토콜매니저와 IOS 프로토콜 매니저를 만들게 됩니다.
+- 앱스킴 딥링크 이동, 앱스킴 액션, 자바스크립트 인터페이스를 호출하는 네이티브 핸들러등의 세가지를 정의하게 됩니다.
 
 ```typescript
 import { toQueryString } from "utils";
@@ -146,6 +223,7 @@ abstract class AppProtocol implements IAppProtocolState {
     else window.location.replace(url);
   }
 
+  // move나 callNativeHandler는  추상 메소드로 만들어, 상속받은 객체에 구현을 위임하였습니다.
   abstract move(
     location: number,
     locationType: LocationType,
@@ -234,8 +312,8 @@ export class AOSProtocol extends AppProtocol {
 
   callNativeHandler(methodName: "string", params: any) {
     const hasNativeHandler =
-      window.MarketCartJavaScriptInterface &&
-      typeof window.MarketCartJavaScriptInterface[methodName] === "function";
+      window."정의한 인터페이스명" &&
+      typeof window.정의한 인터페이스명[methodName] === "function";
     if (!hasNativeHandler) {
       return;
     }
@@ -245,8 +323,8 @@ export class AOSProtocol extends AppProtocol {
         typeof params === "string" ? params : JSON.stringify(params);
 
       stringifiedParams
-        ? window.MarketCartJavaScriptInterface[methodName](stringifiedParams)
-        : window.MarketCartJavaScriptInterface[methodName]();
+        ? window."정의한 인터페이스명"[methodName](stringifiedParams)
+        : window."정의한 인터페이스명"[methodName]();
     } catch (error) {
       console.error(
         `failed to call android native handler ${methodName}`,
@@ -275,10 +353,6 @@ export class AppManager {
     this.state.action(action, moveType, params);
   }
 
-  smartAction(actionParam: object, moveType: MoveType) {
-    this.state.smartAction(actionParam, moveType);
-  }
-
   move(
     location: number,
     locationType: LocationType,
@@ -294,9 +368,9 @@ export class AppManager {
 }
 ```
 
-### hook을 활용해 딥링크매니저 활용하기
+## react custom hook을 활용해 딥링크매니저 활용하기 📲
 
-위에서 만든 딥링크 매니저를 활용하기 위해, react를 사용한다면 아래와 같이 hook을 만들어 사용하면 됩니다.
+- 위에서 만든 딥링크 매니저를 잘 활용하기 위해, react를 사용한다면 아래와 같이 hook을 만들어 사용하면 됩니다.
 
 ```typescript
 import {
@@ -310,14 +384,14 @@ import {
   LocationType,
   Location,
 } from "hooks/lib/AppProtocolManager/types";
-import { DeviceType } from "models/internals/Environment";
 
 interface IParam {
   deviceType: DeviceType;
 }
 
 function useAppManager(param: IParam) {
-  const isAndroid = param.deviceType === DeviceType.ANDROID;
+  const isAndroid = param.deviceType === "android";
+  //  아래와 같이 aos ios 여부에 따라 AOSProtocol 혹은 IOSProtocol 상태 객체를 넣어주게 됩니다.
   const context = new AppManager(
     isAndroid ? new AOSProtocol() : new IOSProtocol()
   );
@@ -339,33 +413,32 @@ function useAppManager(param: IParam) {
     context.move(location, locationType, moveType, params);
   };
 
-  const appSmartAction = (actionParam: object, moveType = MoveType.REPLACE) => {
-    context.smartAction(actionParam, moveType);
-  };
-
   const appInterfaceHandler = (methodName: string, params?: any) => {
     context.callNativeHandler(methodName, params);
   };
 
-  return { appAction, appMove, appSmartAction, appInterfaceHandler };
+  return { appAction, appMove, appInterfaceHandler };
 }
 
 export { MoveType, Action, LocationType, Location };
 export default useAppManager;
 ```
 
-사용하기
+#### 사용하기
+
+- 사용할때는 아래와 같이 aos, ios 여부인지만 넘겨 useAppManager hook을 사용하여 쉽게 앱과 통신을 할수 있게 됩니다.
 
 ```typescript
 const { appAction, appMove, appInterfaceHandler } = useAppManager({
-  deviceType,
+  'android'
+  // user agent에서 ios or aos 판별해서 넘겨중
 });
 
-appMove(Location.ORDER_SHEET, LocationType.RELATIVE, MoveType.PUSH, {
-  marketOrder_url: orderSheetUrl,
+appMove(Location.HOME, LocationType.ABSOLUTE, MoveType.PUSH, {
+  param: 1,
 });
 
 appAction(Action.CLOSE, MoveType.REPLACE, {});
 
-appInterfaceHandler("hideToolBar");
+appInterfaceHandler("호출할 인터페이스명", { param: "paramtest" });
 ```
