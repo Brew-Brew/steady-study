@@ -13,7 +13,7 @@ import colors from "../constant/colors";
 
 export const menuItems = [
   { name: "Home", path: "/", exact: true, icon: "home", inverted: true },
-  { name: "who are you", path: "/about/", exact: true, icon: "info circle" },
+  { name: "who I am", path: "/about/", exact: true, icon: "info circle" },
   { name: "My Thinking", path: "/blog/", exact: false, icon: "newspaper" }
 ];
 
