@@ -107,12 +107,54 @@ flux와 같이 리덕스는 특정레이어에 모델 업데이트 로직을 집
 
 `다른점`
 
+flux와 다르게 리덕스는 dispatcher의 컨셉을 가지고 있지 않다.
 Unlike Flux, Redux does not have the concept of a Dispatcher
-이 부분이 조금 의아했다. 일반적인 그림 설명을 봐도 액션을 디스패치 하는 부분이 존재하지 않는가..? 이것은 event emitter때신 순수 함수에 의존해서 그렇다고는 하는데.. 읽고 바로 이해되지는 않았다.
+이 부분이 조금 의아했다. 이것은 event emitter대신 순수 함수에 의존해서 그렇다고는 하는데.. 읽고 바로 이해되지는 않았다.
 
+flux와 다르게 redux는 data를 변화시키지 않는다고 추정한다. (항상 새로운 object 반환)
 Another important difference from Flux is that Redux assumes you never mutate your data
 => You should always return a new object, which is easy with the object spread operator proposal, or with a library like Immutable.
+
+(이부분 자세히 해석)
 
 Moreover it doesn't seem like immutability poses performance problems in most real apps, because, as Om demonstrates, even if you lose out on object allocation, you still win by avoiding expensive re-renders and re-calculations, as you know exactly what changed thanks to reducer purity.
 
 <https://stackoverflow.com/a/37532497> 관련글 (더 찾아보기)
+
+### redux의 reducer가 순수함수여야하는 이유 더 조사
+
+순수함수
+
+-   동일한 인자가 주어졌을 때 항상 동일한 결과를 반환하는 것을 말한고, 함수 내의 변수 외에 외부의 값을 참조, 의존하거나 변경하지 않아야 한다.
+
+<https://github.com/reduxjs/redux/blob/master/src/combineReducers.ts#L203> 를 보면 object를 단순히 비교함(주소값)
+
+리덕스는 두 객체(prevState,newState)의 메모리 위치를 비교하여 이전 객체가 새 객체와
+동일한지 여부를 단순 체크한다. 만약 리듀서 내부에서 이전 객체의 속성을 변경하면 새 상태 와 이전 상태가 모두 동일한 객체를 가리킨다. 그렇게 되면 리덕스는 아무것도 변경되지 않았다고 판단하여 동작하지 않는다.
+
+````javascript
+        let hasChanged = false
+        const nextState: StateFromReducersMapObject<typeof reducers> = {}
+        for (let i = 0; i < finalReducerKeys.length; i++) {
+          const key = finalReducerKeys[i]
+          const reducer = finalReducers[key]
+          const previousStateForKey = state[key]
+          const nextStateForKey = reducer(previousStateForKey, action)
+          if (typeof nextStateForKey === 'undefined') {
+            const errorMessage = getUndefinedStateErrorMessage(key, action)
+            throw new Error(errorMessage)
+          }
+          nextState[key] = nextStateForKey
+          ```
+          hasChanged = hasChanged || nextStateForKey !== previousStateForKey
+          ```
+        }
+
+        hasChanged =
+          hasChanged || finalReducerKeys.length !== Object.keys(state).length
+
+        return hasChanged ? nextState : state
+      }
+````
+
+<https://velog.io/@kimu2370/redux%EC%9D%98-reducer%EA%B0%80-%EC%88%9C%EC%88%98%ED%95%A8%EC%88%98%EC%9D%B8-%EC%9D%B4%EC%9C%A0>
