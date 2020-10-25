@@ -370,6 +370,15 @@ export const awardsInfo = [
 
 export const contributionInfo = [
   {
+    from: "reduxjs / redux",
+    list: [
+      {
+        title: "feat: arrange import section of combineReducers",
+        link: "https://github.com/reduxjs/redux/pull/3914",
+      },
+    ],
+  },
+  {
     from: "facebook / create-react-app",
     list: [
       {
