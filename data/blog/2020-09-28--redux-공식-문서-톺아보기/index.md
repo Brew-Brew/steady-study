@@ -37,7 +37,7 @@ draft: false
 
 `It removes asynchronous behavior from the view layer by design. You must not do async stuff in render or what is rendered will be broken.`
 
-즉, 설계단에서 비동기적인 동작은 뷰레이어에서 하지않게 했고, render 메소드에서 비동기적인 어떠한 행동이든 할수 없게 만든것이다. 그러나 뷰레이어는 그렇다치고, 상태를 조작하는것은 우리에게 달려있고, 이러한 상태관리측면에서 비동기적인 작업이 나오게 될수 있으므로 redux가 나오게 되었다고 소개하고 있었다.
+즉, 설계단에서 비동기적인 동작은 뷰레이어에서 하지않게 했고, render 메소드에서 비동기적인 어떠한 행동이든 할수 없게 만든것이다. 그러나 뷰레이어는 그렇다치고, 상태를 조작하는것은 우리에게 달려있고, 이러한 복잡해진 상태 관리 측면에서 redux가 나오게 되었다고 소개하고 있었다.
 
 ### Flux, CQRS, Event Sourcing
 
@@ -126,28 +126,28 @@ It's for this improvement in performance that Redux uses shallow equality checki
 덩치가 큰 객체를 비교해야 되는 상황이면 객체의 주소 비교라면 O(1) 만큼 비교를 하면 되지만, 속성을 비교하게 된다면 O(n)만큼 비교를 해야되기 때문에 시간이 오래 걸린다.
 
 ````javascript
-          let hasChanged = false
-          const nextState: StateFromReducersMapObject<typeof reducers> = {}
-          for (let i = 0; i < finalReducerKeys.length; i++) {
-            const key = finalReducerKeys[i]
-            const reducer = finalReducers[key]
-            const previousStateForKey = state[key]
-            const nextStateForKey = reducer(previousStateForKey, action)
-            if (typeof nextStateForKey === 'undefined') {
-              const errorMessage = getUndefinedStateErrorMessage(key, action)
-              throw new Error(errorMessage)
+              let hasChanged = false
+              const nextState: StateFromReducersMapObject<typeof reducers> = {}
+              for (let i = 0; i < finalReducerKeys.length; i++) {
+                const key = finalReducerKeys[i]
+                const reducer = finalReducers[key]
+                const previousStateForKey = state[key]
+                const nextStateForKey = reducer(previousStateForKey, action)
+                if (typeof nextStateForKey === 'undefined') {
+                  const errorMessage = getUndefinedStateErrorMessage(key, action)
+                  throw new Error(errorMessage)
+                }
+                nextState[key] = nextStateForKey
+                ```
+                hasChanged = hasChanged || nextStateForKey !== previousStateForKey
+                ```
+              }
+
+              hasChanged =
+                hasChanged || finalReducerKeys.length !== Object.keys(state).length
+
+              return hasChanged ? nextState : state
             }
-            nextState[key] = nextStateForKey
-            ```
-            hasChanged = hasChanged || nextStateForKey !== previousStateForKey
-            ```
-          }
-
-          hasChanged =
-            hasChanged || finalReducerKeys.length !== Object.keys(state).length
-
-          return hasChanged ? nextState : state
-        }
 ````
 
 <https://velog.io/@kimu2370/redux%EC%9D%98-reducer%EA%B0%80-%EC%88%9C%EC%88%98%ED%95%A8%EC%88%98%EC%9D%B8-%EC%9D%B4%EC%9C%A0> 참고
@@ -171,5 +171,6 @@ Unlike Flux, Redux does not have the concept of a Dispatcher
 이 부분이 조금 의아했다. 이것은 event emitter대신 순수 함수에 의존해서 그렇다고는 하는데.. 읽고 바로 이해되지는 않았다.
 
 flux와 다르게 redux는 data를 변화시키지 않는다고 추정한다. (항상 새로운 object 반환)
+
 Another important difference from Flux is that Redux assumes you never mutate your data
 => You should always return a new object, which is easy with the object spread operator proposal, or with a library like Immutable.
