@@ -14,7 +14,9 @@ draft: false
 ## 시작하기에 앞서
 
 익숙한 듯 redux를 사용하긴 하지만, 선뜻 redux가 왜나오게 되었고, 어떠한 원리를 통해 동작하고, 어떠한 설계를 통해 구성 되어졌는지는 자신있게 얘기하지 못하고 있는것 같아, 공식문서를 한번 톺아보기로 했다.
-또 이러한 글들을 읽어보며, 추가로 필요한 개념들을 정리해보았다.
+또 이러한 글들을 읽어보며, 공식문서의 **Thinking in Redux** 몇몇 부분들을 발췌해 추가로 필요한 개념들을 정리해보았다.
+
+![스크린샷 2020-10-27 오전 1 01 53](https://user-images.githubusercontent.com/26598542/97196663-12353980-17f0-11eb-88c5-e9c3285b47cb.png)
 
 * * *
 
@@ -124,28 +126,28 @@ It's for this improvement in performance that Redux uses shallow equality checki
 덩치가 큰 객체를 비교해야 되는 상황이면 객체의 주소 비교라면 O(1) 만큼 비교를 하면 되지만, 속성을 비교하게 된다면 O(n)만큼 비교를 해야되기 때문에 시간이 오래 걸린다.
 
 ````javascript
-      let hasChanged = false
-      const nextState: StateFromReducersMapObject<typeof reducers> = {}
-      for (let i = 0; i < finalReducerKeys.length; i++) {
-        const key = finalReducerKeys[i]
-        const reducer = finalReducers[key]
-        const previousStateForKey = state[key]
-        const nextStateForKey = reducer(previousStateForKey, action)
-        if (typeof nextStateForKey === 'undefined') {
-          const errorMessage = getUndefinedStateErrorMessage(key, action)
-          throw new Error(errorMessage)
+          let hasChanged = false
+          const nextState: StateFromReducersMapObject<typeof reducers> = {}
+          for (let i = 0; i < finalReducerKeys.length; i++) {
+            const key = finalReducerKeys[i]
+            const reducer = finalReducers[key]
+            const previousStateForKey = state[key]
+            const nextStateForKey = reducer(previousStateForKey, action)
+            if (typeof nextStateForKey === 'undefined') {
+              const errorMessage = getUndefinedStateErrorMessage(key, action)
+              throw new Error(errorMessage)
+            }
+            nextState[key] = nextStateForKey
+            ```
+            hasChanged = hasChanged || nextStateForKey !== previousStateForKey
+            ```
+          }
+
+          hasChanged =
+            hasChanged || finalReducerKeys.length !== Object.keys(state).length
+
+          return hasChanged ? nextState : state
         }
-        nextState[key] = nextStateForKey
-        ```
-        hasChanged = hasChanged || nextStateForKey !== previousStateForKey
-        ```
-      }
-
-      hasChanged =
-        hasChanged || finalReducerKeys.length !== Object.keys(state).length
-
-      return hasChanged ? nextState : state
-    }
 ````
 
 <https://velog.io/@kimu2370/redux%EC%9D%98-reducer%EA%B0%80-%EC%88%9C%EC%88%98%ED%95%A8%EC%88%98%EC%9D%B8-%EC%9D%B4%EC%9C%A0> 참고
