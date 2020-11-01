@@ -1,7 +1,7 @@
 ---
-title: redux 공식 문서 톺아보기
-createdDate: '2020-09-28'
-updatedDate: '2020-10-26'
+title: redux 공식 문서 톺아보기 1
+createdDate: "2020-09-28"
+updatedDate: "2020-09-28"
 author: Ideveloper
 tags:
   - react
@@ -18,7 +18,7 @@ draft: false
 
 ![스크린샷 2020-10-27 오전 1 01 53](https://user-images.githubusercontent.com/26598542/97196663-12353980-17f0-11eb-88c5-e9c3285b47cb.png)
 
-* * *
+---
 
 ## redux 의 motivation
 
@@ -83,7 +83,7 @@ console.log(store);
 
 그렇다면 다시 돌아와서 이러한 개념들이 예측가능한 상태변화를 어떻게 만들었는지 생각해보았는데 위와 같이, 특정 액션을 디스패치하게되고, reducer에서 관련한 액션들을 처리해 상태를 업데이트 해주므로, 상태를 변화시키는 요인을 특정레이어에 모델 업데이트 로직을 집중시켜주게 해주어, 어떤 trigger로 인해 상태가 변화되었는지를 쉽게 체크할수 있도록 redux가 CQRS 개념등을 차용한것을 알 수 있었다.
 
-* * *
+---
 
 ## Redux의 세가지 원칙
 
@@ -105,72 +105,81 @@ console.log(store);
 
 <https://redux.js.org/faq/reducers#reducers>
 
-순수함수
+우선 순수함수는 동일한 인자가 주어졌을 때 항상 동일한 결과를 반환하는 것을 말하고, 함수 내의 변수 외에 외부의 값을 참조, 의존하거나 변경하지 않아야 한다. 이러한 순수함수의 성격과 reducer의 동작을 비교해 보면 좋은데 reducer를 구현할 때 인자로 들어온 state를 직접 수정하지 않고 복사본을 만들어 return해주는 이유는 redux의 변경 감지 알고리즘 때문이다. 이를 redux 내부 코드로 살펴보면 아래와 같다.
 
--   동일한 인자가 주어졌을 때 항상 동일한 결과를 반환하는 것을 말한고, 함수 내의 변수 외에 외부의 값을 참조, 의존하거나 변경하지 않아야 한다.
+````javascript
+  let hasChanged = false
+  const nextState: StateFromReducersMapObject<typeof reducers> = {}
+  for (let i = 0; i < finalReducerKeys.length; i++) {
+    const key = finalReducerKeys[i]
+    const reducer = finalReducers[key]
+    const previousStateForKey = state[key]
+    const nextStateForKey = reducer(previousStateForKey, action)
+    if (typeof nextStateForKey === 'undefined') {
+      const errorMessage = getUndefinedStateErrorMessage(key, action)
+      throw new Error(errorMessage)
+    }
+    nextState[key] = nextStateForKey
+    ```
+    hasChanged = hasChanged || nextStateForKey !== previousStateForKey
+    ```
+  }
+
+  hasChanged =
+    hasChanged || finalReducerKeys.length !== Object.keys(state).length
+
+  return hasChanged ? nextState : state
+}
+````
 
 <https://github.com/reduxjs/redux/blob/master/src/combineReducers.ts#L203> 를 보면 object를 단순히 주소(reference)값을 비교 하는것을 알 수 있다.
 
 리덕스는 두 객체(prevState,newState)의 메모리 위치를 비교하여 이전 객체가 새 객체와
-동일한지 여부를 단순 체크한다. 만약 리듀서 내부에서 이전 객체의 속성을 변경하면 새 상태 와 이전 상태가 모두 동일한 객체를 가리킨다. 그렇게 되면 리덕스는 아무것도 변경되지 않았다고 판단하여 동작하지 않는다.
+동일한지 여부를 단순 체크한다. 만약 리듀서 내부에서 이전 객체의 속성을 변경하면 새 상태 와 이전 상태가 같은 메모리 주소를 가지므로 모두 동일한 객체를 가리킨다. 그렇게 되면 리덕스는 아무것도 변경되지 않았다고 판단하여 동작하지 않는다.이러한 이유 때문에 리듀서는 순수함수의 성격을 띠게 된것이다.
 
 #### **그렇다면 redux는 왜 이렇게 간단히만 비교를 할까?**
 
 <https://redux.js.org/faq/immutable-data#why-does-reduxs-use-of-shallow-equality-checking-require-immutability>
 **자세한 내용은 이 링크 참고**
 
-A shallow equality check is therefore as simple (and as fast) as a === b, whereas a deep equality check involves a recursive traversal through the properties of two objects, comparing the value of each property at each step.
-
+```
+A shallow equality check is therefore as simple (and as fast) as a === b,
+whereas a deep equality check involves a recursive traversal through the properties of two objects,
+comparing the value of each property at each step.
 It's for this improvement in performance that Redux uses shallow equality checking.
+```
 
-덩치가 큰 객체를 비교해야 되는 상황이면 객체의 주소 비교라면 O(1) 만큼 비교를 하면 되지만, 속성을 비교하게 된다면 O(n)만큼 비교를 해야되기 때문에 시간이 오래 걸린다.
-
-````javascript
-              let hasChanged = false
-              const nextState: StateFromReducersMapObject<typeof reducers> = {}
-              for (let i = 0; i < finalReducerKeys.length; i++) {
-                const key = finalReducerKeys[i]
-                const reducer = finalReducers[key]
-                const previousStateForKey = state[key]
-                const nextStateForKey = reducer(previousStateForKey, action)
-                if (typeof nextStateForKey === 'undefined') {
-                  const errorMessage = getUndefinedStateErrorMessage(key, action)
-                  throw new Error(errorMessage)
-                }
-                nextState[key] = nextStateForKey
-                ```
-                hasChanged = hasChanged || nextStateForKey !== previousStateForKey
-                ```
-              }
-
-              hasChanged =
-                hasChanged || finalReducerKeys.length !== Object.keys(state).length
-
-              return hasChanged ? nextState : state
-            }
-````
+덩치가 큰 객체를 비교해야 되는 상황이면 객체의 주소 비교라면 O(1) 만큼 비교를 하면 되지만, 속성을 비교하게 된다면 O(n)만큼 비교를 해야되기 때문에 시간이 오래 걸리므로 이러한 점때문에 성능상 이점을 얻기위해 구현된것 같았다.
 
 <https://velog.io/@kimu2370/redux%EC%9D%98-reducer%EA%B0%80-%EC%88%9C%EC%88%98%ED%95%A8%EC%88%98%EC%9D%B8-%EC%9D%B4%EC%9C%A0> 참고
 
-* * *
+---
 
 ## Redux와 Flux
 
 <https://redux.js.org/understanding/history-and-design/prior-art> 이 부분에는 다양한 기술들과 패턴이 redux에는 혼합되어있다고 한다고 하는데 그중 flux부분만 발췌해 보았다.
 
+![image](https://miro.medium.com/max/700/1*3lvNEQE4SF6Z1l-680cfSQ.jpeg)
+https://medium.com/@dakota.lillie/flux-vs-redux-a-comparison-bbd5000d5111 참고
+
 ### flux
 
 `같은점`
 
-flux와 같이 리덕스는 특정레이어에 모델 업데이트 로직을 집중시켜주게 해주었다고 하였고, flux에서는 store에, redux에서는 reducer에 라고하였다.
+flux와 같이 리덕스는 특정레이어에 모델 업데이트 로직을 집중시켜주게 해주었다고 하였고, flux에서는 **store**에, redux에서는 **reducer**에 라고하였다.
 
 `다른점`
 
-flux와 다르게 리덕스는 dispatcher의 컨셉을 가지고 있지 않다.
-Unlike Flux, Redux does not have the concept of a Dispatcher
-이 부분이 조금 의아했다. 이것은 event emitter대신 순수 함수에 의존해서 그렇다고는 하는데.. 읽고 바로 이해되지는 않았다.
+**첫번쨰로는** flux와 다르게 리덕스는 dispatcher의 컨셉을 가지고 있지 않다고 설명이 나와있었다. 어렴풋하게는 액션을 디스패치 해주는 동작이 있으니 dispatcher의 컨셉을 가지고 있는게 아닌가 잠깐 생각했는데 여기서말하는 **dispatcher는 flux의 멘탈모델 (Action, Dispatcher, Store, View)중 하나를 말한다**
 
-flux와 다르게 redux는 data를 변화시키지 않는다고 추정한다. (항상 새로운 object 반환)
+즉, **dispatcher**는 flux의 한 컨셉이고 **액션디스패치**는 flux, redux에서 발생하는 행위자체이며 이러한 액션 디스패치 행위를 통해 flux에서는 dispatcher로 등록된 콜백이 실행되어 store를 업데이트 하는 동작을 하게 되고, redux에서는 reducer로 액션을 전달해 관련 작업을 수행해 store로 업데이트 해주는 정도의 이후 흐름의 차이가 있다는 말이다. 헷갈릴수 있는 개념들이 한번 정리가 되었다.
 
-Another important difference from Flux is that Redux assumes you never mutate your data
-=> You should always return a new object, which is easy with the object spread operator proposal, or with a library like Immutable.
+flux에서의 dispatcher에 대해 추가적으로 말하자면 Flux 어플리케이션의 중앙 허브로 모든 데이터의 흐름을 관리한다.본질적으로 store의 콜백을 등록하는데 쓰이고 action creator가 새로운 action이 있다고 dispatcher에게 알려주면 어플리케이션에 있는 모든 store는 해당 action을 앞서 등록한 callback으로 전달 받는다고 한다.
+
+또한 redux는 이러한 역할을 해주는 dispatcher대신 순수함수 성격을 띄는 reducer라는 스토어를 업데이하는 로직을 같은 성격의 하나의 레이어로 분리하고 쉽게 간결화하기도하며 쉽게 합치기도 한것 같다는 생각이 들었다.
+
+- https://haruair.github.io/flux/docs/overview.html#dispatcher 참고
+
+![image](https://t1.daumcdn.net/cfile/tistory/24158A3C595F2D3D24)
+
+**또한 두번쨰로는** flux와 다르게 redux는 기존 data를 변경시키는 식으로 업데이트를 하지 않는것이다. 이는 항상 reducer에서 새로운 object 반환하는것과 같은 맥락이다. 앞서 말했듯 이러한 점때문에 redux에서 debugging역시 쉬워졌고, 빠른 데이터 비교가 가능해진것이다.
