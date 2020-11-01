@@ -126,7 +126,7 @@ export const careerInfo = [
       },
       {
         title: "B마트 주문프론트 개발",
-        content: ["선물함 지면 및 상품권 적용 개발"],
+        content: ["선물함 지면 및 상품권 적용 개발", "쿠폰함 개선"],
         participant: "1명",
         skills: ["vue.js", "vuex"],
       },
