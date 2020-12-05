@@ -91,6 +91,7 @@ export const careerInfo = [
           "앱스킴, 인터페이스 효과적으로 관리하는 App Protocol Manager 개발",
           "로그를 쉽게 관리하는 App Log Manager 개발",
           "component 구조/ folder structure 설계",
+          "장바구니 페이지 구조 개선 및 코드 개선",
         ],
         participant: "2명",
         skills: [
@@ -110,7 +111,12 @@ export const careerInfo = [
       },
       {
         title: "B마트 이벤트 페이지 메이커 개선",
-        content: ["이벤트 페이지 자동화 tool에 스와이퍼 제작 기능 추가"],
+        description:
+          "마케터 분들이 이벤트 페이지 제작에 사용하는 툴 기능 추가 및 개선",
+        content: [
+          "이벤트 페이지 자동화 tool에 스와이퍼 제작 기능 추가",
+          "랜덤쿠폰 이벤트 페이지 제작 기능 시스템화",
+        ],
         participant: "2명",
         skills: ["react", "typescript"],
       },
@@ -139,6 +145,7 @@ export const careerInfo = [
           "두근두근 쿠폰뽑기 이벤트 페이지 개발",
           "신규고객 전용상품 이벤트 페이지 개발",
           "빅세일 이벤트 페이지 개발",
+          "쿠폰 퀴즈쇼 이벤트 페이지 개발",
         ],
         description:
           "다양한 이벤트 페이지 개발을 통해 신규고객 유입 및 기존고객 재구매 유도, 기획자/디자이너와 함께 요구사항을 정립해가며 더 나은 방안을 제안하며 개발 진행",
