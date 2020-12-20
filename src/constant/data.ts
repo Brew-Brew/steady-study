@@ -328,6 +328,12 @@ export const skillInfo = [
 
 export const awardsInfo = [
   {
+    title: "우아한형제들 사내 해커톤 '우아톤' 최우수상 - 2020",
+    from: "우아한형제들",
+    content:
+      "개인화 된 컨텐츠를 배민 메인 홈에서 제공하는 프로젝트 '응답하라 배민' 제작 - UI개발 담당",
+  },
+  {
     title: "글로벌 전문 개발자 (파트 부문) - 2019",
     from: "공개SW개발자센터(KOSSLab)",
     content:
