@@ -88,6 +88,8 @@ export const careerInfo = [
         title: "B마트 통합 프론트 서버 개발",
         description: "SSR + typescript + react 기반의 통합 프론트서버",
         content: [
+          "A/B 테스트 컴포넌트 개발",
+          "장바구니 추천영역 개발",
           "앱스킴, 인터페이스 효과적으로 관리하는 App Protocol Manager 개발",
           "로그를 쉽게 관리하는 App Log Manager 개발",
           "component 구조/ folder structure 설계",
