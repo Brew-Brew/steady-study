@@ -26,7 +26,7 @@ draft: false
 
 ![image](https://user-images.githubusercontent.com/26598542/116808149-37757c80-ab72-11eb-8ddc-bffc9c0b1b28.png)
 
-우선 아래는 참고용 코드들이다. 아래 내용들을 보며 확인하면 좋을듯 하다.
+우선 아래는 설명을 진행할 내용에 해당하는 참고용 코드들이다. 아래 내용들을 보며 확인하면 좋을듯 하다.
 
 <iframe src="https://codesandbox.io/embed/stupefied-brook-8g2ol?fontsize=14&hidenavigation=1&theme=dark"
      style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;"
