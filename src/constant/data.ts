@@ -85,25 +85,29 @@ export const careerInfo = [
     skills: ["react", "typescript"],
     task: [
       {
-        title: "B마트 통합 프론트 서버 개발",
-        description: "SSR + typescript + react 기반의 통합 프론트서버",
+        title: "배달의민족 통합 주문 지면 B마트 지면 프론트 개발",
+        description: "배달의 민족 통합 주문 지면 내 B마트 지면",
+        content: [
+          "주요 결제 연관 로직 test 코드 작성으로 비즈니스 로직 안정성 확보",
+          "컴포넌트 구조 개선",
+          "쿠폰 적용 로직 추가/수정",
+        ],
+        participant: "1명",
+        skills: ["react", "typescript"],
+      },
+      {
+        title: "B마트 통합 프론트 환경 개발",
+        description:
+          "SSR + typescript + react 기반의 통합 프론트 환경 (여러 웹뷰 페이지들의 기반 repo)",
         content: [
           "A/B 테스트 컴포넌트 개발",
-          "장바구니 추천영역 개발",
           "앱스킴, 인터페이스 효과적으로 관리하는 App Protocol Manager 개발",
           "로그를 쉽게 관리하는 App Log Manager 개발",
-          "component 구조/ folder structure 설계",
-          "장바구니 페이지 구조 개선 및 코드 개선",
-          "autoprefixer 도입",
+          "페이지 구조 개선 및 코드 개선 (장바구니,상품상세,쿠폰/이벤트지면..etc)",
+          "장바구니 추천 UI 영역 개발",
+          "api, 모델 테스트 코드 커버리지 확보",
         ],
-        participant: "2명",
-        skills: [
-          "react",
-          "typescript",
-          "react hook",
-          "redux",
-          "loadable-components",
-        ],
+        skills: ["react", "typescript", "react hook", "redux", "emotion"],
       },
 
       {
@@ -111,53 +115,56 @@ export const careerInfo = [
         content: [
           "rollup, ts, react 기반 디자인 시스템 개발",
           "젠킨스 연동으로 배포 방식 개선 및 슬랙알람 연동",
+          "시각적 회귀테스트 도입으로 디자인시스템 개발 안정성 확보",
         ],
-        participant: "2명",
-        skills: ["react", "typescript", "rollup.js", "emotion.js", "docz"],
+        skills: [
+          "react",
+          "typescript",
+          "rollup.js",
+          "emotion.js",
+          "docz",
+          "loki",
+        ],
       },
       {
-        title: "B마트 이벤트 페이지 메이커 개선",
+        title: "B마트 이벤트 페이지 제작 tool",
         description:
           "마케터 분들이 이벤트 페이지 제작에 사용하는 툴 기능 추가 및 개선",
         content: [
-          "이벤트 페이지 자동화 tool에 스와이퍼 제작 기능 추가",
-          "상시 진행한 이벤트 페이지 제작 기능 시스템화(랜덤쿠폰 이벤트 , 스탬프 이벤트)",
+          "매달 개발자가 개발했던 이벤트 페이지들을 마케터분들이 제작가능하도록 시스템화/자동화로 마케팅 효율 증대",
           "이미지 업로드 기능 s3, cloudfront 연동하도록 개선",
+          "마케팅팀에 요구사항에 따른 여러 사용성 개선 및 기능 추가 (스와이퍼 제작 기능, 딥링크 이동..etc)",
         ],
-        participant: "2명",
+
         skills: ["react", "typescript"],
       },
       {
         title: "B마트 프론트엔드 상품상세 웹뷰 개선",
         content: [
-          "배달정보, 적립혜택, 신규고객 띠배너 컴포넌트, 증정품 컴포넌트 개발",
-          "api 모델링 개선",
-          "코드 구조 개선 및 유지보수",
-          "기존 코드들 통합프론트 환경으로 코드 이관 및 테스트 코드 보완",
+          "UI / 모델 개선 및 유지보수",
+          "legacy csr 환경을 코드 일원화를 위해 새로 구축한 통합 프론트 ssr 환경으로 이관",
         ],
-        participant: "1명",
+
         skills: ["react", "typescript", "react hook", "context"],
       },
       {
-        title: "B마트 주문지면 프론트 개발",
+        title: "B마트 (구) 주문지면 프론트 개발",
         content: ["선물함 지면 및 상품권 적용 개발", "쿠폰함 개선"],
-        participant: "1명",
+
         skills: ["vue.js", "vuex"],
       },
       {
         title: "B마트 이벤트 페이지 개발",
         content: [
-          "추억의 뽑기 이벤트 페이지 개발",
-          "럭키박스 이벤트 페이지 개발",
-          "전설의 지팡이 이벤트 페이지 개발",
-          "두근두근 쿠폰뽑기 이벤트 페이지 개발",
+          "랜덤 쿠폰 이벤트 페이지 개발",
           "신규고객 전용상품 이벤트 페이지 개발",
           "빅세일 이벤트 페이지 개발",
           "쿠폰 퀴즈쇼 이벤트 페이지 개발",
+          "스탬프 이벤트 페이지 개발",
+          "숨은 쿠폰 이벤트 페이지 개발",
         ],
         description:
-          "다양한 이벤트 페이지 개발을 통해 신규고객 유입 및 기존고객 재구매 유도, 기획자/디자이너와 함께 요구사항을 정립해가며 더 나은 방안을 제안하며 개발 진행",
-        participant: "1명",
+          "다양한 이벤트 페이지 개발을 통해 신규고객 유입 및 기존고객 재구매 유도, 기획자/디자이너와 함께 요구사항을 정립해가며 더 나은 방안을 제안하며 개발 진행 / 또한 이러한 페이지들 제작기능을 시스템화 하기도 함",
         skills: ["javascript", "jquery"],
       },
       {
@@ -166,8 +173,18 @@ export const careerInfo = [
           "회원/비회원 유저별 토큰 발급 기능",
           "개발에 필요한 데이터 추출 기능",
         ],
-        participant: "2명",
         skills: ["react", "react hook"],
+      },
+      {
+        title: "B마트 프론트파트 팀 문화를 만들어 나감",
+        content: [
+          "B마트 프론트 파트 정보공유 채널 -> 전사 공유채널로 확장(지식/기술공유)",
+          "주간 회고 (배포 일정 체크/ 이슈 체크 / 논의)",
+          "코드 리뷰 문화",
+          "pr 템플릿",
+          "지속적으로 공유하는 문화 및 함께하는 트러블 슈팅",
+        ],
+        skills: ["soft skill"],
       },
     ],
   },
