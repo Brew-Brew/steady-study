@@ -133,12 +133,25 @@ const AboutPage = () => {
                         <Tag content={skill} />
                       ))}
                       {task.participant && <p>참여인원: {task.participant}</p>}
-                      <InfoDescription>{task.description}</InfoDescription>
-                      <ul>
-                        {task.content.map((content) => {
-                          return <li>{content}</li>;
-                        })}
-                      </ul>
+                      {task.description &&
+                        task.description.map((d) => (
+                          <>
+                            <InfoDescription>{d.title}</InfoDescription>
+                            <ul>
+                              {d.content.map((content) => {
+                                return (
+                                  <li>
+                                    <div
+                                      dangerouslySetInnerHTML={{
+                                        __html: content,
+                                      }}
+                                    />
+                                  </li>
+                                );
+                              })}
+                            </ul>
+                          </>
+                        ))}
                     </InfoContent>
                   );
                 })}
