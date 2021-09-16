@@ -156,7 +156,7 @@ export const careerInfo = [
             content: [
               "<a href='https://ideveloper2.dev/blog/2020-05-17--rollup-ts-%EB%A1%9C-%EB%94%94%EC%9E%90%EC%9D%B8%EC%8B%9C%EC%8A%A4%ED%85%9C-%EB%A7%8C%EB%93%A4%EA%B8%B0/'>rollup, ts, react 기반 디자인 시스템 개발</a>",
               "<a href='https://ideveloper2.dev/blog/2021-02-27--%EC%A0%A0%ED%82%A8%EC%8A%A4-%EB%B0%B0%ED%8F%AC-%ED%9B%84-%EC%8A%AC%EB%9E%99%EC%9C%BC%EB%A1%9C-%EB%9D%BC%EC%9D%B4%EB%B8%8C%EB%9F%AC%EB%A6%AC-%EB%B2%84%EC%A0%84-%EC%95%8C%EB%9E%8C-%EB%B0%9B%EA%B8%B0/'>젠킨스 연동으로 배포 방식 개선 및 슬랙알람 연동 (버전, 배포 성공/실패여부)</a>",
-              "<a hre='https://ideveloper2.dev/blog/2021-01-24--%EC%8B%9C%EA%B0%81%EC%A0%81-%ED%9A%8C%EA%B7%80-%ED%85%8C%EC%8A%A4%ED%8A%B8-visual-regression-test/'>시각적 회귀테스트 도입으로 디자인시스템 개발 안정성 확보</a>",
+              "<a href='https://ideveloper2.dev/blog/2021-01-24--%EC%8B%9C%EA%B0%81%EC%A0%81-%ED%9A%8C%EA%B7%80-%ED%85%8C%EC%8A%A4%ED%8A%B8-visual-regression-test/'>시각적 회귀테스트 도입으로 디자인시스템 개발 안정성 확보</a>",
             ],
           },
         ],
