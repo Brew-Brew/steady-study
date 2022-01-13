@@ -90,7 +90,7 @@ const BlogPostPage = (props: BlogPostProps) => {
             <Item.Image size='tiny' src={avatar} srcSet={avatar} circular />
             <Item.Content>
               <Item.Description>{'ideveloper'}</Item.Description>
-              <Item.Meta>{'Front end Developer who steadily study'}</Item.Meta>
+              <Item.Meta>{'Front end Developer who steadily study '}</Item.Meta>
               <Item.Extra>
                 {frontmatter.updatedDate} - {timeToRead} min read
               </Item.Extra>
