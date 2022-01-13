@@ -1,33 +1,16 @@
-import * as React from "react";
-import { Link } from "gatsby";
-import { get } from "lodash";
-import {
-  Header,
-  Container,
-  Segment,
-  Icon,
-  Label,
-  Button,
-  Grid,
-  Card,
-  Image,
-  Item,
-  Comment
-} from "semantic-ui-react";
-import { graphql } from "gatsby";
-import styled from "styled-components";
-import Helmet from "react-helmet";
+import * as React from 'react'
+import { Link } from 'gatsby'
+import { get } from 'lodash'
+import { Header, Container, Segment, Icon, Label, Button, Grid, Card, Image, Item, Comment } from 'semantic-ui-react'
+import { graphql } from 'gatsby'
+import styled from 'styled-components'
+import Helmet from 'react-helmet'
 
-import {
-  MarkdownRemark,
-  ImageSharp,
-  MarkdownRemarkConnection,
-  Site
-} from "../graphql-types";
-import BlogTitle from "../components/BlogTitle";
-import { DiscussionEmbed } from "disqus-react";
-import { withLayout, LayoutProps } from "../components/Layout";
-import GlobalFontStyle from "../util/globalFont";
+import { MarkdownRemark, ImageSharp, MarkdownRemarkConnection, Site } from '../graphql-types'
+import BlogTitle from '../components/BlogTitle'
+import { DiscussionEmbed } from 'disqus-react'
+import { withLayout, LayoutProps } from '../components/Layout'
+import GlobalFontStyle from '../util/globalFont'
 
 const Wrapper = styled.div`
   p {
@@ -46,130 +29,102 @@ const Wrapper = styled.div`
   img {
     max-width: 100%;
   }
-`;
+`
 
 interface BlogPostProps extends LayoutProps {
   data: {
-    post: MarkdownRemark;
-    recents: MarkdownRemarkConnection;
-    site: Site;
-  };
+    post: MarkdownRemark
+    recents: MarkdownRemarkConnection
+    site: Site
+  }
 }
 
 const BlogPostPage = (props: BlogPostProps) => {
-  const { frontmatter, html, timeToRead } = props.data.post;
-  const avatar = frontmatter.author.avatar.children[0] as ImageSharp;
+  const { frontmatter, html, timeToRead } = props.data.post
 
-  const tags = props.data.post.frontmatter.tags.map(tag => (
+  const tags = props.data.post.frontmatter.tags.map((tag) => (
     <Label key={tag}>
       <Link to={`/blog/tags/${tag}/`}>{tag}</Link>
     </Label>
-  ));
+  ))
 
   const recents =
     props.data.recents &&
     props.data.recents.edges.map(({ node }) => {
-      const recentAvatar = node.frontmatter.author.avatar
-        .children[0] as ImageSharp;
-      const recentCover = get(node, "frontmatter.image.children.0.fixed", {});
+      const recentAvatar =
+        'https://user-images.githubusercontent.com/26598542/149338165-87547759-ef2f-43a3-823a-05f5f52f2214.png'
+      const recentCover = get(node, 'frontmatter.image.children.0.fixed', {})
       const extra = (
         <Comment.Group>
           <Comment>
-            <Comment.Avatar
-              src={recentAvatar.fixed.src}
-              srcSet={recentAvatar.fixed.srcSet}
-            />
+            <Comment.Avatar src={recentAvatar} srcSet={recentAvatar} />
             <Comment.Content>
-              <Comment.Author style={{ fontWeight: 400 }}>
-                {node.frontmatter.author.id}
-              </Comment.Author>
-              <Comment.Metadata style={{ margin: 0 }}>
-                {node.timeToRead} min read
-              </Comment.Metadata>
+              <Comment.Author style={{ fontWeight: 400 }}>{'ideveloper'}</Comment.Author>
+              <Comment.Metadata style={{ margin: 0 }}>{node.timeToRead} min read</Comment.Metadata>
             </Comment.Content>
           </Comment>
         </Comment.Group>
-      );
+      )
 
       return (
-        <div key={node.fields.slug} style={{ paddingBottom: "1em" }}>
-          <Card
-            as={Link}
-            to={node.fields.slug}
-            image={recentCover}
-            header={node.frontmatter.title}
-            extra={extra}
-          />
+        <div key={node.fields.slug} style={{ paddingBottom: '1em' }}>
+          <Card as={Link} to={node.fields.slug} image={recentCover} header={node.frontmatter.title} extra={extra} />
         </div>
-      );
-    });
+      )
+    })
 
-  const cover = get(frontmatter, "image.children.0.fixed", {});
-  const disqusConfig = {
-    url: props.location.href,
-    identifier: props.location.key,
-    title: ""
-  };
+  const cover = get(frontmatter, 'image.children.0.fixed', {})
+  const avatar = 'https://user-images.githubusercontent.com/26598542/149338165-87547759-ef2f-43a3-823a-05f5f52f2214.png'
 
   return (
     <Container>
       <Helmet>
-        <meta name="title" content={frontmatter.title} />
-        <meta property="og:image" content={cover.src} />
+        <meta name='title' content={frontmatter.title} />
+        <meta property='og:image' content={cover.src} />
       </Helmet>
       <GlobalFontStyle />
       <BlogTitle />
-      <Segment vertical style={{ border: "none" }}>
+      <Segment vertical style={{ border: 'none' }}>
         <Item.Group>
           <Item>
-            <Item.Image
-              size="tiny"
-              src={avatar.fixed.src}
-              srcSet={avatar.fixed.srcSet}
-              circular
-            />
+            <Item.Image size='tiny' src={avatar} srcSet={avatar} circular />
             <Item.Content>
-              <Item.Description>{frontmatter.author.id}</Item.Description>
-              <Item.Meta>{frontmatter.author.bio}</Item.Meta>
+              <Item.Description>{'ideveloper'}</Item.Description>
+              <Item.Meta>{'Front end Developer who steadily study'}</Item.Meta>
               <Item.Extra>
                 {frontmatter.updatedDate} - {timeToRead} min read
               </Item.Extra>
             </Item.Content>
           </Item>
         </Item.Group>
-        <Header as="h1">{frontmatter.title}</Header>
+        <Header as='h1'>{frontmatter.title}</Header>
       </Segment>
       <Image {...cover} fluid />
       <Wrapper>
         <Segment
           vertical
-          style={{ border: "none" }}
+          style={{ border: 'none' }}
           dangerouslySetInnerHTML={{
             __html: html
           }}
         />
       </Wrapper>
       <Segment vertical>{tags}</Segment>
-      {props.data.site &&
-        props.data.site.siteMetadata &&
-        props.data.site.siteMetadata.disqus && (
-          <Segment vertical>
-            <DiscussionEmbed
-              shortname={props.data.site.siteMetadata.disqus}
-              config={{}}
-            />
-          </Segment>
-        )}
+      {props.data.site && props.data.site.siteMetadata && props.data.site.siteMetadata.disqus && (
+        <Segment vertical>
+          <DiscussionEmbed shortname={props.data.site.siteMetadata.disqus} config={{}} />
+        </Segment>
+      )}
       <Segment vertical>
         <Grid padded centered>
           {recents}
         </Grid>
       </Segment>
     </Container>
-  );
-};
+  )
+}
 
-export default withLayout(BlogPostPage);
+export default withLayout(BlogPostPage)
 
 export const pageQuery = graphql`
   query TemplateBlogPost($slug: String!) {
@@ -225,10 +180,7 @@ export const pageQuery = graphql`
       }
     }
     recents: allMarkdownRemark(
-      filter: {
-        frontmatter: { draft: { ne: true } }
-        fileAbsolutePath: { regex: "/blog/" }
-      }
+      filter: { frontmatter: { draft: { ne: true } }, fileAbsolutePath: { regex: "/blog/" } }
       sort: { order: DESC, fields: [frontmatter___updatedDate] }
       limit: 4
     ) {
@@ -268,4 +220,4 @@ export const pageQuery = graphql`
       }
     }
   }
-`;
+`

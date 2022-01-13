@@ -1,43 +1,43 @@
-import * as React from "react";
-import { Link } from "gatsby";
-import { graphql } from "gatsby";
-import styled, { keyframes } from "styled-components";
-import { Grid, Card, Container, Segment, Comment } from "semantic-ui-react";
-import { rollIn } from "react-animations";
-import GlobalFontStyle from "../util/globalFont";
-import { MarkdownRemarkConnection, ImageSharp } from "../graphql-types";
-import BlogTitle from "../components/BlogTitle";
-import TagsCard from "../components/TagsCard/TagsCard";
-import BlogPagination from "../components/BlogPagination/BlogPagination";
-import { get } from "lodash";
-import { withLayout, LayoutProps } from "../components/Layout";
-import { MarkdownRemark } from "../graphql-types";
-import "prismjs/themes/prism-tomorrow.css";
+import * as React from 'react'
+import { Link } from 'gatsby'
+import { graphql } from 'gatsby'
+import styled, { keyframes } from 'styled-components'
+import { Grid, Card, Container, Segment, Comment } from 'semantic-ui-react'
+import { rollIn } from 'react-animations'
+import GlobalFontStyle from '../util/globalFont'
+import { MarkdownRemarkConnection, ImageSharp } from '../graphql-types'
+import BlogTitle from '../components/BlogTitle'
+import TagsCard from '../components/TagsCard/TagsCard'
+import BlogPagination from '../components/BlogPagination/BlogPagination'
+import { get } from 'lodash'
+import { withLayout, LayoutProps } from '../components/Layout'
+import { MarkdownRemark } from '../graphql-types'
+import 'prismjs/themes/prism-tomorrow.css'
 
-const fadedAnimation = keyframes`${rollIn}`;
+const fadedAnimation = keyframes`${rollIn}`
 
 const FadeWrapper = styled.div`
   animation: 1s ${fadedAnimation};
   margin: 20px;
-`;
+`
 
 interface BlogProps extends LayoutProps {
   data: {
-    tags: MarkdownRemarkConnection;
-    posts: MarkdownRemarkConnection;
-    postsCount: MarkdownRemarkConnection;
-  };
+    tags: MarkdownRemarkConnection
+    posts: MarkdownRemarkConnection
+    postsCount: MarkdownRemarkConnection
+  }
   pageContext: {
-    tag?: string; // only set into `templates/tags-pages.tsx`
-  };
+    tag?: string // only set into `templates/tags-pages.tsx`
+  }
 }
 
 const BlogPage = (props: BlogProps) => {
-  const { data, location } = props;
-  const tags = data.tags.group;
-  const posts = data.posts.edges;
-  const { pathname } = location;
-  const pageCount = Math.ceil(data.postsCount.totalCount / 5);
+  const { data, location } = props
+  const tags = data.tags.group
+  const posts = data.posts.edges
+  const { pathname } = location
+  const pageCount = Math.ceil(data.postsCount.totalCount / 5)
 
   // TODO export posts in a proper component
   const Posts = (
@@ -48,28 +48,24 @@ const BlogPage = (props: BlogProps) => {
           timeToRead,
           fields: { slug },
           excerpt
-        } = node;
-        const avatar = frontmatter.author.avatar.children[0] as ImageSharp;
-        const cover = get(frontmatter, "image.children.0.fixed", {});
+        } = node
+        const avatar =
+          'https://user-images.githubusercontent.com/26598542/149338165-87547759-ef2f-43a3-823a-05f5f52f2214.png'
+        const cover = get(frontmatter, 'image.children.0.fixed', {})
 
         const extra = (
           <Comment.Group>
             <Comment>
-              <Comment.Avatar
-                src={avatar.fixed.src}
-                srcSet={avatar.fixed.srcSet}
-              />
+              <Comment.Avatar src={avatar} srcSet={avatar} />
               <Comment.Content>
-                <Comment.Author style={{ fontWeight: 400 }}>
-                  {frontmatter.author.id}
-                </Comment.Author>
+                <Comment.Author style={{ fontWeight: 400 }}>{'ideveloper'}</Comment.Author>
                 <Comment.Metadata style={{ margin: 0 }}>
                   {frontmatter.updatedDate} - {timeToRead} min read
                 </Comment.Metadata>
               </Comment.Content>
             </Comment>
           </Comment.Group>
-        );
+        )
 
         const description = (
           <Card.Description>
@@ -77,25 +73,18 @@ const BlogPage = (props: BlogProps) => {
             <br />
             <Link to={slug}>Read more…</Link>
           </Card.Description>
-        );
+        )
 
         return (
           <FadeWrapper>
             <Link to={slug}>
-              <Card
-                key={slug}
-                fluid
-                image={cover}
-                header={frontmatter.title}
-                extra={extra}
-                description={description}
-              />
+              <Card key={slug} fluid image={cover} header={frontmatter.title} extra={extra} description={description} />
             </Link>
           </FadeWrapper>
-        );
+        )
       })}
     </Container>
-  );
+  )
 
   return (
     <Container>
@@ -104,15 +93,11 @@ const BlogPage = (props: BlogProps) => {
       <BlogTitle />
       {/* Content */}
       <Segment vertical>
-        <Grid padded style={{ justifyContent: "space-around" }}>
+        <Grid padded style={{ justifyContent: 'space-around' }}>
           <div style={{ maxWidth: 600 }}>
             {Posts}
-            <Segment vertical textAlign="center">
-              <BlogPagination
-                Link={Link}
-                pathname={pathname}
-                pageCount={pageCount}
-              />
+            <Segment vertical textAlign='center'>
+              <BlogPagination Link={Link} pathname={pathname} pageCount={pageCount} />
             </Segment>
           </div>
           <div>
@@ -121,10 +106,10 @@ const BlogPage = (props: BlogProps) => {
         </Grid>
       </Segment>
     </Container>
-  );
-};
+  )
+}
 
-export default withLayout(BlogPage);
+export default withLayout(BlogPage)
 
 export const pageQuery = graphql`
   query PageBlog {
@@ -188,4 +173,4 @@ export const pageQuery = graphql`
       }
     }
   }
-`;
+`
