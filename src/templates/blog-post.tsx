@@ -16,6 +16,7 @@ const Wrapper = styled.div`
   p {
     line-height: 2rem;
     margin-bottom: 0.5rem;
+    font-size: 1.2rem;
   }
   h3 {
     font-size: 18px;
