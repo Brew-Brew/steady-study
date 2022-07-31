@@ -78,7 +78,7 @@ export const pressInfo = [
 
 export const careerInfo = [
   {
-    date: "2020.03 ~ ",
+    date: "2020.03 ~ 2022.08",
     description: "Food Tech",
     img: woowa,
     label: "우아한 형제들",
@@ -86,7 +86,7 @@ export const careerInfo = [
     task: [
       {
         title:
-          "B마트 통합 프론트 웹뷰 환경 개발 (SSR + typescript + react 의 여러 웹뷰 페이지들의 기반 repo)",
+          "B마트/배민스토어 통합 프론트 웹뷰 환경 개발 (SSR + typescript + react 의 여러 웹뷰 페이지들의 기반 repo)",
         description: [
           {
             title: "여러 비즈니스 대응",
@@ -110,10 +110,10 @@ export const careerInfo = [
         skills: ["react", "typescript", "react hook", "redux", "emotion"],
       },
       {
-        title: "배달의민족 통합 주문 페이지 B마트 페이지 개발",
+        title: "배달의민족 통합 주문 페이지 B마트/배민스토어 페이지 개발",
         description: [
           {
-            title: "배달의 민족 주문페이지 내 B마트 주문페이지",
+            title: "배달의 민족 주문페이지 내 B마트/배민스토어 주문페이지",
             content: [
               "주요 결제 연관 로직 추가 및 test 코드 작성 => 비즈니스 로직 안정성 확보",
               "컴포넌트 / 모델 구조 개선 =>  코드 가독성 확보",
@@ -171,15 +171,14 @@ export const careerInfo = [
         ],
       },
       {
-        title: "B마트 프론트파트 팀 문화를 만들어 나감",
+        title: "팀 문화를 만들어 나감",
         description: [
           {
-            title:
-              "하나의 팀으로써 유기적으로 협업하고 공유하는 B마트 프론트엔드 문화",
+            title: "하나의 팀으로써 유기적으로 협업하고 공유하는 문화",
             content: [
               "내 작업뿐만 아니라, 동료의 작업까지도 항상 챙기며, 일정 체크에도 힘써 줌으로써 도움이 될수 있는 동료가 되기 위해 항상 노력함",
               "하나의 서비스를 함께 만들어간다는 생각을 바탕으로 한 지속적으로 공유하는 문화",
-              "B마트 프론트 파트 정보공유 채널 생성 제안 -> 전사 공유채널로 확장(지식/기술공유)",
+              "팀 내 정보공유 채널 생성 제안 -> 전사 프론트엔트 공유채널로 확장(지식/기술공유)",
               "매주 빠짐없이 주간 회고를 주도함 (배포 일정 체크/ 이슈 체크 / 논의)",
               "코드리뷰를 통해 동료가 작업하는 도메인과 코드작성 의도파악,히스토리 파악, 더나은 프로덕트를 만들기 위한 필수 불가결한 과정이라 생각하며 함께하고 있음 (PR 템플릿 생성..etc)",
             ],
