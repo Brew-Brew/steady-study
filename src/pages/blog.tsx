@@ -5,7 +5,7 @@ import styled, { keyframes } from "styled-components";
 import { Grid, Card, Container, Segment, Comment } from "semantic-ui-react";
 import { fadeIn } from "react-animations";
 import GlobalFontStyle from "../util/globalFont";
-import { MarkdownRemarkConnection, ImageSharp } from "../graphql-types";
+import { MarkdownRemarkConnection } from "../graphql-types";
 import BlogTitle from "../components/BlogTitle";
 import TagsCard from "../components/TagsCard/TagsCard";
 import BlogPagination from "../components/BlogPagination/BlogPagination";
