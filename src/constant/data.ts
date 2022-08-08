@@ -10,22 +10,22 @@ import {
 
 export const bottomContent = [
   {
-    buttonContent: "Let's study",
+    buttonContent: "글 보기",
     icon: "book",
     link: "/blog/",
-    text: "See how I think from my articles",
+    text: "기술/일상 생각을 정리한 글",
   },
   {
-    buttonContent: "Go to page",
+    buttonContent: "이력서 보기",
     icon: "search",
     link: "/about/",
-    text: " See who am I from my about page",
+    text: "경험들을 정리한 이력서",
   },
   {
-    buttonContent: "Contact me",
-    icon: "phone",
+    buttonContent: "깃헙 방문",
+    icon: "github",
     link: "https://github.com/Brew-Brew/",
-    text: " Contact me from my github page",
+    text: "깃헙 페이지 구경하기",
   },
 ];
 
@@ -85,11 +85,10 @@ export const careerInfo = [
     skills: ["react", "typescript"],
     task: [
       {
-        title:
-          "B마트/배민스토어 통합 프론트 웹뷰 환경 개발 (SSR + typescript + react 의 여러 웹뷰 페이지들의 기반 repo)",
+        title: "B마트/배민스토어 통합 웹뷰 환경 개발",
         description: [
           {
-            title: "여러 비즈니스 대응",
+            title: "웹뷰 개발환경에서의 여러 비즈니스 대응",
             content: [
               "<a href='https://ideveloper2.dev/blog/2021-05-02--a-b-%ED%85%8C%EC%8A%A4%ED%8A%B8-%EC%BB%B4%ED%8F%AC%EB%84%8C%ED%8A%B8-%EA%B5%AC%EC%B6%95/'>A/B 테스트 컴포넌트 개발</a>",
               "추천 UI 영역 개발",
@@ -107,7 +106,7 @@ export const careerInfo = [
           },
         ],
 
-        skills: ["react", "typescript", "react hook", "redux", "emotion"],
+        skills: ["react", "next.js", "typescript", "redux", "emotion.js"],
       },
       {
         title: "배달의민족 통합 주문 페이지 B마트/배민스토어 페이지 개발",
@@ -122,7 +121,7 @@ export const careerInfo = [
           },
         ],
 
-        skills: ["react", "typescript"],
+        skills: ["react", "typescript", "styled-components"],
       },
 
       {
@@ -130,7 +129,7 @@ export const careerInfo = [
         description: [
           {
             title:
-              "마케터 분들이 프로모션(이벤트) 페이지 제작에 사용하는 builder 개발 및  기능 추가 / 개선",
+              "마케터 분들이 프로모션(이벤트) 페이지 제작에 사용하는 builder 개발 및 기능 추가 / 개선",
             content: [
               "섹션, 그룹, 아이템, 액션등의 레이어를 나눠 모델을 설계해 개발하여 다양한 프로모션 페이지 대응가능하도록 개선",
               "매달 개발자가 개발했던 이벤트 페이지들을 마케터분들이 제작가능하도록 설계하여 시스템화/자동화로 마케팅 효율 증대",
@@ -176,9 +175,10 @@ export const careerInfo = [
           {
             title: "하나의 팀으로써 유기적으로 협업하고 공유하는 문화",
             content: [
+              "신규 입사자 온보딩 프로세스 정립 및 온보딩 프로젝트 기획 및 문서화",
               "내 작업뿐만 아니라, 동료의 작업까지도 항상 챙기며, 일정 체크에도 힘써 줌으로써 도움이 될수 있는 동료가 되기 위해 항상 노력함",
               "하나의 서비스를 함께 만들어간다는 생각을 바탕으로 한 지속적으로 공유하는 문화",
-              "팀 내 정보공유 채널 생성 제안 -> 전사 프론트엔트 공유채널로 확장(지식/기술공유)",
+              "팀 내 정보공유 채널 생성 제안 및 <a href='https://ideveloper2.dev/blog/2022-01-25--emotion%EC%9C%BC%EB%A1%9C-%ED%8C%8C%EC%95%85%ED%95%B4%EB%B3%B4%EB%8A%94-css-in-js%EC%9D%98-%EC%9D%B4%EB%AA%A8%EC%A0%80%EB%AA%A8/'>기술 관련 아티클</a> 공유 -> 전사 프론트엔트 공유채널로 확장(지식/기술공유)",
               "매주 빠짐없이 주간 회고를 주도함 (배포 일정 체크/ 이슈 체크 / 논의)",
               "코드리뷰를 통해 동료가 작업하는 도메인과 코드작성 의도파악,히스토리 파악, 더나은 프로덕트를 만들기 위한 필수 불가결한 과정이라 생각하며 함께하고 있음 (PR 템플릿 생성..etc)",
             ],
@@ -215,7 +215,7 @@ export const careerInfo = [
           },
         ],
         participant: "3명",
-        skills: ["typescript", "next.js", "emotion.js", "react", "context"],
+        skills: ["typescript", "next.js", "emotion.js", "react", "context api"],
       },
       {
         title: "호텔메타서치 프로젝트",
@@ -224,14 +224,14 @@ export const careerInfo = [
             title:
               "기존: 부킹닷컴 링크로연결 -> 개선: 각 호텔 사이트들의 상품들을 리스트페이지, 상세페이지에서 확인할수 있도록 개선",
             content: [
-              "웹뷰 대응 및, 인터페이스 호환",
+              "웹뷰 대응 및 신규 인터페이스 협의 및 개발",
               "UI 컴포넌트 제작",
               "상태관리 및 설계단 참여",
             ],
           },
         ],
         participant: "2명",
-        skills: ["react", "context"],
+        skills: ["react", "context api"],
       },
       {
         title: "웹 상품 상세페이지 view ruby on rails -> react 리뉴얼",

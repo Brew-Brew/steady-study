@@ -1,19 +1,13 @@
 const isBrowser = typeof window !== "undefined";
 isBrowser ? require("intersection-observer") : undefined;
 
+import media from "css-in-js-media";
 import * as React from "react";
 import { Link } from "gatsby";
 import HeaderMenu from "../components/HeaderMenu/HeaderMenu";
 import { withLayout, menuItems } from "../components/Layout";
 import colors from "../constant/colors";
-import {
-  Button,
-  Segment,
-  Container,
-  Grid,
-  Header,
-  Icon
-} from "semantic-ui-react";
+import { Button, Container, Grid, Header, Icon } from "semantic-ui-react";
 import styled, { keyframes, css } from "styled-components";
 import { pulse, fadeIn } from "react-animations";
 import GlobalFontStyle from "../util/globalFont";
@@ -21,7 +15,7 @@ import { bottomContent } from "../constant/data";
 import { me } from "../assets/images";
 
 const contentEnum = {
-  first: "home__first"
+  first: "home__first",
 };
 
 const pulseAnimation = keyframes`${pulse}`;
@@ -33,7 +27,10 @@ const BouncyText = styled.h1`
 `;
 
 const MainWrapper = styled.div`
-  margin-top: 15vh;
+  margin-top: 5vw;
+  ${media("<=tablet")} {
+    margin-top: 10vw;
+  }
 `;
 
 const flipAnimation = css`
@@ -56,6 +53,16 @@ const ContentWrapper = styled.div`
   justify-content: center;
 `;
 
+const Main = styled.div`
+  background: ${colors.mainColor};
+  height: 80vh;
+  ${media(">desktop")} {
+    height: 67vh;
+  }
+  text-align: center;
+  color: white;
+`;
+
 interface Props {
   location: { pathname: string };
 }
@@ -64,7 +71,7 @@ interface State {}
 
 class IndexPage extends React.Component<Props, State> {
   state = {
-    contentsVisible: false
+    contentsVisible: false,
   };
 
   intersectionObserver: {
@@ -77,8 +84,8 @@ class IndexPage extends React.Component<Props, State> {
       id: contentEnum.first,
       intersectionRatio: 0,
       label: "메인",
-      ref: React.createRef()
-    }
+      ref: React.createRef(),
+    },
   };
 
   componentDidMount() {
@@ -97,11 +104,11 @@ class IndexPage extends React.Component<Props, State> {
     this.intersectionObserver = new window.IntersectionObserver(
       this.handleIntersectionChange,
       {
-        threshold: 0.2
+        threshold: 0.2,
       }
     );
 
-    Object.values(this.contents).forEach(tab => {
+    Object.values(this.contents).forEach((tab) => {
       this.intersectionObserver.observe(tab.ref.current);
     });
   };
@@ -114,7 +121,7 @@ class IndexPage extends React.Component<Props, State> {
   }
 
   handleIntersectionChange = (entries: any) => {
-    entries.forEach(element => {
+    entries.forEach((element) => {
       if (element.isIntersecting) {
         this.setState({ contentsVisible: true });
       }
@@ -127,13 +134,7 @@ class IndexPage extends React.Component<Props, State> {
     return (
       <div>
         <GlobalFontStyle />
-        {/* Master head */}
-        <Segment
-          vertical
-          inverted
-          textAlign="center"
-          style={{ background: `${colors.mainColor}`, height: "100vh" }}
-        >
+        <Main>
           <HeaderMenu
             Link={Link}
             pathname={location.pathname}
@@ -151,19 +152,9 @@ class IndexPage extends React.Component<Props, State> {
                   <h3>:) Idea + Developer</h3>
                 </div>
               </ContentWrapper>
-              <Button
-                size="huge"
-                style={{
-                  marginTop: "50px",
-                  color: "rgb(33, 150, 243)",
-                  background: "white"
-                }}
-              >
-                Welcome to my blog
-              </Button>
             </Container>
           </MainWrapper>
-        </Segment>
+        </Main>
         <Wrapper contentsVisible={this.state.contentsVisible}>
           <div
             id={contentEnum.first}
@@ -175,8 +166,9 @@ class IndexPage extends React.Component<Props, State> {
                   <Grid.Column>
                     <SubWrapper>
                       <Header>Hi I'm Ideveloper</Header>
-                      <p>I have no fear about learning new technology</p>
-                      <p>I am good at dealing with error situation</p>
+                      <p>기술을 활용해,좋은제품을 통해</p>
+                      <p>좋은 영향력을 많은 사람들에게</p>
+                      <p>전달 하고 싶습니다</p>
                     </SubWrapper>
                   </Grid.Column>
                 </Grid.Row>
@@ -192,14 +184,14 @@ class IndexPage extends React.Component<Props, State> {
                 className="container"
               >
                 <Grid.Row>
-                  {bottomContent.map(content => {
+                  {bottomContent.map((content) => {
                     return (
                       <Grid.Column
                         style={{
                           display: "flex",
                           flexDirection: "column",
                           height: "200px",
-                          justifyContent: "center"
+                          justifyContent: "center",
                         }}
                       >
                         <Header icon>
@@ -212,7 +204,7 @@ class IndexPage extends React.Component<Props, State> {
                             size="huge"
                             style={{
                               background: colors.mainColor,
-                              color: "white"
+                              color: "white",
                             }}
                           >
                             {content.buttonContent}
@@ -222,7 +214,7 @@ class IndexPage extends React.Component<Props, State> {
                                 width: "1em",
                                 height: "1em",
                                 marginLeft: ".5em",
-                                verticalAlign: "middle"
+                                verticalAlign: "middle",
                               }}
                             />
                           </Button>

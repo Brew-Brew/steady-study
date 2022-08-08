@@ -1,5 +1,6 @@
 import * as React from "react";
-import { Header, Container, Segment } from "semantic-ui-react";
+import media from "css-in-js-media";
+import { Header, Container, Segment, Icon } from "semantic-ui-react";
 import styled, { keyframes } from "styled-components";
 import { fadeIn } from "react-animations";
 
@@ -87,17 +88,37 @@ const CompanyIcon = styled.img`
   margin-bottom: 10px;
 `;
 
+const Print = styled.button`
+  position: absolute;
+  right: 0;
+  top: 0;
+  background: rgb(33, 150, 243);
+  border: none;
+  color: white;
+  border-radius: 5px;
+  font-size: 16px;
+  ${media("<=tablet")} {
+    position: fixed;
+    right: 5px;
+    top: 5px;
+  }
+`;
+
 const AboutPage = () => {
   return (
     <Container>
       <GlobalFontStyle />
       <Segment vertical>
-        <Header as="h1">
+        <Header as="h1" style={{ position: "relative" }}>
           <Title>
             <FadedText>
               😀<span style={{ margin: "1rem" }}>I'm Ideveloper</span>
             </FadedText>
           </Title>
+          <Print className="no-print" onClick={() => window.print()}>
+            <Icon name="print" />
+            이력서 프린트
+          </Print>
         </Header>
       </Segment>
       <Segment>
