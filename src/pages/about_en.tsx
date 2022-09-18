@@ -17,7 +17,7 @@ import {
   awardsInfo,
   contributionInfo,
   storyInfo,
-} from "../constant/data";
+} from "../constant/data_en";
 
 const fadedAnimation = keyframes`${fadeIn}`;
 
@@ -120,7 +120,7 @@ const AboutPage = () => {
           </Title>
           <Print className="no-print" onClick={() => window.print()}>
             <Icon name="print" />
-            이력서 프린트
+            Resume Print
           </Print>
         </Header>
       </Segment>
@@ -156,7 +156,9 @@ const AboutPage = () => {
                       {task.skills.map((skill) => (
                         <Tag content={skill} />
                       ))}
-                      {task.participant && <p>참여인원: {task.participant}</p>}
+                      {task.participant && (
+                        <p>number of participants : {task.participant}</p>
+                      )}
                       {task.description &&
                         task.description.map((d) => (
                           <>

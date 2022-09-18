@@ -6,5 +6,16 @@ import plating from "./plating.png";
 import linkedin from "./linkedin.png";
 import arrow from "./arrow.svg";
 import woowa from "./woowa.png";
+import woowabros from "./woowabros.png";
 
-export { arrow, github, mail, mrt, plating, tistory, linkedin, woowa };
+export {
+  arrow,
+  github,
+  mail,
+  mrt,
+  plating,
+  tistory,
+  linkedin,
+  woowa,
+  woowabros,
+};
