@@ -108,7 +108,7 @@ const AboutPage = () => {
   const isBrowser = () => typeof window !== "undefined"
   const urlParams = new URLSearchParams(isBrowser() ? window?.location?.search : '');
   const langParam = urlParams.get("lang");
-  console.log(langParam);
+
   return (
     <Container>
       <GlobalFontStyle />

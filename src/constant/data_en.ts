@@ -37,8 +37,8 @@ export const abooutInfo = [
   },
   {
     img: mail,
-    label: "E-mail: zx6658@gmail.com",
-    link: "mailto:zx6658@gmail.com?subject=Hi ideveloper",
+    label: "E-mail: zx6658@naver.com",
+    link: "mailto:zx6658@naver.com?subject=Hi ideveloper",
   },
   {
     img: tistory,
