@@ -105,9 +105,6 @@ const Print = styled.button`
 `;
 
 const AboutPage = () => {
-  const urlParams = new URLSearchParams(window.location.search);
-  const langParam = urlParams.get("lang");
-  console.log(langParam);
   return (
     <Container>
       <GlobalFontStyle />
