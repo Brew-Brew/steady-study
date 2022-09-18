@@ -105,7 +105,8 @@ const Print = styled.button`
 `;
 
 const AboutPage = () => {
-  const urlParams = new URLSearchParams(window.location.search);
+  const isBrowser = () => typeof window !== "undefined"
+  const urlParams = new URLSearchParams(isBrowser() ? window?.location?.search : '');
   const langParam = urlParams.get("lang");
   console.log(langParam);
   return (
