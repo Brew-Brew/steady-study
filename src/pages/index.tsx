@@ -264,6 +264,11 @@ class IndexPage extends React.Component<Props, State> {
                       <p>기술을 활용해,좋은제품을 통해</p>
                       <p>좋은 영향력을 많은 사람들에게</p>
                       <p>전달 하고 싶습니다</p>
+                      <p>
+                        When an opportunity is certain, everyone wants to have
+                        it.
+                      </p>
+                      <p>Exchange uncertainty for new experiences</p>
                     </SubWrapper>
                   </Grid.Column>
                 </Grid.Row>
