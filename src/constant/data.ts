@@ -541,6 +541,13 @@ export const contributionInfo = [
 
 export const storyInfo = [
   {
+    title: "“첫번째 프론트엔드 엔지니어”로 합류하면 어떤 일들을 해야할까?",
+    link:
+      "https://medium.com/verticah/%EC%B2%AB%EB%B2%88%EC%A7%B8-%ED%94%84%EB%A1%A0%ED%8A%B8%EC%97%94%EB%93%9C-%EC%97%94%EC%A7%80%EB%8B%88%EC%96%B4-%EB%A1%9C-%ED%95%A9%EB%A5%98%ED%95%98%EB%A9%B4-%EC%96%B4%EB%96%A4-%EC%9D%BC%EB%93%A4%EC%9D%84-%ED%95%B4%EC%95%BC%ED%95%A0%EA%B9%8C-78c7d891e3a5",
+    description:
+      "스타트업 첫번째 프론트 엔지니어로 합류해 어떻게 일해왔는지에 대해 작성한 글",
+  },
+  {
     title: "학생에서 개발자가 되기까지 (feat:병역특례를 마무리하며)",
     link:
       "https://ideveloper2.dev/blog/2020-02-18--%ED%95%99%EC%83%9D%EC%97%90%EC%84%9C-%EA%B0%9C%EB%B0%9C%EC%9E%90%EA%B0%80-%EB%90%98%EA%B8%B0%EA%B9%8C%EC%A7%80-feat-%EB%B3%91%EC%97%AD%ED%8A%B9%EB%A1%80%EB%A5%BC-%EB%A7%88%EB%AC%B4%EB%A6%AC%ED%95%98%EB%A9%B0/",
