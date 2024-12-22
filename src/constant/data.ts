@@ -190,7 +190,7 @@ export const careerInfo = [
         skills: ["typescript", "next.js", "emotion.js", "react", "context api"],
       },
       {
-        title: "웹 상품 상세페이지 view ruby on rails -> react 리뉴얼",
+        title: "웹 상품 상세페이지 ruby on rails -> react 마이그레이션",
         description: [
           {
             title: "웹 상품 상세페이지 리뉴얼",
@@ -218,7 +218,7 @@ export const careerInfo = [
         description: [
           {
             title:
-              "셰프 음식을 집으로 전달해주는 B2B 서비스였고, 개발/운영을 담당했습니다",
+              "셰프 음식을 집으로 전달해주는 B2C 서비스였고, 개발/운영을 담당했습니다",
           },
         ],
 
