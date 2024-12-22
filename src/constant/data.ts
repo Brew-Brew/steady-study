@@ -89,42 +89,17 @@ export const careerInfo = [
         title: "B마트/배민스토어 통합 웹뷰 환경 개발",
         description: [
           {
-            title: "웹뷰 개발환경에서의 여러 비즈니스 대응",
+            title: "웹뷰 개발환경에서의 여러 비즈니스 대응 (설계/개발/운영)",
             content: [
-              "<a href='https://ideveloper2.dev/blog/2021-05-02--a-b-%ED%85%8C%EC%8A%A4%ED%8A%B8-%EC%BB%B4%ED%8F%AC%EB%84%8C%ED%8A%B8-%EA%B5%AC%EC%B6%95/'>A/B 테스트 컴포넌트 개발</a>",
-              "추천 UI 영역 개발",
-              "장바구니,상품상세,주문내역,주문상세,쿠폰/이벤트지면..etc",
-            ],
-          },
-          {
-            title: "설계 / 성능 개선 / 테스트",
-            content: [
+              "기존 (vue + csr)환경의 페이지들을 신규 통합 프론트(react + ssr) 환경으로 옮겨 기술 부채 해결",
               "<a href='https://ideveloper2.dev/blog/2020-08-22--%EC%83%81%ED%83%9C-%ED%8C%A8%ED%84%B4-state-pattern-%EC%9D%84-%ED%99%9C%EC%9A%A9%ED%95%98%EC%97%AC-deep-link-%ED%9A%A8%EA%B3%BC%EC%A0%81%EC%9C%BC%EB%A1%9C-%EA%B4%80%EB%A6%AC%ED%95%98%EA%B8%B0-aka-deep-link-manager/'>앱스킴, 인터페이스 효과적으로 관리하는 App Protocol Manager 개발</a>",
-              "로그를 쉽게 관리하는 App Log Manager 개발",
-              "api, 모델 테스트 코드 커버리지 확보",
-              "기존 (vue + csr)환경의 페이지들을 신규 통합 프론트(react + ssr) 환경으로 옮기면서 기술 부채 해결 + 렌더링 성능 개선",
+              "추천 화면 대응을 위해 <a href='https://ideveloper2.dev/blog/2021-05-02--a-b-%ED%85%8C%EC%8A%A4%ED%8A%B8-%EC%BB%B4%ED%8F%AC%EB%84%8C%ED%8A%B8-%EA%B5%AC%EC%B6%95/'>A/B 테스트 컴포넌트 개발</a>",
             ],
           },
         ],
 
         skills: ["react", "next.js", "typescript", "redux", "emotion.js"],
       },
-      {
-        title: "배달의민족 통합 주문 페이지 B마트/배민스토어 페이지 개발",
-        description: [
-          {
-            title: "배달의 민족 주문페이지 내 B마트/배민스토어 주문페이지",
-            content: [
-              "주요 결제 연관 로직 추가 및 test 코드 작성 => 비즈니스 로직 안정성 확보",
-              "컴포넌트 / 모델 구조 개선 =>  코드 가독성 확보",
-              "다양한 연관 부서팀(결제,주문,..etc)과의 커뮤니케이션을 통해 개발 및 일정 협의",
-            ],
-          },
-        ],
-
-        skills: ["react", "typescript", "styled-components"],
-      },
-
       {
         title: "B마트 프로모션 페이지 제작 builder 및 프로모션 페이지들 개발",
         description: [
@@ -135,7 +110,6 @@ export const careerInfo = [
               "섹션, 그룹, 아이템, 액션등의 레이어를 나눠 모델을 설계해 개발하여 다양한 프로모션 페이지 대응가능하도록 개선",
               "매달 개발자가 개발했던 이벤트 페이지들을 마케터분들이 제작가능하도록 설계하여 시스템화/자동화로 마케팅 효율 증대",
               "마케팅팀에 요구사항에 따른 여러 사용성 개선 및 기능 추가 (스와이퍼 제작 기능, 쿠폰발급, 딥링크 이동..etc)",
-              "이미지 업로드 기능 s3, cloudfront 연동하도록 개선",
             ],
           },
           {
@@ -176,8 +150,7 @@ export const careerInfo = [
           {
             title: "하나의 팀으로써 유기적으로 협업하고 공유하는 문화",
             content: [
-              "신규 입사자 온보딩 프로세스 정립 및 온보딩 프로젝트 기획 및 문서화",
-              "내 작업뿐만 아니라, 동료의 작업까지도 항상 챙기며, 일정 체크에도 힘써 줌으로써 도움이 될수 있는 동료가 되기 위해 항상 노력함",
+              "<a href='https://techblog.woowahan.com/6851'>신규 입사자 온보딩 프로세스 정립 및 온보딩 프로젝트 기획 및 문서화</a>",
               "하나의 서비스를 함께 만들어간다는 생각을 바탕으로 한 지속적으로 공유하는 문화",
               "팀 내 정보공유 채널 생성 제안 및 <a href='https://ideveloper2.dev/blog/2022-01-25--emotion%EC%9C%BC%EB%A1%9C-%ED%8C%8C%EC%95%85%ED%95%B4%EB%B3%B4%EB%8A%94-css-in-js%EC%9D%98-%EC%9D%B4%EB%AA%A8%EC%A0%80%EB%AA%A8/'>기술 관련 아티클</a> 공유 -> 전사 프론트엔트 공유채널로 확장(지식/기술공유)",
               "매주 빠짐없이 주간 회고를 주도함 (배포 일정 체크/ 이슈 체크 / 논의)",
@@ -198,20 +171,18 @@ export const careerInfo = [
     skills: ["react", "typescript", "webpack", "next.js", "ruby on rails"],
     task: [
       {
-        title: "마이리얼트립 전체 신규 웹 front 환경 구축 ",
+        title: "마이리얼트립 웹 전반 설계/개발/운영 ",
         description: [
+          {
+            title: "협업 문화",
+            content: [
+              "<a href='https://medium.com/myrealtrip-product/frontend-cowork-9cdb125da1ef'>사내 협업문화를 만들어가며 유기적으로 일하는 업무 프로세스들 구축</a>",
+            ],
+          },
           {
             title: "css-in-js media 라이브러리 제작",
             content: [
               "<a href='https://github.com/Brew-Brew/css-in-js-media'>emotion, styled component 같은 css-in-js 라이브러리들을 활용할때 반응형을 쉽게 대응하기 위해 만든 유틸을 라이브러리로 제작</a>",
-            ],
-          },
-          {
-            title: "마이리얼트립 전체 신규 웹 front 구축",
-            content: [
-              "rails 기반 웹 -> ts + next.js + emotion.js 조합 신규 웹",
-              "cypress e2e테스트를 통한 안정성있는 프로덕개발을 위한 노력",
-              "상태관리 및 설계단 참여",
             ],
           },
         ],
@@ -219,69 +190,19 @@ export const careerInfo = [
         skills: ["typescript", "next.js", "emotion.js", "react", "context api"],
       },
       {
-        title: "호텔메타서치 프로젝트",
-        description: [
-          {
-            title:
-              "기존: 부킹닷컴 링크로연결 -> 개선: 각 호텔 사이트들의 상품들을 리스트페이지, 상세페이지에서 확인할수 있도록 개선",
-            content: [
-              "웹뷰 대응 및 신규 인터페이스 협의 및 개발",
-              "UI 컴포넌트 제작",
-              "상태관리 및 설계단 참여",
-            ],
-          },
-        ],
-        participant: "2명",
-        skills: ["react", "context api"],
-      },
-      {
         title: "웹 상품 상세페이지 view ruby on rails -> react 리뉴얼",
         description: [
           {
             title: "웹 상품 상세페이지 리뉴얼",
             content: [
-              "기존 ruby on rails 레거시 파악후 제거 -> react로 전환",
-              "사이트 내 중요페이지를 react로 마이그레이션 -> 추후 기능 추가 용이",
-              "더 나은 유저경험 전달",
+              "기존 ruby on rails 레거시 파악후 제거하여 react로 전환",
+              "커머스에서 중요한 상세 페이지를 react로 마이그레이션함으로써, 묵혀뒀던 백로그들 추가가 용이해짐",
             ],
           },
         ],
 
         participant: "1명",
         skills: ["react"],
-      },
-
-      {
-        title: "브레이즈 이벤트 삽입",
-        description: [
-          {
-            title: "브레이즈 이벤트 삽입",
-            content: [
-              "브레이즈 스크립트 웹, 웹뷰 삽입",
-              "마케팅 팀에서 캠페인 제작을 위한 웹 페이지내 유저 스토리별 이벤트 삽입(회원가입~구매 등등 user 이벤트일어나는 부분)",
-            ],
-          },
-        ],
-
-        participant: "1명",
-        skills: ["react"],
-      },
-      {
-        title: "서스테이닝 이슈들, 성능개선",
-        description: [
-          {
-            title: "서스테이닝 이슈들, 성능개선",
-            content: [
-              "bundle analyzer 도입 제의및 적용을 통해 성능개선의 초석을 다짐",
-              "자잘한 기존 rails 페이지들 개선하면서 react로 전환",
-              "협력업체들(naver, 마케팅스크립트 대행사..etc)과의 커뮤니케이션을 통한 페이지 개선작업들",
-              "sustaining 이슈들을 대응하면서 사업,운영팀에 기여",
-            ],
-          },
-        ],
-
-        participant: "팀 전원",
-        skills: ["ruby on rails", "react", "react hook"],
       },
     ],
   },
@@ -293,49 +214,15 @@ export const careerInfo = [
     skills: ["react", "webpack", "node.js"],
     task: [
       {
-        title:
-          "React 기반의  신규런칭  서비스  관련(b2b 회사용  도시락  판매  사이트)",
-        participant: "2명, (본인, 인턴)",
+        title: "플레이팅 서비스 개발/운영",
         description: [
           {
-            title: "React 기반의  신규런칭  서비스 설계/개발/운영",
-            content: [
-              "웹사이트  프로젝트  설계 및 일정 매니징",
-              "기존 api 수정",
-              "프론트 페이지들 개발",
-            ],
+            title:
+              "셰프 음식을 집으로 전달해주는 B2B 서비스였고, 개발/운영을 담당했습니다",
           },
         ],
 
-        skills: ["react", "redux", "redux-saga", "node.js"],
-      },
-      {
-        title: "React 기반의 배송현황 확인 웹",
-        participant: "1명",
-        description: [
-          {
-            title:
-              "각 지역마다 pos 프로그램 일일이 들어가서 확인해야 했던 운영팀의 효율 증가",
-            content: ["큰 상태관리는 필요없었으므로 react만으로 구현"],
-          },
-        ],
-        skills: ["react"],
-      },
-      {
-        title:
-          "서울지역만 되던 새벽배송 -> 전지역  새벽배송  확장  (node.js  기존  중앙  api  수정)",
-        participant: "1명",
-        description: [
-          {
-            title:
-              "서울지역만 되던 새벽배송 -> 전지역  새벽배송  확장  (node.js  기존  중앙  api  수정)",
-            content: [
-              "매출 증대에 기여",
-              "기존 legacy 코드들의 다른 서비스들과의 dependency 분석 후 개발",
-            ],
-          },
-        ],
-        skills: ["node.js"],
+        skills: ["react", "redux", "redux-saga"],
       },
     ],
   },

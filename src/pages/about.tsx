@@ -159,7 +159,7 @@ const AboutPage = () => {
                           <>
                             <InfoDescription>{d.title}</InfoDescription>
                             <ul>
-                              {d.content.map((content) => {
+                              {d.content?.map((content) => {
                                 return (
                                   <li>
                                     <div
