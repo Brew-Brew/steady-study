@@ -140,7 +140,10 @@ const AboutPage = () => {
         {careerInfo.map((info) => {
           return (
             <InfoWrapper>
-              <CompanyIcon src={info.img} />
+              <div style={{display: 'flex',alignItems:'center',gap:4}}>
+               <CompanyIcon src={info.img} style={{margin:0}}/>
+               {info.imgAlt ? <p>{info.imgAlt}</p>:""}
+              </div>
               <p style={{ margin: "0" }}>
                 ({info.date}) {info.description}
               </p>
@@ -149,7 +152,10 @@ const AboutPage = () => {
                 {info.task.map((task) => {
                   return (
                     <InfoContent>
-                      <li>{task.title}</li>
+                      <li><div dangerouslySetInnerHTML={{
+                                        __html:task.title,
+                                      }}
+                                    /></li>
                       {task.skills.map((skill) => (
                         <Tag content={skill} />
                       ))}

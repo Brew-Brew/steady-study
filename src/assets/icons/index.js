@@ -7,6 +7,7 @@ import linkedin from "./linkedin.png";
 import arrow from "./arrow.svg";
 import woowa from "./woowa.png";
 import woowabros from "./woowabros.png";
+import verticah from "./verticah.jpg";
 
 export {
   arrow,
@@ -18,4 +19,5 @@ export {
   linkedin,
   woowa,
   woowabros,
+  verticah,
 };
