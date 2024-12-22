@@ -49,7 +49,7 @@ export const abooutInfo = [
   {
     img: linkedin,
     label: "Linkedin",
-    link: "https://www.linkedin.com/in/%EC%8A%B9%EA%B7%9C-%EC%9D%B4-965b53149/",
+    link: "https://www.linkedin.com/in/seungkyu-lee-965b53149/",
   },
 ];
 
