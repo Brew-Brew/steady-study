@@ -276,28 +276,23 @@ export const skillInfo = [
   },
   {
     description: [
-      "여러 기법을 활용해 불필요한 렌더링을 막고, 렌더링 최적화를 할 수 있습니다.",
+      "web vitals에 대해 이해하고, 최적화를 할 수 있습니다.",
+      "크로스 브라우징에 대응할 수 있습니다.",
+    ],
+    title: "Web",
+  },
+  {
+    description: [
       "번들 사이즈 분석 및, 번들 사이즈 최적화를 할 수 있습니다.",
       "hook을 사용해 비즈니스 로직을 적절히 분리해 낼수 있습니다.",
-      "redux, context api등의 상태관리에 대해 적절한 상황에 사용할 수 있습니다.",
-      "next.js를 활용해 ssr에 대응 할 수 있습니다.",
+      "여러 라이브러리들을 활용해 상태관리에 대해 적절한 상황에 사용할 수 있습니다.",
     ],
     title: "React",
   },
-  {
-    description: [
-      "웹표준을 지키려 노력합니다.",
-      "Sass 등 CSS Preprocessor를 사용할 수 있고, css module을 활용할 수 있습니다.",
-      "css-in-js (styled-component , emotion) 기법을 활용할 수 있습니다",
-      "BEM등의 CSS 방법론을 적용할 수 있습니다.",
-      "크로스 브라우징에 대응할 수 있습니다.",
-    ],
-    title: "HTML/CSS",
-  },
+
   {
     description: [
       "ES2015 이후의 자바스크립트 문법에 익숙합니다.",
-      "babel, webpack 등의 사용에 익숙합니다.",
       "typescript를 사용하며 적절한 타입을 활용할 수  있습니다.",
     ],
     title: "Javascript/Typescript",
