@@ -99,7 +99,7 @@
     "eslint-plugin-import": "^2.6.0",
     "eslint-plugin-jsx-a11y": "^5.1.1",
     "eslint-plugin-react": "^7.1.0",
-    "flat": "^2.0.1",
+    "flat": "^5.0.1",
     "husky": "0.13.3",
     "jest": "19.0.2",
     "lint-staged": "3.4.0",
