@@ -97,14 +97,33 @@ export const careerInfo = [
           'zustand',
           'turborepo',
           'emotion.js',
+          'aws',
         ],
         description: [
           {
             title: 'CLOBE(구 레베뉴마켓) 초기 구축/설계/개발/운영',
             content: [
-              '첫 프론트 엔지니어이자 유일한 프론트엔지니어로 기업 금융의 자금관리/자금조달을 도와 기업의 성장을 도와주는 CLOBE(구 레베뉴마켓)의 monorpeo 기반의 서비스의 초기 구축/설계/개발/운영',
-              "팀에 도움이 되는일이라면, 개발 뿐 아니라 figma를 활용한 디자인/협업 방식 정립등에 힘쓰기도 했고, 어떻게하면 효율적으로 일을 하며 팀이 만들어 가는 프로덕트 및 방향성에 도움을 줄 수 있을지 고민하며 <a href='https://medium.com/verticah/%EC%B2%AB%EB%B2%88%EC%A7%B8-%ED%94%84%EB%A1%A0%ED%8A%B8%EC%97%94%EB%93%9C-%EC%97%94%EC%A7%80%EB%8B%88%EC%96%B4-%EB%A1%9C-%ED%95%A9%EB%A5%98%ED%95%98%EB%A9%B4-%EC%96%B4%EB%96%A4-%EC%9D%BC%EB%93%A4%EC%9D%84-%ED%95%B4%EC%95%BC%ED%95%A0%EA%B9%8C-78c7d891e3a5'>이를 위한 노력(playwright 기반 e2e테스트, swagger 사이트 타입 추출 chrome extension tool 개발, 피그마 이미지 s3 업로드 플러그인 개발)</a>들을 하기도 했습니다.",
-              '기능 개발뿐만 아니라 성능 최적화에도 힘썼고, 서비스 Light house 성능 점수를 64점에서 90점으로 올렸으며 서비스 내 주요액션(재무데이터 라벨링 과정)의 INP(Interaction to Next Paint)를 CPU 성능 4분의 1 기준의 디바이스라 가정했을때 1.5초~4초에서 360ms ~ 540ms정도로 줄였습니다.',
+              '유일한 프론트엔지니어로 기업 자금관리/조달을 도와 기업의 성장을 도와주는 CLOBE(구 레베뉴마켓) 초기 구축/설계/개발/운영',
+              'Turborepo를 활용한 모노레포 환경 개발 및 CI/CD 구축 (github actions)',
+              'SSR + ECS 기반 대고객 서비스 운영 / SSG + S3 + CloudFront 기반 어드민 서비스 운영',
+            ],
+          },
+          {
+            title: '성능 최적화를 위한 기여',
+            content: [
+              '서비스 Light house 성능 점수를 64점에서 90점으로 향상',
+              '서비스 내 주요액션(재무데이터 라벨링 과정)의 INP(Interaction to Next Paint)를 CPU 성능 4분의 1 기준의 디바이스라 가정했을때 1.5초~4초에서 360ms ~ 540ms정도로 개선',
+            ],
+          },
+          {
+            title: '프로덕트 방향성과 팀 생산성 향상을 위한 기여',
+            content: [
+              'Playwright 기반 E2E 테스트 도입으로 서비스 안정성과 회귀 테스트 자동화 체계 구축',
+              'Swagger 기반 API 명세에서 TypeScript 타입 자동 추출 크롬 확장 도구 개발',
+              'Figma 플러그인 개발(이미지 S3 업로드 자동화, svg react 컴포넌트 추출), 운영 효율성과 콘텐츠 관리 편의성 개선',
+              'Figma를 활용한 디자인 시스템 정립 및 협업 방식 개선에 참여하여 디자이너-개발자 간 소통 효율화',
+              '백엔드 개발자들도 프론트엔드 개발에 쉽게 참여할 수 있도록 cursor rule 등 코드 컨벤션을 정립, 코드 일관성을 확보하고 개발 및 QA 과정에서 소요되는 시간을 줄이기 위해 노력함',
+              '개발 외에도 팀의 일하는 방식과 프로덕트 방향성에 기여할 수 있는 다양한 방법을 주도적으로 실험 및 개선',
             ],
           },
         ],
@@ -124,7 +143,7 @@ export const careerInfo = [
           {
             title: '웹뷰 개발환경에서의 여러 비즈니스 대응 (설계/개발/운영)',
             content: [
-              '기존 (vue + csr)환경의 페이지들을 신규 통합 프론트(react + ssr) 환경으로 옮겨 기술 부채 해결',
+              '기존 vue환경의 페이지들을 react 환경으로 이관',
               "<a href='https://ideveloper2.dev/blog/2020-08-22--%EC%83%81%ED%83%9C-%ED%8C%A8%ED%84%B4-state-pattern-%EC%9D%84-%ED%99%9C%EC%9A%A9%ED%95%98%EC%97%AC-deep-link-%ED%9A%A8%EA%B3%BC%EC%A0%81%EC%9C%BC%EB%A1%9C-%EA%B4%80%EB%A6%AC%ED%95%98%EA%B8%B0-aka-deep-link-manager/'>앱스킴, 인터페이스 효과적으로 관리하는 App Protocol Manager 개발</a>",
               "추천 화면 대응을 위해 <a href='https://ideveloper2.dev/blog/2021-05-02--a-b-%ED%85%8C%EC%8A%A4%ED%8A%B8-%EC%BB%B4%ED%8F%AC%EB%84%8C%ED%8A%B8-%EA%B5%AC%EC%B6%95/'>A/B 테스트 컴포넌트 개발</a>",
             ],
