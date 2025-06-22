@@ -375,6 +375,19 @@ export const awardsInfo = [
 
 export const contributionInfo = [
   {
+    from: 'ant-design / ant-design',
+    list: [
+      {
+        title: 'type: seperate type of button onclick event with more detail',
+        link: 'https://github.com/ant-design/ant-design/pull/52654',
+      },
+      {
+        title: "doc: update Table component's selectedRowKeys wrong type",
+        link: 'https://github.com/ant-design/ant-design/pull/17990',
+      },
+    ],
+  },
+  {
     from: 'reduxjs / redux',
     list: [
       {
@@ -429,15 +442,6 @@ export const contributionInfo = [
       {
         title: 'doc: add korean translation of useMemo and useCallback',
         link: 'https://github.com/kentcdodds/kentcdodds.com/pull/200',
-      },
-    ],
-  },
-  {
-    from: 'ant-design / ant-design',
-    list: [
-      {
-        title: "doc: update Table component's selectedRowKeys wrong type",
-        link: 'https://github.com/ant-design/ant-design/pull/17990',
       },
     ],
   },
