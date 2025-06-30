@@ -85,7 +85,7 @@ export const careerInfo = [
     img: github,
     label: '버티카 (Verticah)',
     img: verticah,
-    imgAlt: 'VERTICAH',
+    imgAlt: '브이원씨 (VERTICAH)',
     task: [
       {
         title: `<a href="https://clobe.ai">CLOBE(구 레베뉴마켓)</a> 서비스 개발`,
