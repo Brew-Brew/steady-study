@@ -1,5 +1,5 @@
 ---
-title: 디자이너를 돕는 피그마플러그인 만들기
+title: 디자이너를 돕는 피그마(figma)플러그인 만들기
 createdDate: '2025-07-20'
 updatedDate: '2025-07-20'
 author: Ideveloper
