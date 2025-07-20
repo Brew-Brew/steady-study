@@ -194,17 +194,16 @@ function getAllTextNodes(node: SceneNode | PageNode): TextNode[] {
 }
 ```
 
-**(Figma)API에 요청**
+**(Figma)텍스트 검증을 위해 API에 요청**
 
 ```tsx
-// UI에서 검증 요청
+// UI에서 검증 요청 (ui.tsx)
 async function checkSpelling(text: string, promptString?: string): Promise<SpellCheckResponse> {
   return new Promise((resolve) => {
-    const requestId = Math.random().toString(36).slice(2);
 
     function handler(event: MessageEvent) {
       const msg = event.data.pluginMessage;
-      if (msg?.type === 'SPELL_CHECK_RESULT' && msg.requestId === requestId) {
+      if (msg?.type === 'SPELL_CHECK_RESULT') {
         window.removeEventListener('message', handler);
         resolve(msg.result);
       }
@@ -212,10 +211,40 @@ async function checkSpelling(text: string, promptString?: string): Promise<Spell
 
     window.addEventListener('message', handler);
     parent.postMessage({
-      pluginMessage: { type: 'PROXY_SPELL_CHECK', text, requestId, promptString }
+      pluginMessage: { type: 'PROXY_SPELL_CHECK', text, promptString }
     }, '*');
   });
 }
+
+// API 호출 (code.ts)
+  if (msg.type === 'PROXY_SPELL_CHECK') {
+    const { text, promptString } = msg;
+
+    try {
+      const res = await fetch(
+        API_URL,
+        {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'x-cors-token': process.env.REACT_APP_CORS_TOKEN,
+          },
+          body: JSON.stringify({
+            text,
+            prompt: promptString || '',
+          }),
+        }
+      );
+
+      const result = await res.json();
+      figma.ui.postMessage({ type: 'SPELL_CHECK_RESULT', result });
+    } catch (e) {
+      figma.ui.postMessage({
+        type: 'SPELL_CHECK_RESULT',
+        result: { error: true, message: e?.message || String(e) },
+      });
+    }
+  }
 ```
 
 **(API)보안 및 접근 제어**
