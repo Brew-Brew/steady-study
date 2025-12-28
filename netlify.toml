@@ -1,0 +1,7 @@
+[build]
+  command = "gatsby clean && gatsby build"
+  publish = "public"
+
+[build.environment]
+  NODE_VERSION = "20"
+
