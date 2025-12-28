@@ -8,6 +8,7 @@ import arrow from './arrow.svg';
 import woowa from './woowa.png';
 import woowabros from './woowabros.png';
 import verticah from './verticah.jpg';
+import coupang from './coupang.png';
 import blog from './blog.png';
 
 export {
@@ -22,4 +23,5 @@ export {
   woowa,
   woowabros,
   verticah,
+  coupang,
 };

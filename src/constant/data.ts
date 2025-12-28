@@ -7,6 +7,7 @@ import {
   linkedin,
   woowa,
   verticah,
+  coupang,
 } from '../assets/icons';
 
 export const bottomContent = [
@@ -80,9 +81,24 @@ export const pressInfo = [
 
 export const careerInfo = [
   {
-    date: '2022.12 ~ ing',
+    date: '2025.08 ~ ing',
+    description: 'E-Commerce',
+    label: 'Coupang',
+    img: coupang,
+    imgAlt: '',
+    task: [
+      {
+        title: 'Coupang Ads 프론트엔드 개발',
+        skills: ['react', 'typescript','react-query'],
+        description: [
+       
+        ],
+      },
+    ],
+  },
+  {
+    date: '2022.12 ~ 2025.08',
     description: 'FinTech',
-    img: github,
     label: '버티카 (Verticah)',
     img: verticah,
     imgAlt: '브이원씨 (VERTICAH)',
